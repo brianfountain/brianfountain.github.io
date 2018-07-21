@@ -1,0 +1,41 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.container.fixed {
+    position: absolute;
+    width: 100%;
+}
+
+.splash{
+    /* Workaround for some mobile browsers */
+    min-height:100%;
+    padding: 10px;
+}
+
+.copy-container {
+    padding-top: 5vh;
+    text-align: center;
+}
+
+.copy-container img {
+    max-width: 500px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
