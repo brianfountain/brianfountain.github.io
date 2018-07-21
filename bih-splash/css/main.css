@@ -8,15 +8,8 @@
     width: 100%;
 }
 
-.splash{
-    /* Workaround for some mobile browsers */
-    min-height:100%;
-    padding: 10px;
-}
-
 .copy-container {
-    padding-top: 5vh;
-    text-align: center;
+    padding-top: 15vh;
 }
 
 .copy-container img {
