@@ -1,0 +1,170 @@
+<krpano version="1.19" title="Learning Connects VR Training Demonstration">
+	<preview type="grid();" />
+
+	<!-- contextmenu with projections from an other example -->
+	<include url="../animated-hotspots/contextmenu.xml" />
+
+	<!-- Combobox menu -->
+	<include url="%SWFPATH%/plugins/combobox.xml" />
+
+	<!-- Include combobox menu -->
+	<include url="%SWFPATH%/plugins/combobox.xml" />
+
+	<include url="video-player.xml" />
+	<include url="youtube-player.xml" />
+
+	<!-- Include footer controls -->
+	<include url="skin/vtourskin.xml" />
+
+	<view hlookat="0" vlookat="0" fovtype="MFOV" fov="100" fovmin="60" fovmax="150" />
+
+
+	<action name="comboboxexamples" autorun="onstart">
+		loadscene(0);
+	</action>
+
+	<!-- mixed static/dynamic example - add items dynamically -->
+	<combobox name="cbscenes" design="vtour" align="leftbottom" x="10" y="10" onloaded="add_scene_items();" />
+	<action name="add_scene_items" scope="local">
+		for(set(i,0), i LT scene.count, inc(i),
+			caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:48px;height:32px;vertical-align:middle;margin-right:8px;[dq]/] '+scene[get(i)].title), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+		);
+	</action>
+
+
+
+	<!-- Animate hotspot .-->
+	s from left to right and top to bottom
+	-->
+	<action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
+		<!-- define local variables -->
+		calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
+		calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
+		def(local.frame, integer, 0);
+
+		<!-- set the first frame -->
+		calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
+
+		<!-- do the animation -->
+		setinterval(calc('crop_anim_' + caller.name), calc(1.0 / framerate),
+			if(caller.loaded,
+				inc(frame);
+				if(frame GE frames, if(caller.onlastframe !== null, callwith(caller, onlastframe() ) ); set(frame,0); );
+				mod(xpos, frame, xframes);
+				div(ypos, frame, xframes);
+				Math.floor(ypos);
+				mul(xpos, framewidth);
+				mul(ypos, frameheight);
+				calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
+			  ,
+				<!-- stop the interval when the hotspot gets removed -->
+				clearinterval(calc('crop_anim_' + caller.name));
+			);
+		);
+	</action>
+
+	<action name="toggleinfo" args="dest">
+
+trace(name);
+		if (name = spot4")
+
+			set(layer[infotext].html, "spot 4 specific text")
+		if (name = "spot5")
+
+			set(layer[infotext].html, "spot 5 fuck yeah text")
+
+		if(layer[infotext].visible == false {
+			set(layer[infotext].visible, true);
+		}{
+			set(layer[infotext].visible, false);
+		};
+
+	</action>
+
+
+
+
+	<!-- use the panos/scenes from the corfu example -->
+	<scene name="Billings Road Office" title="Billings Road Office" thumburl="media/thumb-1.jpg">
+		<hotspot name="youtubespot"
+			url="media/youtube_icon.png"
+			scale="0.65"
+			zoom="true"
+			ath="+2.5" atv="-25"
+			onclick="looktohotspot(get(name),90); youtubeplayer_open('3pQqFQMI0Sc');"
+		/>
+
+		<hotspot name="spot1" url="media/animatedhotspot_black.png" onloaded="do_crop_animation(64,64, 60);" ath="+55" atv="+6" onclick="looktohotspot(get(name),20);" />
+
+		<hotspot name="spot2" url="media/animatedhotspot_black.png" onloaded="do_crop_animation(64,64, 60);" ath="+140" atv="+6" onclick="looktohotspot(get(name),20);" />
+
+		<!--Parameters:
+		h
+		The horizontal looking direction (view.hlookat) in spherical coordinates in degrees (-180 to +180).
+		v
+		The vertical looking direction (view.vlookat) in spherical coordinates in degrees (-90 to +90).
+		fov (optionally)
+		The field of view (view.fov) in degrees (0 - 179).
+	-->
+		<view hlookat="-1" vlookat="11" fov="120" />
+		<preview url="media/preview-1.jpg" />
+		<image>
+			<cube url="media/shutterstock_674866456-min_%s.jpg" />
+		</image>
+	</scene>
+
+	<!-- use the panos/scenes from the corfu example -->
+	<scene name="Main Street Office" title="Main Street Office" thumburl="media/thumb-2.jpg">
+
+
+		<layer name="infotext"
+	       type="text"
+		   y="mouse.clicky"
+		   x="mouse.clickx"
+	       html="content"
+	       vcenter="false"
+	       padding="15"
+		   width="40%"
+	       wordwrap="true"
+	       bg="true"
+	       bgcolor="0xFFFFFF"
+	       bgalpha="0.8"
+	       bgborder="0"
+	       bgroundedge="0"
+	       bgshadow=""
+	       txtshadow=""
+	       mergedalpha="true"
+	       interactivecontent="true"
+	       onautosized="true"
+		   enabled="false"
+		   visible="false"
+
+
+       />
+
+		<hotspot name="spot4" url="media/animatedhotspot_white.png" onloaded="do_crop_animation(64,64, 60);" ath="+40" atv="+5"
+			onover="set(layer[infotext].visible,true); tween(layer[infotext].alpha,1.0);"
+			onout="tween(hotspot[door].alpha,0.0, 0.5, default, set(hotspot[door].visible,false); );"
+			ondown.mobile.or.tablet="set(contextmenu.touch,false); onover();"
+			onup.mobile.or.tablet="delayedcall(0.1,set(contextmenu.touch,true)); onout();"
+			onclick="toggleinfo(get(name))" />
+
+			<hotspot name="spot5" url="media/animatedhotspot_white.png" onloaded="do_crop_animation(64,64, 60);" ath="+100" atv="-12"
+				onover="set(layer[infotext].visible,true); tween(layer[infotext].alpha,1.0);"
+				onout="tween(hotspot[door].alpha,0.0, 0.5, default, set(hotspot[door].visible,false); );"
+				ondown.mobile.or.tablet="set(contextmenu.touch,false); onover();"
+				onup.mobile.or.tablet="delayedcall(0.1,set(contextmenu.touch,true)); onout();"
+				onclick="toggleinfo(get(name))" />
+
+		<hotspot name="spot6" url="media/animatedhotspot_black.png" onloaded="do_crop_animation(64,64, 60);" ath="120" atv="+5" onclick="openurl('http://www.learningconnects.com',_blank);" />
+
+		<view hlookat="1" vlookat="11" fov="120" />
+		<preview url="media/preview-2.jpg" />
+		<image>
+			<cube url="media/shutterstock_674866441-min_%s.jpg" />
+		</image>
+	</scene>
+
+
+
+</krpano>

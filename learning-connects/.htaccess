@@ -1,0 +1,2 @@
+AuthName "Learning Connects"
+AuthUserFile "/home/brianfountain/.htpasswds/public_html/learning-connects/passwd"

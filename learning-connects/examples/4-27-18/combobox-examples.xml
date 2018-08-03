@@ -1,0 +1,41 @@
+﻿<krpano>
+
+	<include url="%SWFPATH%/plugins/combobox.xml" />
+
+	<action name="comboboxexamples" autorun="onstart">
+		loadscene(0);
+	</action>
+
+
+	<!-- mixed static/dynamic example - add items dynamically -->
+	<combobox name="cbscenes" design="vtour" align="leftbottom" x="10" y="10" onloaded="add_scene_items();" />
+	<action name="add_scene_items" scope="local">
+		for(set(i,0), i LT scene.count, inc(i),
+			caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:48px;height:32px;vertical-align:middle;margin-right:8px;[dq]/] '+scene[get(i)].title), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+		);
+	</action>
+
+	<!-- include a contextmenu with projections from an other example -->
+	<include url="../animated-hotspots/contextmenu.xml" />
+
+
+	<!-- use the panos/scenes from the corfu example -->
+	<scene name="Main Street Office" title="Main Street Office" thumburl="shutterstock_674866441-min.jpg">
+		<view hlookat="-1" vlookat="11" fov="120" />
+		<preview url="shutterstock_674866441-min.jpg" />
+		<image>
+			<cube url="shutterstock_674866441-min_%s.jpg" />
+		</image>
+	</scene>
+
+	<!-- use the panos/scenes from the corfu example -->
+	<scene name="Billings Road Office" title="Billings Road Office" thumburl="shutterstock_674866456-min.jpg">
+		<view hlookat="-1" vlookat="11" fov="120" />
+		<preview url="shutterstock_674866456-min.jpg" />
+		<image>
+			<cube url="shutterstock_674866456-min_%s.jpg" />
+		</image>
+	</scene>
+
+
+</krpano>
