@@ -1,0 +1,146 @@
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'feathericons';
+	src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
+	src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
+		url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
+		url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
+		url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
+}
+
+/* Common style */
+.slide figure {
+	position: absolute;
+	width: 100%;
+    height: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.slide figure img {
+	position: relative;
+	display: block;
+	opacity: 0.1;
+}
+
+.img-dragger-small .slide { margin-right: 1%; }
+.img-dragger-large .slide figure, .img-dragger-small .slide figure { overflow: hidden; }
+
+.img-dragger-small .slide.current figure figcaption { background: rgba(73, 88, 99, .9); }
+
+.slide figure figcaption {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.3em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: opacity 0.6s;
+	transition: opacity 0.6s;
+}
+
+.slide figure figcaption::before,
+.slide figure figcaption::after {
+	pointer-events: none;
+}
+
+.slide figure figcaption {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+.img-dragger-small .slide figure figcaption {
+	padding: 6em 2em;
+    font-size: 1.4em;
+}
+
+.slide figure figcaption > a {
+	z-index: 1000;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 0;
+}
+
+.slide figure h2, .slide figure p { margin: 0; }
+
+.slide figure p {
+	letter-spacing: 1px;
+	font-size: 68.5%;
+}
+
+.img-dragger-small figure.efx h2,
+.img-dragger-small figure.efx p,
+{
+	position: absolute;
+	top: 23%;
+}
+
+.img-dragger-large figure.efx h2,
+.img-dragger-small figure.efx h2 {
+	-webkit-transition: opacity 0.35s .2s;
+	transition: opacity 0.35s .2s;
+}
+
+.img-dragger-large figure.efx p, .img-dragger-small figure.efx p { 
+	-webkit-transition: opacity 0.35s .4s;
+	transition: opacity 0.35s .4s;
+}
+
+.img-dragger-small figure.efx h2 { opacity: 0; }
+
+.img-dragger-small .slide.current figure.efx h2, .img-dragger-small .slide.current figure.efx h2 span {
+	opacity: 1;
+}
+
+.img-dragger-small figure.efx:hover h2, .img-dragger-small figure.efx:hover h2 span {
+	color: white;
+	opacity: 1;
+}
+
+.img-dragger-small .slide.current figure.efx h2 { opacity: 1; }
+
+.img-dragger-small figure.efx p {
+	-webkit-transition: opacity .5s .3s; 
+	transition: opacity .5s .3s; 
+	text-transform: none;
+    font-size: 65%;
+    line-height: 1.5;
+	opacity: 0;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+	border-top: 1px dotted white;
+	padding-top: .8em;
+}
+
+.img-dragger-small figure.efx:hover p, .img-dragger-small .slide.current figure.efx p { opacity: 1; }
+
+.img-dragger-small .slide .img-wrap img {
+	-webkit-transition: opacity 1s .1ms;   
+	transition: opacity 1s .1ms; 
+}
+.img-dragger-small .slide .img-wrap img{ opacity: 1 }
+.img-dragger-small .slide:hover .img-wrap img{ opacity: .2 }
+
+.img-dragger-large figure.efx p {
+	font-size: 84%;
+    position: relative;
+    left: 0%;
+    top: 37%;
+    text-transform: none;
+    color: #dadde4;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+}
+
+@media screen and (max-width: 50em) {
+	.slide figure {
+		display: inline-block;
+		float: none;
+		margin: 0 auto;
+		width: 100%;
+	}
+}

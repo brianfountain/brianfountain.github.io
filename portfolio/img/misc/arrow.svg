@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.41 16.05">
+    <defs>
+    <style>
+    .stroke{
+        fill:none;
+        stroke:#fff;
+        stroke-miterlimit:10;
+        stroke-width:2px;
+    }
+    </style>
+    </defs>
+    <title>Control Arrow</title>
+    <line class="stroke" x1="8.05" x2="8.05" y2="15"/>
+    <polyline class="cls-1" points="0.71 7.13 8.22 14.63 15.71 7.17"/>
+ </svg>
