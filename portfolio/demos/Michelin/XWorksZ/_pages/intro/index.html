@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michelin</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/intro.css"/>
+<script type="text/javascript"> 
+    $(function() {
+        var p = window.parent;
+        var ap = p.document.getElementById("audio");
+        var vd = document.getElementById("video");
+        var vdbg = document.getElementById("video-bg");
+        
+        // get initial properties of the title sequence
+        var tl = $('.top-bottom');
+        var bl = $('.bottom-top');
+        var tg = $('.tagline');
+        var bd = $('.brand');
+        
+        var bdPos = $(bd).css("transform");
+        var tgPos = $(tg).css("transform");
+        var tlPos = $(tl).css("transform");
+        var blPos = $(bl).css("transform");
+                                
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        } 
+                
+        transitionPage = function(pg){
+            p.addTransitionPage(pg);
+        }
+        
+        $(".start.button").on("click",function(){ 
+            p.audio.player.play(); 
+            p.audio.player.pause();
+            
+            p.toggleLogo("hide");
+            vd.play();
+            $(".background").removeClass('hide').addClass('fade-in');
+            $(".overlay").removeClass('fade-in').addClass('fade-out');     
+            $(".skip.button").removeClass("hide").addClass('show');
+        });
+        
+        $(".skip.button").on("click",function(){ 
+            setIntroComplete();
+            
+            vd.pause();
+            vdbg.play();
+            
+            fadeInSoundtrack();
+            removeIntro();
+            addMenu();
+  
+        });
+                
+        /*---------- //////////////////////////// ----------*/
+        /*---------- Menu Page build and actions ----------*/
+        /*---------- /////////////////////////// ----------*/
+        
+        // get initial properties of the title sequence
+        var tl = $('.top-bottom');
+        var bl = $('.bottom-top');
+        var tg = $('.tagline');
+        var bd = $('.brand');
+        
+        var bdPos = $(bd).css("transform");
+        var tgPos = $(tg).css("transform");
+        var tlPos = $(tl).css("transform");
+        var blPos = $(bl).css("transform");
+                        
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+        
+        // menu events
+        $(".menu-item").on("click", function(){
+            TweenMax.staggerTo(tl, 0.75, {"transform": tlPos, opacity:0.00, ease:Power4.easeIn}, 0.20);
+            TweenMax.staggerTo(bl, 0.75, {"transform": blPos, opacity:0.00, ease:Power4.easeIn}, 0.20); 
+            TweenMax.to(bd, 0.75, {"transform": bdPos, opacity:0.00, ease:Power4.easeIn});
+            TweenMax.to(tg, 0.75, {"transform": tgPos, opacity:0.00, ease:Power4.easeIn});
+            
+            $(".background").removeClass('fadeIn').addClass('fadeOut');
+            $('#menu').removeClass('shadow');
+            $(".right-oblique > .oblique.dark").removeClass('slide-in').addClass('slide-out');
+            $(".oblique.light").removeClass('slide-in').addClass('slide-out');
+            $(".menu-item").removeClass('slide-in').addClass('slide-out');
+            
+            var pg = ($(this).index())+1;
+            p.addTransitionPage(pg);
+        });
+                
+        // build the page once the wipe is removed
+        addMenu = function() { 
+            p.toggleLogo("show");   
+            
+            // add any animations on document ready
+            $(".background").removeClass('fadeOut').addClass('fadeIn');
+            $(".right-oblique > .oblique.dark").removeClass('slide-out').addClass('slide-in');            
+            $(".oblique.light").removeClass('slide-out').addClass('slide-in');
+            
+            //ap.play();
+            TweenMax.staggerTo(tl, 1.00, {"transform": "matrix(1, 0, 0, 1, 0, 0)", opacity:1.00, ease:Power4.easeOut}, 0.20);
+            TweenMax.staggerTo(bl, 1.00, {"transform": "matrix(1, 0, 0, 1, 0, 0)", opacity:1.00, ease:Power4.easeOut}, 0.20);
+            TweenMax.to(bd, 1.00, {"transform": "matrix(1, 0, 0, 1, 0, 0)", delay:0.50, opacity:1.00, ease:Power4.easeOut});
+            TweenMax.to(tg, 1.00, {"transform": "matrix(1, 0, 0, 1, 0, 0)", delay:0.50, opacity:1.00, ease:Power4.easeOut, onStart:showMenu});
+                    
+            
+            
+        }
+        
+        showMenu = function () {
+            
+            $(".menu-item").removeClass('slide-out').addClass('slide-in');
+        }
+        
+        setIntroComplete = function() {
+            p.controller.setVar("introViewed", true)
+        }
+        
+        fadeInSoundtrack = function() {
+            p.audio.player.play();
+            p.audio.player.fade(0.40);
+        }
+        
+        removeIntro = function() {  
+            $("#page").removeClass("hide").addClass("show");                
+            $("#intro").removeClass("show fade-in").addClass("fade-out");
+        }
+        
+        $(".menu-item.slide-in:last-child").on(transitionEvent,menuShowing);
+            
+        // add back hover 
+        function menuShowing(evt){
+            $('#menu').addClass('shadow');
+            $(".menu-item:last-child").off("transitionend", menuShowing);
+        }  
+        
+        /*---------- /////////////////////////////// ----------*/
+        /*---------- Timestamps and animation timing ----------*/
+        /*---------- /////////////////////////////// ----------*/
+        
+        vd.onended = function(e) {
+            setIntroComplete();
+        };
+        
+        $("#video").bind("timeupdate", function(evt){
+            var t = evt.target.currentTime;
+            var cue =  evt.target.duration - 0.15;
+            
+            if(t > 0.00) {
+
+            }
+            
+            if(t > 7.00){
+                $(".footnote ol li").eq(0).addClass("show");  
+            }        
+            /*if(t > 9.00) {
+                $("#video").addClass("shift-right");
+            }*/
+            if(t > 11.50){
+                $(".footnote ol li").eq(1).addClass("show");  
+            }
+            if(t > 23.50){
+                $(".footnote ol li").eq(2).addClass("show");  
+            }
+            if(t > 26) {
+                $(".title-sequence").removeClass("hide").addClass("fade-in");
+                $("#video").removeClass("shift-right");
+            }
+            
+            if(t > 33) {
+                $(".objective.one").removeClass("hide").addClass("fade-in");
+            }
+            
+            if(t > 37) {
+                $(".objective.one").removeClass("fade-in").addClass("fade-out");
+                $(".objective.two").removeClass("hide").addClass("fade-in");
+            }
+            
+            if(t > 40) {
+                $(".objective.two").removeClass("fade-in").addClass("fade-out");
+                $(".objective.three").removeClass("hide").addClass("fade-in");
+            }
+            
+            if(t > 42) {
+                $(".objective.three").removeClass("fade-in").addClass("fade-out");
+                $(".objective.four").removeClass("hide").addClass("fade-in");
+            }
+            if (t > 45) {
+                $(".title-sequence").removeClass("fade-in").addClass("fade-out");
+                $(".objective.four").removeClass("fade-in").addClass("fade-out");
+                $(".footnote ol li").removeClass("show");  
+                removeIntro();
+            }
+            
+            if (t > 46.00) {
+                addMenu();
+            }
+
+            if(t > cue) {
+                vdbg.play();
+                fadeInSoundtrack();
+            }
+        });
+        
+        // iframe load and unload events
+        $(window).load(function () { 
+            // get page variable
+            if (p.controller.getVar("introViewed").value == true){
+                $("#intro").html("");
+            }    
+            
+            var pg1 = p.courseObj.videoViewed["page1Done"];
+            var pg2 = p.courseObj.videoViewed["page2Done"];
+            var pg3 = p.courseObj.videoViewed["page3Done"];
+            var pg4 = p.courseObj.videoViewed["page4Done"];
+            var pg5 = p.courseObj.videoViewed["page5Done"];
+            
+            if (pg1 == true){
+                $(".menu-status").eq(0).removeClass("incomplete").addClass("complete");
+            }
+            
+            if (pg2 == true){
+                $(".menu-status").eq(1).removeClass("incomplete").addClass("complete");
+            }
+            
+            if (pg3 == true){
+                $(".menu-status").eq(2).removeClass("incomplete").addClass("complete");
+            }
+            
+            if (pg4 == true){
+                $(".menu-status").eq(3).removeClass("incomplete").addClass("complete");
+            }
+            
+             if (pg5 == true){
+                $(".menu-status").eq(4).removeClass("incomplete").addClass("complete");
+            }
+            
+            if (pg1 == true && pg2 == true && pg3 == true && pg4 == true){
+                $(".menu-item").last().removeClass("disabled").addClass("enabled");
+                $(".menu-item").last().on();
+            } else {
+                $(".menu-item").last().removeClass("enabled").addClass("disabled");
+                $(".menu-item").last().off();
+            }
+            
+            //$(".menu-item").last().removeClass("disabled").addClass("enabled");
+            //$(".menu-item").last().on();
+                        
+            $("#page").addClass("hide");
+            $(".background").addClass('hide');
+            $(".skip.button").addClass('hide');
+            $(".overlay").removeClass("fade-out").addClass('fade-in'); 
+            $(".objectives .objective").addClass("hide");
+            
+            vdbg.pause();
+            
+            // load audio file 
+            p.audio.player.load("_media/audio/soundtrack_loop_fade.mp3", false, true, "loop");
+            p.isFrameLoaded(true);
+            
+        });
+        
+        buildPage = function() {            
+            if(p.controller.getVar("introViewed").value == true){
+                vdbg.play();
+                fadeInSoundtrack();
+                removeIntro();
+                addMenu();
+            } else {
+                $("#intro").removeClass("hide").addClass("show");
+            }           
+        }
+        
+        $(window).load(function () {
+            p.isFrameLoaded(true);     
+        });
+        
+        $(window).unload(function () {
+
+        });
+        
+    });
+</script>
+
+<style type="text/css">
+    body {width:100%; height:100%; margin:0px auto; padding:0px;}
+</style>
+</head>
+<body>
+<div id="intro" class="hide">
+    <div class="overlay fade-out">
+        <div class="welcome">
+            <div class="plaque">
+                <h1 class="brand">
+                    <span>&nbsp;Michelin<sup>&reg;</sup></span>
+                </h1>
+                <h1 class="title">
+                    <span>X<sup>&reg;</sup> 
+                        WORKS<sup>&trade;</sup>
+                        Z
+                    </span>
+                </h1>
+                <p class="instructions">This course utilizes audio. Please turn your speakers on.<br/>When you are ready, click the start button to begin.</p>
+                <div class="start button">
+                    <p class="static-state">Let's Get Started</p>
+                    <p class="roll-state"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- title sequence -->
+    <div class="title-sequence hide">
+        <h1 class="title hide">
+            <span>X<sup style="font-family:sans-serif; position:relative; left:25%;">&reg;</sup></span>
+            <span>&nbsp;W</span>
+            <span>O</span>
+            <span>R</span>
+            <span>K</span>
+            <span>S<sup style="font-family:sans-serif; position:relative; left:25%;">&trade;</sup></span>
+            <span>&nbsp;Z</span>
+        </h1>
+        <div class="objectives">
+            <p class="objective one">Improvements versus the XZY<sup>&reg;</sup>3</p>
+            <p class="objective two">Supporting technologies</p>
+            <p class="objective three">Road hazard guarantee</p>
+            <p class="objective four">Michelin<sup>&reg;</sup> limited warranty</p>
+        </div>
+    </div>
+    <!-- background -->
+    <div class="background hide">
+        <div class="footnote">
+            <ol>
+                <li>Vs. XZY®3</li>
+                <li>Vs. Bridgestone® M843 &amp; 853 and Goodyear® G751™MSA Duraseal in size 11R22.5 LRH</li>
+                <li>Contact your local Michelin representative for more details</li>
+            </ol>
+        </div>
+        <p class="video-logo">MICHELIN</p>
+        <div class="texture"></div>
+        <div class="left-oblique"></div>
+        <div class="poster"></div>
+        <video id="video">
+            <!--<source src="http://web28.streamhoster.com/netd/michelin/videos/mi-pl-xlez-01_full.mp4" type="video/mp4">-->
+            <source src="http://web28.streamhoster.com/netd/michelin/videos/mi-pl-xworkz-01.mp4" type="video/mp4">
+        </video>   
+    </div>
+    <audio id="audio" preload="metadata" src='../../_media/audio/soundtrack.mp3' width="100%" height="100%"></audio>
+    <div class="skip button">
+        <p class="static-state">Skip Intro</p>
+        <p class="roll-state"></p>
+    </div>
+</div>
+<div id="page" class="hide">
+    <!-- title -->
+    <div class="title-page">
+        <h1>
+            <span class="brand">Michelin<sup>&reg;</sup></span>
+            <span class="headline sequence off">
+                <span><b class="top-bottom">X<sup>&reg;</sup></b>&nbsp;</span>
+                <span><b class="top-bottom">&nbsp;W</b></span>
+                <span><b class="top-bottom">O</b></span>
+                <span><b class="top-bottom">R</b></span>
+                <span><b class="top-bottom">K</b></span>
+                <span><b class="top-bottom">S<sup>&trade;</sup></b></span>
+                <span><b class="top-bottom">Z</b></span>
+            </span>
+            <span class="tagline">Our toughest just got tougher!</span>
+        </h1>
+    </div>
+    <!-- menu -->
+    <div id="menu">
+        <div class="menu-item slide-out enabled">
+            <p class="menu-state">
+                <span class="title heading">Introduction</span>
+                <!--<br/>
+                <span class="title sub-heading">to the X<sup>&reg;</sup> WORKS<sup>&trade;</sup> Z</span>-->
+            </p>
+            <p class="menu-roll-state">
+                <span class="roll-state"></span>
+                <span class="roll-state-border"></span>
+            </p>
+            <p class="menu-status incomplete">
+                <img src="../../_media/images/complete.png"/>
+            </p>
+        </div>
+        <div class="menu-item slide-out enabled">
+            <p class="menu-state">
+                <span class="title heading">Features</span>
+                <!--<br/>
+                <span class="title sub-heading">for the X<sup>&reg;</sup> WORKS<sup>&trade;</sup> Z</span>-->
+            </p>
+            <p class="menu-roll-state">
+                <span class="roll-state"></span>
+            </p>
+            <p class="menu-status incomplete">
+                <img src="../../_media/images/complete.png"/>
+            </p>
+        </div>
+        <div class="menu-item slide-out enabled">
+            <p class="menu-state">
+                <span class="title heading">Warranty</span>
+                <!--<br/>
+                <span class="title sub-heading">for the X<sup>&reg;</sup> WORKS<sup>&trade;</sup> Z</span>-->
+            </p>
+            <p class="menu-roll-state"></p>
+            <p class="menu-status incomplete">
+                <img src="../../_media/images/complete.png"/>
+            </p>
+        </div>
+        <div class="menu-item slide-out enabled">
+            <p class="menu-state">
+                <span class="title heading">Guarantee</span>
+                <!--<br/>
+                <span class="title sub-heading">for the X<sup>&reg;</sup> WORKS<sup>&trade;</sup> Z</span>-->
+            </p>
+            <p class="menu-roll-state"></p>
+            <p class="menu-status incomplete">
+                <img src="../../_media/images/complete.png"/>
+            </p>
+        </div>
+        <div class="menu-item slide-out">
+            <p class="menu-state">  
+                <span class="title heading">Knowledge Check</span>
+                <!--<br/>
+                <span class="title sub-heading">for the X<sup>&reg;</sup> WORKS<sup>&trade;</sup> Z</span>-->
+            </p>
+            <p class="menu-roll-state"></p>
+            <p class="menu-status incomplete">
+                <img src="../../_media/images/complete.png"/>
+            </p>
+        </div>
+    </div>
+    <!-- obliques -->
+    <div id="obliques">
+        <div class="left-oblique">
+            <div class="oblique light slide-out"></div>
+        </div>
+        <div class="right-oblique">
+            <div class="oblique light slide-out"></div>
+            <div class="oblique dark slide-out"></div>
+        </div>
+    </div>
+    <!-- video background -->
+    <div class="background fadeOut">
+        <div class="texture"></div>
+        <div class="poster"></div>
+        <video id="video-bg" autoplay loop>
+            <source src="../../_media/videos/intro_loop.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+</body>	
+</html>

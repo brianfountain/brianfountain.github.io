@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fleet 1 - SC Aggregate</title>
+    <link type="text/css" rel="stylesheet" href="../../_css/fleet.css" />
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+	<script type="text/javascript" src="../../_js/howler.min.js"></script>
+	<script type="text/javascript" src="../../_player/js/io.js"></script>
+	<script type="text/javascript" src="../../_player/js/player.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../../_js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+	
+    
+	$(function() {
+		// Selection box clicked boxClick.play();
+		var answerClick = new Howl({ urls: ['../../_media/audio/answer_selection.mp3'], autoplay: false, loop: false, volume: 1.0 });
+		//var answerCorrect = new Howl({ urls: ['../../_media/audio/answer_correct.mp3'], autoplay: false, loop: false, volume: 1.0 });
+		//var answerIncorrect = new Howl({ urls: ['../../_media/audio/answer_incorrect.mp3'], autoplay: false, loop: false, volume: 1.0 });
+        //var whoosh = new Howl({ urls: ['../../_media/audio/whoosh.mp3'], autoplay: false, loop: false, volume: 1.0 });
+		
+		var clickBait = 0;
+        var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+		
+		var audioArray = [];
+        var newSlide = 0;
+        var curSlide = 0;
+
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+
+        // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+		
+		syncSlides = function(i,t){
+            //console.log("Slide: " + i + " -- Timestamp: " + t );
+            if (i ==0){
+                if (t == 0.00){
+                    // reset clicker to zero or pay the cost
+					clickBait = 0;
+					$('.page').removeClass('show');
+                    $(".fleet").removeClass('show');
+                    $(".buttonBarContain").removeClass('show');
+                    $(".set1").removeClass('show');
+                    $(".set2").removeClass('show');
+                    $(".set1 .image").removeClass('show');
+                    $(".page .header").removeClass('show');
+                    $(".character").removeClass('show');
+                    $(".button").removeClass('show');
+                    $(".fleetProfile").removeClass('show');
+                    $(".fleetProfileButton").removeClass('show');
+                    $(".brandProfile").removeClass('show');
+                    $(".brandProfileButton").removeClass('show');
+                    $(".questionBarGraphic").removeClass('show');
+                    $('.cover_all').css('display', 'block');
+                    $(".questionBar").removeClass('show');
+                    $(".colInfo").removeClass('show');
+                    $('.questionSpeechBubbles').removeClass('show');
+                    $('.quiz').removeClass('show');
+                    $('.mcQuestion').removeClass('show');
+                    $('.mcInstruction').removeClass('show');
+                    $('.choice').removeClass('show');
+                    $('.brandProfileButton > .checkIcon').removeClass('show');
+					$('#feedbackMask').css('display','none');
+				    $("#feedback").removeClass('show');
+                    //$(".background_cover_all").removeClass('show');
+					//$(".scrollDown").removeClass('show');
+					$(".icon").removeClass('show');
+					$(".retry_button").removeClass('show');
+                }
+				if (t > 0){
+				    $('.page').addClass('show');
+					$(".buttonBarContain").addClass('show');
+					$(".fleet").addClass('show');
+					$('.cover_all').css('display', 'block');
+					$('.brandProfile_download_button').css('display', 'none');
+					$('.fleetProfile_download_button').css('display', 'none');
+					$('.brandProfile .icon').css('display', 'none');
+					$('.fleetProfile .icon').css('display', 'none');
+				}				
+				if (t > 0.6){
+				    $(".page .header").addClass('show');
+					$(".character").addClass('show');
+                }				
+				if (t > 1.50){
+					$(".fleetProfile").addClass('show');
+				}				
+				if (t > 2.5){
+					$(".set1").addClass('show');
+				}				
+				if (t > 3.2){
+					$(".set2").addClass('show');
+				}
+				if (t > 4.0){
+					$(".set1 .image").addClass('show');
+				}				
+				if (t > 22.00){
+					$(".fleetProfileButton").addClass('show');
+                }
+				if (t > 22.2){
+					$(".brandProfileButton").addClass('show');
+              	}			
+				if (t > 23.5){
+					$(".fleetProfileButton").addClass('highlight');
+				}				
+				if (t > 25.5){
+					$(".fleetProfileButton").removeClass('highlight');
+				}				
+				if (t > 26){
+					$(".brandProfileButton").addClass('highlight');
+				}				
+				if (t > 28){
+					$(".brandProfileButton").removeClass('highlight');
+				}				
+				if (t > 31){
+					$(".fleetProfile").removeClass('show');
+				}	
+				if (t > 32.3){ 				
+				 	$(".questionBarGraphic").addClass('show');
+				}				
+				if (t > 33){ 				
+				 	$(".questionBar").addClass('show');
+					
+                    $('.brandProfile_download_button').css('display', 'block');
+					$('.fleetProfile_download_button').css('display', 'block');
+					$('.brandProfile .icon').css('display', 'block');
+					$('.fleetProfile .icon').css('display', 'block');
+					
+				}				
+				if (t > 34) {
+					$(".colInfo").addClass('show');
+					$('.cover_all').css('display', 'none');
+				}
+            }
+
+            if (i == 1){
+				// speech bubbles 
+				$('.questionSpeechBubbles').addClass('show');
+				$('.questionSpeechBubbles').html(characterAnswers[0]);
+				if (t > 15.57)
+					fireQuizCheck();
+				}              
+            if (i == 2){
+					// speech bubbles 
+					$('.questionSpeechBubbles').addClass('show');
+					$('.questionSpeechBubbles').html(characterAnswers[1]);
+					if (t > 16.78)
+						fireQuizCheck();
+			}
+			
+			if (i == 3){
+					// speech bubbles 
+					$('.questionSpeechBubbles').addClass('show');
+					$('.questionSpeechBubbles').html(characterAnswers[2]);
+					if (t > 14.08)
+						fireQuizCheck();
+			} 
+			
+			if (i == 4){
+					// speech bubbles 
+					$('.questionSpeechBubbles').addClass('show');
+					$('.questionSpeechBubbles').html(characterAnswers[3]);
+					if (t > 13.65)
+						fireQuizCheck();
+			}
+			if (i == 5){
+					if (t > 0) {
+						$('.questionBar').removeClass('show');
+						$('.questionSpeechBubbles').removeClass('show');
+						$('.questions').addClass('show');
+						// Show quiz
+						$('.quiz').addClass('show');
+					}
+
+					if (t > 1.2) {
+						$('.mcQuestion').addClass('show');
+					}
+					if (t > 1.3) {
+						$('.mcInstruction').addClass('show');
+					}
+					if (t > 1.5) {
+						$('.choice').addClass('show');
+					}
+					if (t > 1.8) {
+						$('.submit_button').addClass('show');
+					}
+				}
+			if (i == 6){
+				
+				if (t > 0) {
+					$('.brandProfileButton > .checkIcon').addClass('show');
+					$('#feedbackMask').css('display','block');
+				}	
+				
+				if (t > 0.5) {
+					$("#feedback").addClass('show');
+					$(".retry_button").addClass('show');
+				}
+			}
+			
+			if (i == 7){
+				
+				if (t > 0) {
+					$('.brandProfileButton > .checkIcon').addClass('show');
+					$('#feedbackMask').css('display','block');
+				}	
+				
+				if (t > 0.5) {
+					$("#feedback").addClass('show');
+					$(".retry_button").addClass('show');
+				}
+			}
+        }
+
+		 $(ap).bind("ended", function(evt){
+             var apSRC = $(ap).attr("src");
+			 switch (apSRC) {
+				case audioArray[0]:
+					p.audio.messages.create("Click each question to learn more.", true);
+                    break;
+                case audioArray[1]:
+                    p.audio.messages.create("Click each question to learn more.", true);
+                    break;
+                case audioArray[2]:
+                    p.audio.messages.create("Click each question to learn more.", true);
+                    break;
+                case audioArray[3]:
+                    p.audio.messages.create("Click each question to learn more.", true);
+                    break;
+                case audioArray[4]:
+                   p.audio.messages.create("Click each question to learn more.", true);
+                    break;
+				 case audioArray[5]:
+                    p.audio.messages.create("Select the brand logo and click Submit.",true);
+                    break;
+				case audioArray[6]:
+                    p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+					// set page complete
+					var pageKey = "page" + p.courseObj.currentIndex + "Done";
+					p.courseObj.videoViewed[pageKey] = true;
+                    break;
+				case audioArray[7]:
+                    p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+					// set page complete
+					var pageKey = "page" + p.courseObj.currentIndex + "Done";
+					p.courseObj.videoViewed[pageKey] = true;
+                    break;
+            }
+        });
+		
+		 // setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+            var apSRC = $(ap).attr("src");
+            switch (apSRC) {
+                case audioArray[0]:
+                    syncSlides(0,ts);
+                    break;
+                case audioArray[1]:
+                    syncSlides(1,ts);
+                    break;
+                case audioArray[2]:
+                    syncSlides(2,ts);
+                    break;
+                case audioArray[3]:
+                    syncSlides(3,ts);
+                    break;
+                case audioArray[4]:
+                    syncSlides(4,ts);
+                    break;
+				 case audioArray[5]:
+                    syncSlides(5,ts);
+                    break;
+				case audioArray[6]:
+                    syncSlides(6,ts);
+                    break;
+				case audioArray[7]:
+                    syncSlides(6,ts);
+                    break;
+            }
+        });
+		
+		//-- build the page once the wipe is removed --//
+        buildPage = function() {
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+            $(".fleetInfo.sequence").removeClass('hide').addClass('show');
+            $(".introText.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+		$("#preload-audio > audio").each(function (idx, src){
+            var files = parseInt($("#preload-audio > audio").length) -1;
+
+            var audioSRC = $(this).attr("src");
+            var newSRC = audioSRC.split("../../");
+            audioArray.push(newSRC[newSRC.length -1]);
+            //audioArray.push($(this).attr("src"));
+
+            $("#preload-audio").html("&nbsp;");
+            var template = "<p class='inactive'><span></span></p>"
+            $(".progress").append(template);
+        });
+		
+		// Bullets to populate collected information list
+		var collectedInfoBullets = [
+			set0 = ['New company with aspirations','Runs cheaper tires under the belief that his application is too aggressive to justify premium brands'],
+			set1 = ['Values multiple retreads','Measures performance based on durability'],
+			set2 = ['Low operating costs are a focus for the fleet', 'Limited budget for tires with minimum flexibility'],
+			set3 = ['Maintenance is important to the fleet']
+    	];
+		
+		// Client feedback speech bubbles
+		var characterAnswers = [
+			"We are a <strong>newer company</strong>, only 2 years old. We buy what we can get our hands on. I <strong>would love to run</strong> Michelin<sup>&reg;</sup> tires but our trucks are in <strong>aggressive terrain</strong> which destroy our tires prematurely. <strong>I can’t justify running premium brands in my fleet</strong>.",
+			"We must have a tire that holds up! <strong>With the aggressive conditions, it is hard to get one retread sometimes</strong>. I measure success by <strong>how long the tire stays on</strong> my truck and <strong>how many times I can retread it</strong>. I can tell you now I’m not happy with my current tires’ performance.",
+			"I have to stay between $350-$450. Our <strong>budget just can’t manage paying more</strong>. As I explained, we are a new company so we are really trying to manage cost upfront until the business matures.",
+			"Right now we have 2 mechanics on site and we run our own ERS calls because we stay local. <strong>I pay attention to our maintenance efforts because the way our fleet appears to the public is important. They could be potential customers one day!</strong>"
+		];
+		
+		var colInfolistContain = document.getElementById("colInfolistContain");
+		
+		// Populate collected info list
+		function makeUL(array) {
+			
+			answerClick.play();
+			
+			clickBait++;
+						
+			// Create the list element:
+			var colInfoList = document.getElementById("colInfoList");
+
+			for(var i = 0; i < array.length; i++) {
+				// Create the list item:
+				var item = document.createElement('li');
+				
+				// Set its contents
+				item.appendChild(document.createTextNode(array[i]));
+
+				// Add it to the list:
+				colInfoList.appendChild(item);
+				
+				// apply a class to each
+				item.setAttribute("class", "bullet");
+				
+				$(item).addClass('show');				
+			}
+
+			// Finally, return the constructed list:
+			return colInfoList;
+		}
+		
+		$(".retry_button").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+
+                    p.audio.player.toggle();
+                    p.addTransitionPage(2);
+                });
+				$('#transition').removeClass('noSkew');
+				// Nope parent.courseObj.gotoPageIndex(1);
+            }
+		});
+		
+		$("#question1").on({
+            click: function () {
+                colInfolistContain.appendChild(makeUL(collectedInfoBullets[0]));
+				p.audio.player.load(audioArray[1], true);
+				answerClick.play();
+				$(this).addClass('disabled');                        
+			}
+		});
+		
+		$("#question2").on({
+            click: function () {
+                colInfolistContain.appendChild(makeUL(collectedInfoBullets[1]));
+				p.audio.player.load(audioArray[2], true);
+				answerClick.play();
+				$(this).addClass('disabled');                     
+			}
+		});
+		
+		$("#question3").on({
+            click: function () {
+                colInfolistContain.appendChild(makeUL(collectedInfoBullets[2]));
+				p.audio.player.load(audioArray[3], true);
+				answerClick.play();
+				$(this).addClass('disabled');                  
+			}
+		});
+		
+		$("#question4").on({
+            click: function () {
+                colInfolistContain.appendChild(makeUL(collectedInfoBullets[3]));
+				p.audio.player.load(audioArray[4], true);
+				answerClick.play();
+				$(this).addClass('disabled');               
+			}
+		});
+	
+		fireQuizCheck = function(){
+			if (clickBait >= 4 ) {
+				p.audio.player.load(audioArray[5], true);
+				// show all checkmarks
+				$('.checkmark').addClass('show');
+			}
+		};
+	  
+		// Click Submit Button
+		$(".submit_button").on({
+            click: function () {
+                processQuestion(currentQuestion, answerKey);                        
+			}
+		});
+          	
+		// Click Fleet Profile
+		$(".fleetProfileButton").on({
+            click: function () {
+               	answerClick.play();
+				if($(".brandProfile").hasClass('show')){
+					$('.brandProfileButton').toggleClass('active');
+					$('.brandProfile').toggleClass('show');
+				} 
+				
+				$('.fleetProfile').toggleClass('show');
+				$('.fleetProfileButton').toggleClass('active');
+             	$('.character').toggleClass('fadeout');
+				$('.questionBarContain').toggleClass('fadeout');
+				$('.colInfo').toggleClass('fadeout');
+				$('.questions').toggleClass('fadeout');
+				$('.feedback').toggleClass('fadeout');
+			
+			}
+		});
+		
+		// Click Brand Profile
+		$(".brandProfileButton").on({
+            click: function () {
+				//whoosh.play();
+				answerClick.play();
+                if($(".fleetProfile").hasClass('show')){
+					$('.fleetProfileButton').toggleClass('active');
+					$('.fleetProfile').toggleClass('show');
+				};
+				
+				$('.brandProfile').toggleClass('show');
+				$('.brandProfileButton').toggleClass('active');
+				$('.character').toggleClass('fadeout');
+				$('.questionBarContain').toggleClass('fadeout');
+				$('.colInfo').toggleClass('fadeout');
+				$('.questions').toggleClass('fadeout');
+				$('.feedback').toggleClass('fadeout');
+			}
+		});
+		
+		// Click Brand Profile
+		$(".icon").on({
+            click: function () {
+				if($(".brandProfile").hasClass('show')){
+					$('.brandProfileButton').toggleClass('active');
+					$('.brandProfile').toggleClass('show');
+				}
+				if($(".fleetProfile").hasClass('show')){
+					$('.fleetProfileButton').toggleClass('active');
+					$('.fleetProfile').toggleClass('show');
+				} 
+				$('.fleetProfile').removeClass('show');
+				$('.brandProfile').removeClass('show');
+				$('.character').removeClass('fadeout');
+				$('.questionBarContain').removeClass('fadeout');
+				$('.colInfo').removeClass('fadeout');
+				$('.questions').removeClass('fadeout');
+				$('.feedback').removeClass('fadeout');
+				//$(".scrollDown").removeClass('show');
+			}
+		});
+				
+		$(".choice").on({
+            click: function () { answerClick.play(); }
+		});
+		
+		$(".brandProfile").scroll(function() {
+			var height = $(".brandProfile").scrollTop();
+
+			if(height  > 50) {
+				$(".scrollDown").css('display', 'none');
+			} else {
+				$(".scrollDown").css('display', 'block');
+			}
+		});
+	
+		$(window).load(function () {
+			p.audio.player.load(audioArray[curSlide]);
+			p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+			p.controller.setVar("introViewed", true);
+		});
+		
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+		
+		// BEGIN QUIZ
+		// B
+		var answerKey = [{ value: "q1_s1", answer: 0 }, {value: "q1_s2", answer: 1 }, { value: "q1_s3", answer: 0 }];
+		
+		// Set up our questions
+		var answer; var question; var questions;
+
+		// Set the initial score
+		var currentQuestion = 0;
+
+		function processQuestion(index, key) {
+			//p.audio.player.load(audioArray[6], true);
+			$('.choice').css('pointer-events','none');
+            var bAllCorrect = true;
+			var bAllPlaced = true;
+			
+			$.each(key, function( count, question ) {								
+				var select = ($('#' + question.value).is(':checked') ? 1 : 0 )
+				if( typeof select != 'undefined' ) {
+					if( select !== question.answer )
+						bAllCorrect = false;
+					} else {
+						bAllPlaced = false;
+					}
+			});
+
+			if ( bAllPlaced && bAllCorrect ) {
+				//answerCorrect.play();
+				p.audio.player.load(audioArray[6], true);
+				// Quiz question answered correctly
+				$( "#feedbackHeader" ).html("<h1>Correct!</h1>");
+				$( "#feedbackMessage" ).html("BFGoodrich provides the quality and durability your customer wants at a competitive price for this fleet. It also has a strong brand, offering reliable and retreadable casings.");
+			} else {
+				//answerIncorrect.play();
+				p.audio.player.load(audioArray[7], true);
+				$( "#feedbackHeader" ).html("<h1>Not quite.</h1>");
+				$( "#feedbackMessage" ).html("BFGoodrich provides the quality and durability your customer wants at a competitive price for this fleet. It also has a strong brand, offering reliable and retreadable casings.");
+				$("#feedbackHeader").addClass("incorrect").removeClass("correct");
+			}
+		};
+	});
+
+
+    </script>
+
+    <style type="text/css">
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="title">
+            <div class="title">
+                <div class="menu slide-out">
+                    <div class="menu-icon">
+                        <p>Menu</p>
+                    </div>
+                    <div class="roll-state"></div>
+                </div>
+                <h1>
+                    <span class="headline sequence hide"><b>Fleet 1</b></span>
+                </h1>
+            </div>
+            <h1 class="fleetInfo sequence hide">SC Aggregate</h1>
+            <p class="introText sequence hide">Lorem ipsum</p>
+        </div>
+    </div>
+	
+    <div id="outside" class="fleet">
+        <div id="inside">
+			<div class="quiz">
+				<!-- Retry button -->
+				<p class="retry_button">
+					<span class="icon">
+						<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 40 40" preserveAspectRatio="none">
+							<path id="play-icon" d="M21.6,34.6c-4,0-7.5-1.5-10.3-4.1l3-4.2c2,2,4.4,3.3,7.3,3.3c5.5,0,10-4.5,10-10c0-5.5-4.5-9.9-10-9.9 c-4.6,0-8.9,4.3-9.8,8.3h5L9.2,29.1L1.5,18h5.3C7.6,11,14,4.7,21.6,4.7c8.3,0,15,6.7,15,15C36.6,27.9,29.9,34.6,21.6,34.6z"></path>
+						</svg>
+					</span><br />
+					<span class="static-state">RETRY EXERCISE</p>
+				</p>
+				
+				<!-- Feedback Message -->
+				<div id="feedbackMask">
+					<div id="feedback" class="feedback">
+						<span class="feedbackImage" style="margin: 10px 0 0 50px; background: transparent url(../../_media/images/bfgoodrich_logo_small.png) top right no-repeat; background-size: 71%;"></span>
+						<div class="feedbackText"> 
+							<p id="feedbackHeader">Feedback Header</p>
+							<p id="feedbackMessage">Feedback Text</p>
+						</div>
+					</div>
+			   </div>
+
+				<!-- Question 1  -->
+				<div class="questions">
+					<div class="mcQuestionHolder">
+						   <p class="mcQuestion">Based on the information you gathered about this customer’s fleet, which brand do you recommend?</p> 
+						   <p class="mcInstruction">Select the brand, then click Submit.</p>
+						   <div class="options">
+								<div class="choice">
+									<input type="radio" class="radio" name="radio" id="q1_s1" value="q1_s1" />
+									<label for="q1_s1" class="q1_s1">
+										<span class="answerImage">
+											<p>Michelin</p>
+										</span>
+									</label>
+								</div>
+								<div class="choice">
+									<input type="radio" class="radio" name="radio" id="q1_s2" value="q1_s2" />
+									<label for="q1_s2" class="q1_s2">
+										<span class="answerImage">
+											<p>BFGoodrich</p>
+										</span>
+									</label>  
+								</div>
+								<div class="choice">
+									<input type="radio" class="radio" name="radio" id="q1_s3" value="q1_s3" />
+									<label for="q1_s3" class="q1_s3">
+										<span class="answerImage">
+											<p>Uniroyal</p>
+										</span>
+									</label>   
+								</div> 
+							</div>
+					  </div>  
+				</div>
+
+				<!-- submit button -->
+				<a class="button submit_button" style="top: 226px; left: 1013px;" href="javascript: void(0);">
+					<p class="static-state">SUBMIT</p>
+					<p class="roll-state"></p>
+				</a>
+			</div>
+			<!-- End Quiz content -->
+		
+			<!-- Begin Explore Content -->
+			<div class="page">
+				<!-- Page content -->
+				
+				<!-- List of learned fleet information -->
+				<div class="colInfo">
+					<h1 class="span">Collected Information</h1>
+					<div id="colInfolistContain" class="colInfolistContain">
+						<ul id="colInfoList" class="colInfoList">
+						</ul>
+					</div>
+				</div>
+				
+				<!-- Fleet profile clipboard -->
+				<div class="fleetProfile">
+					
+					<!-- fleet profile download button -->
+					<a class="button fleetProfile_download_button" href="../../_media/docs/Fleet_Profiles.pdf" target="_blank">
+						<p class="static-state">DOWNLOAD</p>
+						<p class="roll-state"></p>
+					</a>
+					
+					<!-- Close icon -->
+				   	<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 17.82 17.82" preserveAspectRatio="none">
+							<g id="close" class="close" data-name="close">
+								<line class="crossright" x1="0.35" y1="17.46" x2="17.46" y2="0.35"/>
+								<line class="crossleft" x1="17.46" y1="17.46" x2="0.35" y2="0.35"/>
+							</g>
+                  	</svg>				
+					
+					<h2 class="cap">Fleet Profile - Sc Aggregate</h2>
+					<div class="splitColumn set1">
+						<img class="image" src="../../_media/images/fleet1_truck.png" />
+						<p><span class="cap bold">Fleet Manager:</span><span class="cap"> Bob Flanigan</span></p>
+						<p><span class="cap bold">Fleet Name:</span><span class="cap"> Sc Aggregate</span></p>
+						<p><span class="cap bold">Fleet Vocation:</span><span class="cap">Construction</span></p>
+						<p><span class="cap bold">Hauling:</span><span class="cap">Sand, Gravel, Stone</span></p>
+						<p><span class="cap bold">Annual Miles:</span><span class="cap">55k-60k miles/year</span></p>                    
+					</div>
+					<div class="splitColumn set2">
+						<p class="cap bold">Current Fitments</p>
+						<ul>
+							<li>Steer: Firestone, Double, Coin, Goodyear</li>
+							<li>Drive: Yokohama &amp; retreads</li>
+						</ul>
+						<!-- break -->
+						<p class="cap bold">Fleet Appearance</p>
+						<ul>
+							<li>Trucks are a bit older but well maintained</li>
+							<li>Company has about 50 trucks</li>
+							<li>Fleet has its own maintenance department</li>
+						</ul>
+						<!-- break -->
+						<p class="cap bold">Fleet Focus &amp; Values</p>
+						<ul>
+							<li>Providing customers with competitive pricing</li>
+							<li>Community</li>
+							<li>Experience and reliable service</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- brand profile chart -->
+				<div class="brandProfile">
+					<!-- Scroll down callout -->
+					<div class="scrollDown">
+						<p>Scroll to see more</p>
+						<svg width="15px" height="10px" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 6.18 3.23" preserveAspectRatio="none">
+							<path d="M0,0H6.18L3.08,3.23" />
+						</svg>
+					</div>
+					
+					<!-- Close icon -->
+				   	<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 17.82 17.82" preserveAspectRatio="none">
+							<g id="close" class="close" data-name="close">
+								<line class="crossright" x1="0.35" y1="17.46" x2="17.46" y2="0.35"/>
+								<line class="crossleft" x1="17.46" y1="17.46" x2="0.35" y2="0.35"/>
+							</g>
+                  	</svg>
+					
+					<!-- brand profile download button -->
+					<a class="button brandProfile_download_button" href="../../_media/docs/Multi_Brand_Flyer.pdf" target="_blank">
+						<p class="static-state">DOWNLOAD</p>
+						<p class="roll-state"></p>
+					</a>			
+
+					<h1>Recommending the <br />Right Tire for the Fleet</h1>
+					<table border="0" cellspacing="0" cellpadding="0" class="brandProfileTable">
+						<tr class="brandProfileTableRow">
+							<td width="33%" style="text-align: center" class="brandProfileTableCell">
+								<img align="center" class="image" src="../../_media/images/logo_trprnt.png" />
+								<h2>Michelin may be the right choice in the fleet:</h2>
+							</td>
+							<td width="33%" style="text-align: center" class="brandProfileTableCell">
+								<img class="image" src="../../_media/images/bfgoodrich_logo.png" />
+								<h2>BFGoodrich may be the right choice if the fleet:</h2>
+							</td>
+							<td width="33%" style="text-align: center" class="brandProfileTableCell">
+								<img class="image" src="../../_media/images/uniroyal_logo.png" />
+								<h2>Uniroyal may be the right choice if the fleet:</h2>
+							</td>
+						</tr>
+					</table>
+
+					<!-- --------------------------------------------------------------------------- -->
+					<!-- ----------------------Entry in chart information here------------------------- -->
+					<!-- --------------------------------------------------------------------------- -->
+					<table border="0" cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+						
+						
+						<tr class="brandProfileTableRow">
+							<td class="tableHead" colspan="3">Maintenance and Operations</td>
+						</tr>
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Takes pride in maintaining their fleet – pristine/clean appearance</p></td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Looks for casing durability for multiple retreads Is</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>Is not focused on tracking tire mileage or performance</p></td>
+						</tr>
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Uses another premium brand</p></td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Has a maintenance program that may vary in different degrees</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>Has a minimal maintenance program</p></td>
+						</tr>
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Tracks performance of a tire in any capacity, including load, cost per mile, and fuel efficiency or durability</p>
+						</td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Tracks performance but it is not a high priority</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>Views tires as a necessary evil</p></td>
+						</tr>
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has an organized fleet operation</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Has brand loyalty, but may not be strong as they go back and forth between price and performance (wants the best of both worlds)</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>Is not interested in retreading or seeks no more than one retread per casing</p></td>
+						</tr>
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Seeks multiple retreads per casing</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+					</table>
+
+					<table border="0" cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+						<tr class="brandProfileTableRow">
+							<td class="tableHead" colspan="3">Equipment and Applications</td>
+						</tr>
+						<!-- Row 1 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has Newer equipment (&lt; 7 years)</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Has equipment that could be older or used</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>Has older and/or used equipment</p></td>
+						</tr>
+						<!-- Row 2 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has heavy loads with focus on weight savings</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Values premium tires on one position but may not on others</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>Uses equipment seasonally<br /><span style="margin-left: 5px">– Tires weather before they use all of the tread</span></p></td>
+						</tr>
+						<!-- Row 3 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has equipment that may be very expensive such as energy equipment</p></td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Values durability and performance but is not comfortable with investing in premium tires because of:<br /><span style="margin-left: 5px">– Aggressive applications<br />– Low mileage applications</span></p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>Does not seek multiple retreads or does not want to run retreads at all.</p></td>
+						</tr>
+						<!-- Row 4 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has OE specifications with Michelin<sup>&reg;</sup> or another tier one </p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 5 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Runs specialty tire sizes </p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 6 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has auto haulers and low boy trailers </p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 7 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Follows the latest technologies or trends in the market </p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 8 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Hauls time sensitive goods including milk, concrete, food, beverage, and services</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 9 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Hauls high value or hazardous loads</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+					</table>
+
+					<table border="0" cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+						<tr class="brandProfileTableRow">
+							<td class="tableHead" colspan="3">Budget and Purchasing Habits</td>
+						</tr>
+						<!-- Row 1 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Understands total cost of ownership and Return on Investment (ROI)</p></td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Wants the best of both worlds to get performance and a competitive price</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>Focuses highly on the initial purchase price<br /><span style="margin-left: 5px">– Transactional fleets may shop around for the best price every time they purchase</span></p></td>
+						</tr>
+						<!-- Row 2 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Has a dedicated procurement department</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Values quality and the familiarity of a strong brand heritage (apprehensive about import or budget brands)</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>Does not look at the total cost of ownership</p></td>
+						</tr>
+						<!-- Row 3 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Evaluates vendors on an annual basis to ensure best value but often stays with one vendor for longer periods of time</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Does not always consider the total cost of ownership</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>Has possible credit and budget constraints</p></td>
+						</tr>
+						<!-- Row 4 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Values price continuity over the road (NAFA and Advantage)</p></td>
+							<td width="33%" class="brandProfileTableCell odd">
+								<div class="checkmark"><img src="../../_media/images/checkMark.png" /></div>
+								<p>Has possible credit and budget constraints</p>
+							</td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+						<!-- Row 5 -->
+						<tr class="brandProfileTableRow">
+							<td width="33%" class="brandProfileTableCell even"><p>Seeks ways to maximize fleet assets including fuel efficiency, load payment, and driver accountability</p></td>
+							<td width="33%" class="brandProfileTableCell odd"><p>Values price continuity over the road (NAFA and Advantage)</p></td>
+							<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+						</tr>
+					</table>
+				</div>
+				
+				
+
+				<div class="questionSpeechBubbles">
+					<!-- character reference image set in css -->
+				</div>
+
+				<div class="character" style="background: transparent url('../../_media/images/fleet1_sc.png') top left no-repeat; background-size: 100%;">
+					<!-- character reference image set in css -->
+				</div>
+
+				<!-- Fleet Profile Access -->
+				<div class="buttonBarContain">
+					<div class="buttonBar">
+						<div class="buttonContain">
+							<div class="button fLeft fleetProfileButton">
+								<p class="static-state">Fleet Profile</p>
+								<p class="roll-state"></p>
+							</div>
+							<div class="button fRight brandProfileButton">
+								<span class="checkIcon"></span>
+								<p class="static-state">Brand Profile</p>
+								<p class="roll-state"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="questionBarContain">
+				<!-- Fleet Questions -->
+					<div class="questionBar">
+						<!-- Q1 -->
+						<button id="question1" class="questionButton">
+							<p class="static-state">1. I noticed a few different brands on the trucks on site. What is your primary tire brand? What is your reason for making that your primary brand?</p>
+							<p class="roll-state"></p>
+						</button>
+
+						<!-- Q2 -->
+						<button id="question2" class="questionButton">
+							<p class="static-state">2. How do you measure the success of your tire program?</p>
+							<p class="roll-state"></p>
+						</button>
+
+						<!-- Q3 -->
+						<button id="question3" class="questionButton">
+							<p class="static-state">3. What do you feel comfortable paying for a tire?</p>
+							<p class="roll-state"></p>
+						</button>
+
+						<!-- Q4 -->
+						<button id="question4" class="questionButton">
+							<p class="static-state">4. How do you identify maintenance issues in the fleet?</p>
+							<p class="roll-state"></p>
+						</button>
+					</div>
+					<div class="questionBarGraphic">
+
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+        
+    <!--<div id="background_cover_all" class="background_cover_all"></div>-->
+    
+	<div id="cover_all" class="cover_all"></div>
+    
+	<!-- add audio for preloader -->
+    <div id="preload-audio">
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/Fleet1Profile.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_q1.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_q2.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_q3.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_q4.mp3'></audio>
+		<audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/fleet123_question.mp3'></audio>
+		<audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_correct.mp3'></audio>
+		<audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/f1_incorrect.mp3'></audio>
+    </div>
+	
+    <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .8;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script>
+	
+	
+</body>
+</html>

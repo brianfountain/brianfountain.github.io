@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+<style>
+* {
+	margin:0;
+	padding:0
+}
+html, body {
+	height:100%;
+	width:100%;
+	overflow:hidden
+}
+table {
+	height:100%;
+	width:100%;
+	table-layout:static;
+	border-collapse:collapse
+}
+iframe {
+	height:100%;
+	width:100%
+}
+.header {
+	border-bottom:1px solid #000
+}
+.content {
+	height:100%
+}
+</style>
+<script  type="text/javascript">
+function URLDecode(encoded)
+{
+	var result = "";
+    try {
+         result = decodeURIComponent(encoded);
+     } catch (error) {
+         alert( error + ' - Probably the second byte of a Unicode character is missing.' );
+     }
+   return result;
+};
+//]]>
+</script>
+<script language="javascript" type="text/javascript">
+		var JSON = JSON || {};
+		//alert(window.location.hash);
+		
+		var API = {
+			initialized: false,
+			LMSInitialize: function(value){
+				this.initialized = true;
+				return 'true';
+				
+			},
+			LMSGetValue: function(name){
+				switch(name){
+					case 'cmi.core.lesson_location':
+						return String(sessionData.bookmark);				
+						break;
+					case 'cmi.suspend_data':
+						return String(sessionData.suspendData);				
+						break;						
+					default:
+						return '';
+				}
+			},
+			LMSSetValue: function(name, value){
+				switch (name){
+					case 'cmi.core.lesson_location':
+						sessionData.bookmark = String(value);
+						break;
+					case 'cmi.suspend_data':
+						sessionData.suspendData = String(value);
+						break;
+				}
+				return 'true';
+			},
+			LMSCommit: function(value){
+				//top.document.location.href= top.document.location.href + "#api_" + JSON.stringify(sessionData);
+				var objData = new Object();
+				objData.action = "commit";
+				objData.sessionData = sessionData;
+
+				//top.location.href= JSON.stringify(objData);
+				return 'true';
+			},
+			LMSFinish: function(value){
+				var objData = new Object();
+				objData.action = "finish";
+				objData.sessionData = sessionData;
+	
+				//top.location.href= JSON.stringify(objData);		
+				return 'true';
+			},
+			LMSGetLastError: function(){
+				return 0;
+			},
+			LMSGetErrorString: function(errCode){
+				return '';
+			}
+			
+			
+		}
+		var sessionData = {
+			bookmark: '',
+			suspendData: ''
+			
+		}
+		
+		var objInitData;
+		function parseURL(){
+			var url = window.location.href;
+			if (url.indexOf("#") > -1){
+				var data = URLDecode(url.substring(url.indexOf("#") + 1));
+				//alert("hit:" + data);
+				var objData = JSON.parse(data);
+				document.getElementById('ifCourse').src = objData.courseURL;
+				if (objData.sessionData != null){
+					sessionData = objData.sessionData;	
+				}
+				
+			}
+			
+		}
+		
+		function parseData(data){
+			objInitData = JSON.parse(data);		
+			if (objInitData.sessionData != null){
+				sessionData = objInitData.sessionData;	
+			}				
+			setTimeout('launchContent()', 1000);
+		}
+		
+		function launchContent(){
+			//alert('launchContent():' + objInitData.courseURL);
+			var ifCourse = document.getElementById('ifCourse');
+			//ifCourse.src = objInitData.courseURL;
+			ifCourse.src = 'player.html';
+		}
+
+	</script>
+	</head>
+	<body onload="launchContent()">
+    <!--
+    <table>
+      <tr>
+        <td class="header"><div>
+            <h1>Header</h1>
+            <input type="button" value="test" onclick="launchContent()" />
+          </div></td>
+      </tr><br />
+-->
+      <tr>
+        <td class="content"><iframe id="ifCourse" frameborder="0"></iframe></td>
+      </tr>
+    </table>
+</body>
+</html>
