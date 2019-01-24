@@ -1,0 +1,179 @@
+.bg-section-hands {display:block; float:left; width:100%; height:200px; padding:0px; margin:0px; overflow:hidden; background:url("../img/ipc01/bg-section-1.jpg") -25% 0% no-repeat #303f4d; background-size:cover;}
+.bg-section-2 {display:block; float:left; height:200px; width:100%; overflow:hidden; margin:0px; padding:0px; background:url("../img/ipc01/bg-section-2.jpg") 0% 50% no-repeat #303f4d; background-size:cover;}
+
+/*-- Welcome Section --*/
+.welcome {background:url("../img/ipc01/faqs_welcome_bg.jpg") 0% 0% no-repeat #ffffff; background-size:cover;}
+.welcome-dyk {display:inline-block; float:left; width:40%; margin:0px; padding:0px 0px 0px 5%; height:100%; vertical-align:top;}
+.welcome-dyk .callout-container {background-color:#303f4d; margin:0px 0px 15px 0px; padding:5px; text-indent:0px;}
+.welcome-dyk .callout-container .callout {color:#fff; margin:5px 0px 0px 20px; padding:5px;}
+.welcome-character {display:inline-block; float:right; width:50%; margin:0px; padding:0px; text-align:right; vertical-align:bottom;}
+.welcome-character img {height:100%; text-align: center;}
+.welcome-quote-box {background:url("../img/section-texture.jpg") top left repeat #f8f8f4; padding:20px 0px 35px 0px;}
+
+/*-- Five Moments Section --*/
+.five-moments {display:block; width:100%; float:left; background:url("../img/section-texture.jpg") top left repeat #f8f8f4; padding:20px 0px 35px 0px;}
+.five-moments-steps {display:inline-block; float:left; width:55%; padding:20px 0px 20px 10%;}
+.five-moments-sidebar {display:inline-block; float:right; min-width:225px; max-width:350px; width:20%; margin:30px 10% 0px 0px; border-radius:4px; /*border:solid 1px #303f4d;*/ background-color:#fff; border:solid 1px rgba(150, 150, 150, 0.25);}
+.five-moments-number {display:block; float:left; position:relative; text-align:center; font-size:2.50em; font-family:"Domine",serif; font-weight:700; color:#b32a12; margin:0px; line-height:60px; width:60px; height:60px; border-radius:60px; border:solid 5px #b32a12; background-color:#fff; }
+.five-moments-list {display:inline-block; float:left; width:80%; padding:0px 0px 0px 5%; margin:0px 0px 20px 0px;}
+.five-moments-list h4, .five-moments-list p {margin:0px;}
+.five-moments-list p b {color:#12567a;}
+
+.etiquette {display:block; width:90%; float:left; padding:30px 5% 40px 5%; background:url(../img/ipc01/ettiquette-background.jpg)95% 25% no-repeat #fefefe; background-size:40% auto;}
+.etiquette-text {display:block; width:50%; float:left; padding:0px 45% 0px 5%;}
+
+/*-- Patient Surroundings Section --*/
+.patient-surroundings {display:block; width:90%; float:left; background:url("../img/section-texture.jpg") top left repeat #f8f8f4; padding:20px 5% 35px 5%; margin-bottom:0px;}
+.patient-surroundings-text {width:90%; float:left; padding:0px 5%;}
+
+.removing-ppe {display:block; float:left; background-color:#303f4d;  width:90%; padding:20px 5% 20px 5%; text-align:center; vertical-align:middle;}
+.ppe-arrow, .ppe-icon {display:inline-block; overflow:hidden; vertical-align:middle;}
+.ppe-arrow img {width:80%; padding:3% 10%;}
+.ppe-icon img {width:96%; padding:2%;}
+
+/*-- Isolation Procedures Section --*/
+.isolation-procedures {display:block; float:left; width:90%; padding:50px 5% 75px 5%; margin-bottom:0px; background-color:#fefefe;}
+.isolation-text {display:block; float:left; width:55%; padding:0px 5% 0px 0px;}
+.isolation-image {display:block; float:right; width:35%; padding:0px 0px 0px 5%;}
+.isolation-image img {display:block; width:100%; max-width:360px;}
+.isolation-procedures-chart {background:url("../img/ipc01/isolation_procedures_do_dont_bg.gif") 50% 0% repeat-y transparent;}
+.isolation-procedures-chart .do {display:inline-block; float:left; width:44%; padding:10px 3%; background-color:#c1dfc5;}
+.isolation-procedures-chart .dont {display:inline-block; float:left; width:44%; padding:10px 3%; background-color:#dfc1c1;}
+
+/*-- Clean Environment Section --*/
+.clean-environment {display:block; float:left; background:url("../img/ipc01/wipes.png") center bottom no-repeat #303f4d; background-size:65% auto; width:90%; padding:0px 5% 30% 5%;}
+.cleaning-environment-text {display:inline-block; width:60%; margin:0px 5% 0px 35%;}
+.clean-environment-callout {display:block;  width:90%; padding:0px 5%; margin:0px auto; max-width:640px; text-align:center;}
+.clean-environment-callout p {margin:8px 0px;}
+
+/*-- Policies Section --*/
+.policies {display:block; width:90%; float:left; padding:20px 5% 40px 5%; margin-bottom:0px;}
+.policies-text {display:inline-block; width:50%; margin:0px 5% 0px 0px; float:left;}
+.policies-img {display:inline-block; width:45%; vertical-align:middle; float:left;}
+.policies-img img {display:inline-block; width:100%; margin-top:20px;}
+.visitation {display:block; width:80%; float:left; background-color:#fefefe; padding:40px 10% 150px 10%; margin-bottom:0px;}
+
+/*-- Footer Section --*/
+.footer-visit {width:50%; display:inline-block; margin:0px 25%;}
+.footer-visit img {display:block; width:135px;  margin:-120px auto;}
+
+.eq-callout {background-color:rgba(254, 254, 254, 0.75); padding:8px 15px; border-radius:4px; border:solid 1px rgba(150, 150, 150, 0.25); width:auto; display:inline-block;}
+.shadow {box-shadow:0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;}
+
+/*-- Media Breakpoints --*/
+
+/*-- +++++++++++++++++++++++++++++ --*/
+/*-- handhelds --*/
+/*-- +++++++++++++++++++++++++++++ --*/
+
+@media only screen and (orientation: landscape) {
+.bg-section-hands {height:130px; background-position:85% 0%;}
+.bg-section-2 {height:130px; background-position:85% 0%;}
+.shadow {box-shadow:none;}
+}
+
+@media only screen and (orientation: portrait) {
+.bg-section-hands {height:130px; background-position:85% 0%;}
+.bg-section-2 {height:130px; background-position:85% 0%;}
+}
+
+@media only screen and (max-width:640px) and (orientation: landscape) {
+.bg-section-hands {height:130px; background-position:85% 0%;}
+.bg-section-2 {height:130px; background-position:85% 0%;}
+}
+
+@media only screen and (min-width:200px) and (max-width:767px) { 
+    
+body {font-size:0.90em;}
+    
+.shadow {box-shadow:none;}
+.no-show { display:none; visibility:hidden;}
+.desk-only {display:none; visibility:hidden;}
+.mobile-only {display:block; visibility:visible;}
+
+.bg-section-hands {height:130px; background-position:85% 0%;}
+.bg-section-2 {height:130px; background-position:85% 0%;}
+    
+.welcome-dyk {width:90%;} 
+.welcome {background-position:50% 150px; margin-bottom:0px;}
+  
+.five-moments {text-align:center;}
+.five-moments-steps {width:90%; padding:20px 5%; text-align:center;}
+.five-moments-number {margin:10px 0px 10px -20px; left:50%; font-size:2.00em; line-height:40px; width:40px; height:40px; border-radius:40px;}
+.five-moments-list {width:100%; padding:0px 0px 0px 0%;}
+.five-moments-sidebar {min-width:80%; max-width:80%; width:80%; margin:30px 10%;}
+    
+.isolation-procedures-chart .do {width:90%; padding:10px 5%;}
+.isolation-procedures-chart .dont {width:90%; padding:10px 5%;}
+
+.isolation-text, .policies-text {display:block; float:left; width:100%; padding:0px 0% 0px 0px;}
+.isolation-image, .policies-img {display:block; float:left; width:100%; padding:0px 0px 0px 0%;}
+.isolation-image img, .policies-img img {display:block; float:left; width:100%; max-width:360px;} 
+    
+.etiquette {background-image:none;}
+.etiquette-text {display:block; width:90%; float:left; padding:0px 5% 0px 5%;}
+}
+
+@media only screen and (max-width:320px) {   
+.isolation-text, .policies-text {display:block; float:left; width:100%; padding:0px 0% 0px 0px;}
+.isolation-image, .policies-img {display:block; float:left; width:100%; padding:0px 0px 0px 0%;}
+.isolation-image img, .policies-img img {display:block; float:left; width:100%; max-width:360px;} 
+}
+
+@media only screen and (max-height:360px){     
+.isolation-text, .policies-text {display:block; float:left; width:100%; padding:0px 0% 0px 0px;}
+.isolation-image, .policies-img {display:block; float:left; width:100%; padding:0px 0px 0px 0%;}
+.isolation-image img, .policies-img img {display:block; float:left; width:100%; max-width:360px;} 
+}
+
+@media only screen and (min-width : 768px) and (max-width:1023px) {
+.mobile-only {display:none; visibility:hidden;}
+
+.welcome-dyk {width:45%;}
+.welcome {background-position:0% 0%; margin-bottom:0px;}
+.welcome-character {background:url("../img/ipc01/faqs_welcome_character.png") 0px 45px no-repeat transparent; min-height:425px; background-position:0% 100%; background-size:auto 90%;}
+.no-show { display:none; visibility:hidden;}
+        
+.five-moments-steps {width:80%; padding:20px 10%;}
+.five-moments-list {width:80%; padding:0px 0px 0px 5%; text-align:left;}
+.five-moments-number {font-size:2.50em; margin:0px; line-height:60px; width:60px; height:60px; border-radius:60px;}
+.five-moments-sidebar {min-width:80%; max-width:80%; width:80%; margin:30px 10%;}
+.isolation-procedures-chart .do {width:44%; padding:10px 3%;}
+.isolation-procedures-chart .dont {width:44%; padding:10px 3%;}  
+    
+
+.bg-section-2 {display:none; visibility:hidden;}
+.etiquette {background-image:url(../img/ipc01/ettiquette-background.jpg);}
+}
+
+
+/*-- +++++++++++++++++++++++++++++ --*/
+/*-- desktops --*/
+/*-- +++++++++++++++++++++++++++++ --*/
+
+@media only screen and (min-width : 1024px)  {
+
+.mobile-only {display:none; visibility:hidden;}
+.shadow {box-shadow:0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;}
+     
+.bg-section-hands {height:200px; background-position:0% 0%;}
+.bg-section-2 {display:none; visibility:hidden;}
+.etiquette {background-image:url(../img/ipc01/ettiquette-background.jpg);}
+
+.welcome-dyk {width:40%;}
+.welcome {background-position:0% 0%; margin-bottom:0px;}
+.welcome-character {display:inline-block; float:right; width:50%; margin:0px; padding:0px; text-align:right; vertical-align:bottom;}
+.welcome-character img {height:100%; text-align: center;}
+ 
+.five-moments-steps {width:55%; padding:20px 0px 20px 10%; text-align:left;}
+.five-moments-list {width:80%; padding:0px 0px 0px 5%;}
+.five-moments-number {font-size:2.50em; margin:0px; line-height:60px; width:60px; height:60px; border-radius:60px;}
+.five-moments-sidebar { min-width:225px; max-width:350px; width:20%; margin:30px 10% 0px 0px;}
+    
+.isolation-procedures-chart .do {width:44%; padding:10px 3%;}
+.isolation-procedures-chart .dont {width:44%; padding:10px 3%;}
+}
+
+@media only screen and (min-width : 1400px) {
+.shadow {box-shadow:0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;}
+}
