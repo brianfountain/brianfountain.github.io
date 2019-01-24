@@ -1,0 +1,838 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/pages";
+
+$sm-viewport:678px;
+
+body {margin:0px auto; background-color:$light-grey;}
+
+#preload-audio{display:none;}
+
+#features {
+    display:block; width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; box-sizing:border-box; overflow:hidden;
+    
+    /*- breakpoints -*/
+    @include break(tablet){padding:80px 0px 0px 0px;}
+    @include break(tablet, $portrait){padding:120px 0px 0px 0px;}
+    
+    @include break(desktop, $desktop){padding:80px 0px 0px 0px;}
+    @include break(desktop, $xl-width){padding:100px 0px 0px 0px;}
+    
+    @include break(desktop, $desktop + 1, $md-height){padding:60px 0px 0px 0px;}
+    
+    .section-title {
+        display:block; /*height:30px;*/ width:100%; /*margin:0px auto;*/ margin:10px 0px; padding:0px; color:$royal; text-align:center; /*overflow:hidden;*/ position:relative; z-index:200000;
+        
+        /*- breakpoints -*/                        
+        @include break(tablet){font-size:1.30em;}
+        @include break(tablet, $portrait){font-size:1.30em;}
+                        
+        @include break(desktop, $desktop){font-size:1.30em;}
+        @include break(desktop, $xl-width){font-size:1.75em;}
+        
+        span {
+            display:inline-block; margin:0px; padding:0px; font-family:inherit; font-size:inherit; color:inherit; @include transition(all,0.50s, $circ, 0s);
+            &.slide-in {@include prefix(transform, translateY(0%)); opacity:1.00; }
+            &.slide-out {@include prefix(transform, translateY(100%)); opacity:0.00;}
+        }
+    }
+    .progress {
+        display:block; width:100%; height:auto; padding:0px; text-align:center; position:relative; z-index:200001;
+        
+        /*- breakpoints -*/
+        @include break(tablet){margin:-10px 0px 0px 0px;}
+        
+        @include break(desktop, $desktop){margin:-10px 0px 0px 0px;}
+        @include break(desktop, $xl-width){margin:10px 0px 0px 0px;}
+        
+        p {
+            display:inline-block; @include prefix(transform,skewX(-20deg)); background-color:$white;  overflow:hidden;
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){width:30px; height:6px; margin:0px 5px; }
+            
+            @include break(desktop, $desktop){width:30px; height:6px; margin:0px 5px;}
+            @include break(desktop, $xl-width){width:30px; height:9px; margin:0px 5px;}
+            
+            span {
+                display:inline-block; float:left; width:100%; height:100%; padding:0px; margin:0px;
+            }
+            &.active{
+                span {  
+                    @include prefix(transform,translateX(0px)); background-color:$yellow; @include transition(all,1s,$circ,0s); 
+                }
+            }
+            &.inactive {
+                span {
+                    @include prefix(transform,translateX(-50px)); background-color:$white; @include transition(all,1s,$circ,0s);
+                }
+            }
+        }                
+    }
+    
+    .next, .prev {
+        position:absolute; top:50%; z-index:200002; padding:0px; cursor:pointer;
+        
+        /*- breakpoints -*/
+        @include break(phone){}
+        @include break(tablet){width:40px; height:80px; margin:-40px 0px 0px 0px;}
+        @include break(desktop){width:60px; height:100px; margin:-50px 0px 0px 0px;}
+        
+        svg path {stroke:#fff; stroke-width:6px; fill:none; stroke-linecap:round;}
+    }
+    
+    .next {
+        @include transition(all, 1s, $circ, 0s);
+        &.slide-in {
+                    
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){right:1%;}
+            @include break(desktop){right:3%;}
+            
+        }
+        &.slide-out {
+            right:-10%;
+        }
+        
+        &.highlight { @include prefix(animation,nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite);}
+    }
+    
+    .prev {
+        @include transition(all, 1s, $circ, 0s); @include prefix(opacity,0.50);
+        &.slide-in {
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){left:1%;}
+            @include break(desktop){left:3%;}
+            
+        }
+        &.slide-out {
+            left:-10%;
+        } 
+    }
+    
+    .tire-display {
+        display:block; width:100%; height:100%; position:absolute; bottom:0px; margin:0px auto; padding:0px;
+                
+        .slide {
+            display:inline-block; height:100%; padding:0px; position:absolute; top:0px; left:0px;
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){width:96%; margin:0px 2%;}
+            @include break(desktop){width:80%; margin:0px 10%;}
+            
+            &.out {@include prefix(animation,slidesOut 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.in {@include prefix(animation,slidesIn 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.set {@include prefix(transform,translateX(100%)); opacity: 0.00;}
+            &.reverse.out {@include prefix(animation,slidesOutReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.reverse.in {@include prefix(animation,slidesInReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+        
+            /*.disclaimer {font-size:0.65em; font-style:italic; font-weight:normal; color:$grey;}*/
+            .label {
+                color:$white; font-family:$michelin-black; margin:0px; padding:0px;
+                
+                /*- breakpoints -*/
+                @include break(tablet){font-size:1.10em;}
+                @include break(desktop){font-size:1.3em;}
+            }
+            .list {
+                font-size:1.10em; color:$grey; font-family:$body-text; margin:0px; padding:0px;
+                li {font-size:inherit; color:inherit; font-family:inherit; margin:15px 0px; padding:0px;}
+            }
+            .diagram {display:inline-block; z-index:1000;}
+            .vectors {
+                width:200px; height:200px;
+                g {
+                    polyline {stroke:#fff; stroke-width:1.5px; fill:none; /*stroke-linecap:round;*/}
+                    circle {stroke:#fff; stroke-width:0px; fill:#fff; /*stroke-linecap:round;*/}
+                }
+                
+            }
+             
+            
+            /*--- first slide ---*/
+            &.one {
+                width:100% !important; margin:0px auto !important; 
+                
+                .header{
+                    width:60%; margin:0px auto; position:relative; top:25%; z-index:10000;
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){top:25%; width:80%;} 
+                    @include break(tablet, $portrait){top:20%; width:80%;}  
+                    
+                    .headline {
+                        color:$royal; font-family:$michelin-black; font-size:2.75rem; text-align:center; z-index:55555555;
+                        
+                        @include prefix(opacity,0.00); 
+                        @include prefix(transform, translate(0%, 100%)); 
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet){font-size:2.00rem;} 
+                        @include break(tablet, $portrait){font-size:2.00rem;} 
+                        
+                        @include break(desktop, $desktop){font-size:2.00rem;} 
+                        @include break(desktop, $sm-width){font-size:2.25rem;}
+                        @include break(desktop, $lg-width){font-size:2.75rem;}
+
+                        sup{font-size:20%; position:relative; top:-6px; left:3px; font-family:$michelin-regular;}
+                    }
+                    
+                    .tagline {
+                        color:$grey; font-family:$michelin-regular; font-size:1.75rem; text-align:center; z-index:555555;
+                        @include prefix(opacity,0.00); 
+                        @include prefix(transform, translate(0%, 100%)); 
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet){font-size:1.50rem;} 
+                        @include break(tablet, $portrait){font-size:1.50rem;} 
+                        
+                        @include break(desktop, $desktop){font-size:1.50rem;} 
+                        @include break(desktop, $sm-width){font-size:1.50rem;}
+                        @include break(desktop, $lg-width){font-size:1.75rem;}
+                    }
+                    
+                    .headline, .tagline {
+                        width:100%; margin:20px 0px; padding:0px;  text-align:center;
+                        &.show {
+                            @include prefix(opacity,1.00); 
+                            @include prefix(transform, translate(0%, 0%)); 
+                            @include transition((opacity, transform), 0.50s, $circ, 1s);
+                        }
+                    }
+                    
+                }
+                
+                .background {
+                    display:block; width:100%; height:100vh; margin:0px; padding:0px; position:absolute; top:0px; right:0px;
+                    @include prefix(transform, translate(100%, 0%));
+                    @include prefix(opacity, 0.00);
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){@include prefix(opacity, 1.00);}
+                    @include break(tablet, $portrait){@include prefix(opacity, 0.00);}                    
+                    
+                    div {
+                        display:inline-block; width:50%; height:130vh; margin:0px; padding:0px; position:absolute; top:0px; right:-100%; overflow:hidden;
+                        @include prefix(transform, skew(-20.5deg) translate(30%, 0%));
+                        @include prefix(opacity,0.00);
+                        @include prefix(filter,blur(10px));
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet, $portrait){width:80%;}
+                        
+                        p {
+                            @include prefix(transform, skew(20.5deg) translate(-15%, -10%));
+                        }
+                        
+                        &:first-child { 
+                            z-index:300;
+                            @include transition(all, 2s, $ease-out, 0s);
+                            
+                            p {
+                                background-image:url("../_media/images/features_durability_bg_1.jpg");
+                            }
+                        }
+                        &:nth-child(2) {
+                            z-index:200;
+                            @include transition(all, 3s, $ease-out, 1s);
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){display:none;}
+                            
+                            p {
+                                background-image:url("../_media/images/features_durability_bg_2.jpg");
+                            }
+                        }
+                        &:last-child {
+                            z-index:100;
+                            @include transition(all, 4s, $ease-out, 2.0s);
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){@include transition(all, 3s, $ease-out, 1.0s);}
+                            
+                            p {
+                                background-image:url("../_media/images/features_durability_bg_3.jpg");
+                            }
+                        }
+                        
+                        p {
+                            width:130vh; height:130vh; margin:0px; padding:0px;
+                            background-position:center;
+                            background-repeat:no-repeat;
+                            background-color:transparent;
+                            background-size:cover;
+                            @include prefix(box-shadow, inset 20px 0px 20px 10px rgba(0,0,0,0.25));
+                        }
+                    }
+                    
+                    &.show {
+                        @include transition((opacity, transform, filter), 4s, $circ, 0s);
+                        @include prefix(transform, translate(0%, 0%));
+                        @include prefix(opacity, 1.00);
+                        
+                        div {
+                            
+                            @include prefix(opacity,1.00);
+                            @include prefix(filter,blur(0px));
+                            
+                            &:first-child {
+                                right:0px; 
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet, $portrait){right:0%;}
+                                
+                            }
+                            &:nth-child(2) {
+                                right:40%;
+
+                            }
+                            &:last-child {
+                                right:80%;
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet, $portrait){right:75%;}
+                            }
+                        }
+                    }
+                    
+                    &.fade-out {
+                        @include prefix(opacity,0.25);
+                        @include prefix(filter,blur(3px));
+                    }
+                }
+                
+                .tire {
+                    display:inline-block; position:absolute; top:45%; left:50%; width:1200px; height:1200px; margin:0px 0px 0px -600px; padding:0px;                
+                    @include prefix(transform, translate(150%, 0%));
+
+                    /*-- breakpoints -- */
+                    @include break(tablet){top:55%; width:980px; height:980px; margin:0px 0px 0px -490px;}
+                    @include break(tablet, $portrait){top:45%; width:1024px; height:1024px; margin:0px 0px 0px -512px;}
+
+                    @include break(desktop, $desktop){top:55%; width:1024px; height:1024px; margin:0px 0px 0px -512px;}
+                    @include break(desktop, $md-width){top:50%; width:1200px; height:1200px; margin:0px 0px 0px -600px;}
+                    @include break(desktop, $lg-width){top:45%; width:1200px; height:1200px; margin:0px 0px 0px -600px;}
+                    @include break(desktop, $desktop + 1, $md-height){top:65%;}
+                    
+                    p {
+                        display:inline-block; margin:0px; padding:0px; width:100%; height:100%;
+                        background:url("../_media/images/warranty_tire.png") center bottom no-repeat transparent; 
+                        background-size:100% auto;
+                        @include prefix(filter, blur(5px));
+                        @include prefix(transform-origin,50% 50%);
+                        @include prefix(transform, rotate(360deg));
+                    }
+
+
+                    &.show {
+                        @include transition(all,3s,$ease-out,0s);
+                        @include prefix(transform, translate(0%, 0%));
+                        @include prefix(transform-origin,50% 50%);
+                        
+                        @include break(desktop, $desktop + 1, $md-height){top:65%;}
+                        
+                        p {
+                            @include transition(all,3.5s,$ease-out,0s);
+                            @include prefix(filter, blur(0px));
+                            @include prefix(transform, rotate(-1deg));
+                        }
+                    }
+                }
+            }
+            
+            /*--- second slide ---*/
+            &.two {
+                .headline {
+                    width:60%; margin:0px auto; position:relative; top:22%; color:$white; font-family:$michelin-regular; font-size:1.70rem; text-align:center;
+                    @include prefix(opacity,0.00); 
+                    @include prefix(transform, translate(0%, 100%)); 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){width:60%; font-size:1.30rem;}
+                     @include break(tablet, $portrait){width:80%; top:25%; font-size:1.30rem;}
+                    @include break(desktop, $desktop){width:80%; font-size:1.50rem;}
+                    @include break(desktop, $sm-width){width:60%; font-size:1.70rem;}
+                    @include break(desktop, $lg-width){width:60%; font-size:1.70rem;}
+                    
+                    @include break(desktop, $desktop + 1, $md-height){font-size:1.30rem; top:20%;}
+                    @include break(desktop, $desktop + 1, $sm-height){font-size:1.30rem; top:20%;}
+                    
+                    &.show {
+                        @include prefix(opacity,1.00); 
+                        @include prefix(transform, translate(0%, 0%)); 
+                        @include transition((opacity, transform), 0.50s, $circ, 1s);
+                    }
+                }
+                
+                .diagram {
+                    display:inline-block; width:90%; margin:0px 5%; position:absolute; top:50%; text-align:center; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){top:65%;}    
+                    @include break(tablet, $portrait){top:60%;}   
+                    @include break(desktop, $desktop){top:65%;}
+                    
+                    .cutout{
+                        display:inline-block; width:40%; margin:0px 3%; padding:0px; @include prefix(opacity,0.00); @include prefix(transform, translate(0%, 200%));
+                        
+                        h2 {
+                            display:block; text-align:center; padding:0px; margin:0px; text-transform:uppercase; position:relative; top:55px;
+                            @include prefix(opacity, 0.00);
+                            @include prefix(transform, translate(0%, -50%));
+                            
+                            sup {font-size:40%;}
+                                                        
+                            /*- breakpoints -*/
+                            @include break(tablet){width:100%;}    
+                            @include break(tablet, $portrait){width:60%;}   
+                    
+                            @include break(desktop, $desktop){width:100%;}
+                        }
+                        
+                        .outline {
+                            display:block; height:14vh; margin:0px auto; position:relative; border:solid 4px rgba(236,0,140,0.50); box-sizing:border-box; border-radius:2px;
+                            @include prefix(transform, translate(0%, -98%));   
+                            @include prefix(opacity,0.00);
+                            @include transition(opacity, 1s, $circ, 0s);
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet){height:14vh; @include prefix(transform, translate(0%, -133%))}    
+                            @include break(tablet, $portrait){height:8vh; @include prefix(transform, translate(0%, -145%))}   
+                    
+                            @include break(desktop, $desktop){height:14vh; @include prefix(transform, translate(0%, -133%))}
+                            
+                            &.show {@include prefix(opacity,1.00);}
+                            &.hide {@include prefix(opacity,0.00);}
+                        }
+                        
+                        &.start {
+                            h2 {
+                                @include prefix(opacity,1.00); 
+                                @include prefix(transform, translate(0%, 0%)); 
+                                @include transition((opacity, transform), 0.50s, $circ, 1s);
+                            }
+                            
+                            img:first-child {@include prefix(opacity,1.00);}
+                            
+                            @include transition((opacity, transform), 0.50s, $circ, 0s);
+                            @include prefix(transform, translate(0%, -30%)); 
+                            @include prefix(opacity,1.00);
+                        }
+                        
+                        &.michelin {                            
+                            h2 { 
+                                width:100%; font-size:1.30em; color:$royal; font-family:$michelin-black;
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet){font-size:1.20em;}    
+                                @include break(tablet, $portrait){font-size:1.20em;}   
+                                @include break(desktop, $desktop){font-size:1.30em;}
+                            
+                                sup {font-family:$michelin-regular;}
+                            }
+                            .outline {width:60%;}
+                        }
+                        
+                        &.competition {
+                            h2 { 
+                                width:100%; font-size:1.40em; color:$grey; font-family:$body-text; font-style:italic;
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet){font-size:1.30em;}    
+                                @include break(tablet, $portrait){font-size:1.30em;}   
+                                @include break(desktop, $desktop){font-size:1.40em;}
+                            
+                                /*- breakpoints -*/
+                                @include break(tablet){width:100%;}    
+                                @include break(tablet, $portrait){width:70%; padding:0px 15%;}   
+
+                                @include break(desktop, $desktop){width:100%;}
+                            
+                            }
+                            .outline {width:35%;}
+                        }
+                        
+                        &.competition, &.michelin { 
+                            img {
+                                display:block; width:100%; margin:0px; position:absolute;
+                                @include prefix(opacity,0.00);
+                                @include prefix(transform, translate(0%, -90%)); 
+
+                                &.show {@include prefix(opacity, 1.00); @include transition(opacity, 3s, $ease-in, 0s);}
+                                &.hide {@include prefix(opacity, 0.00); @include transition(opacity, 2s, $ease-out, 0s);}
+                            } 
+                        }
+                        
+                        .callout{
+                            display:block; width:40%; position:absolute; top:-40px; left:50%;
+                            
+                            /*- breakpoints -*/
+                            @include break(desktop, $desktop + 1, $md-height){width:35%;}
+                            @include break(desktop, $desktop + 1, $sm-height){width:30%;}
+                            
+                            img.gum {
+                                @include prefix(opacity,0.00); 
+                                @include prefix(transform,scale(0) translate(-50%, -100%));
+                                @include prefix(transform-origin,0% 50%);
+                            }
+                            
+                            &.show {                                
+                                img.gum {
+                                    @include transition((opacity, transform), 2s, $ease-out, 0s);
+                                    @include prefix(opacity,1.00); 
+                                    @include prefix(transform,scale(1) translate(-50%, -100%));
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .footnote{
+                    display:block; width:80%; margin:0px 10%; text-align:center; position:absolute; top:77%;
+                    @include prefix(opacity, 0.00);
+                    @include prefix(transform, translate(0px,100%));
+            
+                    &.show{
+                        @include transition(opacity, 1s, $circ, 0s);
+                        @include prefix(opacity, 1.00);
+                        @include prefix(transform, translate(0px,0%));
+                    }
+                    p {font-size:0.75rem;}
+                }
+            }
+            
+            &.three {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:60%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    @include break(desktop, $desktop){height:60%;}
+
+                    
+                    &.cutaway { 
+                        @include transition(all,0.75s,$circ,0s);
+                        @include prefix(transform,translate(0%,100%));
+                        @include prefix(opacity,0.00);
+                        @include prefix(filter,blur(5px));
+                        
+                        /*- breakpoints -*/  
+                        @include break(tablet, $portrait){@include prefix(transform, translate(30%, 100%));} 
+                        
+                        &.show{      
+                             @include prefix(transform,translate(0%,0%));
+                             @include prefix(opacity,1.00);
+                             @include prefix(filter,blur(0px));
+                            
+                            /*- breakpoints -*/   
+                            @include break(tablet, $portrait){@include prefix(transform, translate(30%, 0%)); } 
+                        }
+                        &.transition{      
+                            img {
+                                &:last-child {opacity:1.00; @include transition(opacity,3s, $circ,0s);}
+                            }
+                        }
+                        img {
+                            position:absolute; display:block; bottom:0px; left:50%; display:block; height:100%; margin:0px auto; @include prefix(transform, translate(-50%,0%));
+                            &:last-child {opacity:0.00;}
+                        }
+                    }                    
+                }
+
+                .diagram {
+                     &.cables {
+                        position:absolute; bottom:30%; right:50%; opacity:0.00; 
+                        @include prefix(transform,scale(1.0) translate(50%, 0%));
+                        @include transition(all,1s,$circ,0s);
+
+                        /*- breakpoints -*/
+                        @include break(tablet){bottom:30%;} 
+                        @include break(tablet, $portrait){bottom:44.5%; right:35%; @include prefix(transform,scale(1) translate(-50%, 0%));} 
+                        @include break(desktop, $desktop){bottom:30%;}
+                        @include break(desktop, $md-width){bottom:29%;}
+                        @include break(desktop, $lg-width){bottom:30%;}
+                        @include break(desktop, $xl-width){bottom:33%;  @include prefix(transform,scale(1.25) translate(40%, 0%));}
+                        @include break(desktop, $desktop + 1, $md-height){bottom:28%;}
+                        @include break(desktop, $desktop + 1, $sm-height){bottom:24%; @include prefix(transform,scale(0.75) translate(50%, 0%));}
+                         
+                        .vectors {
+                            width:250px; height:250px;
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){@include prefix(transform, scaleX(-1) translate(-55%, 50%));}  
+                        }
+                    }
+                    .label {
+                        &.cables {
+                            position:relative; left:0px; top:-235px; width:90%; opacity:0.00; 
+                            @include transition(opacity,1s,$circ,0.50s);
+                            @include prefix(transform,translate(100%,-100%));
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){@include prefix(transform, translate(15%, 190%));}
+                        }
+                    }
+                    .list {
+                        position:absolute; margin:0px;
+                        &.cables {
+                            display:inline-block; top:15px; left:10px;
+                            @include prefix(transform,translate(100%,0%));
+                            
+                            /*- breakpoints -*/
+                            @include break(desktop, $desktop){left:25px;}
+                            @include break(tablet, $portrait){top:10px; left:5px; @include prefix(transform, translate(25%, 250%));}
+                                
+                            li {
+                                width:100%; margin:8px 0px; @include prefix(opacity,0.00);
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet, $portrait){width:70%;}    
+                            }
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;
+                        .label {
+                            &.cables {
+                                opacity:1.00;
+                            }
+                        }
+                        .list {
+                            &.cables {
+                                li {
+                                    @include prefix(opacity,1.00); @include transition(all,1s,$circ,1s);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &.four {
+                 .callout {
+                    display:block; position:absolute; top:25%; left:50%; z-index:100; text-align:center; margin:0px; 
+                    @include transition(all, 1s, $circ, 0s); @include prefix(transform-origin, 0% 50%); @include prefix(opacity,0.00);
+                    
+                    /*- breakpoints -*/
+                    @include break(phone){}
+                    @include break(tablet){width:400px; height:400px; @include prefix(transform,scale(0) translate(-50%,0%));}
+                    @include break(tablet, $portrait){width:375px; height:375px; @include prefix(transform,scale(0) translate(-50%,0%));}
+                    @include break(desktop){width:400px; height:400px; @include prefix(transform,scale(0) translate(-50%,0%));}
+                        
+                    img {
+                        display:block; width:80%; height:auto; margin:0px 10%; position:absolute; top:0px;
+                        
+                        &.rocks {
+                            @include prefix(opacity,0.00);
+                            @include prefix(filter, blur(10px));
+                            @include transition((opacity,filter), 0.50s, $circ, 0s);
+                            
+                            &.show {
+                                
+                                @include prefix(opacity,1.00);
+                                @include prefix(filter, blur(0px));
+                            }   
+                        }
+                    }
+                    
+                    &.show {
+                        opacity:1.00; 
+                        
+                        /*- breakpoints -*/   
+                        @include break(tablet){@include prefix(transform,scale(1) translate(-50%,0%));}
+                        @include break(tablet, $portrait){@include prefix(transform,scale(1) translate(-50%,0%));}
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1) translate(-50%,0%));}
+                    }
+                 }
+                
+                .diagram {
+                    &.channel {
+                        position:absolute; top:42%; right:50%; opacity:0.00;  
+                        @include transition(opacity,0.50s,$circ,0s);
+                        @include prefix(transform,scale(1.0) translate(25px, 0px));
+                        
+                        /*- breakpoints -*/   
+                        @include break(tablet, $portrait){top:38%;}
+                        @include break(desktop, $md-width){top:42%;}
+                        @include break(desktop, $lg-width){top:41%;}
+                        @include break(desktop, $xl-width){top:39%;}
+                        @include break(desktop, $desktop + 1, $md-height){top:44%;}
+                        @include break(desktop, $desktop + 1, $sm-height){top:47%;}
+                                                 
+                        .vectors { }
+                         
+                        .label {
+                            &.channel {
+                                position:relative; top:-185px; left:-195px; opacity:0.00; text-align:right;
+                                @include transition(opacity,1s,$circ,0.50s);
+                                @include prefix(transform,translate(0%,-100%));
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;
+                            .label {
+                                &.channel {
+                                    opacity:1.00;
+                                }
+                            }
+                        }  
+                     } 
+                    
+                     &.groove {
+                        position:absolute; top:48%; left:49%; opacity:0.00;  
+                        @include transition(opacity,0.50s,$circ,0s);
+                        @include prefix(transform,scale(1.0) translate(0%,0%));
+                         
+                        /*- breakpoints -*/   
+                        @include break(tablet, $portrait){top:43%; left:49%;}
+                        @include break(desktop, $md-width){top:45%;}
+                        @include break(desktop, $xl-width){top:41%;}
+                        @include break(desktop, $desktop + 1, $sm-height){top:55%;}
+                         
+                        .vectors { }
+                         
+                        .label {
+                            &.groove {
+                                position:relative; top:-185px; left:170px; opacity:0.00; 
+                                @include transition(opacity,1s,$circ,0.50s);
+                                @include prefix(transform,translate(0%,-100%));
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;
+                            .label {
+                                &.groove {
+                                    opacity:1.00;
+                                }
+                            }
+                        }  
+                     }
+                }
+                
+                .tire {
+                    display:block; position:absolute; left:50%; bottom:-100%; text-align:center; margin:0px;
+                     
+                    @include prefix(opacity, 0.00);
+                    @include prefix(filter, blur(5px));
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:50%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    
+                    @include break(desktop, $desktop){height:50%;}
+                    @include break(desktop, $lg-width){height:60%;}
+                     
+                    img {
+                        position:relative; @include prefix(transform, translate(-50%, 0%)); 
+                        
+                        &.hide {
+                            @include transition(opacity,1.5s,$ease-in,0s);
+                            @include prefix(opacity, 0.00);
+                        }
+                        &.show {
+                            @include transition(opacity,2.0s,$ease-in,0s);
+                            @include prefix(opacity, 1.00);
+                        }
+                    }
+                     
+                    &.show {
+                         @include transition(all,1.0s,$ease-out,0s);
+                         @include prefix(opacity, 1.00);
+                         @include prefix(filter, blur(0px));
+                         bottom:0px;
+                    }
+                    
+                }
+            }
+            
+            &.five {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:60%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    @include break(desktop, $desktop){height:60%;}
+
+                    
+                    &.cutaway {                                     
+                        @include transition(all,1s,$circ,0s);
+                        
+                        &.hide{opacity:0.00}
+                    }
+                    img { 
+                        display:block; height:100%; margin:0px auto; position:absolute; top:0px; left:50%;
+                        @include prefix(transform, translate(-50%, 0%));
+                        @include transition(all,1s,$circ,0s);
+                        
+                        &.show {opacity:1.00;}
+                        &.hide {opacity:0.00;}                            
+                    }
+                }
+
+                .diagram {
+                    &.sidewall {
+                        position:absolute; top:27%; right:45%; opacity:0.00;  
+                        @include transition(opacity,0.50s,$circ,0s);
+                        @include prefix(transform,scale(1.0) translate(100%, 0%));
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet, $portrait){@include prefix(transform,scale(1.0) translate(150%, 0%));}
+                        @include break(desktop, $desktop + 1, $sm-height){@include prefix(transform,scale(0.75) translate(125%, -10%));}
+                        
+                        .vectors {
+                            width:250px; height:250px;
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){@include prefix(transform,scaleX(-1) translate(100%, 0%));}
+                        
+                        }
+                    }
+                    .label {
+                        &.sidewall {
+                            position:relative; top:-250px; left:170px; 
+                            @include transition(opacity,1s,$circ,1s);
+                            @include prefix(transform,translate(0%,-50%)); 
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){@include prefix(transform,scale(1.0) translate(-190%, -55%));}
+                        }
+                    }                                        
+                    &.show {
+                        opacity:1.00;                         
+                        .label {
+                            &.sidewall { 
+                                opacity:1.00;
+                            }
+                        }
+                    } 
+                    .list {
+                        position:absolute; margin:0px;
+                        &.sidewall {
+                            display:inline-block; width:80%; top:25px; left:180px;
+                            @include prefix(transform,translate(0%,0%));
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet, $portrait){width:60%; left:0px; @include prefix(transform,scale(1.0) translate(-190%, 0%));}
+                        }
+                        &.sidewall {
+                            li{
+                                margin:8px 0px; @include transition(all,0.75s,$circ,0s);
+                                &.hide {opacity:0.00; @include prefix(transform,translateY(50%));}
+                                &.show {opacity:1.00; @include prefix(transform,translateY(0%));}                            
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

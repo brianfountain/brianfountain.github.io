@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Warranty</title>  
+<link type="text/css" rel="stylesheet" href="../../_css/warranty.css"/>
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<script type="text/javascript"> 
+    $(function() {
+       var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+                
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states 
+        $(".menu").on({        
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+            }
+        });
+		
+		$(ap).bind("ended", function(evt){
+            //console.log("done");
+            p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true); 
+            
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+		
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime;
+			//console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+                if (ts == 0.00){
+				   $(".tire").removeClass('show'); 
+                   $(".page .header").removeClass('show'); 
+                   $(".button").removeClass('show');
+                   $(".footnote .disclaimer").removeClass('show');
+				} 
+				if (ts > 0.25){
+				   $(".tire").addClass('show'); 
+				} 
+				if (ts > 1.00){
+				   $(".page .header").addClass('show');
+                   $(".footnote .disclaimer").eq(0).addClass('show');
+				} 
+                if (ts > 4.00){
+				   $(".button").addClass('show');
+                   $(".footnote .disclaimer").eq(1).addClass('show');
+				} 
+			}
+		}); 	
+        
+        //-- build the page once the wipe is removed --//
+        buildPage = function() { 		
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+            
+            $(".menu.slide-in").on(transitionEvent, function(){            
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+             
+		/* iframe load and unload events */
+        $(window).load(function () {
+            audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+            
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+			
+            p.controller.setVar("introViewed", true);
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+	});
+	
+</script>
+
+<style type="text/css">
+    body { width:100%; height:100%; margin:0px auto; padding:0px; }
+</style>
+
+</head>
+	
+<body>
+<div id="header">
+    <div class="title">
+        <div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+         <h1>
+            <span class="headline sequence hide"><b>Warranty</b></span>     
+        </h1>
+    </div>
+    </div>
+</div>
+<div id="warranty">
+	<div class="page">
+    	<!-- Page content -->
+        <h1 class="header">Michelin's standard warranty <sup>2</sup></h1>
+        <a class='button' href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties" target="_blank">
+            <p class="text">WARRANTY INFORMATION</p>
+            <div class="roll-state"></div>
+        </a>
+        <div class="footnote">
+            <p class="disclaimer"><b>2. </b>Contact your local Michelin representative for more details</p>
+            <p class="disclaimer"><b>*</b> When retreaded by an authorized Michelin Retread Technologies (MRT) Dealer only.<br />Visit <a href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank" >MichelinTruck.com</a>for details.</p>
+       </div>
+    </div>
+    <div class="tire"></div>
+</div>
+<div id="preload-audio">
+    <audio id="audio" src="_media/audio/Warranty.mp3"></audio>
+</div>   
+</body>	
+</html>

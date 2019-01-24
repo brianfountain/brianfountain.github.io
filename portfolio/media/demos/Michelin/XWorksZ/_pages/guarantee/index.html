@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Guarantee</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/guarantee.css"/>
+<script type="text/javascript"> 
+    $(function() {
+        var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+                
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states 
+        $(".menu").on({        
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+            }
+        });
+        
+        $(ap).bind("ended", function(evt){
+            // set up instructional text
+            p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true); 
+            
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+		
+		linkClick = function() {
+			window.open('../../_media/docs/x_works_z_datapage.pdf', 'XLEZ Mileage Guarantee', '');
+			$(this).attr('target', '_blank');
+  			return false;
+		}
+		
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+			//console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+				if (ts == 0){
+				    $(".poster").removeClass('show'); 
+                    $(".page .header").removeClass('show'); 
+                    $(".page .list").removeClass('show');  
+                    $(".page .button").removeClass('show');
+                    $(".tire .background").removeClass('show');
+                    $(".page .footnote").removeClass('show'); 
+				}
+				if (ts > 0.25){
+				   $(".poster").addClass('show');  
+				}  
+				if (ts > 6){
+				   $(".page .header").addClass('show'); 
+				} 
+                if (ts > 10){
+				   $(".tire .background").addClass('show');
+				} 
+                if (ts > 12){
+				   $(".page .list").addClass('show');
+                   $(".page .footnote").addClass('show'); 
+				}
+				if (ts > 26.5){
+				   $(".page .button").addClass('show');
+				} 
+			}
+        }); 
+        
+        //-- build the page once the wipe is removed --//
+        buildPage = function() { 		
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+            
+            $(".menu.slide-in").on(transitionEvent, function(){            
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+             
+		/* iframe load and unload events */
+        $(window).load(function () {
+            audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+            
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+			
+            p.controller.setVar("introViewed", true);
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        }); 
+	});
+</script>
+</head>
+	
+<body>
+<div id="header">
+    <div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+        <h1>
+            <span class="headline sequence hide"><b>Guarantee</b></span>     
+        </h1>
+    </div>
+</div>
+<div id="guarantee">
+    <div class="poster">
+        <p class="background"></p>
+    </div>
+	<div class="page">
+    	<!-- Page content -->
+        <h1 class="header">Delivers confidence against road hazards and downtime</h1>
+        <p class="list">$200 credit if tire is taken out of service in first six months or before 50% of usable tread is used.<sup>1</sup></p>   
+        <a class='button' href="../../_media/docs/x_works_z_datapage_guarantee.pdf" target="_blank">
+            <p class="text">ROAD HAZARD GUARANTEE</p>
+            <div class="roll-state"></div>
+        </a>
+        <div class="footnote">
+            <p class="disclaimer"><b>1.</b> Visit <a href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank">MichelinTruck.com</a> for details.</p>
+        </div>
+    </div>
+    <div class="tire">
+        <p class="background">
+            <span class="badge">
+                <img src="../../_media/images/guarantee_badge.png" />
+            </span>
+        </p>
+    </div>
+</div>
+
+<div id="preload-audio">
+    <audio id="audio" src='_media/audio/Guarantee.mp3'></audio>
+ </div>   
+</body>	
+</html>

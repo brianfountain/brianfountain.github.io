@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+      <title>Michelin</title>
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="_player/ext/resources/css/ext-all.css" />
+	  <link rel="stylesheet" type="text/css" href="_css/player.css" />
+      <!--<link rel="stylesheet" type="text/css" href="_css/page.css" />-->
+	  <script type="text/javascript" src="_js/jquery.min.js"></script>
+      <script type="text/javascript" src="_js/tweenmax.min.js"></script>
+	  <script type="text/javascript" src="_js/jquery-ui-1.8.23.custom.min.js"></script>
+	  <script type="text/javascript" src="_player/ext/adapter/ext/ext-base.js"></script>
+	  <script type="text/javascript" src="_player/ext/ext-all.js"></script>
+	  <script type="text/javascript" src="_player/js/APIWrapper_bpt.js"></script>
+	  <script type="text/javascript" src="_player/js/io.js"></script>
+      <script type="text/javascript" src="_js/renderer.js"></script>
+	  <script type="text/javascript" src="_js/skin.js"></script>
+      <script type="text/javascript" src="_js/audio.js"></script>
+	  <script type="text/javascript" src="courseData.js"></script>
+           
+	  <!-- Add Custom JS References Here -->
+ 	  
+      <!-- Load Last -->
+	  <script type="text/javascript" src="_player/js/player.js"></script>
+	  
+	  <script type="text/javascript">
+		$(function() {
+            
+            var agent = "modern";
+            var isLoaded = false;
+            var currentAudio = "undefined"
+            var newAudio = "undefined";
+            var ez = "Expo.easeOut";
+            
+            $(window).load(function () {
+                if (getBrowser() == "ie"){
+                    $(".preloader .disc").removeClass("modern-loader").addClass("ie-loader");
+                    agent = "old";
+                } else {
+                    $(".preloader .disc").removeClass("ie-loader").addClass("modern-loader");
+                    agent = "modern";
+                }
+            });
+            
+            getBrowser = function (){
+                var iev=0;
+                var ieold = (/MSIE (\d+\.\d+);/.test(navigator.userAgent));
+                var trident = !!navigator.userAgent.match(/Trident\/7.0/);
+                var moz = !!navigator.userAgent.match(/Firefox\/24.0/);
+                var rv=navigator.userAgent.indexOf("rv:11.0");
+                if (ieold) iev=new Number(RegExp.$1);
+                if (navigator.appVersion.indexOf("MSIE 10") != -1) iev="ie";
+                if (trident&&rv!=-1) iev="ie";
+                if (moz==true) iev="ie";
+                
+                console.log(navigator.userAgent + " : " + moz + " : " + iev);
+                return iev;
+            }
+                        
+            $("#progressbar").progressbar({ value: 0 });
+			courseObj.preloader.init(); 
+                    
+            //transition end prefixes
+            var transitionEvent = setTransitionEvent();
+            function setTransitionEvent(){
+                var t,
+                el = document.createElement("faketransition");
+                var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+                for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+            } 
+            
+            startCourse = function() {
+                preloadAnimation();
+            }
+            
+            toggleLogo = function (state) {
+                if($("#logo").hasClass("hide") || state == "show"){
+                    $("#logo").removeClass("hide"); 
+                } else {
+                    $("#logo").addClass("hide"); 
+                }
+            }
+            
+            preloadAnimation = function() {
+                var tempAgent = getBrowser();
+                if(agent != "modern" || tempAgent == "ie"){
+                    checkFrame();
+                } else {
+                    TweenMax.fromTo('.loader-fill', 2, {css:{'stroke-dashoffset':600}}, {css:{'stroke-dashoffset':200},ease:ez, onComplete:checkFrame});
+                }
+            }
+            
+            //page transitions
+            addTransitionPage = function(pg) {  
+                currentAudio = audio.player.source;         
+                audio.player.fade(0.00);
+                $(".cover").removeClass("remove").addClass("add");
+                $(".preloader").removeClass("hide").addClass("show"); 
+                $(".cover.add").on(transitionEvent, function(){
+                    preloadAnimation();
+                    courseObj.gotoPageIndex(pg);
+                    $(".cover.add").off(transitionEvent);
+                });
+            };            
+            
+            checkFrame = function () {
+                var timer = setInterval(function(){ 
+                    if(isLoaded == true && newAudio != currentAudio && audio.player.ready == 1 ){
+                        //console.log("- Old File : " + currentAudio + " - New file : " + newAudio + " - Ready State : " + audio.player.ready);
+                        clearInterval(timer);
+                        removeTransitionPage();
+                    } else {                        
+                        //console.log("- Old File : " + currentAudio + " - New file : " + newAudio + " - Ready State : " + audio.player.ready);
+                        newAudio = audio.player.source;
+                        var sty =$('.loader-fill').css("stroke-dashoffset")
+                        var pct = parseInt(sty.split("px"));
+                        if (pct > 100 & agent == "modern"){
+                            TweenMax.to('.loader-fill', 0.25, {css:{'stroke-dashoffset':"-=5"},ease:ez}); 
+                        }
+                    }  
+                }, 500);
+            };
+            
+            // iframe sets value to true on load
+            isFrameLoaded = function(state) {
+                isLoaded = state;
+                return state
+            };
+                        
+            getDuration = function(){
+                var duration = $(".cover").css('transition-duration');
+                if(duration.length > 1){
+                    duration = duration[0];
+                }
+                return duration;
+            }
+            
+            removeTransitionPage = function (){
+                audio.player.fade(1.00);
+                TweenMax.to('.loader-fill', 0.75, {css:{'stroke-dashoffset':0},ease:ez, delay:0.25, onComplete:function(){
+                    $(".preloader").removeClass("show").addClass("hide"); 
+                    $(".preloader.hide").on(transitionEvent, function(){
+                        TweenMax.to('.loader-fill', 0.00, {css:{'stroke-dashoffset':600}});
+                        $(".preloader.hide").off(transitionEvent);
+                    });
+                    $(".cover").removeClass("add").addClass("remove");
+                    setTimeout(function(){ 
+                        var frame = document.getElementById("iframe-page");
+                        frame.contentWindow.buildPage();
+                    },  getDuration()/2*1000);
+                }}); 
+            } 
+            
+            // start the audio player script
+            audio.build();
+            
+            startCourse();
+            
+        });	
+          
+	</script>
+</head>
+
+<body class="no-js">
+<div id="bookmarkDialog" style="display:none"></div>
+<div id="transition">
+    <div class="cover add"></div>
+    <div class="preloader">
+        <div class="disc">
+            <svg class="loader" viewbox="0 0 180 180">
+                <path class="loader-track" d="M90, 90 m -75, 0 a 75, 75 0 1, 0 150, 0 a 75, 75 0 1, 0 -150, 0"/> 
+                <path class="loader-fill"  d="M90, 90 m 75, 0 a -75, 75 0 1, 0 -150, 0 a 75, 75 0 1, 0 150, 0"/>
+                <path id="ie-progress" class="loader-progress" d="M90, 90 m -75, 0 a 75, 75 0 1, 0 150, 0 a 75, 75 0 1, 0 -150, 0"/>
+            </svg>
+            <p class="preload-img"></p>
+        </div>
+    </div>
+</div>
+<div id="logo" class="show"></div>
+<div id="mask">
+    <div id="media" class="hide">
+        <div id="cc-text">
+            <p class="cc-remove"></p>
+        </div>
+        <audio id="audio" preload="auto" src='' width="100%" height="100%"></audio>
+        <div id="scrubber">
+            <p class="play-pause">
+                <span class="icon">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 40 40" preserveAspectRatio="none">
+                        <path id="play-icon" d=""/>
+                    </svg>
+                </span>
+            </p>
+            <p class="progress-bar">
+                <span class="progress"></span>
+            </p>
+            <p class="cc-button">
+                <span class="icon">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 40 40" preserveAspectRatio="none">
+                        <path id="captions-icon" d=""/>
+                    </svg>
+                </span>
+            </p>
+        </div>
+        <div id="messages">
+            <p class="info"></p>
+        </div>
+    </div>
+    <!-- Preloader -->
+    <div id="splashAndPreload">
+        <div id="mcLoadingScreen">
+            <div id="mcLoadingStrip">
+               <!-- <img src="_media/images/loadingLogo.png" style="width:298px" alt="Uniroyal Tire" />
+                <p class="mcLoading"><em>Course loading. Please wait.</em></p>-->
+                <div id="progressbar"></div>
+            </div>
+        </div>
+    </div>
+    <div id="nonScoredCompletionContent"></div>
+</div>
+</body>
+</html>
+
+
+
+
+
