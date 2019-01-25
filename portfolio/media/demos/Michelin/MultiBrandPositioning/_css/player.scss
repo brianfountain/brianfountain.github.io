@@ -1,0 +1,285 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/breakpoints";
+
+
+* { margin:0; padding:0;}
+
+body, #contentArea, .x-panel-body {margin:0px auto; background-color:#040d4e; transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); }
+
+#logo {
+    display:block; width:195px; height:80px; position:absolute; right:0px; z-index:100; opacity:1.00; @include transition((opacity,transform), 2s, $circ, 1s);
+    
+    background:url(../_media/images/logo.png) top right no-repeat transparent;
+    
+    /*- breakpoints -*/
+    @include break(tablet){background-size:75% auto; top:15px;}
+    @include break(tablet, $portrait){background-size:75% auto; top:15px;}
+    @include break(desktop,$desktop){background-size:80% auto; top:20px;}
+    @include break(desktop,$sm-width){background-size:90% auto; top:20px;}
+    @include break(desktop,$md-width){background-size:100% auto; top:20px;}
+    
+    @include break(desktop, $desktop + 1, $sm-height){background-size:75% auto; top:10px;}
+    
+    &.hide {@include prefix(opacity, 0.00); @include prefix(transform, translate(100%,0%)); @include transition((opacity,transform), 1s, $circ, 0s);}
+}
+.superscript { font-size: .7em; }
+
+#mask {
+    display:inline-block; margin:0px auto; text-align:center;    
+    #media {
+        position:fixed; z-index:1000; bottom:0px; left:0px; display:inline-block;
+        @include prefix(background,linear-gradient(to top, rgba(0,0,0,0.50) 0%,rgba(0,0,0,0.25) 40%,rgba(0,0,0,0.00) 80%));
+        @include transition((opacity, transform), 0.50s, $ease-in, 0s); 
+        
+        /*- breakpoints -*/
+        @include break(tablet){width:100%; height:110px; padding: 0; margin:0px auto; text-align:center;}
+        @include break(desktop, $desktop){width:100%; height:110px; padding:25px 0px 0px 0px; margin:0px auto; text-align:center;}
+        @include break(desktop, $sm-width){width:100%; height:125px; padding:25px 0px 0px 0px; margin:0px auto; text-align:center;}
+        
+        @include break(desktop, $desktop + 1, $md-height){width:100%; height:100px; padding:15px 0px 0px 0px; margin:0px auto; text-align:center;}
+        
+        &.hide {@include prefix(opacity,0.00); @include prefix(transform,translateY(100%));}
+        &.show {@include prefix(opacity,1.00); @include prefix(transform,translateY(0%));}
+        
+        #audio{}
+        #scrubber {
+            display:inline-block; padding:0px; vertical-align:middle; @include transition(all, 0.50s, $circ, 0s);
+            
+            /*- breakpoints -*/
+            @include break(tablet){width:100%; margin:0px auto; @include prefix(transform,translate(0px, 20%));}
+            @include break(tablet, $portrait){width:100%; margin:0px auto; @include prefix(transform,translate(0px, 20%));}
+            @include break(desktop, $desktop){width:80%; margin:0px 10%; @include prefix(transform,translate(0px, 0%));}
+            
+            @include break(desktop, $desktop + 1, $md-height){width:80%; margin:0px 10%; @include prefix(transform,translate(0px, 5px));}
+            
+            .play-pause {
+                display:inline-block; vertical-align:middle; background-color:transparent;
+                
+                /*- breakpoints -*/
+                @include break(tablet){width:10%; height:30px; padding:0px;}
+                @include break(desktop, $desktop){width:10%; height:30px; padding:0px;}
+                @include break(desktop, $sm-width){width:10%; height:40px; padding:0px;}
+                
+                @include break(desktop, $desktop + 1, $md-height){width:10%; height:30px; padding:0px;}
+                
+                .icon {
+                    display:inline-block; text-align:center; cursor:pointer; @include transition(all,0.50s,$circ, 0s);
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){width:30px; height:30px; }
+                    @include break(desktop, $desktop){width:30px; height:30px; }
+                    @include break(desktop, $sm-width){width:40px; height:40px;}
+                    @include break(desktop, $desktop + 1, $md-height){width:30px; height:30px;}
+                    
+                    svg path{fill:rgba($white,0.80); @include transition(all,0.50s,$circ, 0s);}
+                }
+                
+                .icon:Hover {    
+                    background-color:rgba($grey,0.25); border-radius:2px;
+                    > svg path{fill:rgba($white,1.00);}
+                }
+            }  
+            .progress-bar {
+                display:inline-block; box-sizing:border-box; vertical-align:middle; background-color:rgba(255, 255, 255, 0.50); @include transition(all,0.50s, $circ, 0s);
+                
+                /*- breakpoints -*/
+                @include break(tablet){width:70%; height:6px; padding:0px;}
+                @include break(desktop, $desktop){width:70%; height:6px; padding:0px;}
+                @include break(desktop, $sm-width){width:70%; height:8px; padding:0px;}
+                
+                @include break(desktop, $desktop + 1, $md-height){width:70%; height:6px; padding:0px;}
+                
+                .progress {display:inline-block;height:100%; float:left; margin:0px; padding:0px; background-color:rgba($grey,0.50); }
+            }
+            .cc-button {
+                display:inline-block; vertical-align:middle; @include transition(all, 0.50s, $circ, 0s); @include transition(all,0.50s,$circ, 0s);
+                
+                /*- breakpoints -*/
+                @include break(tablet){width:10%; height:30px;}
+                @include break(desktop, $desktop){width:10%; height:30px; padding:0px;}
+                @include break(desktop, $sm-width){width:10%; height:40px; padding:0px;}
+                
+                .icon {
+                    display:inline-block; text-align:center; cursor:pointer; @include transition(all,0.50s,$circ, 0s);
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){width:30px; height:30px; }
+                    @include break(desktop, $desktop){width:30px; height:30px; }
+                    @include break(desktop, $sm-width){width:40px; height:40px;}
+                    @include break(desktop, $desktop + 1, $md-height){width:30px; height:30px;}
+                    
+                    svg path{fill:rgba($white,0.80); @include transition(all,0.50s,$circ, 0s);}
+                }
+                
+                .icon:Hover {    
+                    background-color:rgba($grey,0.25); border-radius:2px;
+                    > svg path{fill:rgba($white,1.00);}
+                }
+            } 
+            &.replay{
+                .play-pause, .progress-bar, .cc-button {@include transition(all, 0.50s, $circ, 0.25s);}
+                .progress-bar {width:0px; height:8px; opacity:0.00;}
+                .cc-button {width:0px; opacity:0.00;}
+            }
+        }
+    }
+}
+
+#cc-text { 
+    display:block; text-align:center; margin:0px auto; position:relative; z-index:1500; overflow:hidden;
+    
+    /*- breakpoints -*/
+    @include break(tablet){min-height:30px; max-height:100px; @include prefix(transform,translate(0px, 0px));}
+    @include break(desktop, $portrait){min-height:30px; max-height:100px; @include prefix(transform,translate(0px,5px));}
+    @include break(desktop, $desktop){min-height:30px; max-height:100px; @include prefix(transform,translate(0px,5px));}
+    @include break(desktop, $sm-width){min-height:40px; max-height:150px; @include prefix(transform,translate(0px,-10px));}
+    
+    @include break(desktop, $desktop + 1, $md-height){min-height:30px; max-height:100px; @include prefix(transform,translate(0px, -5px));}
+
+    p {
+        display:inline-block; width:auto; margin:0px auto; padding:0px; @include transition((opacity,transform), 1s, $circ, 0s); 
+        span {
+            display:inline-block; padding:8px 15px; font-family:$body-text; background-color:rgba(0,0,0,0.30); font-weight:normal; color:$white; @include prefix(border-radius, 1px);
+            sup{font-size:50%;}
+        }
+        
+        /*- breakpoints -*/
+        @include break(tablet){ font-size:0.85em;}
+        @include break(tablet, $portrait){font-size:0.75em;}
+        @include break(desktop, $desktop){font-size:0.85em;}
+        @include break(desktop, $sm-width){font-size:1.10em;}
+        @include break(desktop, $desktop + 1, $md-height){font-size:0.85em;}
+        
+        &.cc-set {@include prefix(opacity,1.00); @include prefix(transform,translate(0px,0px));}
+        &.cc-remove {@include prefix(opacity,0.00); @include prefix(transform,translate(0px,100px));}
+    }    
+}
+
+#messages {
+    display:block; width:100%; text-align:center; margin:0px auto;  box-sizing:border-box;
+    position:absolute; bottom:0px; left:0px; z-index:2000; overflow:hidden; background-color:rgba($royal, 0.65); @include transition(all, 1.00s, $circ, 0s);
+    
+    /*- breakpoints -*/
+    @include break(tablet){min-height:26px; padding:6px 0px;}
+    @include break(desktop, $desktop){min-height:26px; padding:6px 0px;}
+    @include break(desktop, $desktop + 1, $md-height){min-height:15px; padding:3px 0px;}
+    
+    &.open {@include prefix(transform, translate(0%, 0%)); @include prefix(opacity, 1.00);}
+    
+    &.close {@include prefix(transform, translate(0%, 100%)); @include prefix(opacity, 0.00);}
+    
+    .info {font-size:0.85em; font-family:$body-text; color:$white;}
+}
+
+#transition {
+    
+	.cover{
+        width:200%; height:150%; position:absolute; top:0px; z-index:900; background-color:$blue; @include prefix(transform,skewX(-20deg)); margin:0px; box-shadow:0px 10px 30px 10px rgba(0,0,0,0.50);
+        &.add {
+            opacity:1.00; left:-20%; @include transition((left,opacity),(3s,2s),$circ,0s); /*transition:left 3s $circ 0s, opacity 2s $circ 0s;*/
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+                        
+            @include break(tablet){left:-20%;}
+            @include break(tablet, $portrait){left:-40%;}
+                        
+            @include break(desktop){left:-20%;}
+        
+        }
+        &.remove {
+            opacity:0.00; left:-220%; @include transition((left,opacity), (3s,4s), $circ,0s);
+            
+            /*- breakpoints -*/                
+            @include break(tablet){left:-220%;}
+            @include break(tablet, $portrait){left:-240%;}
+            @include break(desktop, $desktop){left:-220%;}
+        }
+    } 
+    .preloader {
+        display:inline-block; width:200px; height:200px; position:absolute; top:45%; left:50%; z-index:950; margin:-100px 0px 0px -100px; text-align:center;  @include prefix(transform-origin, 50%, 50%);
+                
+        &.hide {
+            opacity:0.00; @include prefix(transform, scale(0.00)); @include prefix(filter,blur(2px)); @include transition((transform, opacity,filter), 0.50s, $circ, 0.00s);
+        }
+        &.show {
+            opacity:1.00; @include prefix(transform, scale(1.00)); @include prefix(filter,blur(0px)); @include transition((transform, opacity,filter), 0.50s, $circ, 1s);
+        }
+        .disc {
+            display:inline-block; width:200px; height:200px; margin:0px auto; overflow:hidden;
+
+            svg.loader{
+                width:100%; height:100%;  @include prefix(transform, scaleY(-1) rotate(90deg)); 
+                position:relative; z-index:955;
+                
+                path {
+                    stroke-width:14px; fill:none;
+                    &.loader-track{
+                        stroke:rgba($navy, 1.00); fill:$navy;
+                    }
+                }
+            }
+            
+            &.modern-loader {
+                 border-radius:50%; padding:15px 0px;
+                
+                .preload-img {
+                    display:inline-block; width:167px; height:167px; margin:0px; padding:0px; border-radius:50%;  
+                    background:url("../_media/images/bib.jpg") center center no-repeat transparent;
+                    position:relative; top:-188px; z-index:956;
+                }
+                svg.loader{
+                   path {
+                        &.loader-fill {
+                            stroke:$yellow; stroke-dasharray:600; stroke-dashoffset:600;                    
+                        } 
+                        &.loader-progress {
+                           display:none; visibility:hidden; @include prefix(opacity,0.00);         
+                        } 
+                    }
+                }
+            }
+            
+            &.ie-loader {
+                width:200px; height:200px; padding:0px;
+                background:url("../_media/images/preload_sheet.jpg") 0px 0px no-repeat $blue;
+                animation: preload 1.5s steps(12) infinite;
+                
+                svg.loader{
+                    display:none;
+                    path{
+                        &.loader-fill {
+                            display:none; visibility:hidden; @include prefix(opacity,0.00);                  
+                        } 
+                        &.loader-progress {
+                           stroke:rgba($royal, 0.70); stroke-dasharray:200; stroke-dashoffset:300; transform-origin:center;          
+                        } 
+                    }
+                }
+            }
+        } 
+		.loadingMessage { width: 1000px; height: 300px; z-index: 1000; position: absolute; top: 225px; text-align: center; margin: -100px 0 0 -200px; color: #005aaa; font-style: italic; font-size: .8em; @include prefix(opacity, 0); @include transition((opacity), 0.50s, $ease-in, 0s); overflow: hidden;
+		img {
+			width: 100%;
+    		height: 100%;
+		}
+		&.show {
+			@include prefix(opacity, 1.00);
+		}
+		&.hide {
+			@include prefix(opacity, 0);
+		}
+		p {position: relative; top: 154px;}
+	}
+		
+    }
+}
+
+#bookmarkDialog {
+	position: relative; background: $grey; top: 50%; left: 50%; margin: -25% 0 0 -25%; width: 50%; height: 50%; padding: 5%; box-shadow:0px 10px 30px 10px rgba(0,0,0,0.50); 
+	&.fadeIn {@include prefix(transform, translate(0%, 0%)); @include prefix(opacity, 1.00);}
+    &.fadeOut {@include prefix(transform, translate(0%, 100%)); @include prefix(opacity, 0.00);}
+}

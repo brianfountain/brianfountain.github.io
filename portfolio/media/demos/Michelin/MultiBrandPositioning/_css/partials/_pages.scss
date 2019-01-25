@@ -1,0 +1,215 @@
+@import "color";
+@import "type";
+@import "transitions";
+@import "prefixes";
+@import "breakpoints";
+
+/* Course page adoption for adaptive design consideration */
+#outside {
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    top: 50%;
+    left: 50%;
+    margin: -370px 0 0 -640px;
+	overflow: hidden;
+	// One over #media container in player
+	z-index: 1004;
+    /*
+	@media screen and (min-width: 1281px) and (max-width: 1450px) {
+        width: 1024px; height: 576px; margin: -286px 0 0 -512px;
+    }
+	*/
+	
+
+    #inside {
+        position: relative;
+        width: 1280px;
+        height: 720px;
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+        /*
+		@media screen and (min-width: 1281px) and (max-width: 1450px) {
+            width: 1024px; height: 576px;
+        }
+		*/
+    }
+} 
+
+
+/*-- title sequence --*/
+#header {
+    display:block; position:absolute; left:0px; z-index:99999999; 
+    
+    /*- breakpoints -*/        
+    @include break(tablet){top:20px; width:80%;}
+    @include break(tablet,portrait){top:40px; width:60%;}
+    @include break(desktop, $desktop){top:20px; width:80%;}
+    @include break(desktop, $sm-width){top:30px; width:80%;}
+    @include break(desktop, $desktop + 1, $md-height){top:15px; width:80%;}
+    
+    .title {
+        height:30px; margin:0px; padding:0px; overflow:hidden; vertical-align:middle;
+        
+        /*- breakpoints -*/   
+        @include break(tablet){}
+        @include break(tablet,portrait){}
+        @include break(desktop){}
+        
+        .menu {
+            display:inline-block; margin:0px 0px 0px -80px; padding:0px; height:40px; background-color:$royal; 
+            
+            /*- breakpoints -*/                
+            @include break(tablet){width:200px;}
+            @include break(tablet, $portrait){width:180px;}
+            @include break(desktop, $desktop){width:200px;}
+            
+            &.slide-in {
+                @include prefix(transform, translateX(0px) skewX(-20.5deg)); opacity:1.00; overflow:hidden; @include transition(all, 1s, $circ, 0s);
+                .menu-icon {
+                    width:40px; opacity:1.00;
+                }
+            }
+            &.slide-out {
+                @include prefix(transform, translateX(-200px) skewX(-20.5deg)); opacity:0.00; @include transition(all, 1s, $circ, 1s);
+                .roll-state{
+                    display:none;
+                }
+                .menu-icon {
+                    width:0px; opacity:0.00;
+                }                
+            }
+            .menu-icon {
+                display:inline-block; height:30px; margin:0px 0px 0px 20px; position:relative; left:50%; z-index:3; @include prefix(transform,skewX(20.5deg)); @include transition(all, 1s, $circ, 1s);  
+                svg path{fill:#fff; cursor:pointer;}
+                p {font-family: $michelin-black; color:#fff; margin:5px 0px; padding:0px; @include prefix(transform, translate(-25%, 0%));}
+            }
+            .roll-state {
+                width:100%; height:40px; margin:0px; position:relative; top:-40px; left:100%; z-index:2; opacity:0.00; background-color:$yellow; @include transition(all, 0.50s, $circ, 0s); 
+            }
+        }
+        .menu.slide-in:Hover {  
+                cursor:pointer; 
+                > .roll-state{width:100%; left:0px; opacity:1.00;}
+                > .menu-icon svg path{fill:$navy; @include transition(all, 1s, $circ, 0s);}
+                > .menu-icon p {color:$navy;}
+        }
+        h1 {
+            display:inline-block; margin:0px 0px 0px 0px; padding:0px; height:30px; width:100%; color:$royal; position:absolute; top:0px; overflow:hidden; 
+            span.headline {
+                display:inline-block; width:100%; position:absolute; top:0px;  white-space:nowrap;
+                
+                /*- breakpoints -*/            
+                @include break(tablet){font-size:0.75em; padding:2px 0px 0px 0px; margin:0px 0px 0px 15px;}
+                @include break(tablet,portrait){font-size:0.65em; width:550px; padding:2px 0px 0px 0px; margin:0px 0px 0px 15px; }
+                @include break(desktop, $desktop){font-size:0.75em; padding:0px; margin:0px 0px 0px 15px;}
+                @include break(desktop, $sm-width){font-size:0.85em; padding:0px; margin:-1px 0px 0px 15px;}
+                
+                @include break(desktop, $desktop + 1, $md-height){font-size:0.65em; padding:0px; margin:3px 0px 0px 15px;}
+                
+                &.sequence {
+                    @include transition(all,1s,$circ, 0.25s);
+
+                    &.hide{
+                        @include prefix(transform,translate(0%,100%)); @include prefix(opacity,0.00);
+                    }
+                    &.show {
+                        @include prefix(transform,translate(0%,0%)); @include prefix(opacity,1.00);
+                    }
+                }
+            }
+        }
+
+        .fleetInfo {
+            color: $blue !important; font-size: 1.4em;
+			font-family: $michelin-regular; color: #042350;
+              
+            &.sequence {
+                @include transition(all ,1s, $circ, 0.50s);
+
+                &.hide{
+                    @include prefix(transform,translate(5%, 130%)); @include prefix(opacity,0.00);
+                }
+                &.show {
+                    @include prefix(transform,translate(9%, 130%)); @include prefix(opacity,1.00);
+                }
+            }
+        }
+        
+        .introText {
+            color: $navy; font-size: 1em;
+            
+            &.sequence {
+                @include transition(all ,1s, $circ, 0.75s);
+
+                &.hide{
+                    @include prefix(transform,translate(5, 130%)); @include prefix(opacity,0.00);
+                }
+                &.show {
+                    @include prefix(transform,translate(9%, 130%)); @include prefix(opacity,1.00);
+                }
+            }
+        }
+    }
+}
+
+.splitColumn {
+	float: left;
+    width: 47%;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.triColumn { float: left; width: 33%; }					
+				
+.cap { text-transform: uppercase; }
+.bold { font-weight: 700; }
+.fLeft{ float: left }
+.fRight{ float: right }
+
+.footnote {
+    .disclaimer {
+        @include transition(all,1s,$circ, 0.25s);
+		font-family:$body-text; font-size:0.60em; color:rgba($grey,0.75); width:100%; display:inline-block; margin:3px 0px;
+        a {font-weight:bold; color:inherit; text-decoration:none; cursor:pointer; padding:2px 4px 1px 2px;}
+        a:Hover {color:$royal; text-decoration:none; background-color:rgba($white,0.50);}
+        
+        &.show { @include prefix(opacity,1.00);}
+        &.hide { @include prefix(opacity,0.00);}
+    }
+}
+
+.michelin-button {
+    display:inline-block; height:auto; width:auto; margin:0px; padding:0px; position:relative; z-index:5; cursor:pointer; overflow:hidden;
+    text-decoration:none; text-align:center; color:$white; background-color:$royal; outline:0;
+            
+    @include prefix(transform, skewX(-20.5deg) translate(-50%, 0%));
+    @include prefix(opacity, 0.00);  
+            
+    &.show {
+        @include transition((opacity, transform),1s,$circ,0s);
+        @include prefix(transform, skewX(-20.5deg) translate(-10%, 0%));
+        @include prefix(opacity, 1.00); 
+    }
+            
+    .text {
+        display:inline-block; position:relative; top:0px; margin:10px; z-index:3; 
+        font-size:0.95em; font-family:$michelin-black; @include prefix(transform, skew(20.5deg));
+                
+        /*-- breakpoints -- */
+        @include break(tablet, $portrait){font-size:0.70em;}
+        @include break(desktop, $desktop){font-size:0.85em;}
+        @include break(desktop, $xl-width){font-size:0.95em;}
+    }    
+    .roll-state {
+        display:inline-block; width:100%; height:100%; margin:0px; position:absolute; top:0px; left:-100%; z-index:2; opacity:0.00; background-color:$yellow; 
+        @include transition(all, 0.50s, $circ, 0s);
+    }
+}
+	
+.michelin-button:hover {  
+    cursor:pointer;
+    .roll-state{left:0px; opacity:1.00; }
+    .text{color:$navy;}
+}
