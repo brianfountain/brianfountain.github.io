@@ -1,0 +1,771 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/pages";
+
+$sm-viewport:678px;
+
+body {margin:0px auto; background-color:$light-grey;}
+
+#preload-audio{display:none;}
+
+#features {
+    display:block; width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; box-sizing:border-box; overflow:hidden;
+    
+    /*- breakpoints -*/
+    @include break(phone){}
+    @include break(tablet){padding:80px 0px 0px 0px;}
+    @include break(tablet, $portrait){padding:120px 0px 0px 0px;}
+    
+    @include break(desktop, $desktop){padding:80px 0px 0px 0px;}
+    @include break(desktop, $xl-width){padding:100px 0px 0px 0px;}
+    
+    .section-title {
+        display:block; height:30px; width:100%; margin:0px auto; padding:0px; color:$royal; text-align:center; overflow:hidden;
+        
+        /*- breakpoints -*/
+        @include break(phone){}
+                        
+        @include break(tablet){font-size:1.30em;}
+        @include break(tablet, $portrait){font-size:1.30em;}
+                        
+        @include break(desktop, $desktop){font-size:1.30em;}
+        @include break(desktop, $xl-width){font-size:1.75em;}
+        
+        span {
+            display:inline-block; margin:0px; padding:0px; font-family:inherit; font-size:inherit; color:inherit; @include transition(all,0.50s, $circ, 0s);
+            &.slide-in {@include prefix(transform, translateY(0%)); opacity:1.00; }
+            &.slide-out {@include prefix(transform, translateY(100%)); opacity:0.00;}
+        }
+    }
+    .progress {
+        display:block; width:100%; height:auto; padding:0px; text-align:center;
+        
+        /*- breakpoints -*/
+        @include break(tablet){margin:-10px 0px 0px 0px;}
+        
+        @include break(desktop, $desktop){margin:-10px 0px 0px 0px;}
+        @include break(desktop, $xl-width){margin:10px 0px 0px 0px;}
+        
+        p {
+            display:inline-block; @include prefix(transform,skewX(-20deg)); background-color:$white;  overflow:hidden;
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){width:30px; height:6px; margin:0px 5px; }
+            
+            @include break(desktop, $desktop){width:30px; height:6px; margin:0px 5px;}
+            @include break(desktop, $xl-width){width:30px; height:9px; margin:0px 5px;}
+            
+            span {
+                display:inline-block; float:left; width:100%; height:100%; padding:0px; margin:0px;
+            }
+            &.active{
+                span {  
+                    @include prefix(transform,translateX(0px)); background-color:$yellow; @include transition(all,1s,$circ,0s); 
+                }
+            }
+            &.inactive {
+                span {
+                    @include prefix(transform,translateX(-50px)); background-color:$white; @include transition(all,1s,$circ,0s);
+                }
+            }
+        }                
+    }
+    
+    .next, .prev {
+        position:absolute; top:50%; z-index:10000; padding:0px; cursor:pointer;
+        
+        /*- breakpoints -*/
+        @include break(phone){}
+        @include break(tablet){width:40px; height:80px; margin:-40px 0px 0px 0px;}
+        @include break(desktop){width:60px; height:100px; margin:-50px 0px 0px 0px;}
+        
+        svg path {stroke:#fff; stroke-width:6px; fill:none; stroke-linecap:round;}
+    }
+    
+    .next {
+        @include transition(all, 1s, $circ, 0s);
+        &.slide-in {
+                    
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){right:1%;}
+            @include break(desktop){right:3%;}
+            
+        }
+        &.slide-out {
+            right:-10%;
+        }
+    }
+    
+    .prev {
+        @include transition(all, 1s, $circ, 0s);
+        &.slide-in {
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){left:1%;}
+            @include break(desktop){left:3%;}
+            
+        }
+        &.slide-out {
+            left:-10%;
+        } 
+    }
+    
+    .tire-display {
+        display:block; width:100%; height:100%; position:absolute; bottom:0px; margin:0px auto; padding:0px;
+                
+        .slide {
+            display:inline-block; height:100%; padding:0px; position:absolute; top:0px; left:0px;
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){width:96%; margin:0px 2%;}
+            @include break(desktop){width:80%; margin:0px 10%;}
+            
+            &.out {@include prefix(animation,slidesOut 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.in {@include prefix(animation,slidesIn 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.set {@include prefix(transform,translateX(100%)); opacity: 0.00;}
+            &.reverse.out {@include prefix(animation,slidesOutReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.reverse.in {@include prefix(animation,slidesInReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+        
+            /*.disclaimer {font-size:0.65em; font-style:italic; font-weight:normal; color:$grey;}*/
+            .label {
+                color:$white; font-family:$michelin-black; margin:0px; padding:0px;
+                
+                /*- breakpoints -*/
+                @include break(tablet){font-size:1.10em;}
+                @include break(desktop){font-size:1.3em;}
+            }
+            .list {
+                font-size:1.10em; color:$grey; font-family:$body-text; margin:0px; padding:0px;
+                li {font-size:inherit; color:inherit; font-family:inherit; margin:15px 0px; padding:0px;}
+            }
+            .diagram {display:inline-block; z-index:1000;}
+            .vectors {
+                width:200px; height:200px;
+                g {
+                    polyline {stroke:#fff; stroke-width:1.5px; fill:none; /*stroke-linecap:round;*/}
+                    circle {stroke:#fff; stroke-width:0px; fill:#fff; /*stroke-linecap:round;*/}
+                }
+                
+            }
+             
+            
+            /*--- first slide ---*/
+            &.one {
+                .tire {
+                    display:block; width:100%; height:80%; position:absolute; bottom:0px; text-align:center; margin:0px; opacity:0.00; @include transition(all, 1s, $circ, 0s);
+                                        
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translate(0%,0%)); 
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet, $portrait){@include prefix(transform,translate(0%,10%));}
+                    }
+                    &.slide-down {
+                        @include prefix(transform,translateY(15%));
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet, $portrait){@include prefix(transform,translate(0%,20%));}
+                    }
+                    img {display:block; height:100%; margin:0px auto;}
+                }
+                .callout {
+                    display:block; position:absolute; top:0%; left:50%; z-index:100; text-align:center; margin:0px; opacity:0.00;  @include transition(all, 1s, $circ, 0s); @include prefix(transform-origin, 0% 50%);
+                    
+                    /*- breakpoints -*/
+                    @include break(phone){}
+                    @include break(tablet){width:300px; @include prefix(transform,scale(0) translate(-50%,65%));}
+                    @include break(desktop){width:400px; @include prefix(transform,scale(0) translate(-50%,0%));}
+                        
+                    img {display:block; width:80%; height:auto; margin:0px auto; opacity:0.00;}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,scale(1) translate(-50%,65%));
+                        
+                        /*- breakpoints -*/                    
+                        @include break(tablet, $portrait){@include prefix(transform,scale(1) translate(-50%,100%));}
+                
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+                .sticker {
+                    position:absolute; text-align:center; opacity:0.00;
+                    
+                    /*- breakpoints -*/
+                    @include break(phone){}
+                    @include break(tablet){top:50%; right:40%; width:250px; @include prefix(transform,translate(125%,0%) scale(0));}
+                    
+                    @include break(tablet, $portrait){top:30%; right:40%; width:200px; @include prefix(transform,translate(0%,0%) scale(0));}
+                    
+                    @include break(desktop){top:40%; right:45%; width:350px; @include prefix(transform,translate(125%,0%) scale(0));}
+                    
+                    img {width:80%; height:auto; margin:0px; padding:0px; opacity:0.00;}
+                    
+                    .disclaimer {opacity:0.00; text-align:center; margin:0px 10px;}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translate(125%,0%) scale(1)); @include transition(all, 1s, $circ, 0s);
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet, $portrait){@include prefix(transform,translate(120%,-100%) scale(1));}
+                        
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                        .disclaimer {
+                            opacity:1.00; @include transition(all, 1s, $circ, 1s);
+                        } 
+                    }
+                }
+            }
+            /*--- second slide ---*/
+            &.two {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:65%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    
+                    @include break(desktop, $desktop){height:65%;}
+                    @include break(desktop, $lg-width){height:70%;}
+                    
+                    &.cutaway { 
+                        @include transition(all,1s,$circ,0s);
+                        &.hide{opacity:0.00}
+                    }
+                    &.tread {
+                        opacity:0.00; @include prefix(transform,translate(0%, 150%)); @include transition(all, 1s, $circ, 0s);
+                        &.show {
+                            opacity:1.00; @include prefix(transform,translate(0%,0%));
+                        }
+                    }
+                    &.rib { 
+                        @include transition(all,1s,$circ,0s);
+                        &.hide {opacity:0.00; @include prefix(transform,translate(100%,0%));}
+                        &.show {
+                            opacity:1.00; @include prefix(transform,translate(0%,0%));
+                        }
+                    }
+                    img { display:block; height:100%; margin:0px auto;}
+                }
+                .callout {
+                    display:block; position:absolute; top:-600px; left:50%; z-index:100; width:400px; text-align:center; margin:0px; opacity:0.00; @include prefix(transform,scale(0) translateX(-50%)); @include transition(all, 1s, $circ, 0s); @include prefix(transform-origin, 0% 50%);
+                    img {display:block; width:80%; height:auto; margin:0px auto; opacity:0.00; @include prefix(transform,translateX(-30px));}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,scale(1) translateX(-50%));
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+                .diagram {
+                     &.stiffness {
+                        position:absolute; top:50%; right:50%; opacity:0.00;  @include transition(opacity,1s,$circ,0s);
+                         
+                        /*- breakpoints -*/
+                        @include break(tablet){@include prefix(transform,translate(70%, -70%));}
+                        @include break(tablet, $portrait){@include prefix(transform,translate(55%, -60%));}  
+                        
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(50%, -75%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(80%, -85%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(55%, -95%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(50%, -95%));}
+                         
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                         
+                        .label {
+                            &.stiffness {
+                                position:relative; left:0px; opacity:0.00; @include transition(opacity,1s,$circ,0.50s);
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet){top:-155px; @include prefix(transform,translate(60%,-60%));}
+                                @include break(desktop, $desktop){top:-150px; @include prefix(transform,translate(45%,-70%));}
+                                @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(60%,-65%));}
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;
+                            
+                            .label {
+                                &.stiffness {
+                                    opacity:1.00;
+                                }
+                            }
+                        }  
+                    }
+                    &.groove {
+                        position:absolute; top:50%; right:50%; opacity:0.00;  @include transition(opacity,1s,$circ,0s);
+                         
+                        /*- breakpoints -*/                    
+                        @include break(tablet){@include prefix(transform,translate(100%, -85%));}
+                        @include break(tablet, $portrait){@include prefix(transform,translate(-30%,-80%));}
+                        
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(100%, -75%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(90%, -75%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(95%, -90%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(90%, -95%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(105%, -100%));}
+                         
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                         
+                        .label {
+                            &.groove {
+                                position:relative; left:0px; opacity:0.00; 
+                                @include transition(opacity,1s,$circ,0.50s);
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet){top:-155px; @include prefix(transform,translate(75%,-60%));}
+                                @include break(desktop, $desktop){top:-150px; @include prefix(transform,translate(65%,-65%));}
+                                @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(75%,-60%));}
+                                
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;  
+                            
+                            .label {
+                                &.groove {
+                                    opacity:1.00;
+                                }
+                            }
+                        }  
+                    }
+                    &.sipes {
+                        position:absolute; top:50%; right:50%; opacity:0.00;  @include transition(opacity,1s,$circ,0s);
+                        
+                        /*- breakpoints -*/                    
+                        @include break(tablet, $landscape){@include prefix(transform,translate(135%, -75%));}
+                        @include break(tablet, $portrait){@include prefix(transform,translate(50%,-80%));}                    
+                        
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(130%, -75%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(140%, -75%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(145%, -95%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(160%, -90%));}
+                         
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                         
+                        .label {
+                            &.sipes {
+                                position:relative; left:0px; opacity:0.00; @include transition(opacity,1s,$circ,0.50s);
+                                
+                                /*- breakpoints -*/
+                                @include break(tablet){top:-155px; @include prefix(transform,translate(70%,-60%));}
+                                
+                                @include break(desktop, $desktop){top:-150px; @include prefix(transform,translate(60%,-70%));}
+                                @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(75%,-65%));}
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;
+                            
+                            .label {
+                                &.sipes {
+                                    opacity:1.00;
+                                }
+                            }
+                        }  
+                     }
+                    
+                }
+            }
+            
+            &.three {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:65%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    
+                    @include break(desktop, $desktop){height:65%;}
+                    @include break(desktop, $lg-width){height:70%;}
+                    
+                    &.cutaway { 
+                        @include transition(all,1s,$circ,0s);
+                        &.hide{opacity:0.00}
+                        img { display:block; height:100%; margin:0px auto;}
+                    }
+                    &.tread {
+                        opacity:0.00; @include prefix(transform,translate(150%, 10%) rotate(90deg)); @include transition(all, 3s, $circ, 0s);
+                        &.show {
+                            opacity:1.00; @include prefix(transform,translate(0%, 10%) rotate(0deg));
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet){@include prefix(transform,translate(0%, 10%) rotate(0deg));}
+                            @include break(tablet,$portrait){@include prefix(transform,translate(0%, 30%) scale(1.50) rotate(0deg));}
+                            
+                            @include break(desktop){@include prefix(transform,translate(0%, 10%) rotate(0deg));}
+                            
+                        }
+                        img { display:block; width:90%; margin:0px auto;}
+                    }
+                    
+                }
+
+                .diagram {
+                     &.casing {
+                        position:absolute; top:50%; left:50%; opacity:0.00; @include transition(all,1s,$circ,0s);
+                         
+                        /*- breakpoints -*/
+                        @include break(tablet){@include prefix(transform, translate(-65%, -65%));}
+                        @include break(tablet, $portrait){@include prefix(transform, translate(-65%, -55%));}
+                         
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(-60%, -65%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(-65%, -65%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(-65%, -70%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(-140%, -80%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(-85%, -90%));}
+                         
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                     
+                    }
+                    .label {
+                        &.casing {
+                            position:relative; left:0px; opacity:0.00; @include transition(opacity,1s,$circ,0.50s);
+                                
+                            /*- breakpoints -*/
+                            @include break(tablet){top:-155px; @include prefix(transform,translate(-100%,-60%));}
+                            
+                            @include break(desktop, $desktop){top:-150px; @include prefix(transform,translate(-100%,-75%));}
+                            @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(-90%,-65%));}
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;
+                        .label {
+                            &.casing {
+                                opacity:1.00;
+                            }
+                        }
+                    } 
+                }
+                .sticker {
+                    position:absolute; text-align:center; opacity:0.00;
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){top:30%; left:50%; width:250px; margin-left:-125px; @include prefix(transform,translate(0%,-20%) scale(0));;}
+                    @include break(desktop){top:30%; left:50%; width:350px;  margin-left:-175px; @include prefix(transform,translate(0%,-30%) scale(0)); }
+                                                            
+                    img {width:80%; height:auto; margin:0px; padding:0px; opacity:0.00}
+                    .disclaimer {opacity:0.00; text-align:center; margin:0px 10px;}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translate(0%,-10%) scale(1)); @include transition(all, 1s, $circ, 3s);
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+            }
+            
+            &.four {
+                 .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:65%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    
+                    @include break(desktop, $desktop){height:65%;}
+                    @include break(desktop, $lg-width){height:70%;}
+                     
+                    &.cutaway { 
+                        
+                        /*- breakpoints -*/                        
+                        @include break(tablet){@include prefix(transform,translate(20%,0%));}
+                        @include break(tablet, $portrait){@include prefix(transform,translate(40%,0%));}
+                        
+                        @include break(desktop){@include prefix(transform,translate(10%,0%));}
+                        
+                        @include transition(all,1s,$circ,0s);
+                        
+                        &.hide{opacity:0.00}
+                    }
+                    img { display:block; height:100%; margin:0px auto;}
+                }
+
+                .diagram {
+                    &.casing {                    
+                        position:absolute; top:50%; left:50%; opacity:0.00; @include transition(all,1s,$circ,0s);
+                         
+                        /*- breakpoints -*/
+                        @include break(tablet, $landscape){@include prefix(transform, translate(-85%, -55%));}
+                        @include break(tablet, $portrait){@include prefix(transform, translate(-50%, -35%));}
+                         
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(-100%, -55%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(-100%, -50%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(-115%, -60%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(-125%, -55%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(-120%, -58%));}
+                         
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(phone){}
+                            @include break(tablet){width:300px; height:200px;}
+                            @include break(desktop){width:300px; height:200px;}
+                         }
+                    }
+                    .label {
+                        &.casing {
+                            position:relative; opacity:0.00; @include transition(opacity,1s,$circ,1s);
+                                                    
+                            /*- breakpoints -*/
+                            @include break(tablet){top:-200px; @include prefix(transform,translate(-40%,-40%));}
+                            
+                            @include break(desktop, $desktop){top:-200px;  @include prefix(transform,translate(-40%,-40%));}
+                            @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(-40%,-40%));}
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;                        
+                        .label {
+                            &.casing {
+                                opacity:1.00; 
+                            }
+                        }
+                    } 
+                    .list {
+                        position:absolute; 
+                        &.casing {
+                            display:inline-block; width:250px; top:20px; @include prefix(transform,translate(-100px,0px)); 
+                            li{
+                                margin:10px 0px; @include transition(all,0.75s,$circ,0s);
+                                
+                                sup {font-size:50%;}
+                                &.hide {opacity:0.00; @include prefix(transform,translateY(50%));}
+                                &.show {opacity:1.00; @include prefix(transform,translateY(0%));}                            
+                            } 
+                        }
+                    }
+                }
+                
+                .footnote {
+                    display:inline-block; position:absolute; bottom:15%; left:35%; 
+                    
+                    /*- breakpoints -*/                    
+                    @include break(tablet){@include prefix(transform,translate(-100%,-100%)); width:180px;}
+                    @include break(tablet, $portrait){@include prefix(transform,translate(-75%,0%)); width:180px;}
+                    
+                    @include break(desktop, $desktop){@include prefix(transform,translate(-100%,-100%)); width:180px;}
+                    @include break(desktop, $sm-width){@include prefix(transform,translate(-100%,-100%)); width:250px;}
+                    @include break(desktop, $md-width){@include prefix(transform,translate(-100%,-100%)); width:250px;}
+                    @include break(desktop, $xl-width){@include prefix(transform,translate(-100%,-100%)); width:250px;}
+                }
+            }
+            
+            &.five {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; 
+                    
+                    /*- breakpoints -*/
+                    @include break(tablet){height:65%;}    
+                    @include break(tablet, $portrait){height:60%;}   
+                    
+                    @include break(desktop, $desktop){height:65%;}
+                    @include break(desktop, $lg-width){height:70%;}
+                    
+                    &.cutaway { 
+                        /*- breakpoints -*/
+                        @include break(phone){}
+                        @include break(tablet){@include prefix(transform,translate(40%,0%));}
+                        @include break(desktop){@include prefix(transform,translate(40%,0%));}
+                        
+                        @include transition(all,1s,$circ,0s);
+                        
+                        &.hide{opacity:0.00}
+                    }
+                    img { 
+                        display:block; height:100%; margin:0px auto; position:absolute; top:0px; @include transition(all,1s,$circ,0s);
+                            &.show {opacity:1.00;}
+                            &.hide {opacity:0.00;}                            
+                    }
+                }
+
+                .diagram {
+                    &.casing {
+                        position:absolute; top:50%; left:55%; opacity:0.00;  @include transition(all,1s,$circ,0s);
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet){@include prefix(transform, translate(-170%, -25%));}
+                        @include break(tablet, $portrait){@include prefix(transform, translate(-140%, 5%));}
+                         
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(-150%, -25%));}
+                        @include break(desktop, $sm-width){@include prefix(transform,scale(1.0) translate(-165%, -20%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(-155%, -35%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(-170%, -40%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(-180%, -35%));}
+                         
+                        /*@include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(-200%, -30%));}*/
+                        
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                    }
+                    .label {
+                        &.casing {
+                            position:relative; @include transition(opacity,1s,$circ,1s);
+                                                    
+                            /*- breakpoints -*/
+                            @include break(tablet){top:-150px; @include prefix(transform,translate(-70%,-40%));}
+                            
+                            @include break(desktop, $desktop){top:-150px; @include prefix(transform,translate(-80%,-40%));}
+                            @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(-60%,-30%));}
+                        }
+                    }                    
+                    &.bead {
+                        position:absolute; top:50%; left:55%; opacity:0.00; @include transition(all,1s,$circ,0s);
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet){@include prefix(transform, translate(-85%, 80%));}
+                        @include break(tablet, $portrait){@include prefix(transform, translate(-62%, 125%));}
+                         
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(-80%, 85%));}
+                        @include break(desktop, $sm-width){@include prefix(transform,scale(1.0) translate(-90%, 85%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(-110%, 65%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(-110%, 65%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(-120%, 80%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(-100%, 90%));}
+                        
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                        
+                    }
+                    .label {
+                        &.bead {
+                            position:relative; width:250px; @include transition(opacity,1s,$circ,1s);
+                                                    
+                            /*- breakpoints -*/
+                            @include break(tablet){top:-155px; @include prefix(transform,translate(-75%,-25%));}
+                            
+                            @include break(desktop, $desktop){top:-150px;  @include prefix(transform,translate(-85%,-40%));}
+                            @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(-85%,-35%));}
+                        }
+                    }
+                    &.ply {
+                        position:absolute; top:50%; left:55%; opacity:0.00; @include transition(opacity,1s,$circ,0s);
+                        
+                        /*- breakpoints -*/
+                        @include break(tablet){@include prefix(transform, translate(-100%, -80%));}
+                        @include break(tablet, $portrait){@include prefix(transform, translate(-70%, -60%));}
+                         
+                        @include break(desktop, $desktop){@include prefix(transform,scale(1.0) translate(-80%, -80%));}
+                        @include break(desktop, $md-width){@include prefix(transform,scale(1.0) translate(-120%, -85%));}
+                        @include break(desktop, $lg-width){@include prefix(transform,scale(1.0) translate(-120%, -95%));}
+                        @include break(desktop, $xl-width){@include prefix(transform,scale(1.0) translate(-130%, -95%));}
+                         
+                        @include break(desktop, $desktop + 1, $sm-viewport){@include prefix(transform,scale(0.75) translate(-110%, -90%));}
+                        
+                        .vectors {
+                            /*- breakpoints -*/
+                            @include break(tablet){width:150px; height:150px;}
+                            @include break(desktop, $desktop){width:150px; height:150px;}
+                            @include break(desktop, $md-width){width:200px; height:200px;}
+                         }
+                    }
+                    .label {
+                        &.ply {
+                            position:relative; @include transition(opacity,1s,$circ,1s);
+                                                    
+                            /*- breakpoints -*/
+                            @include break(tablet){top:-155px; @include prefix(transform,translate(-100%,-25%));}
+                            @include break(desktop, $desktop){top:-150px;  @include prefix(transform,translate(-105%,-45%));}
+                            @include break(desktop, $md-width){top:-200px; @include prefix(transform,translate(-105%,-10%));}
+                            
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;                         
+                        .label {
+                            &.ply, &.bead, &.casing { 
+                                opacity:1.00;
+                            }
+                        }
+                    } 
+                    
+                    .list {
+                        position:absolute; margin:0px;
+                        &.ply {
+                            display:inline-block; 
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet){width:280px; top:15px; @include prefix(transform,translateX(-185px));}
+                            
+                            @include break(desktop, $desktop){width:280px; top:15px; @include prefix(transform,translateX(-225px));}
+                            @include break(desktop, $sm-width){width:280px; top:20px; @include prefix(transform,translateX(-225px));}
+                        
+                        }
+                        &.bead {
+                            display:inline-block; top:20px;
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet){width:280px;  @include prefix(transform,translateX(-160px));}
+                            
+                            @include break(desktop, $desktop){width:280px; top:15px; @include prefix(transform,translateX(-195px));}
+                            @include break(desktop, $sm-width){width:280px; top:20px; @include prefix(transform,translateX(-200px));}
+                        
+                        }
+                        &.casing {
+                            display:inline-block; top:20px;
+                            
+                            /*- breakpoints -*/
+                            @include break(tablet){width:180px; @include prefix(transform,translateX(-75px));}
+                            
+                            @include break(desktop, $desktop){width:180px; top:15px;  @include prefix(transform,translateX(-100px));}
+                            @include break(desktop, $sm-width){width:200px; top:20px;  @include prefix(transform,translateX(-100px));}
+                        }
+                        &.ply, &.bead, &.casing {
+                            li{
+                                margin:8px 0px; @include transition(all,0.75s,$circ,0s);
+                                
+                                &.hide {opacity:0.00; @include prefix(transform,translateY(50%));}
+                                &.show {opacity:1.00; @include prefix(transform,translateY(0%));}                            
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

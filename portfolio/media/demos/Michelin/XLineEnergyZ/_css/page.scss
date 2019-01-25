@@ -1,0 +1,337 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/pages";
+
+
+body {margin:0px auto; background-color:$light-grey;}
+
+#preload-audio{display:none;}
+
+#features {
+    display:block; width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; padding:120px 0px 0px 0px; box-sizing:border-box; overflow:hidden;
+    .section-title {
+        display:block; height:30px; width:100%; margin:0px auto; padding:0px; font-size:1.75em; color:$royal; text-align:center; overflow:hidden;
+        span {
+            display:inline-block; margin:0px; padding:0px; font-family:inherit; font-size:inherit; color:inherit; @include transition(all,0.50s, $circ, 0s);
+            &.slide-in {@include prefix(transform, translateY(0%)); opacity:1.00; }
+            &.slide-out {@include prefix(transform, translateY(100%)); opacity:0.00; }
+        }
+    }
+    .progress {
+        display:block; width:100%; margin:10px 0px 0px 0px; padding:0px; text-align:center;
+        p {
+            display:inline-block; width:30px; height:9px; margin:0px 5px; @include prefix(transform,skewX(-20deg)); background-color:$white;  overflow:hidden;
+            span {
+                display:inline-block; float:left; width:100%; height:100%; padding:0px; margin:0px;
+            }
+            &.active{
+                span {  
+                    @include prefix(transform,translateX(0px)); background-color:$yellow; @include transition(all,1s,$circ,0s); 
+                }
+            }
+            &.inactive {
+                span {
+                    @include prefix(transform,translateX(-50px)); background-color:$white; @include transition(all,1s,$circ,0s);
+                }
+            }
+        }                
+    }
+    
+    .next, .prev {
+        width:60px; height:100px; position:absolute; top:50%; z-index:10000; margin:-50px 0px 0px 0px; padding:0px; cursor:pointer;
+        svg path {stroke:#fff; stroke-width:6px; fill:none; stroke-linecap:round;}
+    }
+    
+    .next {
+        @include transition(all, 1s, $circ, 0s);
+        &.slide-in {
+            right:3%;
+        }
+        &.slide-out {
+            right:-10%;
+        }
+    }
+    
+    .prev {
+        @include transition(all, 1s, $circ, 0s);
+        &.slide-in {
+            left:3%;
+        }
+        &.slide-out {
+            left:-10%;
+        } 
+    }
+    
+    .tire-display {
+        display:block; width:100%; position:absolute; bottom:0px; margin:0px auto; padding:0px;
+                
+        .slide {
+            display:inline-block; width:80%; margin:0px 10%; padding:0px; position:absolute; bottom:0px;
+            
+            &.out {@include prefix(animation,slidesOut 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.in {@include prefix(animation,slidesIn 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.set {@include prefix(transform,translateX(100%)); opacity: 0.00;}
+            &.reverse.out {@include prefix(animation,slidesOutReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+            &.reverse.in {@include prefix(animation,slidesInReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+        
+            .disclaimer {font-size:0.65em; font-style:italic; font-weight:normal; color:$grey;}
+            .label {font-size:1.25em; color:$white; font-family:$michelin-black; margin:0px; padding:0px;}
+            .list {
+                font-size:1.10em; color:$grey; font-family:$body-text; margin:0px; padding:0px;
+                li {font-size:inherit; color:inherit; font-family:inherit; margin:15px 0px; padding:0px;}
+            }
+            .diagram {display:inline-block; z-index:1000;}
+            .vectors {
+                width:200px; height:200px;
+                g {
+                    polyline {stroke:#fff; stroke-width:1.5px; fill:none; /*stroke-linecap:round;*/}
+                    circle {stroke:#fff; stroke-width:0px; fill:#fff; /*stroke-linecap:round;*/}
+                }
+                
+            }
+             
+            
+            /*--- first slide ---*/
+            &.one {
+                .tire {
+                    display:block; width:100%; text-align:center; height:750px; margin:0px; opacity:0.00; @include prefix(transform,translateY(150%)); @include transition(all, 1s, $circ, 0s);
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translateY(0%));
+                    }
+                    &.slide-down {
+                        @include prefix(transform,translateY(15%));
+                    }
+                    img {display:block; height:100%; margin:0px auto;}
+                }
+                .callout {
+                    display:block; position:absolute; top:0%; left:50%; z-index:100; width:400px; text-align:center; margin:0px; opacity:0.00; @include prefix(transform,scale(0) translateX(-50%)); @include transition(all, 1s, $circ, 0s); @include prefix(transform-origin, 0% 50%);
+                    img {display:block; width:80%; height:auto; margin:0px auto; opacity:0.00;}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,scale(1) translateX(-50%));
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+                .sticker {
+                    position:absolute; top:40%; right:45%; width:350px; @include prefix(transform,translateX(125%) scale(0)); text-align:center; opacity:0.00;
+                    img {width:80%; height:auto; margin:0px; padding:0px; opacity:0.00}
+                    .disclaimer {opacity:0.00; text-align:center; margin:0px 10px;}
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translateX(125%) scale(1)); @include transition(all, 1s, $circ, 0s);
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                        .disclaimer {
+                            opacity:1.00; @include transition(all, 1s, $circ, 1s);
+                        } 
+                    }
+					&.hide { opacity: 0; @include prefix(transform,translateX(125%) scale(0)); }
+                }
+            }
+            /*--- second slide ---*/
+            &.two {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px;
+                    &.cutaway { 
+                        height:700px;  @include transition(all,1s,$circ,0s);
+                        &.hide{opacity:0.00}
+                    }
+                    &.tread {
+                        height:750px; opacity:0.00; @include prefix(transform,translateY(150%)); @include transition(all, 1s, $circ, 0s);
+                        &.show {
+                            opacity:1.00; @include prefix(transform,translateY(0%));
+                        }
+                        img {@include prefix(transform, translateX(-25%));}
+                    }
+                    img { display:block; height:100%; margin:0px auto;}
+                }
+                .callout {
+                    display:block; position:absolute; top:-600px; left:50%; z-index:100; width:400px; text-align:center; margin:0px; opacity:0.00; @include prefix(transform,scale(0) translateX(-50%)); @include transition(all, 1s, $circ, 0s); @include prefix(transform-origin, 0% 50%);
+                    img {display:block; width:80%; height:auto; margin:0px auto; opacity:0.00; @include prefix(transform,translateX(-30px));}
+                    
+                    &.show {
+                        opacity:1.00; @include prefix(transform,scale(1) translateX(-50%));
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+                .diagram {
+                     &.stiffness {
+                        position:absolute; top:-740px; right:38%; opacity:0.00; @include prefix(transform,translateX(25%)); @include transition(all,1s,$circ,0s);
+                        .label {
+                            &.stiffness {
+                                position:relative; top:-210px; left:-25px; opacity:0.00; @include prefix(transform,translateX(70%)); @include transition(all,1s,$circ,0.50s);
+                            }
+                        }
+                        &.show {
+                            opacity:1.00;  @include prefix(transform,translateX(0%));
+                            .label {
+                                &.stiffness {
+                                    opacity:1.00; @include prefix(transform,translateX(80%));
+                                }
+                            }
+                        }  
+                     }
+                }
+            }
+            
+            &.three {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; @include prefix(transform,translateX(75px));
+                    &.cutaway { 
+                        height:700px;  @include transition(all,1s,$circ,0s);
+                        &.hide{opacity:0.00}
+                    }
+                    &.tread {
+                        height:750px; opacity:0.00; @include prefix(transform,translateY(150%)); @include transition(all, 1s, $circ, 0s);
+                        &.show {
+                            opacity:1.00; @include prefix(transform,translateY(0%));
+                        }
+                        img {@include prefix(transform, translateX(25%));}
+                    }
+                    img { display:block; height:100%; margin:0px auto;}
+                }
+
+                .diagram {
+                     &.casing {
+                         position:absolute; top:-700px; left:26%; opacity:0.00; @include prefix(transform,translateX(25%)); @include transition(all,1s,$circ,0s);
+                     }
+                    .label {
+                        &.casing {
+                            position:relative; top:-230px; left:0px; opacity:0.00; @include prefix(transform,translateX(-120%)); @include transition(all,1s,$circ,0.50s);
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;  @include prefix(transform,translateX(0%));
+                        .label {
+                            &.casing {
+                                opacity:1.00; @include prefix(transform,translateX(-100%));
+                            }
+                        }
+                    } 
+                }
+                .sticker {
+                    position:absolute; top:-700px; left:-150px; width:380px; @include prefix(transform,translateX(125%) scale(0)); text-align:center; opacity:0.00;
+                    img {width:80%; height:auto; margin:0px; padding:0px; opacity:0.00}
+                    .disclaimer {opacity:0.00; text-align:center; margin:0px 10px;}
+                    &.show {
+                        opacity:1.00; @include prefix(transform,translateX(125%) scale(1)); @include transition(all, 1s, $circ, 0s);
+                        img {
+                            opacity:1.00; @include transition(all, 1s, $circ, 0s);
+                        }
+                    }
+                }
+            }
+            
+            &.four {
+                 .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; @include prefix(transform,translateX(75px));
+                    &.cutaway { 
+                        height:700px; @include prefix(transform,translateX(20%)); @include transition(all,1s,$circ,0s);
+                        &.hide{opacity:0.00}
+                    }
+                    img { display:block; height:100%; margin:0px auto;}
+                }
+
+                .diagram {
+                    &.casing {
+                         position:absolute; top:-550px; left:35%; opacity:0.00; @include prefix(transform,translateX(25%)); @include transition(all,1s,$circ,0s);
+                     }
+                    .label {
+                        &.casing {
+                            position:absolute; top:0px; opacity:0.00; @include prefix(transform,translateX(-120%)); @include transition(all,1s,$circ,0.50s);
+                        }
+                    }
+                    &.show {
+                        opacity:1.00;  @include prefix(transform,translateX(0%));
+                        .label {
+                            &.casing {
+                                opacity:1.00; @include prefix(transform,translateX(-100%));
+                            }
+                        }
+                    } 
+                    
+                    .list {
+                        position:absolute; 
+                        &.casing {
+                            display:inline-block; width:180px; top:30px; @include prefix(transform,translateX(-80px)); 
+                            li{
+                                @include transition(all,0.75s,$circ,0s);
+                                &.hide {opacity:0.00; @include prefix(transform,translateY(50%));}
+                                &.show {opacity:1.00; @include prefix(transform,translateY(0%));}                            
+                            } 
+                        }
+                    }
+                }
+            }
+            
+            &.five {
+                .tire {
+                    display:block; width:100%; position:absolute; bottom:0px; text-align:center; margin:0px; @include prefix(transform,translateX(75px));
+                    &.cutaway { 
+                        height:700px; @include prefix(transform,translateX(35%)); @include transition(all,1s,$circ,0s);
+                    }
+                    img { 
+                        display:block; height:100%; margin:0px auto; position:absolute; top:0px; @include transition(all,1s,$circ,0s);
+                            &.show {opacity:1.00;}
+                            &.hide {opacity:0.00;}                            
+                    }
+                }
+
+                .diagram {
+                    &.casing {
+                         position:fixed; top:50%; left:35%; opacity:0.00; @include prefix(transform,translate(-25%,-25%)); @include transition(all,1s,$circ,0s);
+                    }
+                    .label {
+                        &.casing {
+                            position:absolute; top:0px; @include prefix(transform,translateX(-120%)); opacity:0.00;  @include transition(all,1s,$circ,0.50s);
+                        }
+                    }                    
+                    &.bead {
+                         position:fixed; top:68%; left:35%; @include prefix(transform,translate(0,0)); opacity:0.00; @include transition(all,1s,$circ,0s);
+                    }
+                    .label {
+                        &.bead {
+                            position:absolute; top:0px; left:0px; width:250px; text-align:right; @include prefix(transform,translateX(-100%)); opacity:0.00;  @include transition(all,1s,$circ,0.50s);
+                        }
+                    }
+                    &.ply {
+                         position:fixed; top:45%; left:45%; @include prefix(transform,translate(-100%,-100%)); opacity:0.00; @include transition(all,1s,$circ,0s);
+                    }
+                    .label {
+                        &.ply {
+                            position:absolute; top:0px; width:250px; @include prefix(transform,translateX(-100%)); opacity:0.00;  @include transition(all,1s,$circ,0.50s);
+                        }
+                    }
+                    &.show {
+                        opacity:1.00; 
+                        .label {
+                            &.ply, &.bead, &.casing { 
+                                opacity:1.00;
+                            }
+                        }
+                    } 
+                    
+                    .list {
+                        position:absolute; 
+                        &.ply {display:inline-block; width:280px; top:20px; @include prefix(transform,translateX(-230px));}
+                        &.bead {display:inline-block; width:280px; top:20px; @include prefix(transform,translateX(-180px));}
+                        &.casing {display:inline-block; width:200px; top:20px; @include prefix(transform,translateX(-105px));}
+                        &.ply, &.bead, &.casing {
+                            li{
+                                @include transition(all,0.75s,$circ,0s);
+                                &.hide {opacity:0.00; @include prefix(transform,translateY(50%));}
+                                &.show {opacity:1.00; @include prefix(transform,translateY(0%));}                            
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

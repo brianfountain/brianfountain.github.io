@@ -1,0 +1,2068 @@
+@font-face {
+  font-family: Michelin-Black;
+  src: url("fonts/MichelinW00Black.ttf");
+  src: url("fonts/MichelinW00Black.eot");
+  src: url("fonts/MichelinW00Black.woff"); }
+
+@font-face {
+  font-family: Michelin-Regular;
+  src: url("fonts/MichelinW00Regular.ttf");
+  src: url("fonts/MichelinW00Regular.eot");
+  src: url("fonts/MichelinW00Regular.woff"); }
+
+@font-face {
+  font-family: Frutiger;
+  src: url("fonts/FrutigerLT-Roman.ttf");
+  src: url("fonts/FrutigerLT-Roman.eot");
+  src: url("fonts/FrutigerLT-Roman.woff"); }
+
+/* line 9, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_type.scss */
+body {
+  font-family: Frutiger, sans-serif;
+  font-size: 1em; }
+
+/* line 10, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_type.scss */
+h1 {
+  font-family: Michelin-Black, sans-serif; }
+
+@-webkit-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-moz-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-o-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-webkit-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-webkit-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-moz-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-o-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-webkit-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@font-face {
+  font-family: Michelin-Black;
+  src: url("fonts/MichelinW00Black.ttf");
+  src: url("fonts/MichelinW00Black.eot");
+  src: url("fonts/MichelinW00Black.woff"); }
+
+@font-face {
+  font-family: Michelin-Regular;
+  src: url("fonts/MichelinW00Regular.ttf");
+  src: url("fonts/MichelinW00Regular.eot");
+  src: url("fonts/MichelinW00Regular.woff"); }
+
+@font-face {
+  font-family: Frutiger;
+  src: url("fonts/FrutigerLT-Roman.ttf");
+  src: url("fonts/FrutigerLT-Roman.eot");
+  src: url("fonts/FrutigerLT-Roman.woff"); }
+
+/* line 9, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_type.scss */
+body {
+  font-family: Frutiger, sans-serif;
+  font-size: 1em; }
+
+/* line 10, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_type.scss */
+h1 {
+  font-family: Michelin-Black, sans-serif; }
+
+@-webkit-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-moz-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-o-keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@keyframes slidesOut {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.00; } }
+
+@-webkit-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@keyframes slidesIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-webkit-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-moz-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-o-keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@keyframes slidesOutReverse {
+  0% {
+    opacity: 1.00;
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.00; } }
+
+@-webkit-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+@keyframes slidesInReverse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.00; }
+  100% {
+    opacity: 1.00;
+    transform: translateX(0%); } }
+
+/* desktop variables */
+/*-- device orientation width --*/
+/*-- desktop variable widths --*/
+/*-- title sequence --*/
+/* line 8, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+#header {
+  display: block;
+  width: 60%;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  z-index: 99999999; }
+  /* line 10, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+  #header .title {
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    vertical-align: middle;
+    /*- breakpoints -*/ }
+    /* line 21, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+    #header .title .menu {
+      display: inline-block;
+      float: left;
+      margin: 0px 0px 0px -80px;
+      padding: 0px;
+      height: 40px;
+      background-color: #005aaa;
+      /*- breakpoints -*/ }
+      @media (max-width: 1024px) {
+        /* line 21, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu {
+          width: 200px; } }
+      @media (min-width: 1025px) {
+        /* line 21, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu {
+          width: 200px; } }
+      /* line 32, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu.slide-in {
+        -webkit-transform: translateX(0px) skewX(-20.5deg);
+        -moz-transform: translateX(0px) skewX(-20.5deg);
+        -ms-transform: translateX(0px) skewX(-20.5deg);
+        -o-transform: translateX(0px) skewX(-20.5deg);
+        transform: translateX(0px) skewX(-20.5deg);
+        opacity: 1.00;
+        overflow: hidden;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+        /* line 34, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu.slide-in .menu-icon {
+          width: 40px;
+          opacity: 1.00; }
+      /* line 38, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu.slide-out {
+        -webkit-transform: translateX(-200px) skewX(-20.5deg);
+        -moz-transform: translateX(-200px) skewX(-20.5deg);
+        -ms-transform: translateX(-200px) skewX(-20.5deg);
+        -o-transform: translateX(-200px) skewX(-20.5deg);
+        transform: translateX(-200px) skewX(-20.5deg);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        -o-transition-delay: 1s;
+        transition-delay: 1s; }
+        /* line 40, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu.slide-out .roll-state {
+          display: none; }
+        /* line 43, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu.slide-out .menu-icon {
+          width: 0px;
+          opacity: 0.00; }
+      /* line 47, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu .menu-icon {
+        display: inline-block;
+        height: 30px;
+        margin: 0px 0px 0px 20px;
+        position: relative;
+        left: 50%;
+        z-index: 3;
+        -webkit-transform: skewX(20.5deg);
+        -moz-transform: skewX(20.5deg);
+        -ms-transform: skewX(20.5deg);
+        -o-transform: skewX(20.5deg);
+        transform: skewX(20.5deg);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        -o-transition-delay: 1s;
+        transition-delay: 1s; }
+        /* line 49, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu .menu-icon svg path {
+          fill: #fff;
+          cursor: pointer; }
+        /* line 50, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title .menu .menu-icon p {
+          font-family: Michelin-Black, sans-serif;
+          color: #fff;
+          margin: 5px 0px;
+          padding: 0px;
+          -webkit-transform: translate(-25%, 0%);
+          -moz-transform: translate(-25%, 0%);
+          -ms-transform: translate(-25%, 0%);
+          -o-transform: translate(-25%, 0%);
+          transform: translate(-25%, 0%); }
+      /* line 52, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu .roll-state {
+        width: 100%;
+        height: 40px;
+        margin: 0px;
+        position: relative;
+        top: -40px;
+        left: 100%;
+        z-index: 2;
+        opacity: 0.00;
+        background-color: #ffe700;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+    /* line 56, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+    #header .title .menu.slide-in:Hover {
+      cursor: pointer; }
+      /* line 58, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .roll-state {
+        width: 100%;
+        left: 0px;
+        opacity: 1.00; }
+      /* line 59, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .menu-icon svg path {
+        fill: #040d4e;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 60, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .menu-icon p {
+        color: #040d4e; }
+    /* line 62, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+    #header .title h1 {
+      display: inline-block;
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 30px;
+      width: 100%;
+      color: #005aaa;
+      position: absolute;
+      top: 0px;
+      overflow: hidden; }
+      /* line 64, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+      #header .title h1 span.headline {
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        margin: -1px 0px 0px 15px;
+        white-space: nowrap;
+        /*- breakpoints -*/ }
+        @media (max-width: 1024px) {
+          /* line 64, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.70em;
+            padding: 2px 0px 0px 0px; } }
+        @media (min-width: 1025px) {
+          /* line 64, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.85em;
+            padding: 0px; } }
+        /* line 75, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+        #header .title h1 span.headline.sequence {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.25s;
+          -moz-transition-delay: 0.25s;
+          -o-transition-delay: 0.25s;
+          transition-delay: 0.25s; }
+          /* line 78, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+          #header .title h1 span.headline.sequence.hide {
+            -webkit-transform: translate(0%, 100%);
+            -moz-transform: translate(0%, 100%);
+            -ms-transform: translate(0%, 100%);
+            -o-transform: translate(0%, 100%);
+            transform: translate(0%, 100%);
+            -webkit-opacity: 0;
+            -moz-opacity: 0;
+            -ms-opacity: 0;
+            -o-opacity: 0;
+            opacity: 0; }
+          /* line 81, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+          #header .title h1 span.headline.sequence.show {
+            -webkit-transform: translate(0%, 0%);
+            -moz-transform: translate(0%, 0%);
+            -ms-transform: translate(0%, 0%);
+            -o-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+            -webkit-opacity: 1;
+            -moz-opacity: 1;
+            -ms-opacity: 1;
+            -o-opacity: 1;
+            opacity: 1; }
+
+/* line 91, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+.footnote .disclaimer {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+  font-family: Frutiger, sans-serif;
+  font-size: 0.60em;
+  color: rgba(35, 36, 38, 0.75);
+  width: 100%;
+  display: inline-block;
+  margin: 3px 0px; }
+  /* line 94, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+  .footnote .disclaimer a {
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 2px 4px 1px 2px; }
+  /* line 95, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+  .footnote .disclaimer a:Hover {
+    color: #005aaa;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5); }
+  /* line 97, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+  .footnote .disclaimer.show {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1; }
+  /* line 98, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/partials/_pages.scss */
+  .footnote .disclaimer.hide {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0; }
+
+/* line 8, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+body {
+  margin: 0px auto;
+  background-color: #b6b7b7; }
+
+/* line 10, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+#preload-audio {
+  display: none; }
+
+/* line 12, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+#features {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 120px 0px 0px 0px;
+  box-sizing: border-box;
+  overflow: hidden; }
+  /* line 14, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .section-title {
+    display: block;
+    height: 30px;
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    font-size: 1.75em;
+    color: #005aaa;
+    text-align: center;
+    overflow: hidden; }
+    /* line 16, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .section-title span {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+      -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s; }
+      /* line 18, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .section-title span.slide-in {
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+        opacity: 1.00; }
+      /* line 19, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .section-title span.slide-out {
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
+        opacity: 0.00; }
+  /* line 22, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .progress {
+    display: block;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    text-align: center; }
+    /* line 24, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .progress p {
+      display: inline-block;
+      width: 30px;
+      height: 9px;
+      margin: 0px 5px;
+      -webkit-transform: skewX(-20deg);
+      -moz-transform: skewX(-20deg);
+      -ms-transform: skewX(-20deg);
+      -o-transform: skewX(-20deg);
+      transform: skewX(-20deg);
+      background-color: #fff;
+      overflow: hidden; }
+      /* line 26, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .progress p span {
+        display: inline-block;
+        float: left;
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        margin: 0px; }
+      /* line 30, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .progress p.active span {
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+        transform: translateX(0px);
+        background-color: #ffe700;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 35, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .progress p.inactive span {
+        -webkit-transform: translateX(-50px);
+        -moz-transform: translateX(-50px);
+        -ms-transform: translateX(-50px);
+        -o-transform: translateX(-50px);
+        transform: translateX(-50px);
+        background-color: #fff;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+  /* line 42, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .next, #features .prev {
+    width: 60px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    z-index: 10000;
+    margin: -50px 0px 0px 0px;
+    padding: 0px;
+    cursor: pointer; }
+    /* line 44, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .next svg path, #features .prev svg path {
+      stroke: #fff;
+      stroke-width: 6px;
+      fill: none;
+      stroke-linecap: round; }
+  /* line 47, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .next {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s; }
+    /* line 49, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .next.slide-in {
+      right: 3%; }
+    /* line 52, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .next.slide-out {
+      right: -10%; }
+  /* line 57, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .prev {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s; }
+    /* line 59, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .prev.slide-in {
+      left: 3%; }
+    /* line 62, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .prev.slide-out {
+      left: -10%; }
+  /* line 67, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+  #features .tire-display {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    margin: 0px auto;
+    padding: 0px; }
+    /* line 70, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+    #features .tire-display .slide {
+      display: inline-block;
+      width: 80%;
+      margin: 0px 10%;
+      padding: 0px;
+      position: absolute;
+      bottom: 0px;
+      /*--- first slide ---*/
+      /*--- second slide ---*/ }
+      /* line 73, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.out {
+        -webkit-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -moz-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -ms-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -o-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        /*@include prefix(animation-fill-mode,forwards);*/ }
+      /* line 74, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.in {
+        -webkit-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -moz-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -ms-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -o-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        /*@include prefix(animation-fill-mode,forwards);*/ }
+      /* line 75, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.set {
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0.00; }
+      /* line 76, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.reverse.out {
+        -webkit-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -moz-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -ms-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -o-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        /*@include prefix(animation-fill-mode,forwards);*/ }
+      /* line 77, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.reverse.in {
+        -webkit-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -moz-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -ms-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        -o-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+        /*@include prefix(animation-fill-mode,forwards);*/ }
+      /* line 79, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide .disclaimer {
+        font-size: 0.65em;
+        font-style: italic;
+        font-weight: normal;
+        color: #232426; }
+      /* line 80, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide .label {
+        font-size: 1.25em;
+        color: #fff;
+        font-family: Michelin-Black, sans-serif;
+        margin: 0px;
+        padding: 0px; }
+      /* line 81, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide .list {
+        font-size: 1.10em;
+        color: #232426;
+        font-family: Frutiger, sans-serif;
+        margin: 0px;
+        padding: 0px; }
+        /* line 83, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide .list li {
+          font-size: inherit;
+          color: inherit;
+          font-family: inherit;
+          margin: 15px 0px;
+          padding: 0px; }
+      /* line 85, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide .diagram {
+        display: inline-block;
+        z-index: 1000; }
+      /* line 86, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide .vectors {
+        width: 200px;
+        height: 200px; }
+        /* line 89, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide .vectors g polyline {
+          stroke: #fff;
+          stroke-width: 1.5px;
+          fill: none;
+          /*stroke-linecap:round;*/ }
+        /* line 90, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide .vectors g circle {
+          stroke: #fff;
+          stroke-width: 0px;
+          fill: #fff;
+          /*stroke-linecap:round;*/ }
+      /* line 98, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.one .tire {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 750px;
+        margin: 0px;
+        opacity: 0.00;
+        -webkit-transform: translateY(150%);
+        -moz-transform: translateY(150%);
+        -ms-transform: translateY(150%);
+        -o-transform: translateY(150%);
+        transform: translateY(150%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+        /* line 100, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .tire.show {
+          opacity: 1.00;
+          -webkit-transform: translateY(0%);
+          -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+          -o-transform: translateY(0%);
+          transform: translateY(0%); }
+        /* line 103, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .tire.slide-down {
+          -webkit-transform: translateY(15%);
+          -moz-transform: translateY(15%);
+          -ms-transform: translateY(15%);
+          -o-transform: translateY(15%);
+          transform: translateY(15%); }
+        /* line 106, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .tire img {
+          display: block;
+          height: 100%;
+          margin: 0px auto; }
+      /* line 108, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.one .callout {
+        display: block;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        z-index: 100;
+        width: 400px;
+        text-align: center;
+        margin: 0px;
+        opacity: 0.00;
+        -webkit-transform: scale(0) translateX(-50%);
+        -moz-transform: scale(0) translateX(-50%);
+        -ms-transform: scale(0) translateX(-50%);
+        -o-transform: scale(0) translateX(-50%);
+        transform: scale(0) translateX(-50%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+        -webkit-transform-origin: 0% 50%;
+        -moz-transform-origin: 0% 50%;
+        -ms-transform-origin: 0% 50%;
+        -o-transform-origin: 0% 50%;
+        transform-origin: 0% 50%; }
+        /* line 110, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .callout img {
+          display: block;
+          width: 80%;
+          height: auto;
+          margin: 0px auto;
+          opacity: 0.00; }
+        /* line 112, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .callout.show {
+          opacity: 1.00;
+          -webkit-transform: scale(1) translateX(-50%);
+          -moz-transform: scale(1) translateX(-50%);
+          -ms-transform: scale(1) translateX(-50%);
+          -o-transform: scale(1) translateX(-50%);
+          transform: scale(1) translateX(-50%); }
+          /* line 114, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.one .callout.show img {
+            opacity: 1.00;
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            -o-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s; }
+      /* line 119, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.one .sticker {
+        position: absolute;
+        top: 40%;
+        right: 45%;
+        width: 350px;
+        -webkit-transform: translateX(125%) scale(0);
+        -moz-transform: translateX(125%) scale(0);
+        -ms-transform: translateX(125%) scale(0);
+        -o-transform: translateX(125%) scale(0);
+        transform: translateX(125%) scale(0);
+        text-align: center;
+        opacity: 0.00; }
+        /* line 121, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .sticker img {
+          width: 80%;
+          height: auto;
+          margin: 0px;
+          padding: 0px;
+          opacity: 0.00; }
+        /* line 122, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .sticker .disclaimer {
+          opacity: 0.00;
+          text-align: center;
+          margin: 0px 10px; }
+        /* line 123, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .sticker.show {
+          opacity: 1.00;
+          -webkit-transform: translateX(125%) scale(1);
+          -moz-transform: translateX(125%) scale(1);
+          -ms-transform: translateX(125%) scale(1);
+          -o-transform: translateX(125%) scale(1);
+          transform: translateX(125%) scale(1);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 125, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.one .sticker.show img {
+            opacity: 1.00;
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            -o-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s; }
+          /* line 128, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.one .sticker.show .disclaimer {
+            opacity: 1.00;
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            -o-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 1s;
+            -moz-transition-delay: 1s;
+            -o-transition-delay: 1s;
+            transition-delay: 1s; }
+        /* line 132, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.one .sticker.hide {
+          opacity: 0;
+          -webkit-transform: translateX(125%) scale(0);
+          -moz-transform: translateX(125%) scale(0);
+          -ms-transform: translateX(125%) scale(0);
+          -o-transform: translateX(125%) scale(0);
+          transform: translateX(125%) scale(0); }
+      /* line 137, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.two .tire {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        margin: 0px; }
+        /* line 139, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .tire.cutaway {
+          height: 700px;
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 141, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.two .tire.cutaway.hide {
+            opacity: 0.00; }
+        /* line 143, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .tire.tread {
+          height: 750px;
+          opacity: 0.00;
+          -webkit-transform: translateY(150%);
+          -moz-transform: translateY(150%);
+          -ms-transform: translateY(150%);
+          -o-transform: translateY(150%);
+          transform: translateY(150%);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 145, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.two .tire.tread.show {
+            opacity: 1.00;
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+            transform: translateY(0%); }
+          /* line 148, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.two .tire.tread img {
+            -webkit-transform: translateX(-25%);
+            -moz-transform: translateX(-25%);
+            -ms-transform: translateX(-25%);
+            -o-transform: translateX(-25%);
+            transform: translateX(-25%); }
+        /* line 150, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .tire img {
+          display: block;
+          height: 100%;
+          margin: 0px auto; }
+      /* line 152, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.two .callout {
+        display: block;
+        position: absolute;
+        top: -600px;
+        left: 50%;
+        z-index: 100;
+        width: 400px;
+        text-align: center;
+        margin: 0px;
+        opacity: 0.00;
+        -webkit-transform: scale(0) translateX(-50%);
+        -moz-transform: scale(0) translateX(-50%);
+        -ms-transform: scale(0) translateX(-50%);
+        -o-transform: scale(0) translateX(-50%);
+        transform: scale(0) translateX(-50%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+        -webkit-transform-origin: 0% 50%;
+        -moz-transform-origin: 0% 50%;
+        -ms-transform-origin: 0% 50%;
+        -o-transform-origin: 0% 50%;
+        transform-origin: 0% 50%; }
+        /* line 154, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .callout img {
+          display: block;
+          width: 80%;
+          height: auto;
+          margin: 0px auto;
+          opacity: 0.00;
+          -webkit-transform: translateX(-30px);
+          -moz-transform: translateX(-30px);
+          -ms-transform: translateX(-30px);
+          -o-transform: translateX(-30px);
+          transform: translateX(-30px); }
+        /* line 156, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .callout.show {
+          opacity: 1.00;
+          -webkit-transform: scale(1) translateX(-50%);
+          -moz-transform: scale(1) translateX(-50%);
+          -ms-transform: scale(1) translateX(-50%);
+          -o-transform: scale(1) translateX(-50%);
+          transform: scale(1) translateX(-50%); }
+          /* line 158, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.two .callout.show img {
+            opacity: 1.00;
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            -o-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s; }
+      /* line 164, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.two .diagram.stiffness {
+        position: absolute;
+        top: -740px;
+        right: 38%;
+        opacity: 0.00;
+        -webkit-transform: translateX(25%);
+        -moz-transform: translateX(25%);
+        -ms-transform: translateX(25%);
+        -o-transform: translateX(25%);
+        transform: translateX(25%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+        /* line 167, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .diagram.stiffness .label.stiffness {
+          position: relative;
+          top: -210px;
+          left: -25px;
+          opacity: 0.00;
+          -webkit-transform: translateX(70%);
+          -moz-transform: translateX(70%);
+          -ms-transform: translateX(70%);
+          -o-transform: translateX(70%);
+          transform: translateX(70%);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.5s;
+          -moz-transition-delay: 0.5s;
+          -o-transition-delay: 0.5s;
+          transition-delay: 0.5s; }
+        /* line 171, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.two .diagram.stiffness.show {
+          opacity: 1.00;
+          -webkit-transform: translateX(0%);
+          -moz-transform: translateX(0%);
+          -ms-transform: translateX(0%);
+          -o-transform: translateX(0%);
+          transform: translateX(0%); }
+          /* line 174, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.two .diagram.stiffness.show .label.stiffness {
+            opacity: 1.00;
+            -webkit-transform: translateX(80%);
+            -moz-transform: translateX(80%);
+            -ms-transform: translateX(80%);
+            -o-transform: translateX(80%);
+            transform: translateX(80%); }
+      /* line 184, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.three .tire {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        margin: 0px;
+        -webkit-transform: translateX(75px);
+        -moz-transform: translateX(75px);
+        -ms-transform: translateX(75px);
+        -o-transform: translateX(75px);
+        transform: translateX(75px); }
+        /* line 186, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .tire.cutaway {
+          height: 700px;
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 188, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.three .tire.cutaway.hide {
+            opacity: 0.00; }
+        /* line 190, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .tire.tread {
+          height: 750px;
+          opacity: 0.00;
+          -webkit-transform: translateY(150%);
+          -moz-transform: translateY(150%);
+          -ms-transform: translateY(150%);
+          -o-transform: translateY(150%);
+          transform: translateY(150%);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 192, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.three .tire.tread.show {
+            opacity: 1.00;
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+            transform: translateY(0%); }
+          /* line 195, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.three .tire.tread img {
+            -webkit-transform: translateX(25%);
+            -moz-transform: translateX(25%);
+            -ms-transform: translateX(25%);
+            -o-transform: translateX(25%);
+            transform: translateX(25%); }
+        /* line 197, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .tire img {
+          display: block;
+          height: 100%;
+          margin: 0px auto; }
+      /* line 201, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.three .diagram.casing {
+        position: absolute;
+        top: -700px;
+        left: 26%;
+        opacity: 0.00;
+        -webkit-transform: translateX(25%);
+        -moz-transform: translateX(25%);
+        -ms-transform: translateX(25%);
+        -o-transform: translateX(25%);
+        transform: translateX(25%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 205, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.three .diagram .label.casing {
+        position: relative;
+        top: -230px;
+        left: 0px;
+        opacity: 0.00;
+        -webkit-transform: translateX(-120%);
+        -moz-transform: translateX(-120%);
+        -ms-transform: translateX(-120%);
+        -o-transform: translateX(-120%);
+        transform: translateX(-120%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+      /* line 209, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.three .diagram.show {
+        opacity: 1.00;
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+        transform: translateX(0%); }
+        /* line 212, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .diagram.show .label.casing {
+          opacity: 1.00;
+          -webkit-transform: translateX(-100%);
+          -moz-transform: translateX(-100%);
+          -ms-transform: translateX(-100%);
+          -o-transform: translateX(-100%);
+          transform: translateX(-100%); }
+      /* line 218, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.three .sticker {
+        position: absolute;
+        top: -700px;
+        left: -150px;
+        width: 380px;
+        -webkit-transform: translateX(125%) scale(0);
+        -moz-transform: translateX(125%) scale(0);
+        -ms-transform: translateX(125%) scale(0);
+        -o-transform: translateX(125%) scale(0);
+        transform: translateX(125%) scale(0);
+        text-align: center;
+        opacity: 0.00; }
+        /* line 220, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .sticker img {
+          width: 80%;
+          height: auto;
+          margin: 0px;
+          padding: 0px;
+          opacity: 0.00; }
+        /* line 221, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .sticker .disclaimer {
+          opacity: 0.00;
+          text-align: center;
+          margin: 0px 10px; }
+        /* line 222, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.three .sticker.show {
+          opacity: 1.00;
+          -webkit-transform: translateX(125%) scale(1);
+          -moz-transform: translateX(125%) scale(1);
+          -ms-transform: translateX(125%) scale(1);
+          -o-transform: translateX(125%) scale(1);
+          transform: translateX(125%) scale(1);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 224, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.three .sticker.show img {
+            opacity: 1.00;
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            -o-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s; }
+      /* line 232, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.four .tire {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        margin: 0px;
+        -webkit-transform: translateX(75px);
+        -moz-transform: translateX(75px);
+        -ms-transform: translateX(75px);
+        -o-transform: translateX(75px);
+        transform: translateX(75px); }
+        /* line 234, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.four .tire.cutaway {
+          height: 700px;
+          -webkit-transform: translateX(20%);
+          -moz-transform: translateX(20%);
+          -ms-transform: translateX(20%);
+          -o-transform: translateX(20%);
+          transform: translateX(20%);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 236, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.four .tire.cutaway.hide {
+            opacity: 0.00; }
+        /* line 238, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.four .tire img {
+          display: block;
+          height: 100%;
+          margin: 0px auto; }
+      /* line 242, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.four .diagram.casing {
+        position: absolute;
+        top: -550px;
+        left: 35%;
+        opacity: 0.00;
+        -webkit-transform: translateX(25%);
+        -moz-transform: translateX(25%);
+        -ms-transform: translateX(25%);
+        -o-transform: translateX(25%);
+        transform: translateX(25%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 246, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.four .diagram .label.casing {
+        position: absolute;
+        top: 0px;
+        opacity: 0.00;
+        -webkit-transform: translateX(-120%);
+        -moz-transform: translateX(-120%);
+        -ms-transform: translateX(-120%);
+        -o-transform: translateX(-120%);
+        transform: translateX(-120%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+      /* line 250, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.four .diagram.show {
+        opacity: 1.00;
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+        transform: translateX(0%); }
+        /* line 253, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.four .diagram.show .label.casing {
+          opacity: 1.00;
+          -webkit-transform: translateX(-100%);
+          -moz-transform: translateX(-100%);
+          -ms-transform: translateX(-100%);
+          -o-transform: translateX(-100%);
+          transform: translateX(-100%); }
+      /* line 259, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.four .diagram .list {
+        position: absolute; }
+        /* line 261, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.four .diagram .list.casing {
+          display: inline-block;
+          width: 180px;
+          top: 30px;
+          -webkit-transform: translateX(-80px);
+          -moz-transform: translateX(-80px);
+          -ms-transform: translateX(-80px);
+          -o-transform: translateX(-80px);
+          transform: translateX(-80px); }
+          /* line 263, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.four .diagram .list.casing li {
+            -webkit-transition-property: all;
+            -moz-transition-property: all;
+            -o-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 0.75s;
+            -moz-transition-duration: 0.75s;
+            -o-transition-duration: 0.75s;
+            transition-duration: 0.75s;
+            -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s; }
+            /* line 265, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+            #features .tire-display .slide.four .diagram .list.casing li.hide {
+              opacity: 0.00;
+              -webkit-transform: translateY(50%);
+              -moz-transform: translateY(50%);
+              -ms-transform: translateY(50%);
+              -o-transform: translateY(50%);
+              transform: translateY(50%); }
+            /* line 266, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+            #features .tire-display .slide.four .diagram .list.casing li.show {
+              opacity: 1.00;
+              -webkit-transform: translateY(0%);
+              -moz-transform: translateY(0%);
+              -ms-transform: translateY(0%);
+              -o-transform: translateY(0%);
+              transform: translateY(0%); }
+      /* line 274, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .tire {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        margin: 0px;
+        -webkit-transform: translateX(75px);
+        -moz-transform: translateX(75px);
+        -ms-transform: translateX(75px);
+        -o-transform: translateX(75px);
+        transform: translateX(75px); }
+        /* line 276, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .tire.cutaway {
+          height: 700px;
+          -webkit-transform: translateX(35%);
+          -moz-transform: translateX(35%);
+          -ms-transform: translateX(35%);
+          -o-transform: translateX(35%);
+          transform: translateX(35%);
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+        /* line 279, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .tire img {
+          display: block;
+          height: 100%;
+          margin: 0px auto;
+          position: absolute;
+          top: 0px;
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 281, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.five .tire img.show {
+            opacity: 1.00; }
+          /* line 282, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.five .tire img.hide {
+            opacity: 0.00; }
+      /* line 287, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram.casing {
+        position: fixed;
+        top: 50%;
+        left: 35%;
+        opacity: 0.00;
+        -webkit-transform: translate(-25%, -25%);
+        -moz-transform: translate(-25%, -25%);
+        -ms-transform: translate(-25%, -25%);
+        -o-transform: translate(-25%, -25%);
+        transform: translate(-25%, -25%);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 291, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram .label.casing {
+        position: absolute;
+        top: 0px;
+        -webkit-transform: translateX(-120%);
+        -moz-transform: translateX(-120%);
+        -ms-transform: translateX(-120%);
+        -o-transform: translateX(-120%);
+        transform: translateX(-120%);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+      /* line 295, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram.bead {
+        position: fixed;
+        top: 68%;
+        left: 35%;
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 299, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram .label.bead {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 250px;
+        text-align: right;
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+      /* line 303, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram.ply {
+        position: fixed;
+        top: 45%;
+        left: 45%;
+        -webkit-transform: translate(-100%, -100%);
+        -moz-transform: translate(-100%, -100%);
+        -ms-transform: translate(-100%, -100%);
+        -o-transform: translate(-100%, -100%);
+        transform: translate(-100%, -100%);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 307, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram .label.ply {
+        position: absolute;
+        top: 0px;
+        width: 250px;
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+      /* line 311, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram.show {
+        opacity: 1.00; }
+        /* line 314, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .diagram.show .label.ply, #features .tire-display .slide.five .diagram.show .label.bead, #features .tire-display .slide.five .diagram.show .label.casing {
+          opacity: 1.00; }
+      /* line 320, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+      #features .tire-display .slide.five .diagram .list {
+        position: absolute; }
+        /* line 322, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .diagram .list.ply {
+          display: inline-block;
+          width: 280px;
+          top: 20px;
+          -webkit-transform: translateX(-230px);
+          -moz-transform: translateX(-230px);
+          -ms-transform: translateX(-230px);
+          -o-transform: translateX(-230px);
+          transform: translateX(-230px); }
+        /* line 323, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .diagram .list.bead {
+          display: inline-block;
+          width: 280px;
+          top: 20px;
+          -webkit-transform: translateX(-180px);
+          -moz-transform: translateX(-180px);
+          -ms-transform: translateX(-180px);
+          -o-transform: translateX(-180px);
+          transform: translateX(-180px); }
+        /* line 324, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .diagram .list.casing {
+          display: inline-block;
+          width: 200px;
+          top: 20px;
+          -webkit-transform: translateX(-105px);
+          -moz-transform: translateX(-105px);
+          -ms-transform: translateX(-105px);
+          -o-transform: translateX(-105px);
+          transform: translateX(-105px); }
+        /* line 326, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+        #features .tire-display .slide.five .diagram .list.ply li, #features .tire-display .slide.five .diagram .list.bead li, #features .tire-display .slide.five .diagram .list.casing li {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 0.75s;
+          -moz-transition-duration: 0.75s;
+          -o-transition-duration: 0.75s;
+          transition-duration: 0.75s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 328, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.five .diagram .list.ply li.hide, #features .tire-display .slide.five .diagram .list.bead li.hide, #features .tire-display .slide.five .diagram .list.casing li.hide {
+            opacity: 0.00;
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -ms-transform: translateY(50%);
+            -o-transform: translateY(50%);
+            transform: translateY(50%); }
+          /* line 329, P:/_tfs/Client Projects/Clients/Michelin/1938 Michelin X Line Energy Z/ext/_css/page.scss */
+          #features .tire-display .slide.five .diagram .list.ply li.show, #features .tire-display .slide.five .diagram .list.bead li.show, #features .tire-display .slide.five .diagram .list.casing li.show {
+            opacity: 1.00;
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+            transform: translateY(0%); }
+
+/*# sourceMappingURL=page.css.map */

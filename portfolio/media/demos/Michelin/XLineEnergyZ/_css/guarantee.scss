@@ -1,0 +1,107 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/pages";
+
+
+body {margin:0px auto; background-color:$light-grey;}
+
+#preload-audio{display:none;}
+
+#guarantee {
+	position: absolute;	top: 0px; left: 0px; height: 100%; width: 100%;	overflow: hidden;
+	.imgContainer {position: absolute; top: 0; width: auto; height: 105% ; opacity: 0; right: -100%; @include transition(all, 1.5s, $circ, .5s); 
+		/* img { height: 100%; width: auto; float: right; } */
+		background: url("../_media/images/guaranteebg.png") no-repeat; width: 80%; background-size: 105%;
+		&.slide-in { opacity: 1; right: -134px; }
+        &.slide-out { right: -100%; opacity: 0; }
+		@include break(tablet, $landscape){width: 85%; background-size: 120%;}
+		@include break(tablet, $portrait){
+			position: fixed; top: 692px; height: 256px; right: -1000px; width: 789px;
+			background: url("../_media/images/guaranteebg_tablet.png") no-repeat; background-size: 105%;
+			&.slide-in { opacity: 1; right: 0; }
+			&.slide-out { right: 1000px; opacity: 0; }
+		}
+     }
+	
+	.pageContent {
+		padding: 10% 4% 2% 8%; width: 60%; position: relative; top: 0; left: 0;
+        @include break(tablet){padding: 8% 4% 2% 8%; width: 55%;}
+		@include break(tablet, $portrait){
+			padding: 15% 6%; width: 88%;
+			
+		}
+		.pageHeader { color: $royal; @include transition( all, 0.75s, $circ, 0s );
+			&.hide { opacity:0.00; @include prefix(transform,translateY(50%)); }
+			&.show { opacity:1.00; @include prefix(transform,translateY(0%)); }
+			.line1 {
+				margin-left: 42px;
+				@include break(tablet, $portrait){ margin-left: 0 }
+			}
+			.line2 {
+				margin-left: 21px;
+				@include break(tablet, $portrait){ margin-left: 0; }
+            }
+			@include break(tablet){font-size: 1.8em;}
+            @include break(desktop, 1280px){font-size: 2.4em;}
+            @include break(desktop, 1400px){font-size: 3em;}
+            @include break(tablet, $portrait){ text-align: center; font-size: 2.4em }
+		}
+		.bulletList{
+			margin: 0 0 55px 0;
+			@include break(tablet, $portrait){
+				width: 450px; margin: 36px auto 53px auto; display: block; clear: both;
+			}
+		}
+		li { color: $grey; font-family: $body-text; font-size: 1.2rem; }
+		.item1, .item2, .item3, .item4, .item5 {
+			opacity: 0; @include prefix(transform, translateY(50%));
+			@include transition(all,0.75s,$circ,.2s);
+	      	&.show { opacity:1.00; @include prefix(transform, translateY(0%)); }
+			&.hide { opacity:0; @include prefix(transform, translateY(50%)); }
+       	}
+	}
+		
+	.footnote {
+		position: relative; width: 80%; top: 40px; left: 0; z-index: 5000;
+    	.disclaimer {
+       	 	@include transition(all,1s,$circ, 0.25s);
+			opacity: 0;	
+			font-family:$body-text; font-size:0.70em; color:rgba($grey,0.75); display:inline-block; margin:3px 0px; opacity: 0;
+        	a { font-weight:bold; color:inherit; text-decoration:none; cursor:pointer; padding:2px 4px 1px 2px; }
+        	a:Hover {color:$royal; text-decoration:none; background-color:rgba($white,0.50);}
+        
+       		 &.show { @include prefix(opacity,1.00)}
+        	 &.hide { @include prefix(opacity,0.00);}
+			@include break(desktop, 1280px){width: 64%;}
+			@include break(tablet, $portrait){ text-align: center }
+    	}
+	}
+	
+	// Start Submit and Next Question Buttons
+	.button {
+         text-decoration: none; text-align: center; color: $white; background: #005AAA; display:inline-block; height:38px; margin:0; position: relative; left: 35%; top: 20px; margin: 0 0 0 -132px; opacity: 0; width: 263px; padding: 3px 0; z-index:3; cursor: pointer; @include prefix(transform, translateX(50%) skewX(-20.5deg));
+		
+		 &.show {
+             @include prefix(transform, translateY(0%) skewX(-20.5deg)); opacity:1.00; overflow:hidden; @include transition(all, 1s, $circ, 0s);
+            }
+       	 &.hide {
+             @include prefix(transform, translateY(50%) skewX(-20.5deg)); opacity:0.00; @include transition(all, 1s, $circ, 0.4s);
+             .roll-state { display:none; }
+         }
+		.buttonText { position: relative; top: 7px; font-size: .8rem; z-index: 3; font-family: $michelin-black}
+		.roll-state {
+          	width:100%; height:100px; margin:0px; position:relative; top:-45px; left:100%; z-index:2; opacity:0.00; background-color:$yellow; @include transition(all, 0.50s, $circ, 0s); 
+    	}
+		@include break(tablet, $portrait){ left: 50%; margin: 0 0 0 -132px;}
+    }
+	
+	.button:hover {  
+           cursor:pointer;
+           > .roll-state{ width:100%; left:0px; opacity:1.00; }
+		   > .buttonText{ color: #040d4e }
+    }
+	
+	sup{font-size:40%;}
+}

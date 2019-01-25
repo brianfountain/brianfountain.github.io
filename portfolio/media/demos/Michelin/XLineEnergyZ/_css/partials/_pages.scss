@@ -1,0 +1,100 @@
+@import "color";
+@import "type";
+@import "transitions";
+@import "prefixes";
+@import "breakpoints";
+
+/*-- title sequence --*/
+#header {
+    display:block; width:60%;  position:absolute; top:30px; left:0px; z-index:99999999; 
+    .title {
+        height:30px; margin:0px; padding:0px; overflow:hidden; vertical-align:middle;
+        
+        /*- breakpoints -*/
+        @include break(phone){}
+                
+        @include break(tablet){}
+        @include break(tablet,portrait){}
+                
+        @include break(desktop){}
+        
+        .menu {
+            display:inline-block; float:left; margin:0px 0px 0px -80px; padding:0px; height:40px; background-color:$royal; 
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+                
+            @include break(tablet){width:200px;}
+            @include break(tablet,portrait){width:150px;}
+                
+            @include break(desktop){width:200px;}
+            
+            &.slide-in {
+                @include prefix(transform, translateX(0px) skewX(-20.5deg)); opacity:1.00; overflow:hidden; @include transition(all, 1s, $circ, 0s);
+                .menu-icon {
+                    width:40px; opacity:1.00;
+                }
+            }
+            &.slide-out {
+                @include prefix(transform, translateX(-200px) skewX(-20.5deg)); opacity:0.00; @include transition(all, 1s, $circ, 1s);
+                .roll-state{
+                    display:none;
+                }
+                .menu-icon {
+                    width:0px; opacity:0.00;
+                }                
+            }
+            .menu-icon {
+                display:inline-block; height:30px; margin:0px 0px 0px 20px; position:relative; left:50%; z-index:3; @include prefix(transform,skewX(20.5deg)); @include transition(all, 1s, $circ, 1s);  
+                svg path{fill:#fff; cursor:pointer;}
+                p {font-family: $michelin-black; color:#fff; margin:5px 0px; padding:0px; @include prefix(transform, translate(-25%, 0%));}
+            }
+            .roll-state {
+                width:100%; height:40px; margin:0px; position:relative; top:-40px; left:100%; z-index:2; opacity:0.00; background-color:$yellow; @include transition(all, 0.50s, $circ, 0s); 
+            }
+        }
+        .menu.slide-in:Hover {  
+                cursor:pointer; 
+                > .roll-state{width:100%; left:0px; opacity:1.00;}
+                > .menu-icon svg path{fill:$navy; @include transition(all, 1s, $circ, 0s);}
+                > .menu-icon p {color:$navy;}
+        }
+        h1 {
+            display:inline-block; margin:0px 0px 0px 0px; padding:0px; height:30px; width:100%; color:$royal; position:absolute; top:0px; overflow:hidden; 
+            span.headline {
+                display:inline-block; width:100%; position:absolute; top:0px; margin:-1px 0px 0px 15px; white-space:nowrap;
+                
+                /*- breakpoints -*/
+                @include break(phone){}
+                
+                @include break(tablet){font-size:0.70em; padding:2px 0px 0px 0px;}
+                @include break(tablet,portrait){font-size:0.65em; padding:2px 0px 0px 0px; width:550px; }
+                
+                @include break(desktop){font-size:0.85em; padding:0px;}
+                
+                &.sequence {
+                    @include transition(all,1s,$circ, 0.25s);
+
+                    &.hide{
+                        @include prefix(transform,translate(0%,100%)); @include prefix(opacity,0.00);
+                    }
+                    &.show {
+                        @include prefix(transform,translate(0%,0%)); @include prefix(opacity,1.00);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footnote {
+    .disclaimer {
+        @include transition(all,1s,$circ, 0.25s);
+		font-family:$body-text; font-size:0.60em; color:rgba($grey,0.75); width:100%; display:inline-block; margin:3px 0px;
+        a {font-weight:bold; color:inherit; text-decoration:none; cursor:pointer; padding:2px 4px 1px 2px;}
+        a:Hover {color:$royal; text-decoration:none; background-color:rgba($white,0.50);}
+        
+        &.show { @include prefix(opacity,1.00);}
+        &.hide { @include prefix(opacity,0.00);}
+    }
+}

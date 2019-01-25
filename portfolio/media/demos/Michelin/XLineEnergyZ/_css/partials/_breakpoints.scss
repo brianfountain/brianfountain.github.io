@@ -1,0 +1,55 @@
+$p-portrait: 320px;
+$p-landscape: 480px;
+
+$tablet-landscape: 1024px;
+$tablet-portrait: 768px;
+
+/* desktop variables */
+$desktop-small:1025px;
+$desktop-large:1920px;
+
+/*-- device orientation width --*/
+
+$portrait:  768px;
+$landscape: 1024px;
+
+
+/*-- desktop variable widths --*/
+
+$desktop:  1025px;
+$sm-width: 1280px;
+$md-width: 1366px;
+$lg-width: 1600px;
+$xl-width: 1920px;
+
+
+
+
+@mixin break($media, $width:1024px, $height:1024px) {
+    @if $media == phone {
+        @media (max-width: $p-portrait) { @content; }
+    }
+    @else if $media == tablet {
+        @if $width == $tablet-portrait {
+            @media (orientation:portrait) { @content; }            
+        } @else if $width == $tablet-landscape {
+            @media (max-width:$tablet-landscape) { @content; }
+        } @else if $height < $tablet-portrait and $width < $tablet-landscape {
+            @media (min-width:$height) and (max-width:$width) and (orientation:landscape) { @content; }
+        } @else if $height < $tablet-landscape and $width < $tablet-portrait {
+            @media (min-width:$width) and (max-width:$height) and (orientation:portrait) { @content; }
+        }
+    }
+    @else if $media == desktop {
+        @if $width > $desktop-small {
+            @if $height < $portrait{
+                @media (max-height: $height) and (min-width:$desktop) { @content; }
+            } @else {
+                @media (min-width: $width) { @content; }
+            }
+            
+        } @else {
+            @media (min-width: $desktop-small) { @content; }
+        }
+    }
+}

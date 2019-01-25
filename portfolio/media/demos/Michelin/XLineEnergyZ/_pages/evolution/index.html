@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Introduction</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/evolution.css"/>
+<script type="text/javascript"> 
+    $(function() {
+        var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+                
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states 
+        $(".menu").on({        
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+            }
+        });
+        
+        $(ap).bind("ended", function(evt){
+            // set up instructional text
+            p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true); 
+            
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+        
+        $(ap).bind("timeupdate", function(evt){
+            var t = evt.target.currentTime;
+            if (p.audio.player.source == audioSRC){
+                if(t < 1 || t == 0.00){   
+                    $(".section-a .timeline .tire").removeClass("drop-in reset-scale off-stage-right scale-up scale-back").addClass("hide");
+                    $(".section-a .timeline h1").removeClass("show").addClass("hide");
+
+                    $(".section-b .tire-wrap .tire").removeClass("show").addClass("hide");
+                    $(".section-b .montage .image-wrap").removeClass("show").addClass("hide");
+                    $(".section-b .taglines .headline.one").removeClass("show").addClass("hide");
+                    $(".section-b .taglines .headline.two").removeClass("show").addClass("hide");
+
+                    $(".section-c .slogan > span").removeClass("in").addClass("out");
+                    $(".section-c .tire").removeClass("drop-in zoom-in").addClass("hide-on-replay");
+                    $(".section-c .info .header > span").removeClass("in").addClass("out");
+                    $(".section-c .info .subheader > span").removeClass("in").addClass("out");
+                    $(".section-c .info .icons > span").removeClass("show").addClass("hide")
+                    $(".section-c .info .list > li").removeClass("show").addClass("hide")
+                    $(".section-c .footnote .disclaimer").removeClass("show").addClass("hide");
+                }
+                //Start Section 1
+                if(t > 1.20){   
+                    $(".section-a").removeClass("hide").addClass("show");
+                    $(".section-a .timeline .tire").removeClass("hide").addClass("drop-in");
+
+                     $(".section-b .tire-wrap .tire").removeClass("show zoom-in").addClass("hide");
+                }
+                if(t > 1){   
+                    $(".section-a .timeline .tire").removeClass("hide").addClass("drop-in");
+
+                }            
+                if(t > 10){   
+                    $(".section-a .timeline h1").removeClass("hide").addClass("show");
+                    $(".section-a .timeline .tire").removeClass("drop-in");
+                }
+                if(t > 13){  
+                    $(".section-a .timeline .tire").eq(5).addClass("scale-up");
+                    $(".section-a .timeline .tire").eq(0).addClass("scale-back");
+                    $(".section-a .timeline .tire").eq(1).addClass("scale-back");
+                    $(".section-a .timeline .tire").eq(2).addClass("scale-back");
+                    $(".section-a .timeline .tire").eq(3).addClass("scale-back");
+                    $(".section-a .timeline .tire").eq(4).addClass("scale-back");
+                }  
+                if(t > 19){  
+                    $(".section-a .timeline .tire").eq(5).removeClass("scale-up").addClass("off-stage-right");
+                    $(".section-a .timeline .tire").eq(1).removeClass("scale-back").addClass("off-stage-right");
+                    $(".section-a .timeline .tire").eq(2).removeClass("scale-back").addClass("off-stage-right");
+                    $(".section-a .timeline .tire").eq(3).removeClass("scale-back").addClass("off-stage-right");
+                    $(".section-a .timeline .tire").eq(4).removeClass("scale-back").addClass("off-stage-right");
+                    $(".section-a .timeline .tire").eq(0).removeClass("scale-back").addClass("scale-up");
+                } 
+                if(t > 26){  
+                    $(".section-a .timeline .tire").eq(0).addClass("reset-scale").removeClass("scale-up");
+                    $(".section-a .timeline .tire").eq(1).removeClass("off-stage-right").addClass("drop-in");
+                    $(".section-a .timeline .tire").eq(2).removeClass("off-stage-right").addClass("drop-in");
+                    $(".section-a .timeline .tire").eq(3).removeClass("off-stage-right").addClass("drop-in");
+                    $(".section-a .timeline .tire").eq(4).removeClass("off-stage-right").addClass("drop-in");
+                    $(".section-a .timeline .tire").eq(5).removeClass("off-stage-right").addClass("drop-in");
+                }
+                /* -- Section 2 -- */
+                if(t > 32){   
+                    $(".section-b .tire-wrap .tire").removeClass("hide").addClass("show");
+                    $(".section-a").removeClass("show").addClass("hide");
+                    $(".section-b").removeClass("hide").addClass("show");
+
+                    $(".section-a .timeline h1").removeClass("show").addClass("hide");
+                    $(".section-b .taglines .headline.one").removeClass("show").addClass("hide");
+                    $(".section-b .taglines .headline.two").removeClass("show").addClass("hide");
+                }
+                if(t > 38){
+                    $(".section-b .montage .image-wrap").removeClass("hide").addClass("show");
+                }
+                if(t > 42){
+                    $(".section-b .taglines .headline.one").removeClass("hide").addClass("show");
+                }
+                if(t > 56){
+                    $(".section-b .taglines .headline.two").removeClass("hide").addClass("show");
+                    $(".section-c .tire").removeClass("hide-on-replay").addClass("hide");
+                }
+                if (t > 60){
+                    $(".section-b").removeClass("show").addClass("hide");
+                    $(".section-c").removeClass("hide").addClass("show");
+                }
+                /* -- Section 3 -- */
+                if(t > 61){   
+                    $(".section-c .tire").addClass("drop-in").removeClass("hide");
+                }
+                if(t > 62){   
+                    $(".section-c .slogan > span").removeClass("out").addClass("in");
+                    
+                }
+                if (t > 66){
+                    $(".section-c .tire").removeClass("drop-in").addClass("zoom-in");
+                    $(".section-c .slogan > span").removeClass("in").addClass("out");
+                    $(".section-c .info .header > span").removeClass("out").addClass("in");
+
+                }
+                if (t > 67){
+                    $(".section-c .info .subheader > span").removeClass("out").addClass("in");
+                }
+                if (t > 73){
+                    $(".section-c .info .subheader > span").removeClass("out").addClass("in");
+                    $(".section-c .info .icons > span").eq(0).removeClass("hide").addClass("show");
+                    $(".section-c .info .list > li").eq(0).removeClass("hide").addClass("show");
+                }
+                if (t > 76){
+                    $(".section-c .info .list > li").eq(1).removeClass("hide").addClass("show");
+
+                }
+                if (t > 90){
+                    $(".section-c .info .list > li").eq(2).removeClass("hide").addClass("show");
+                    $(".section-c .info .icons > span").eq(1).removeClass("hide").addClass("show");
+                    $(".section-c .footnote .disclaimer.one").removeClass("hide").addClass("show");
+
+                }
+                if (t > 98){
+                    $(".section-c .info .list > li").eq(3).removeClass("hide").addClass("show");
+                    $(".section-c .info .icons > span").eq(2).removeClass("hide").addClass("show");
+                    $(".section-c .footnote .disclaimer.two").removeClass("hide").addClass("show");
+                }
+                if (t > 111){
+                    $(".section-c .info .list > li").eq(4).removeClass("hide").addClass("show");
+                    $(".section-c .info .icons > span").eq(3).removeClass("hide").addClass("show");
+                }
+                else {
+
+                }   
+            }
+        });   
+        
+        //-- initialize page --//
+        initializePage = function () {
+                
+        }
+        
+        //-- build the page once the wipe is removed --//
+        buildPage = function() { 		
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+            
+            $(".menu.slide-in").on(transitionEvent, function(){            
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+                       
+        /* iframe load and unload events */
+        $(window).load(function () {
+            audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+            p.isFrameLoaded(true);            
+            $("#preload-audio").html("&nbsp;"); 
+            
+            p.controller.setVar("introViewed", true);
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+        
+    });
+</script>
+<style type="text/css">
+    body {width:100%; height:100%; margin:0px auto; padding:0px;}
+</style>
+</head>
+<body>
+<div id="header">
+    <div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+        <h1>
+            <span class="headline sequence hide"><b>Evolution of Excellence</b></span>               
+        </h1>
+    </div>
+</div>
+<div id="evolution">
+    <div class="section-a hide">
+        <div class="timeline">
+            <h1 class="tagline">Best in the Industry</h1>
+            <div class="tire-line">
+                <p class="tire hide">
+                    <img src="../../_media/images/xza_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA<sup>&reg;</sup></span>
+                    </span>
+                </p>
+                <p class="tire hide">
+                    <img src="../../_media/images/xza1_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA<sup>&reg;</sup>-1</span>
+                    </span>
+                </p>
+                <p class="tire hide">
+                    <img src="../../_media/images/xza1plus_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA<sup>&reg;</sup>-1+</span>
+                    </span>
+                </p>
+                <p class="tire hide">
+                    <img src="../../_media/images/xza2_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA2<sup>&reg;</sup></span>
+                    </span>
+                </p>
+                <p class="tire hide">
+                    <img src="../../_media/images/xza3_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA3<sup>&reg;</sup></span>
+                    </span>
+                </p>
+                <p class="tire hide">
+                    <img src="../../_media/images/xza3plus_lrg.png">
+                    <span class="label">
+                        <span>Michelin<br/>XZA3<sup>&reg;</sup>+</span>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section-b hide">
+        <div class="fleets">
+            <div class="tire-wrap">
+                <p class="tire">
+                    <img src="../../_media/images/xza3plus_xlrg.png">
+                </p>
+            </div>
+            <div class="taglines">
+                <p class="headline one">
+                    <span>&nbsp;&nbsp;&nbsp;Fleets and Owner</span>
+                    <span>&nbsp;Operators choose</span>
+                    <span>the MICHELIN<sup>®</sup> XZA3<sup>®</sup>+</span>
+                </p>
+                <p class="headline two">
+                    <span>&nbsp;Combination of Benefits</span>
+                    <span>NO Compromises!</span>
+                </p>
+            </div>
+            <div class="montage">
+                <p class="image-wrap truck hide">
+                    <img src="../../_media/images/fleet.jpg"/>
+                </p>
+                <p class="image-wrap operator hide">
+                    <img src="../../_media/images/operator.jpg"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section-c hide">
+        <div class="best">
+            <h1 class="slogan">
+                <span class="top">Our Best</span>
+                <span class="middle">Just Got</span>
+                <span class="bottom">Better!</span>
+            </h1>
+            <div class="tire-wrap">
+                <p class="tire">
+                    <img src="../../_media/images/evolution_xlez.png">
+                </p>
+            </div>
+            <div class="info">
+                <p class="title">
+                    <span class="header">
+                        <span class="top">&nbsp;&nbsp;Michelin<sup>&reg;</sup> X<sup>&reg;</sup></span>
+                        <span class="bottom">&nbsp;Line<sup>&trade;</sup> Energy Z</span>
+                    </span>
+                    <span class="subheader">
+                        <span class="top">Our Best Just Got Better</span>
+                    </span>
+                </p>
+                <p class="icons">
+                    <span>
+                        <img src="../../_media/images/icon_long_haul.png"/>
+                    </span>
+                    <span>
+                        <img src="../../_media/images/icon_rolling.png"/>
+                    </span>
+                    <span>
+                        <img src="../../_media/images/icon_rolling_resistance.png"/>
+                    </span>
+                    <span>
+                        <img src="../../_media/images/icon_green.png"/>
+                    </span>
+                </p>
+                <ul class="list">
+                    <li>&#9679;&nbsp;&nbsp;Continued leadership</li>
+                    <li>&#9679;&nbsp;&nbsp;BEST in the industry</li>
+                    <li>&#9679;&nbsp;&nbsp;20% Mileage Guarantee<sup>1</sup></li>
+                    <li>&#9679;&nbsp;&nbsp;5% better rolling resistance<sup>2</sup></li>
+                    <li>&#9679;&nbsp;&nbsp;Ultra-fuel-efficient casing</li>
+                </ul>
+            </div>
+            <div class="footnote">
+                <p class="disclaimer one"><b>1.</b> Visit <a href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank">MichelinTruck.com</a> for details.</p>
+                <p class="disclaimer two"><b>2.</b> Vs. MICHELIN® XZA3+® EVERTREAD® based on internal rolling resistance tests using ISO 28580 in tire size 275/80R22.5</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="preload-audio">
+<audio src='_media/audio/Evolution.mp3'></audio>
+</div>
+</body>	
+</html>

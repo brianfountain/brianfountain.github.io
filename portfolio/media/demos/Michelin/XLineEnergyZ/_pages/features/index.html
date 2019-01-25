@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Introduction</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/features.css"/>
+<script type="text/javascript"> 
+    $(function() {
+        var p = window.parent;
+        var ap = p.document.getElementById("audio");
+        
+        var pageTitles = ["More Mileage", "Even Wear", "Improved Fuel Efficiency", "Improved Rolling Resistance", "Retreadability"];
+        var audioArray = [];
+        var newSlide = 0;
+        var curSlide = 0;
+        
+        
+        transitionPage = function(pg){
+            p.addTransitionPage(pg);
+        }
+            
+        $("#preload-audio > audio").each(function (idx, src){
+            var files = parseInt($("#preload-audio > audio").length) -1;
+            audioArray.push($(this).attr("src"));
+            $("#preload-audio").html("&nbsp;");
+            var template = "<p class='inactive'><span></span></p>"
+            $(".progress").append(template);
+        });
+                
+            
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+        
+        function setAnimationEvent(){
+            var a,
+            el = document.createElement("fakeelement");
+            var animation = {"animation":"animationend","OTransition":"oAnimationEnd","MozTransition":"animationend","WebkitTransition":"webkitAnimationEnd"}
+            for (a in animation){if (el.style[a] !== undefined){return animation[a];}}
+        }
+        
+        $(".next").on({
+            click: function (){
+                newSlide = curSlide+1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            } 
+        });
+        
+        $(".prev").on({
+            click: function (){
+                newSlide = curSlide-1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            } 
+        });
+        
+        // Animate #Screens based on index 
+        animateSlides = function (index){
+            
+            var strt = curSlide, idx = index;    
+            var slideOut = $('.slide').eq(strt);
+            var slideIn = $('.slide').eq(idx);
+            
+            if (strt > idx){
+                $(slideOut).removeClass("reverse in").addClass("reverse out");
+                $(slideIn).removeClass("set").addClass("reverse in");
+            } else {
+                if(idx == 0){
+                     $(".slide").addClass("set");
+                    $(slideIn).removeClass("set").addClass("in");;
+                } else {
+                    if ($(".slide").hasClass("reverse")){
+                        $(".slide").removeClass("reverse");
+                    }
+                    $(slideOut).removeClass("in").addClass("out");
+                    $(slideIn).removeClass("set").addClass("in");
+                }
+            } 
+            
+            curSlide = index;
+            $(".section-title span").html(pageTitles[curSlide]);
+            
+            animateResponse(slideOut); 
+            animateResponse(slideIn);
+            
+            checkIndex();
+        }
+        
+        animateResponse = function (obj){
+            var direction = $(obj).hasClass("out");
+            var ae = setAnimationEvent();
+
+            $(obj).one(ae, function() {if (direction == true){
+                $(obj).removeClass("out").addClass("set");
+            }});   
+        }
+            
+        checkIndex = function (){
+            if ($(".active") != null){
+                $(".progress > p").removeClass("active").addClass("inactive");
+                $(".progress > p").eq(curSlide).removeClass("inactive").addClass("active");
+            }            
+            
+            if (curSlide == audioArray.length -1){
+                $(".next").removeClass("slide-in").addClass("slide-out");
+            } else {
+                $(".next").removeClass("slide-out").addClass("slide-in");
+            }
+            
+            if (curSlide == 0){
+                $(".prev").removeClass("slide-in").addClass("slide-out");
+            }else {
+                $(".prev").removeClass("slide-out").addClass("slide-in");
+            }
+            
+        };
+        
+        // menu states 
+        $(".menu").on({        
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+            }
+        });
+        
+        
+        syncSlides = function(i,t){
+            //console.log("Slide: " + i + " -- Timestamp: " + t );
+            if (i ==0){
+                if(t < 0.250){   
+                    $(".slide.one > .tire").removeClass("show");
+                    $(".slide.one > .sticker").removeClass("show");
+                    $(".slide.one > .tire").removeClass("slide-down");
+                    $(".slide.one > .callout").removeClass("show");
+                }
+                if (t > 0.250){
+                    $(".slide.one > .tire").addClass("show");
+                }
+                if (t > 2){
+                    $(".slide.one > .sticker").addClass("show");
+                }
+                if (t > 9){
+                    $(".slide.one > .tire").addClass("slide-down");
+                    $(".slide.one > .callout").addClass("show");
+                } 
+            }  else {
+                $(".slide.one.set > .tire").removeClass("show");
+                $(".slide.one.set > .sticker").removeClass("show");
+                $(".slide.one.set > .tire").removeClass("slide-down");
+                $(".slide.one.set > .callout").removeClass("show");
+            }         
+            
+            if (i ==1){
+                if(t < 0.100){   
+                    $(".slide.two > .diagram.stiffness").removeClass("show");
+                    $(".slide.two > .tire.cutaway").removeClass("hide");
+                    $(".slide.two > .tire.tread").removeClass("show");
+                    $(".slide.two > .tire.rib").removeClass("show").addClass("hide");
+                    $(".slide.two > .diagram.groove").removeClass("show").addClass("hide");
+                }
+                if (t > 0.100){
+                    $(".slide.two > .diagram.stiffness").addClass("show");
+                }
+                if (t > 5.00){
+                    $(".slide.two > .tire.cutaway").addClass("hide");
+                    $(".slide.two > .diagram.stiffness").removeClass("show");
+                    
+                }
+                if (t > 5.50){
+                    $(".slide.two > .tire.tread").addClass("show");
+                } 
+                if (t > 11.50){
+                    $(".slide.two > .diagram.sipes").addClass("show");
+                }
+                if (t > 18.50){
+                    $(".slide.two > .tire.tread").removeClass("show");
+                    $(".slide.two > .tire.rib").removeClass("hide").addClass("show");
+                    $(".slide.two > .diagram.sipes").removeClass("show");
+                } 
+                if (t > 18.50){
+                    $(".slide.two > .diagram.groove").removeClass("hide").addClass("show");
+                } 
+            }  else {
+                $(".slide.two.set > .tire.tread").removeClass("show");
+                $(".slide.two > .diagram.stiffness").removeClass("show");
+                $(".slide.two.set > .callout").removeClass("show");
+                $(".slide.two > .tire.cutaway").removeClass("hide");
+                $(".slide.two > .tire.rib").removeClass("show").addClass("hide");
+                $(".slide.two > .diagram.groove").removeClass("show").addClass("hide");
+            }
+            
+            if (i ==2){
+                if(t < 0.100){   
+                    $(".slide.three > .diagram.stiffness").removeClass("show");
+                    $(".slide.three > .tire.cutaway").removeClass("hide");
+                    $(".slide.three > .tire.tread").removeClass("show");
+                    $(".slide.three > .sticker").removeClass("show");
+                }
+                if (t > 1.00){
+                    $(".slide.three > .diagram.casing").addClass("show");
+                }
+                if (t > 7.00){
+                    $(".slide.three > .tire.cutaway").addClass("hide");
+                    $(".slide.three > .diagram.casing").removeClass("show");
+                    
+                }
+                if (t > 8.00){
+                    $(".slide.three > .tire.tread").addClass("show");
+                    $(".slide.three > .sticker").addClass("show");
+                } 
+            }  else {
+                $(".slide.three.set > .diagram.casing").removeClass("show");
+                $(".slide.three.set > .tire.cutaway").removeClass("hide");
+                $(".slide.three.set > .tire.tread").removeClass("show");
+                $(".slide.three.set > .sticker").removeClass("show");
+            }
+            
+            if (i ==3){
+                if(t < 0.100){   
+                    $(".slide.four > .diagram.casing").removeClass("show");
+                    $(".slide.four > .diagram.list li").eq(0).removeClass("show");
+                    $(".slide.four > .diagram .list li").eq(0).removeClass("show").addClass("hide");
+                    $(".slide.four > .diagram .list li").eq(1).removeClass("show").addClass("hide");
+                    $(".slide.four > .diagram .list li").eq(2).removeClass("show").addClass("hide");
+                    $(".slide.four > .diagram .list li").eq(3).removeClass("show").addClass("hide");
+                }
+                if (t > 0.150){
+                    $(".slide.four > .diagram.casing").addClass("show");
+                }
+                if (t > 2.00){
+                    $(".slide.four > .diagram .list li").eq(0).removeClass("hide").addClass("show");  
+                }
+                if (t > 3.00){
+                    $(".slide.four > .diagram .list li").eq(1).removeClass("hide").addClass("show");  
+                }
+                if (t > 9.00){
+                    $(".slide.four > .diagram .list li").eq(2).removeClass("hide").addClass("show");  
+                }
+                if (t > 13.00){
+                    $(".slide.four > .diagram .list li").eq(3).removeClass("hide").addClass("show");  
+                }
+            }  else {
+                $(".slide.four.set > .diagram .list li").eq(0).removeClass("show").addClass("hide");
+                $(".slide.four.set > .diagram .list li").eq(1).removeClass("show").addClass("hide");
+                $(".slide.four.set > .diagram .list li").eq(2).removeClass("show").addClass("hide");
+                $(".slide.four.set > .diagram .list li").eq(3).removeClass("show").addClass("hide");
+                $(".slide.four > .diagram.casing").removeClass("show");
+            }
+            
+            
+            if (i == 4){
+                if(t < 0.100){ 
+                    $(".slide.five > .tire.cutaway img.two").removeClass("show").addClass("hide");
+                    $(".slide.five > .tire.cutaway img.three").removeClass("show").addClass("hide");
+                    $(".slide.five > .tire.cutaway img.four").removeClass("show").addClass("hide");
+                    $(".slide.five > .diagram.ply").removeClass("show");
+                    $(".slide.five > .diagram.bead").removeClass("show");
+                    $(".slide.five > .diagram.casing").removeClass("show");
+                    $(".slide.five > .diagram.bead .list li").removeClass("show").addClass("hide");
+                    $(".slide.five > .diagram.casing .list li").removeClass("show").addClass("hide");
+                    $(".slide.five > .diagram.ply .list li").removeClass("show").addClass("hide");
+                }
+                if (t > 0.150){
+                    $(".slide.five > .diagram.casing").addClass("show");
+                }
+                if (t > 8.00){
+                    $(".slide.five > .diagram.casing .list li").eq(0).removeClass("hide").addClass("show");
+                }
+                if (t > 10.00){
+                    $(".slide.five > .diagram.casing .list li").eq(1).removeClass("hide").addClass("show");
+                }
+                if (t > 15.00){
+                    $(".slide.five > .diagram.casing .list li").eq(2).removeClass("hide").addClass("show");
+                }
+                if (t > 26.00){
+                    $(".slide.five > .tire.cutaway img.one").removeClass("show").addClass("hide");
+                    $(".slide.five > .tire.cutaway img.two").removeClass("hide").addClass("show");
+                    $(".slide.five > .diagram.bead").addClass("show");
+                }
+                if (t > 29.00){
+                    $(".slide.five > .diagram.bead .list li").removeClass("hide").addClass("show");
+                }
+                if (t > 35.00){
+                    $(".slide.five > .tire.cutaway img.two").removeClass("show").addClass("hide");
+                    $(".slide.five > .tire.cutaway img.three").removeClass("hide").addClass("show");
+                    $(".slide.five > .diagram.ply").addClass("show");
+                                        
+                }
+                if (t > 37.00){
+                    $(".slide.five > .diagram.ply .list li").removeClass("hide").addClass("show");
+                }
+                if (t > 41.00){
+                    $(".slide.five > .tire.cutaway img.three").removeClass("show").addClass("hide");
+                    $(".slide.five > .tire.cutaway img.four").removeClass("hide").addClass("show");
+                }
+            }  else {
+                $(".slide.five.set > .tire.cutaway img.one").removeClass("hide").addClass("show");
+                $(".slide.five.set > .tire.cutaway img.two").removeClass("show").addClass("hide");
+                $(".slide.five.set > .tire.cutaway img.three").removeClass("show").addClass("hide");
+                $(".slide.five.set > .tire.cutaway img.four").removeClass("show").addClass("hide");
+                $(".slide.five.set > .diagram.ply").removeClass("show");
+                $(".slide.five.set > .diagram.bead").removeClass("show");
+                $(".slide.five.set > .diagram.casing").removeClass("show");
+                $(".slide.five.set > .diagram.ply .list li").removeClass("show").addClass("hide");
+                $(".slide.five.set > .diagram.bead .list li").removeClass("show").addClass("hide");
+                $(".slide.five.set > .diagram.casing .list li").removeClass("show").addClass("hide");
+            }
+        }
+        
+        $(ap).bind("ended", function(evt){
+            if($(ap).attr("src") == audioArray[4]){
+                p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true); 
+                
+                // set page complete
+                var pageKey = "page" + p.courseObj.currentIndex + "Done";
+                p.courseObj.videoViewed[pageKey] = true;
+            }
+        });
+        
+        // setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+            var apSRC = $(ap).attr("src");
+            switch (apSRC) {
+                case audioArray[0]:
+                    syncSlides(0,ts);
+                    break;
+                case audioArray[1]:
+                    syncSlides(1,ts);
+                    break;
+                case audioArray[2]:
+                    syncSlides(2,ts);
+                    break;
+                case audioArray[3]:
+                    syncSlides(3,ts);
+                    break;
+                case audioArray[4]:
+                    syncSlides(4,ts);
+                    break;
+            } 
+        });   
+        
+        setPageComplete = function() {
+            var pageKey = "video" + p.courseObj.currentIndex;
+            p.courseObj.videoViewed[pageKey] = true;
+        }
+        
+        //---//
+        initializePage = function () {
+            $(".section-title span").append(pageTitles[curSlide]);
+            $(".progress > p").eq(curSlide).addClass("active");
+            animateSlides(0);
+        }
+        
+        // build the page once the wipe is removed
+        buildPage = function() { 
+            //credit for starting page
+			p.controller.setPageViewed("features");
+			
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+            
+            $(".menu.slide-in").on(transitionEvent, function(){
+                
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+               
+        // iframe load and unload events
+        $(window).load(function () {
+            checkIndex();
+            p.audio.player.load(audioArray[curSlide]);
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;"); 
+            
+            p.controller.setVar("introViewed", true);
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+        
+        initializePage();
+    });
+</script>
+<style type="text/css">
+    body {width:100%; height:100%; margin:0px auto; padding:0px;}
+</style>
+</head>
+<body>
+<div id="header">
+    <div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+        <h1>
+            <span class="headline sequence hide"><b>Features</b></span>               
+        </h1>
+    </div>
+</div>
+<div id="features">
+    <h1 class="section-title"><span></span></h1>
+    <div class="progress">
+    </div>
+    <div class="next">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+            <path d="M10 5, 40 50,10 95" />
+        </svg>
+    </div>
+    <div class="prev">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+            <path d="M40 5, 10 50,40 95" />
+        </svg>
+    </div>
+    <div class="tire-display">
+        <!-- section 1 -->
+        <div class="slide one">
+            <p class="callout">
+                <img src="../../_media/images/top_layer.png"/>
+            </p>
+            <p class="tire">
+                <img src="../../_media/images/tire_full_frontal.png"/>
+            </p>
+            <div class="sticker">
+                <img src="../../_media/images/guarantee.png"/>
+                <div class="footnote">
+                    <p class="disclaimer"><b>*</b> Visit <a href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank" >MichelinTruck.com</a> for details.</p>
+                </div>
+            </div>
+        </div>
+        <!-- section 2 -->
+        <div class="slide two">
+            <p class="tire rib">
+                <img src="../../_media/images/tire_cross_section_rib.png"/>
+            </p>
+            <p class="tire cutaway">
+                <img src="../../_media/images/tire_cross_top_layer.png"/>
+            </p>
+            <p class="tire tread">
+                <img src="../../_media/images/features_2_tread_highlights.png"/>
+            </p>
+            <div class="diagram stiffness">            
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="12 130,60 10,92 10"></polyline>
+                       <circle cx="100" cy="10" r="3"></circle>
+                       <circle cx="9" cy="136" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label stiffness">&nbsp;Stiffness and<br/>Stress Control</p>
+            </div>
+            <div class="diagram groove">            
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="12 130,60 10,92 10"></polyline>
+                       <circle cx="100" cy="10" r="3"></circle>
+                       <circle cx="9" cy="136" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label groove">&nbsp;Decoupling<br/>Groove</p>
+            </div>
+            <div class="diagram sipes">            
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="12 130,60 10,92 10"></polyline>
+                       <circle cx="100" cy="10" r="3"></circle>
+                       <circle cx="9" cy="136" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label sipes">&nbsp;Directional<br/>Mini Sipes</p>
+            </div>
+        </div>
+        <!-- section 3 -->
+        <div class="slide three">
+            <p class="tire cutaway">
+                <img src="../../_media/images/tire_cross_bottom_layer.png"/>
+            </p>
+            <p class="tire tread">
+                <img src="../../_media/images/features_3_frontal.png"/>
+            </p>
+            <div class="diagram casing">
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="100 120,70 10,14 10"></polyline>
+                       <circle cx="8" cy="10" r="3"></circle>
+                       <circle cx="102" cy="126" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label casing">&nbsp;Extended<br/>Casing Life</p>
+            </div>
+            <div class="sticker">
+                <img src="../../_media/images/smartway_verified.png"/>
+            </div>
+        </div>
+        <!-- section 4 -->
+        <div class="slide four">
+            <p class="tire cutaway">
+                <img src="../../_media/images/tire_cross_casing.png"/>
+            </p>
+            <div class="diagram casing">
+                <svg class="vectors" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="250 190, 150 10,14 10"></polyline>
+                       <circle cx="8" cy="10" r="3"></circle>
+                       <circle cy="196" cx="254" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label casing">Casing</p>
+                <ul class="list casing">
+                    <li>Newly designed casing</li>
+                    <li>5% better rolling resistance<sup><b>1</b></sup></li>
+                    <li>No loss of mileage</li>
+                    <li>Long life</li>
+                </ul>
+            </div>
+            <div class="footnote">
+                <p class="disclaimer"><b>1.</b> Vs. MICHELIN® XZA3+® EVERTREAD® based on internal rolling resistance tests using ISO 28580 in tire size 275/80R22.5</p>
+            </div>
+        </div>
+        <!-- section 5 -->
+        <div class="slide five">
+            <p class="tire cutaway">
+                <img class="one" src="../../_media/images/tire_cross_casing.png"/>
+                <img class="two" src="../../_media/images/tire_cross_bead.png"/>
+                <img class="three" src="../../_media/images/tire_cross_top_layer.png"/>
+                <img class="four" src="../../_media/images/tire_cross_retread.png"/>
+            </p>
+            <div class="diagram casing">
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="140 120,90 10,14 10"></polyline>
+                       <circle cx="8" cy="10" r="3"></circle>
+                       <circle cy="126" cx="142" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label casing">Casing</p>
+                <ul class="list casing">
+                    <li>Incredible retreadability</li>
+                    <li>No loss of mileage</li>
+                    <li>Limited Warranty</li>
+                </ul>
+            </div>
+            <div class="diagram bead">
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="130 30,120 10,14 10"></polyline>
+                       <circle cx="8" cy="10" r="3"></circle>
+                       <circle cx="134" cy="36" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label bead">Bead Bundle</p>
+                <ul class="list bead">
+                    <li>Fights fatigue and increases casing's endurance</li>
+                </ul>
+            </div>
+            <div class="diagram ply">
+                <svg class="vectors" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <g>
+                       <polyline points="140 120,90 10,14 10"></polyline>
+                       <circle cx="8" cy="10" r="3"></circle>
+                       <circle cy="126" cx="143" r="3"></circle>
+                    </g>
+                </svg>
+                <p class="label ply">Protector Ply</p>
+                <ul class="list ply">
+                    <li>Protected from bruising and penetrations</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>    
+<!-- add audio for preloader -->
+<div id="preload-audio">
+    <audio src='_media/audio/More_mileage.mp3'></audio>
+    <audio src='_media/audio/Even_wear.mp3'></audio>
+    <audio src='_media/audio/Improved_fuel_efficiency.mp3'></audio>
+    <audio src='_media/audio/Improved_rolling_resistance.mp3'></audio>
+    <audio src='_media/audio/Retreadability.mp3'></audio>
+</div>   
+</body>	
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Guarantee</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/guarantee.css"/>
+<script type="text/javascript"> 
+    $(function() {
+        var p = window.parent;
+		var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+		
+		var t =  new TimelineMax({paused: true, onComplete:function(){ap.play();}});
+        var tl = $('.top-bottom');
+		var $i1 = $('.imgContainer');
+		t
+			.staggerTo(tl, 0.25, {"transform": "matrix(1, 0, 0, 1, 0, 0)", opacity:1.00, delay:0.50, ease:Power4.easeOut}, 0.10)
+			.set($i1, {className: '+=slide-in'}, 1)		
+		
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states 
+        $(".menu").on({
+            click: function () {
+                $(".item1").addClass( 'hide' ).removeClass( 'show' ); 
+			   	$(".item2").addClass( 'hide' ).removeClass( 'show' ); 
+			   	$(".item3").addClass( 'hide' ).removeClass( 'show' ); 
+			 	$(".item4").addClass( 'hide' ).removeClass( 'show' ); 
+			   	$(".item5").addClass( 'hide' ).removeClass( 'show' );
+			   	$(".button").addClass( 'hide' ).removeClass( 'show' );	
+				$(".footnote>.disclaimer").addClass( 'hide' ).removeClass( 'show' );
+                t.reverse();
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+				$(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    p.audio.player.toggle();
+					$(".menu.slide-out").off(transitionEvent);
+                    p.addTransitionPage(0);
+				});
+            }
+        });
+		
+	   $(ap).bind("ended", function(evt){
+            console.log("done");
+           p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true); 
+           
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+		
+		//-- initialize page --//
+        initializePage = function () {
+                
+        }
+        
+        // build the page once the wipe is removed
+        buildPage = function() { 
+			//credit for starting page
+			p.controller.setPageViewed("guarantee");
+			
+            $( ".menu" ).removeClass( 'slide-out' ).addClass( 'slide-in' );
+			$(".headline.sequence").removeClass('hide').addClass('show');
+            t.play();
+			$(".menu.slide-in").on(transitionEvent, function(){            
+                                
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+		
+		linkClick = function() {
+			window.open('../../_media/docs/XLEZ_Mileage_Guarantee.pdf', 'XLEZ Mileage Guarantee', '');
+			$(this).attr('target', '_blank');
+  			return false;
+		}
+		
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+			console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+				if (ts == 0){
+				   $(".item1").addClass( 'hide' ).removeClass( 'show' ); 
+				   $(".item2").addClass( 'hide' ).removeClass( 'show' ); 
+				   $(".item3").addClass( 'hide' ).removeClass( 'show' ); 
+				   $(".item4").addClass( 'hide' ).removeClass( 'show' ); 
+				   $(".item5").addClass( 'hide' ).removeClass( 'show' );
+				   $(".button").addClass( 'hide' ).removeClass( 'show' );
+				   $(".footnote>.disclaimer").addClass( 'hide' ).removeClass( 'show' );	  
+				}
+				if (ts > 1){
+				   $(".item1").addClass( 'show' ).removeClass( 'hide' );
+				}  
+				if (ts > 4.8){
+				   $(".item2").addClass( 'show' ).removeClass( 'hide' );
+				   $(".footnote>.disclaimer").addClass( 'show' ).removeClass( 'hide' );
+				} 
+				
+				if (ts > 16.2){
+				   $(".item3").addClass( 'show' ).removeClass( 'hide' );
+				} 
+				
+				if (ts > 18.5){
+				   $(".item4").addClass( 'show' ).removeClass( 'hide' );
+				} 
+				
+				if (ts > 23.15){
+				   $(".item5").addClass( 'show' ).removeClass( 'hide' );
+				}
+				
+				if (ts > 26.5){
+				   $(".button").addClass( 'show' ).removeClass( 'hide' );
+				} 
+			}
+        }); 
+             
+		/* iframe load and unload events */
+        $(window).load(function () {
+            audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+            
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+			
+            p.controller.setVar("introViewed", true);
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+		
+		  
+	});
+</script>
+
+<style type="text/css">
+    body { width:100%; height:100%; margin:0px auto; padding:0px; }
+</style>
+
+</head>
+	
+<body>
+<div id="header">
+    <div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+         <h1>
+            <span class="headline sequence hide"><b>Guarantee</b></span>     
+        </h1>
+    </div>
+</div>
+<div id="guarantee">
+	<div class="pageContent">
+    	<!-- Page content -->
+        <h1 class="item1 pageHeader">
+        	<span class="line1">20% More Mileage</span>
+            <span class="line2">Guaranteed!<sup> 1</sup></span>
+        </h1>
+        
+        <ul class="bulletList">
+            <li class="item2"><p>Get twice the difference<sup style="font-size: .6rem">2</sup></p></li>
+            <li class="item3"><p>For line haul applications only</p></li>
+            <li class="item4"><p>Travelling a minimum of 120,000 miles a year</p></li>
+        </ul>
+        
+        <p class="calloutText item5">See your local Michelin Representative for more information.</p>
+        
+        <div class='button' onclick='linkClick();'>
+               <span class="buttonText">MILEAGE GUARANTEE</span>
+               <div class="roll-state"></div>
+        </div>
+        
+         <div class="footnote">
+                <p class="disclaimer one"><b>1.</b> Visit <a href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank" >MichelinTruck.com</a>for details.</p>
+                <p class="disclaimer two"><b>2.</b> Vs. MICHELIN<sup>&reg;</sup> XZA3+<sup>&reg;</sup> EVERTREAD<sup>&reg;</sup> based on internal rolling resistance tests using ISO 28580 in tire size 275/80R22.5</p>
+            </div>
+		
+    </div>
+    <div class="imgContainer"></div>
+</div>
+
+<div id="preload-audio">
+    <audio id="audio" src='_media/audio/Mileage_guarantee.mp3'></audio>
+ </div>   
+</body>	
+</html>
