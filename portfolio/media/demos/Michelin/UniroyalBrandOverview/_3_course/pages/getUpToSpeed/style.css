@@ -1,0 +1,912 @@
+@charset "utf-8";
+/* -------------- -----------------------------------------------  ----------------*/	
+/* --------------- ------------- Question Formatting -------------- -------------- */
+/* -------------- -----------------------------------------------  ----------------*/
+body {
+	background: -webkit-radial-gradient(#3e4738, #2b2c2c, #040404); /* Safari 5.1 to 6.0 */
+ 	background: -o-radial-gradient(#3e4738, #2b2c2c, #040404); /* For Opera 11.6 to 12.0 */
+  	background: -moz-radial-gradient(#3e4738, #2b2c2c, #040404);/* For Firefox 3.6 to 15 */
+  	background: radial-gradient(#3e4738, #2b2c2c, #040404); /* Standard syntax */
+}
+
+@font-face {
+    font-family: 'MetaNormalItalic';
+    src: url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.eot');
+    src: url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.woff') format('woff'),
+         url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.ttf') format('truetype');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MetaBoldLFRoman';
+    src: url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.eot');
+    src: url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.woff') format('woff'),
+         url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.ttf') format('truetype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MetaBoldLFItalic';
+    src: url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot');
+    src: url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.woff') format('woff'),
+         url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.ttf') format('truetype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#cover {
+	width: 100%;
+	height: 100%;
+	background: #2b2c2c;
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 100000;
+	text-align: center;
+}
+
+#canvas {
+	/* width: 100%; */
+	/* width: 1012px; */
+}
+
+/*
+.canvasCover {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1269px;
+}	
+*/
+
+#questionIntro ul {
+	margin: 4px 0 4px 25px;
+}
+
+#questionIntro ul p {
+	line-height: .8em;
+}
+
+
+#questionIntro p {
+	line-height: .9em;
+}
+
+#masterContainer {
+	 width: 1265px;
+	 height: 844px;
+	 margin: 0 auto;
+	 position: relative;
+	 overflow: hidden;
+}
+
+#container {
+	 width: 1265px;
+	 position: absolute;	
+  	 top: 0;	
+     left: 50%;	
+  	 margin-left: -636px;	
+ 	 font-family: MetaBookRoman, helvetica, sans-serif;
+}
+
+.headerText {
+    font-family: MetaBoldLFRoman, helvetica, sans-serif;
+	/* color: #ef4135 !important; */
+	color: white;
+    font-size: 2.4em !important;
+	line-height: 1.6em;
+    line-height: 50px;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    margin: 0 0 25px 0;
+}
+
+.mcQuestionNumber {
+	font-family: MetaBoldLFRoman, helvetica, sans-serif;
+	float: left;
+	/* color: #42464d;  */
+	color: #444D4F;
+    font-weight: 500;
+    font-size: 4.3em;
+	border-right: white dotted 1px;
+	margin: 0px 10px 34px 0px;
+}
+
+.mcQuestionHolder {
+	/* padding: 10px 5%; */
+	width: 950px;
+	position: relative;
+	top: 0;
+	left: 50%;
+	margin-left: -475px;
+}
+
+.mcQuestion {
+	/* color: #8D939D; */
+	color: #22252c;
+	font-weight: 500;
+	padding: 10px 0px 1px 40px;
+	font-size: 1.7em
+ }
+ 
+.mcInstruction {
+	color: #E8363B;
+	font-style: italic;
+	padding: 10px 0px 9px 67px;
+	margin: 0px;
+	font-size: 1.7em;
+ }
+ 
+ .questions, #secondaryContent {
+	padding: 25px 0 0 0;
+	margin: 0 auto;
+	width: 960px;
+}
+
+#questionIntro{
+	margin: 0 auto;
+	width: 960px;
+	padding: 38px 20px 0 !important;
+	line-height: 0.9em !important;
+}
+
+.options {
+	padding: 5px 60px 0px;
+	font-size: 1em;
+	clear: both;
+}
+
+#finishScreen {
+	width: 1269px;
+	height: 844px;
+	background: black;
+	-moz-opacity: 0.75;
+   -khtml-opacity: 0.75;
+    opacity: 0.75;
+}
+
+#feedback {
+	width: 600px;
+	color: #2b2b22;
+	font-family: MetaBookRoman, Helvetica, sans-serif;
+	font-size: 1.1em;
+	background: gray url("images/brushedalu.gif") top left repeat;
+	padding: 20px;
+ 	margin: 100px auto;
+	-moz-box-shadow: 3px 3px 5px #333;
+	-webkit-box-shadow: 3px 3px 5px #333;
+	box-shadow: 3px 3px 5px #333;
+	border: 3px solid #8D9999;
+}
+
+#finishDisplay { 
+	text-align: center;
+	color: white;
+	width: 960px;
+	height: 600px;
+	position: absolute;
+	z-index: 500000;
+	font-family: MetaBookRoman, Helvetica, sans-serif;
+	font-size: 1.1em;
+	top: 84px;
+	left: 50%;
+	margin-left: -480px;
+	text-shadow: 0px 1px 2px #000;
+}
+
+#finishDisplay .correct {
+	color: #d8dde2;
+	font-weight: bold;
+	font-size: 2em;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	margin-bottom: 10px;
+	line-height: 35px;
+	text-shadow: none;
+}
+
+#finishDisplay .incorrect {
+	color: #d8dde2;
+	font-weight: bold;
+	font-size: 2em;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	margin-bottom: 0px;
+	line-height: 35px;
+	text-shadow: none;
+}
+
+#finishFeedbackMessage {
+	text-shadow: none;
+	color: #b0a8a8;
+}
+
+.correct {
+	color: #2b2b22;
+	font-weight: bold;
+	font-size: 1.5em;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	margin-bottom: 15px;
+	/* text-shadow: 0px 1px 2px #000; */
+}
+
+
+.incorrect {
+	color: #2b2b22;
+	font-weight: bold;
+	font-size: 1.5em;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	margin-bottom: 15px;
+	/* text-shadow: 0px 1px 2px #000; */
+}
+
+#feedbackMessage {
+	font-family: MetaBookRoman, Helvetica, sans-serif;
+	font-size: 0.9em;
+}
+
+/* -------------- -----------------------------------------------  ----------------*/	
+/* --------------------- Custom CSS Radio's and Checkboxes ------------------------ */
+/* -------------- -----------------------------------------------  ----------------*/
+
+.options {
+	padding: 0px 80px;
+	margin: 10px 0;
+}
+
+label {
+  width: 90%;
+  border: 1px solid #D1D3D4;
+  background: white;
+}
+
+input.radio:empty, input.checkbox:empty {
+	margin-left: -9999px;
+}
+
+input.checkbox:empty + label, input.radio:empty + label {
+	position: relative;
+	float: left;
+	line-height: 1.2em;
+	padding: 10px 10px 10px 50px;
+	margin-top: .8em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	word-wrap: break-word;
+}
+
+input.radio:empty + label:before, input.checkbox:empty + label:before  {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	padding-top: 8px;
+}
+
+input.radio:hover:not(:checked) + label:before, input.checkbox:hover:not(:checked) + label:before {
+	
+	text-indent: .9em;
+	color: white;
+	font-weight: bold;
+}
+
+input.radio:hover:not(:checked) + label, input.checkbox:hover:not(:checked) + label {
+	background: #D1D3D4;
+	color: white;
+}
+
+input.radio:checked + label:before, input.checkbox:checked + label:before {
+	content:'\2714';
+	font-weight: bold;
+	text-indent: .9em;
+	color: white;
+	background-color: #669900;
+}
+
+input.radio:checked + label, input.checkbox:checked + label {
+	color: #777;
+}
+
+input.radio:focus + label:before, input.checkbox:focus + label:before {
+	outline: none;
+	
+}
+
+/* -------------- -----------------------------------------------  ----------------*/	
+/* ------------------------------------ Timer ------------------------------------ */
+/* -------------- -----------------------------------------------  ----------------*/
+#timerPlacement {
+	position: absolute;
+	right: 459px;
+	top: 659px;
+	width: 204px;
+}
+
+#timerPlacement p {
+	margin: 0 0 5px 0;
+}
+
+#timerId, #seconds, #time-div, #aftercount {
+	font-size: 1em;
+	color: #202020;
+	font-family: "Courier New", Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, monospace;
+}
+
+#scoreFlash {
+	position: absolute;
+	top: 156px;
+	left: 750px;
+	/* color: #D21004; */
+	color: white;
+	font-size: 3em;
+}
+
+#countdown {
+	border-left: 1px #333 dotted;
+}
+
+#seconds {
+	font-size: 4.2em;
+	float: left;
+	margin: 0 0 2px 45px !important;
+}
+
+#bonusPointLabel {
+	margin: 10px 0 0 0 !important;
+}
+
+.timesup {
+	font-size: 0.3em;
+	position: relative;
+	top: 22px;
+	left: -18px;
+}
+
+#time-div, #correctLabel {
+	float:left;
+}
+
+.shrinkage {
+	font-size: .6em;
+}
+
+
+/* -------------- -----------------------------------------------  ----------------*/	
+/* ------------------------------------ Buttons ------------------------------------ */
+/* -------------- -----------------------------------------------  ----------------*/
+#nextBtn, #retryBtn, #beginBtn, #submitBtn {
+	padding: 7px 0px;
+	color: white;
+	text-decoration: none;
+}
+
+/* Next Button */
+#nextBtn, #retryBtn {
+	width: 140px !important;
+}
+
+/* Begin Button */ 
+#beginBtn {
+	width: 140px !important;
+    position: absolute;
+    left: 50%;
+    margin: -76px;
+    top: 595px;
+}
+
+/* Submit Button */ 
+#submitBtn {
+	width: 150px !important;
+    position: absolute;
+   	top: 575px;
+    left: 50%;
+	margin-left: -75px;
+}
+
+
+#beginBtn:hover, #submitBtn:hover, #nextBtn:hover, #retryBtn:hover {
+	background-color: #d21004 !important;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+
+/* -------------- -----------------------------------------------  ----------------*/	
+/* ------------------------------------ Header ----------------------------------- */
+/* -------------- -----------------------------------------------  ----------------*/
+
+.sHeader{
+	position: absolute;
+	top: 82px;
+	/* left: 223px; */
+	width: 551px;
+	height: 98px;
+	font-family: MetaBoldLFItalic, helvetica, sans-serif;
+	z-index: 100;
+	left: 50%;	
+	margin-left: -276px;	
+	color: white;
+	font-size: 80px;
+	/* text-shadow: 4px 4px 2px rgba(58, 72, 88, 1); */
+	
+}
+
+.sHeaderLine2 {
+	position: absolute;
+	/* left: 344px; */
+	font-family: MetaNormalItalic, helvetica, sans-serif;
+    top: 140px;
+	width: 260px;
+	height: 31px;
+	z-index: 100;
+	left: 50%;	
+	margin-left: -130px;	
+	color: #82adc6;
+	font-size: 20px;
+	text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sHeaderLine3 {
+	position: absolute;
+	font-family: MetaBoldLFItalic, helvetica, sans-serif;
+	/* left: 325px; */
+    top: 186px;
+	width: 346px;
+	height: 91px;
+	left: 50%;	
+	margin-left: -163px;
+	z-index: 100;
+	color: white;
+	font-size: 74px;
+	text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sTires {
+	position: absolute;
+	/* left: 182px; */
+    top: 126px;
+	width: 642px;
+	height: 104px;
+	left: 50%;	
+	margin-left: -321px;
+	z-index: 100;
+}
+
+.sBar{
+	/* left: 279px; */
+    position: absolute;
+    top: 247px;
+	width: 323px;
+	left: 50%;	
+	margin-left: -162px;
+	z-index: 100;
+	border: #EE3B33 3px solid;
+	text-align: center;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color:#D2CDCD;
+	-webkit-box-shadow: #000000 4px 4px 4px;
+	-moz-box-shadow: #000000 4px 4px 4px;
+	box-shadow: #000000 4px 4px 4px;
+	font-family: MetaBoldLFRoman, helvetica, sans-serif;
+	padding: 8px 0;
+}
+
+.sRules {
+	margin: 307px auto 0;
+	width: 90%;
+	height: 84px;
+	z-index: 100;
+	clear: both;
+}
+
+.sRulesLeft {
+	float: left;
+	width: 376px;
+	height: 106px;
+}
+
+.sRulesRight {
+	float: right;
+	width: 369px;
+	height: 105px;
+}
+
+
+/* ----------- iPad mini ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+	
+	#canvas {
+		content:before: " Please rotate your device to landscape position ";
+	}
+	
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+	input.radio:hover:not(:checked) + label:before {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+	input.checkbox:hover:not(:checked) + label:before  {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+
+	input.radio:hover:not(:checked) + label {
+		background: #white;
+		color: #050505;
+	}
+
+	input.checkbox:hover:not(:checked) + label {
+		background: white;
+		color: #050505;
+}
+}
+
+/* ----------- iPad 1 and 2 ----------- */
+
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+	
+	#canvas {
+		content:before: " Please rotate your device to landscape position ";
+	}
+	
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+	input.radio:hover:not(:checked) + label:before {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+	input.checkbox:hover:not(:checked) + label:before  {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+
+	input.radio:hover:not(:checked) + label {
+		background: #white;
+		color: #050505;
+	}
+
+	input.checkbox:hover:not(:checked) + label {
+		background: white;
+		color: #050505;
+}
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+	
+	#canvas {
+		content:before: " Please rotate your device to landscape position ";
+	}
+	
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+	input.radio:hover:not(:checked) + label:before {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+	input.checkbox:hover:not(:checked) + label:before  {
+		text-indent: .9em;
+		color: white;
+		font-weight: bold;
+	}
+
+
+	input.radio:hover:not(:checked) + label {
+		background: #white;
+		color: #050505;
+	}
+
+	input.checkbox:hover:not(:checked) + label {
+		background: white;
+		color: #050505;
+}
+	
+}
+
+@media screen and (max-width: 1280px){
+	#masterContainer {
+	 	width: 1017px;
+		height: 668px;
+	 	margin: 0 auto;
+	 	position: relative;
+	 	overflow: hidden;
+	}
+	
+	#container {
+		 width: 985px;
+		 position: absolute;	
+		 top: 0px;	
+		 left: 50%;	
+		 margin-left: -506px;	
+		 font-family: MetaBookRoman, helvetica, sans-serif;
+	}
+	
+	.sRules {
+		margin: 267px auto 0 auto;
+	}
+
+		#submitBtn {
+			width: 160px !important;
+			position: absolute;
+			top: 409px;
+			left: 50%;
+			margin-left: -80px;
+		}
+		
+		#beginBtn {
+			top: 489px;
+		}
+	
+		.mcQuestionHolder {
+			width: 870px;
+			padding: 9px 25px;
+		}
+		
+		.mcQuestion {
+			color: #22252C;
+			font-weight: 500;
+			padding: 20px 0px 1px 40px;
+			font-size: 1.2em;
+		}
+		
+		.mcInstruction {
+			color: #E8363B;
+			font-style: italic;
+			padding: 5px 0px 5px 67px;
+			margin: 0px;
+			font-size: 1.2em;
+		}
+		
+		input.checkbox:empty ~ label, input.radio:empty ~ label {
+			padding: 5px 10px 5px 50px;
+		}
+		
+		input.radio:empty ~ label::before, input.checkbox:empty ~ label::before {
+			padding-top: 4px;
+		}
+		
+		#finishDisplay {
+		    text-align: center;
+			color: #FFF;
+			width: 720px;
+			height: 600px;
+			position: absolute;
+			z-index: 500000;
+			font-family: MetaBookRoman,Helvetica,sans-serif;
+			font-size: 1em;
+			top: 25px;
+			left: 50%;
+			margin-left: -360px;
+			text-shadow: 0px 1px 2px #000;
+		}		
+		
+		#finishDisplay .correct, #finishDisplay .incorrect {
+			font-size: 1.7em;
+			margin-bottom: -21px;
+		}
+		
+		#timerPlacement {
+			right: 305px;
+			top: 519px;
+			font-size: 0.9em;
+		}
+		
+		#timerPlacement p {
+    		margin: 0px 0px 2px;
+		}
+		
+		#bonusPointLabel {
+    		margin: 5px 0px 0px !important;
+		}
+		
+		#scoreText {
+			margin-bottom: 3px;
+		}
+		
+		#seconds {
+			font-size: 3.2em;
+			float: left;
+			margin-left: 37px;
+		}
+
+		.timesup {
+			font-size: 0.3em;
+			position: relative;
+			margin-top: 10px;
+			left: -18px;
+		}
+		
+		#scoreFlash {
+			left: 600px;
+		}
+}
+/* Low rent Galaxy's */
+@media only screen and ( max-height: 640px ){ 
+	#masterContainer {
+	 	width: 914px;
+		height: 600px;
+	}
+	
+	#timerPlacement {
+		right: 302px;
+		top: 466px;
+		font-size: 0.85em;
+	}
+	
+	.mcQuestionHolder {
+		width: 800px;
+		padding: 0 75px;
+	}
+	
+	.questions {
+    	padding: 10px 0px 0px;
+	}
+	
+	.sHeader { top: 64px; }
+	.sTires { top: 98px; }
+	.sHeaderLine2 { top: 122px; }
+	.sHeaderLine3 { top: 168px; }
+	.sRules { margin: 256px auto 0px; width: 85%; }
+	#beginBtn { top: 513px; }
+	
+	.mcQuestion {
+		color: #22252C;
+		font-weight: 500;
+		padding: 10px 0px 1px 40px;
+		font-size: 1.2em;
+	}
+	
+	.mcInstruction {
+		color: #E8363B;
+		font-style: italic;
+		padding: 5px 0px 5px 67px;
+		margin: 0px;
+		font-size: 1.2em;
+	}
+	
+	input.checkbox:empty ~ label, input.radio:empty ~ label {
+			padding: 5px 10px 5px 50px;
+		}
+		
+		input.radio:empty ~ label::before, input.checkbox:empty ~ label::before {
+			padding-top: 4px;
+		}
+		
+		#finishDisplay {
+		    text-align: center;
+			color: #FFF;
+			width: 720px;
+			height: 600px;
+			position: absolute;
+			z-index: 500000;
+			font-family: MetaBookRoman,Helvetica,sans-serif;
+			font-size: 1em;
+			top: 25px;
+			left: 50%;
+			margin-left: -360px;
+			text-shadow: 0px 1px 2px #000;
+		}		
+		
+		#finishDisplay .correct, #finishDisplay .incorrect {
+			font-size: 1.7em;
+			margin-bottom: -21px;
+		}
+		
+		#timerPlacement {
+			right: 300px;
+			top: 465px;
+			font-size: 0.8em;
+		}
+		
+		#timerPlacement p {
+    		margin: 0px 0px 2px;
+		}
+		
+		#bonusPointLabel {
+    		margin: 5px 0px 0px !important;
+		}
+		
+		#scoreText {
+			margin-bottom: 3px;
+		}
+		
+		#seconds {
+			font-size: 3.2em;
+			float: left;
+			margin-left: 37px;
+		}
+
+		.timesup {
+			font-size: 0.3em;
+			position: relative;
+			margin-top: 10px;
+			left: -18px;
+		}
+		
+		#scoreFlash {
+			left: 600px;
+		}
+		
+		#submitBtn {
+			width: 130px !important;
+			position: absolute;
+			top: 392px;
+			left: 50%;
+			margin-left: -65px;
+		}
+		
+		.options {
+   		    margin: 0;
+		}
+		
+		.badge {
+			width: 264px;
+		}
+	
+}
+
+
+

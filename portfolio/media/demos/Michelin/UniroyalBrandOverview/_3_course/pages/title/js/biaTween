@@ -1,0 +1,115 @@
+window.onload = function()
+		{
+			init();	
+		}	
+
+		function init()
+		{
+			animationSetup();
+			sliderSetup();
+			//var thisAnimation = new TimelineMax({paused:false, yoyo:true});
+			//thisAnimation = animationSetup();
+			//thisAnimation.play();
+		}	
+
+
+		function animationSetup()
+		{
+		
+
+			var interval = 0.7;
+			var overlapFactor = 0.2; //from 0 (fully concatenated) to 1 (fully synchronized)
+			var alternatingSlide = new TimelineMax({paused:true, yoyo:true});
+			alternatingSlide.
+				from(".t1", interval,{
+					x:-2000,
+					alpha:0,
+					transformOrigin:"50% 50%",
+					ease: Power3.easeOut}, (interval)-(interval*overlapFactor))
+				.from(".t2", interval,{
+					x:2000,
+					alpha:0,
+					transformOrigin:"50% 50%",
+					ease: Power3.easeOut}, (interval*2)-(interval*2*overlapFactor))
+				.from(".t3",interval,{
+					x:-2000,
+					alpha:0,
+					transformOrigin:"50% 50%",
+					ease: Power3.easeOut}, (interval*3)-(interval*3*overlapFactor))
+				.from(".t4",interval,{
+					x:2000,
+					alpha:0,
+					rotation: -340,
+					transformOrigin:"50% 50%",
+					ease: Power3.easeOut}, (interval*4)-(interval*4*overlapFactor))
+				.from(".t5",interval,{
+					x:-2000,
+					alpha:0,
+					rotation: 340,
+					transformOrigin:"50% 50%",
+					ease: Power3.easeOut}, (interval*5)-(interval*5*overlapFactor));
+			
+			alternatingSlide.repeat(-1);
+
+				$('.intervalSlider').slider({
+				min: 0.0,
+				max: 5.0,
+				step: .1,
+				value:1.0,
+				slide: function ( event, ui ) {
+				    alternatingSlide.timeScale(ui.value);
+				    
+				    alternatingSlide.restart();
+				  }
+				});
+
+				$('.overlapSlider').slider({
+				min: 0.0,
+				max: 1.0,
+				step: .05,
+				slide: function ( event, ui ) {
+				    overlapFactor=(ui.value);
+				    alternatingSlide.clear();
+				   
+					alternatingSlide.
+					from(".t1", interval,{
+						x:-2000,
+						alpha:0,
+						transformOrigin:"50% 50%",
+						ease: Power3.easeOut}, (interval)-(interval*overlapFactor))
+					.from(".t2", interval,{
+						x:2000,
+						alpha:0,
+						transformOrigin:"50% 50%",
+						ease: Power3.easeOut}, (interval*2)-(interval*2*overlapFactor))
+					.from(".t3",interval,{
+						x:-2000,
+						alpha:0,
+						transformOrigin:"50% 50%",
+						ease: Power3.easeOut}, (interval*3)-(interval*3*overlapFactor))
+					.from(".t4",interval,{
+						x:2000,
+						alpha:0,
+						rotation: -340,
+						transformOrigin:"50% 50%",
+						ease: Power3.easeOut}, (interval*4)-(interval*4*overlapFactor))
+					.from(".t5",interval,{
+						x:-2000,
+						alpha:0,
+						rotation: 340,
+						transformOrigin:"50% 50%",
+						ease: Power3.easeOut}, (interval*5)-(interval*5*overlapFactor));
+			
+				  }
+				});
+		}
+
+		function sliderSetup()
+		{
+			// First of all attach a slider to an element. If you want to customize the range of values, you do it in the initialization.
+
+
+		}
+
+
+

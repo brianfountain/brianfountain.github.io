@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<manifest identifier="MI-PL-UBO-01" version="1.2"
+               xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+               xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:c2lcp="http://www.click2learn.com/xsd/c2l_cp_rootv1p1"
+               xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                              http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd
+	                      http://www.click2learn.com/xsd/c2l_cp_rootv1p1 c2l_cp_rootv1p1.xsd">
+  <organizations default="AMRMO">
+    <organization identifier="AMRMO">
+      <title>Uniroyal Commercial Truck Tires - Module 1: Brand Overview</title>
+      <item identifier="quiz1" identifierref="SCO1">
+        <title>Uniroyal Commercial Truck Tires - Module 1: Brand Overview</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="SCO1" type="webcontent" adlcp:scormtype="sco" href="player.html">
+      <file href="player.html" />
+    </resource>
+  </resources>
+<c2lcp:ItemDataExtra> 
+                <c2lcp:ItemData Type="Course"> 
+                        <c2lcp:ItemSpecificData> 
+                                <c2lcp:CourseData> 
+                                        <c2lcp:CourseID/> 
+                                        <c2lcp:PackageProperties> 
+                                                <c2lcp:CourseDisplay> 
+                                                        <c2lcp:ColorNav> 
+                                                                <c2lcp:Light/> 
+                                                                <c2lcp:Medium/> 
+                                                                <c2lcp:Dark/> 
+                                                        </c2lcp:ColorNav> 
+                                                        <c2lcp:ColorData> 
+                                                                <c2lcp:Light/> 
+                                                                <c2lcp:Medium/> 
+                                                                <c2lcp:Dark/> 
+                                                        </c2lcp:ColorData> 
+                                                        <c2lcp:TOC> 
+                                                                <c2lcp:MaxLevels>3</c2lcp:MaxLevels> 
+                                                                <c2lcp:MaxWidth>5</c2lcp:MaxWidth> 
+                                                                <c2lcp:ScrollBar>yes</c2lcp:ScrollBar> 
+                                                                <c2lcp:TreeOpenIcon width="9" height="9"/> 
+                                                                <c2lcp:TreeCloseIcon width="9" height="9"/> 
+                                                                <c2lcp:TopImage width="-1" height="-1"/> 
+                                                                <c2lcp:BottomImage width="-1" height="-1"/> 
+                                                                <c2lcp:BackgroundColor>ffffff</c2lcp:BackgroundColor> 
+                                                        </c2lcp:TOC> 
+                                                        <c2lcp:ShowNavBar>no</c2lcp:ShowNavBar> 
+                                                </c2lcp:CourseDisplay> 
+                                                <c2lcp:Launch> 
+                                                        <c2lcp:Width>1000</c2lcp:Width> 
+                                                        <c2lcp:Height>680</c2lcp:Height> 
+                                                        <c2lcp:AllowResize>no</c2lcp:AllowResize> 
+                                                </c2lcp:Launch> 
+                                                <c2lcp:GlobalData/> 
+                                        </c2lcp:PackageProperties> 
+                                </c2lcp:CourseData> 
+                        </c2lcp:ItemSpecificData> 
+                </c2lcp:ItemData> 
+        </c2lcp:ItemDataExtra> 
+</manifest>
+

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Get Up To Speed</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../../css/course.css">
+<!-- --------------------------- jQuery ------------------------------------>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+
+<!-- -------------------------- TweenMax ---------------------------------->
+<script type="text/javascript" src="../../js/TweenMax.min.js"></script>
+
+<!-- -------------------------- CreateJS ---------------------------------->
+<script src="../../js/createjs/easeljs-0.8.1.min.js"></script>
+<script src="../../js/createjs/tweenjs-0.6.1.min.js"></script>
+<script src="../../js/createjs/movieclip-0.8.1.min.js"></script>
+<script src="../../js/createjs/preloadjs-0.6.1.min.js"></script>
+<script src="../../js/createjs/soundjs-0.6.1.min.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>-->
+
+<!-- -------------------------- Page Scripts ---------------------------------->
+<script type="text/javascript" src="js/getUpToSpeed.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+
+<script>
+   $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+	
+		}).delegate('.clickable','touchmove',function(e){
+	
+			e.stopPropagation();
+	});
+	
+	$(document).ready(function() {
+		initCanvas();
+	});
+ 
+</script>
+</head>
+
+<body> 
+
+<div id="masterContainer">
+	<div id="cover">
+    	<p style="color: #82ADC6; font-size: 1.5em; padding-top: 30px; font-family: MetaBoldLFItalic, helvetica, sans-serif; font-style:italic; text-shadow: none">Loading. Please wait...</p>
+    </div>
+	<div id="container">
+    	 <div id="feedback" style="display:none">
+                <div id="scoreFlash"></div>
+                <p id="feedbackHeader">Feedback Header</p>
+                <p id="feedbackMessage">Feedback Message</p>
+           </div>
+       	   
+           <div id="timerPlacement">
+                 <p id="answersCorrectText">Answers Correct: 0 of 5</p>
+                 <p id="scoreText">Score: 0000</p>
+                 <p id="bonusPointLabel">Bonus Timer:</p>
+                 <p id="seconds">00</p>
+            </div>      
+        	<!-- Intro -->
+          	<div id="questionIntro" style="display: none">
+                <span class="sHeader">Get Up to Speed</span>
+                <span class="sHeaderLine2">on Commercial Truck Tire Line</span>
+                <span class="sHeaderLine3">Challenge</span>
+                <div class="sBar">KNOWLEDGE CHECK</div>
+                <img class="sTires" src="images/splash_tires.png" />
+                <div class="sRules">
+                	<img class="sRulesLeft" src="images/splash_rulesleft.png" />
+                 	<img class="sRulesRight" src="images/splash_rulesright.png" />
+                </div>
+                <a href='javascript:void(0)' id='beginBtn' class='button clickable' onclick='beginQuiz()'>BEGIN</a>
+            </div>
+            <a href='javascript:void(0)' id='submitBtn' class='button clickable' onclick='submitClick()'>SUBMIT</a>
+        
+    	<!-- Congrats Screen -->
+       <div id="finishDisplay" style="display: none">
+            <p id="finishFeedbackHeader">Feedback Header</p>
+            <p id="finishFeedbackMessage">Feedback Message</p>
+        </div>
+        <div id="finishScreen" style="display: none"></div>
+              
+        <!-- Question 1 -->
+        <div class="questions">
+              <div class="mcQuestionHolder">
+                   <span class="mcQuestionNumber ">1.</span>
+                   <p class="mcQuestion">You want to become more efficient at finding information quickly concerning customer questions about Uniroyal<span class="shrinkage"><sup>&reg;</sup></span>. What are the tools you can use? </p>
+                   <p class="mcInstruction">Select all that apply.</p>
+                   <div class="options">
+                   		<div>
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q1_s1" value="q1_s1" />
+                            <label for="q1_s1" class="clickable">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> Commercial Truck Tire Website</label>
+                        </div>
+                       	<div>
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q1_s2" value="q1_s2" />
+                        	<label for="q1_s2" class="clickable">The Digital Sales Tool</label>  
+                       	</div>
+                      	<div>
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q1_s3" value="q1_s3" />
+                        	<label for="q1_s3" class="clickable">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> Commercial Truck Tires Data Book</label>   
+                        </div> 
+                        <div>                 
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q1_s4" value="q1_s4" />
+                        	<label for="q1_s4" class="clickable">MICHELIN<span class="shrinkage"><sup>&reg;</sup></span> Brand Website</label>
+                     	</div>
+                     </div>
+               </div>  
+          </div>
+        
+        <!-- Question 2 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <span class="mcQuestionNumber MetaBoldLFRoman">2.</span>
+                    <p class="mcQuestion">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> is the choice for truckers who are mostly concerned about the price of tires. Where does the Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> Brand fall on the price tier scale? </p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                    <div class="options">
+                        <div>
+                        	<input type="radio" class="radio" name="radio" id="q2_s1" value="q2_s1" />
+                           	<label for="q2_s1" class="clickable">In the Budget price tier.</label>
+                        </div>
+                        <div>
+                        	<input type="radio" class="radio" name="radio" id="q2_s2" value="q2_s2" />
+                        	<label for="q2_s2" class="clickable">In the lower Intermediate price tier.</label> 
+                       	</div>
+                      	<div>
+                        	<input type="radio" class="radio" name="radio" id="q2_s3" value="q2_s3" />
+                        	<label for="q2_s3" class="clickable">In the Premium price tier.</label>
+                        </div>   
+                    </div>
+             </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <span class="mcQuestionNumber">3.</span>
+                    <p class="mcQuestion">You identify Jose, Pat, and Dave as potential Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> customers. What are some characteristics that brought you to this decision?</p>
+                    <p class="mcInstruction">Select all that apply.</p>
+                    <div class="options">
+                        <div>
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q3_s1" value="q3_s1" />
+                            <label for="q3_s1" class="clickable">They see tires as an investment.</label>
+                        </div>
+                        <div>
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q3_s2" value="q3_s2" />
+                        	<label for="q3_s2" class="clickable">They may or may not retread their tires.</label> 
+                        </div>
+                        <div> 
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q3_s3" value="q3_s3" />
+                            <label for="q3_s3" class="clickable">They track long term mileage and cost per mile.</label> 
+                        </div>
+                        <div>
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q3_s4" value="q3_s4" />
+                            <label for="q3_s4" class="clickable">They have limited knowledge of tire features and benefits.</label>
+                        </div> 
+                  </div>
+             </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <span class="mcQuestionNumber">4.</span>
+                    <p class="mcQuestion">Dave mentions that he, &quot;...doesn’t really have the time or energy to learn about every single tire, pros and cons, and all that.&quot; At the end of the day, he just wants to know if he can afford it. What are some other possible characteristics Dave might have if he is a typical Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> customer?</p>
+                    <p class="mcInstruction">Select all that apply.</p>
+                   	<div class="options">
+                        <div>
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q4_s1" value="q4_s1"  />
+                            <label for="q4_s1" class="clickable">Owns used vehicles.</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q4_s2" value="q4_s2"/>
+                            <label for="q4_s2" class="clickable">Sees tires in terms of price, not investments.</label> 
+                        </div> 
+                      	<div>
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q4_s3" value="q4_s3"/>
+                        	<label for="q4_s3" class="clickable">Tracks mileage and cost per mile.</label>
+                        </div>
+                    	<div>
+                    		<input type="checkbox" class="checkbox" name="checkbox" id="q4_s4" value="q4_s4" />
+                        	<label for="q4_s4" class="clickable">Depends on you to give him the most affordable recommendation.</label> 
+                        </div>
+                    	<div>	
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q4_s5" value="q4_s5" />
+                            <label for="q4_s5" class="clickable">Doesn’t care about a dependable tire. It’s all about cost.</label>
+                        </div>
+    				</div>
+          	</div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <span class="mcQuestionNumber">5.</span>
+                    <p class="mcQuestion">Pat, Jose, and Dave all need new tires for their trucks. How many Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> truck tires do you have to choose from?</p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                    <div class="options">
+                        <div>
+                        	<input type="radio" class="radio" name="radio" id="q5_s1" value="q5_s1" />
+                        	<label for="q5_s1" class="clickable">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> offers 6 heavy truck tires in its line with a total of 28 sizing variations, and I can find the best fit for you and your company!</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="radio" name="radio" id="q5_s2" value="q5_s2" />
+                            <label for="q5_s2" class="clickable">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> offers 28 heavy truck tires in its line with a total of 6 sizing variations, and I can find the best fit for you and your company!</label>  
+                        </div>
+                      	<div>
+                            <input type="radio" class="radio" name="radio" id="q5_s3" value="q5_s3" />
+                            <label for="q5_s3" class="clickable">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> offers 28 heavy truck tires in its line.</label>
+                        </div>
+                    
+                     </div>
+                </div>
+          </div>
+     </div>
+     
+    
+	<canvas id="canvas" width="2024" height="1334" style="background-color: #040404; width: 100%; height: 100%;">
+    	 Your browser does not support canvas. Please upgrade to at least Firefox 24 or Internet Explorer 9 for the best experience.
+    </canvas>
+</div>
+
+</body>
+</html>
