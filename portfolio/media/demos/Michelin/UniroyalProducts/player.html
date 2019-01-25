@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html xmlns="http://www.w3.org/1999/xhtml" class=""> <!--<![endif]-->
+	  <head>
+       <title>Michelin Uniroyal</title>
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+	  
+      <link rel="stylesheet" type="text/css" href="_1_player/ext/resources/css/ext-all.css" />
+	  <link rel="stylesheet" type="text/css" href="_1_player/css/player.css" />
+	  <link rel="stylesheet" type="text/css" href="_2_skin/css/skin.css" />
+      <link rel="stylesheet" type="text/css" href="_3_course/css/course.css" />
+	  <link href="_1_player/libs/jqueryui/css/smoothness/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css"/>
+      <link type="text/css" href="_1_player/libs/jQuery.jPlayer.2.2.0/skins/michelin/jplayer.michelin.css" rel="stylesheet" />
+      <link type="text/css" href="_2_skin/css/font-awesome.min.css" rel="stylesheet" />
+      <link type="text/css" href="_1_player/css/normalize.css" rel="stylesheet" />	  
+	  
+      <script type="text/javascript" src="_3_course/js/jquery-1.8.0.min.js"></script>
+	  <script type="text/javascript" src="_1_player/libs/jqueryui/jquery-ui-1.8.21.custom.min.js"></script>
+	  <script type="text/javascript" src="_1_player/ext/adapter/ext/ext-base.js"></script>
+	  <script type="text/javascript" src="_1_player/ext/ext-all.js"></script>
+	  <script type="text/javascript" src="_1_player/js/APIWrapper_bpt.js"></script>
+	  <script type="text/javascript" src="_1_player/js/io.js"></script>
+	  <script type="text/javascript" src="_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+      <script type="text/javascript" src="_3_course/js/TweenMax.min.js"></script>
+      <script type="text/javascript" src="_3_course/js/howler.min.js"></script>
+	  <script type="text/javascript" src="_2_skin/js/renderer.js"></script>
+	  <script type="text/javascript" src="_2_skin/js/skin.js"></script>
+	  <script type="text/javascript" src="_3_course/courseData.js"></script>
+      <script type="text/javascript" src="CADSPlayerGlobal.js"></script>
+      
+	  <!-- Add Custom JS References Here -->
+ 	  <!--<script type="text/javascript" src="_2_skin/js/modernizr.custom.59130.js"></script>-->
+	  <!-- Load Last -->
+
+	  <script type="text/javascript" src="_1_player/js/player.js"></script>
+	  
+	<script>
+
+    	$(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false; 
+
+		}).delegate('.clickable','touchmove',function(e){
+
+    		e.stopPropagation();
+		});
+		
+
+	  	//**NOT ALLOWED IN WEBVIEW**
+		//top.resizeTo(1005,850);
+		
+		$(document).ready(function() {
+			//$
+			$("#jquery_jplayer_1").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						mp3: "_3_course/audio/intro.mp3"
+					});
+					soundReady = true;					
+				},
+				swfPath: "_1_player/libs/jQuery.jPlayer.2.2.0",
+				supplied: "mp3"
+			});
+				
+			$("#progressbar").progressbar({ value: 0 });
+			courseObj.preloader.init();
+		});		
+		
+		
+		
+	</script>
+</head>
+
+<body class="no-js">
+
+<div id="content">
+    
+    <!-- iPhone Message -->
+    <div id="iphoneMessage">
+        <p>Please note that the Michelin Uniroyal courses are optimized for tablet or desktop viewing only. Please revisit the course on a supported device.</p>
+    </div>
+    
+    <!-- Preloader -->
+    <div id="splashAndPreload">
+        <div id="mcLoadingScreen">
+            <div id="mcLoadingStrip">
+                <img src="_2_skin/images/loadingLogo.png" style="width:298px" alt="Uniroyal Tire" />
+                <p class="mcLoading"><em>Course loading. Please wait.</em></p>
+                <div id="progressbar"></div>
+            </div>
+        </div>
+    </div>
+  
+<!-- Hidden Page Elements -->
+	<div style="display:none">
+		<div id="audioContent">
+			<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+			<div id="jp_container_1" class="jp-audio">
+				<div class="jp-type-single">
+					<div class="jp-gui jp-interface">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						
+                        <ul class="jp-controls">
+                        	<li><a href="javascript:;" class="jp-restart clickable" tabindex="2" onClick='courseObj.gotoPageIndex(courseObj.currentIndex); return false;'>restart</a></li>
+                            <li><a href="javascript:;" class="jp-play clickable" tabindex="2">play</a></li>
+                            <li><a href="javascript:;" class="jp-pause clickable" tabindex="2" onClick="javascript:void(0)">pause</a></li>                                                      
+  						</ul>
+						<div class="jp-time-holder">
+							<div class="jp-current-time"></div>
+							<div class="jp-duration"></div>
+							<!--<ul class="jp-toggles">
+								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+							</ul>-->
+						</div>
+					</div>
+					<!--<div class="jp-title">
+						<ul>
+							<li>Bubble</li>
+						</ul>
+					</div>-->
+					<div class="jp-no-solution"><span>Update Required</span> To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>. </div>
+				</div>
+			</div>
+		</div>
+		<div id="videoContent" class="players">
+			<div class="jp-video jp-video-full">
+				<div class="jp-type-single">
+					<div id="jquery_jplayer_2" class="jp-jplayer"></div>
+					 <div id="jp_interface_2" class="jp-interface">
+						<div class="jp-video-play"></div>
+						<ul class="jp-controls">
+							<li><a href="#" class="jp-play clickable" tabindex="1">play</a></li>
+							<li><a href="#" class="jp-pause clickable" tabindex="1">pause</a></li>
+						</ul>
+						<div class="jp-current-time"></div>
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-duration"></div>                   
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div id="logette">
+        	<script>document.write('<img src="' + courseData.logo.path + '" width="' + courseData.logo.width + '" height="' + courseData.logo.height + '" />');</script>
+        </div>
+        <div id="headerContent">
+			<div style="width: 252px; float: left">Uniroyal Logo</div>
+            <div>
+				<script>document.write('<span id="courseTitle">' + courseData.title + '</span>');</script>
+            </div>
+            <div style="float: right">
+                  <div id="navCC" class="clickable"><a id="navCCLink" href="#" onclick="skinLayout.captionObj.showHide()">CC</a></div>
+                  <div id="navClose" class="clickable"><a id="navCloseLink" href="#" onclick="courseObj.courseExit(); return false;">SAVE &amp; EXIT</a></div>
+                  <div id="navTopicMenu" class="clickable"><a id="navTopicLink" href="#" onclick="skinLayout.courseMenuObj.courseMenuClick(); return false;"><i class="fa fa-bars"></i></a></div>
+            </div>
+		</div>
+      	<div id="footerNavigation">
+        	<div id="navBack" class="clickable">
+                <a href="#" onclick="courseObj.pageBack(); return false;">
+                     <span id="backArrow"></span>
+                </a>
+            </div>
+            <div id="navNext" class="clickable">
+                <a href="#" onclick="courseObj.pageNext(); return false;">
+                     <span id="nextArrow"></span>
+                </a>
+            </div>
+        </div>
+		<div id="footerContent"></div>  
+			
+         <div id="nonScoredCompletionContent"></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+

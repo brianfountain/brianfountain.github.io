@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<meta charset="utf-8">
+<title>Tire Construction</title>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/TweenLite.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/TweenMax.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/easing/EasePack.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/plugins/CSSPlugin.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/pageAnimation.js"></script>
+<script type="text/javascript" language="javascript" src="js/animationSequence.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+
+  $(window).on('load', function (){           
+            animationEvents();   
+			parent.$("#jquery_jplayer_1").jPlayer("play"); 
+        });
+    
+    // LOVELACE - Comment this out when done timing
+    //var pageSound = new Howl({urls: ['sounds/Mod2_06_DuraShield.mp3'],autoplay: true,loop: false,volume: 1.0,});
+    //End comment
+
+</script>
+
+</head>
+
+<body>
+    <div class="pageWrapper"> 
+        
+        <!--<div class="dimmer" id="dimmer"></div>-->
+
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="../../images/tigerWave/tigerWave1.png" class="character" id="tigerWave">
+            <img src="../../images/tigerWaveClone/tigerWaveClone1.png" class="character" id="tigerWaveClone">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+
+                <img src="../../images/windowFrame-min.png" style="position:absolute; width:102%; height:155%; margin-top:-125px; margin-left:-1%"/>
+                   
+                <img src="img/tire1.png" id="tire1" class="screen1 startHidden hillAndTires"/>
+                <img src="img/hill.png" id="hill" class="screen1 startHidden openingFade hillAndTires"/>
+                <img src="img/tire2.png" id="tire2" class="screen1 startHidden hillAndTires"/>
+                <img src="img/tire3.png" id="tire3" class="screen1 startHidden hillAndTires"/>
+                <img src="img/tire4.png" id="tire4" class="screen1 startHidden hillAndTires"/>
+                <img src="img/tire5.png" id="tire5" class="screen1 startHidden hillAndTires"/>
+                <img src="img/tire6.png" id="tire6" class="screen1 startHidden hillAndTires"/>
+                <img src="img/screen1_box.png" id="sign" class="screen1 startHidden"/>
+
+
+                <img src="img/title.png" id="title" class="screen2Start startHidden" />
+
+                <img src="img/text.png" id="text" class="startHidden" style="position:absolute; top:25.7%; left:2.8%; width:38.5%;"/>
+                
+                <img src="img/content0.png" id="tireConstruction-0" class="startHidden tireConstructionDiagram"/>
+                
+               
+
+                <img src="img/tireConstruction0.png" id="tireConstructionPicture0" class="startHidden tireConstructionPicture"/>
+                <img src="img/tireConstruction1.png" id="tireConstructionPicture1" class="startHidden tireConstructionPicture"/>
+                <img src="img/tireConstruction2.png" id="tireConstructionPicture2" class="startHidden tireConstructionPicture"/>
+                <img src="img/tireConstruction3.png" id="tireConstructionPicture3" class="startHidden tireConstructionPicture"/>
+                <img src="img/tireConstruction4.png" id="tireConstructionPicture4" class="startHidden tireConstructionPicture"/>
+
+                <img src="img/content1.png" id="tireConstruction-1" class="startHidden tireConstructionDiagram"/>
+                <img src="img/content2.png" id="tireConstruction-2" class="startHidden tireConstructionDiagram">
+                <img src="img/content3.png" id="tireConstruction-3" class="startHidden tireConstructionDiagram"/>
+                <img src="img/content4.png" id="tireConstruction-4" class="startHidden tireConstructionDiagram"/>
+
+                <img src="img/tireLabel1.png" id="tireLabel1" class="startHidden tireLabel"/>
+                <img src="img/tireLabel2.png" id="tireLabel2" class="startHidden tireLabel"/>
+                <img src="img/tireLabel3.png" id="tireLabel3" class="startHidden tireLabel"/>
+                <img src="img/tireLabel4.png" id="tireLabel4" class="startHidden tireLabel"/>
+
+                <img src="img/durability.png" id="durability" class="startHidden abilities"/>
+                <img src="img/dependability.png" id="dependability" class="startHidden abilities"/>
+                <img src="img/retreadability.png" id="retreadability" class="startHidden abilities"/>
+
+                <div id="button1" class="hoverButton clickable"></div>
+                <div id="button2" class="hoverButton clickable"></div>
+                <div id="button3" class="hoverButton clickable"></div>
+                <div id="button4" class="hoverButton clickable"></div>
+
+
+        </div><!--end screen-->        
+    </div><!--end pageWrapper-->
+</body>
+
+</html>

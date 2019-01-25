@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Rack 'em Up</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../../css/course.css">
+
+<!-- --------------------------- jQuery ------------------------------------>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+
+<!-- -------------------------- TweenMax ---------------------------------->
+<script type="text/javascript" src="../../js/TweenMax.min.js"></script>
+
+<!-- -------------------------- CreateJS ---------------------------------->
+<script src="../../js/createjs/easeljs-0.8.1.min.js"></script>
+<script src="../../js/createjs/tweenjs-0.6.1.min.js"></script>
+<script src="../../js/createjs/movieclip-0.8.1.min.js"></script>
+<script src="../../js/createjs/preloadjs-0.6.1.min.js"></script>
+<script src="../../js/createjs/soundjs-0.6.1.min.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>-->
+
+<!-- -------------------------- Page Scripts ---------------------------------->
+<script src="js/rackemup.js"></script>
+<script src="js/controller.js"></script>
+
+<script>
+    $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+	
+	$(document).ready(function() {
+		initCanvas();
+	});
+
+</script>
+
+</head>
+
+<body>
+	
+<div id="masterContainer">
+	<div id="cover">
+    	<p style="color: #82ADC6; font-size: 1.5em; padding-top: 30px; font-family: MetaBoldLFItalic, helvetica, sans-serif; font-style:italic; text-shadow: none">Loading. Please wait...</p>
+    </div>
+	<div id="container">
+    	 <div id="feedback" style="display:none">
+                <div id="scoreFlash"></div>
+                <p id="feedbackHeader">Feedback Header</p>
+                <p id="feedbackMessage">Feedback Message</p>
+         </div>
+        
+       	 <div id="timerPlacement">
+                 <p id="answersCorrectText">Answers Correct: 0 of 9</p>
+                 <p id="scoreText">Score: 0000</p>
+                 <p id="bonusPointLabel">Bonus Timer:</p>
+                 <p id="seconds">00</p>
+         </div>        
+        <!-- Intro -->
+        <div id="questionIntro" style="display: none">
+			<span class="sHeader">Rack 'em Up</span>
+            <span class="sHeaderLine3">Challenge</span>
+            <div class="sBar">KNOWLEDGE CHECK</div>
+            <img class="sTire" src="images/splash_tire.png" />
+            <div class="sRules">
+               <img class="sRulesLeft" src="images/splash_rulesleft.png" />
+               <img class="sRulesRight" src="images/splash_rulesright.png" />
+            </div>
+            <a href="https://www.michelinb2b.com/wps/b2bcontent/PDF/UNI_DataBook_E.pdf" target="_blank" class="sDataBook clickable">
+            	<img src="images/tools-databook.png" />
+            </a>
+            <a href='javascript:void(0)' id='beginBtn' class='button clickable' onclick='beginQuiz()'>BEGIN</a>
+        </div>
+        
+         <a href='javascript:void(0)' id='submitBtn' class='button clickable' onclick='submitClick()'>SUBMIT</a>
+        
+    	<!-- Congrats Screen -->
+       <div id="finishDisplay" style="display: none">
+            <p id="finishFeedbackHeader">Feedback Header</p>
+            <p id="finishFeedbackMessage">Feedback Message</p>
+        </div>
+        <div id="finishScreen" style="display: none"></div>
+              
+        <!-- Question 1 -->
+        <div class="questions">
+              
+                   <span class="mcQuestionNumber ">1.</span>
+                   <p class="mcQuestion">Based on the Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> naming convention, which tire is a regional drive tire we offer from the Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> truck product line?</p>
+                   <p class="mcInstruction">Select the correct option.</p>
+                   <div class="options">
+                   		<!--
+                        type = radio or checkbox
+                        name = mutually exclusive to group questions answers
+                        id = Assigns and id so we can call the correct answers in controller
+                        value = initial value. 0 or 1
+                        input class (css-checkbox) = required class to stylize checkbox
+                        label class (css-label) = required to stylize image based inputs
+                        -->
+                        <div>
+                            <input type="radio" name="question1" id="rs20_1" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_1">RS20<sup><span class="shrinkage">&trade;</span></sup></label>
+                        </div>
+                        <div>  
+                            <input type="radio" name="question1" id="rd30_1" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_1">RD30<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                        </div>
+                        <div>    
+                            <input type="radio" name="question1" id="ls24_1" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_1">LS24<sup><span class="shrinkage">&trade;</span></sup></label>
+						</div>
+                         <div>   
+                            <input type="radio" name="question1" id="lt40_1" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_1">LT40<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question1" id="hs50_1" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_1">HS50<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question1" id="hd60_1" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_1">HD60<sup><span class="shrinkage">&trade;</span></sup></label>
+                        </div>
+                    </div>
+                
+          </div>
+        
+        <!-- Question 2 -->
+        <div class="questions">
+            
+                    <span class="mcQuestionNumber MetaBoldLFRoman">2.</span>
+                    <p class="mcQuestion">Which tire below is an on/off road drive tire?</p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                  	<div class="options">
+                    	<div>
+                            <input type="radio" name="question2" id="rs20_2" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_2">RS20<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question2" id="rd30_2" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_2">RD30<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question2" id="ls24_2" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_2">LS24<sup><span class="shrinkage">&trade;</span></sup></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question2" id="lt40_2" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_2">LT40<sup><span class="shrinkage">&trade;</span></sup></label>
+                          </div>
+                          <div> 
+                            <input type="radio" name="question2" id="hs50_2" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_2">HS50<sup><span class="shrinkage">&trade;</span></sup></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question2" id="hd60_2" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_2">HD60<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+          		</div>
+         </div>
+        
+        <!-- Question 3 -->
+        <div class="questions">
+           
+                    <span class="mcQuestionNumber">3.</span>
+                    <p class="mcQuestion">A long haul truck pulls up to the branch. Which Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> tires would you recommend for this vehicle?</p>
+                    <p class="mcInstruction">Select all that apply.</p>
+                     <div class="options">
+                   		<div>
+                            <input type="checkbox" name="question3" id="rs20_3" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_3">RS20<sup><span class="shrinkage">&trade;</span></sup></label>
+                        </div>
+                        <div>   
+                            <input type="checkbox" name="question3" id="rd30_3" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_3">RD30<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question3" id="ls24_3" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_3">LS24<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question3" id="lt40_3" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_3">LT40<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question3" id="hs50_3" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_3">HS50<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question3" id="hd60_3" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_3">HD60<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                    </div>
+             
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="questions">
+            
+                    <span class="mcQuestionNumber">4.</span>
+                    <p class="mcQuestion">Which tires have StoneBlocker<span class="shrinkage"><sup>&trade;</sup></span> technology?</p>
+                    <p class="mcInstruction">Select all that apply.</p>
+                   	<div class="options">
+                   		<div>
+                            <input type="checkbox" name="question4" id="rs20_4" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_4">RS20<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question4" id="rd30_4" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_4">RD30<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                        </div>
+                         <div>   
+                            <input type="checkbox" name="question4" id="ls24_4" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_4">LS24<sup><span class="shrinkage">&trade;</span></sup></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question4" id="lt40_4" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_4">LT40<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                          </div>
+                          <div>  
+                            <input type="checkbox" name="question4" id="hs50_4" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_4">HS50<sup><span class="shrinkage">&trade;</span></sup></label>
+                          </div>
+                          <div>  
+                            <input type="checkbox" name="question4" id="hd60_4" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_4">HD60<sup><span class="shrinkage">&trade;</span></sup></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                        </div>
+                    </div>
+          	
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="questions">
+            
+                    <span class="mcQuestionNumber">5.</span>
+                    <p class="mcQuestion">The RS20<span class="shrinkage"><sup>&trade;</sup></span> has a scrub fighting shoulder. Which of the tires below is the RS20<span class="shrinkage"><sup>&trade;</sup></span>?</p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                     <div class="options no-labels">
+                   		<div>
+                            <input type="radio" name="question5" id="rs20_5" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_5"><div class="hiddenLabel">RS20<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                        </div>
+                        <div>    
+                            <input type="radio" name="question5" id="rd30_5" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_5"><div class="hiddenLabel">RD30<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                        </div>
+                        <div>    
+                            <input type="radio" name="question5" id="ls24_5" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_5"><div class="hiddenLabel">LS24<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question5" id="lt40_5" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_5"><div class="hiddenLabel">LT40<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                        </div>
+                        <div>    
+                            <input type="radio" name="question5" id="hs50_5" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_5"><div class="hiddenLabel">HS50<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question5" id="hd60_5" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_5"><div class="hiddenLabel">HD60<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                        </div>
+                    </div>
+               
+          </div>
+          
+          <!-- Question 6 -->
+        <div class="questions">
+            
+                    <span class="mcQuestionNumber">6.</span>
+                    <p class="mcQuestion">The HD60™ has Tiger Claw™ traction that grips surfaces effectively with a tough, reliable tread that fights chips and cuts. Which tire below is the HD60™?</p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                   <div class="options no-labels">
+                   		<div>
+                            <input type="radio" name="question6" id="rs20_6" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_6"><div class="hiddenLabel">RS20<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question6" id="rd30_6" value="0" class="css-checkbox clickable" />
+                           <label class="rd30 css-label clickable" for="rd30_6"><div class="hiddenLabel">RD30<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question6" id="ls24_6" value="0" class="css-checkbox clickable" />
+                           <label class="ls24 css-label clickable" for="ls24_6"><div class="hiddenLabel">LS24<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question6" id="lt40_6" value="0" class="css-checkbox clickable" />
+                           <label class="lt40 css-label clickable" for="lt40_6"><div class="hiddenLabel">LT40<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>
+                         	<input type="radio" name="question6" id="hs50_6" value="0" class="css-checkbox clickable" />
+                           <label class="hs50 css-label clickable" for="hs50_6"><div class="hiddenLabel">HS50<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question6" id="hd60_6" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_6"><div class="hiddenLabel">HD60<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                    </div>
+           </div>
+          
+          <!-- Question 7 -->
+        <div class="questions">
+           
+                    <span class="mcQuestionNumber">7.</span>
+                    <p class="mcQuestion">Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> long haul tires are built to last. Which of the tires below are labeled long haul options based on naming convention?</p>
+                    <p class="mcInstruction">Select all that apply!</p>
+                      <div class="options no-labels">
+                   		<div>
+                            <input type="checkbox" name="question7" id="rs20_7" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_7"><div class="hiddenLabel">RS20<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question7" id="rd30_7" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_7"><div class="hiddenLabel">RD30<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question7" id="ls24_7" value="0" class="css-checkbox clickable" />
+                           <label class="ls24 css-label clickable" for="ls24_7"><div class="hiddenLabel">LS24<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                           <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question7" id="lt40_7" value="0" class="css-checkbox clickable" />
+                           <label class="lt40 css-label clickable" for="lt40_7"><div class="hiddenLabel">LT40<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                           <div class="activeState"><img src="images/activeState.png" /></div>
+                        </div>
+                         <div>   
+                            <input type="checkbox" name="question7" id="hs50_7" value="0" class="css-checkbox clickable" />
+                           <label class="hs50 css-label clickable" for="hs50_7"><div class="hiddenLabel">HS50<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="checkbox" name="question7" id="hd60_7" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_7"><div class="hiddenLabel">HD60<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                    </div>
+             
+          </div>
+          
+          <!-- Question 8 -->
+        <div class="questions">
+            <span class="mcQuestionNumber">8.</span>
+            <p class="mcQuestion">If a customer wanted tires for the fitment highlighted below, what Uniroyal<span class="shrinkage"><sup>&reg;</sup></span> truck tire would you recommend?</p>
+            <p class="mcInstruction">Select the correct option.</p>
+            <img class="truck1" src="images/truck_1.png" />
+            	<div class="options no-labels">
+                   		<div>
+                            <input type="radio" name="question8" id="rs20_8" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_8"><div class="hiddenLabel">RS20<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question8" id="rd30_8" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_8"><div class="hiddenLabel">RD30<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question8" id="ls24_8" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_8"><div class="hiddenLabel">LS24<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question8" id="lt40_8" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_8"><div class="hiddenLabel">LT40<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question8" id="hs50_8" value="0" class="css-checkbox clickable" />
+                            <label class="hs50 css-label clickable" for="hs50_8"><div class="hiddenLabel">HS50<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question8" id="hd60_8" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_8"><div class="hiddenLabel">HD60<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+            		</div>
+         </div>
+          
+          <!-- Question 9 -->
+        <div class="questions">
+           
+                    <span class="mcQuestionNumber">9.</span>
+                    <p class="mcQuestion">A customer who drives around 60,000 miles per year comes into the center. For this placement, which truck tire would you recommend?</p>
+                    <p class="mcInstruction">Select the correct option.</p>
+                    <img class="truck2" src="images/truck_2.png" />
+                    
+                    <div class="options no-labels">
+                   		<div>
+                            <input type="radio" name="question9" id="rs20_9" value="0" class="css-checkbox clickable" />
+                            <label class="rs20 css-label clickable" for="rs20_9"><div class="hiddenLabel">RS20<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question9" id="rd30_9" value="0" class="css-checkbox clickable" />
+                            <label class="rd30 css-label clickable" for="rd30_9"><div class="hiddenLabel">RD30<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                            <div class="activeState"><img src="images/activeState.png" /></div>
+                         </div>
+                         <div>   
+                            <input type="radio" name="question9" id="ls24_9" value="0" class="css-checkbox clickable" />
+                            <label class="ls24 css-label clickable" for="ls24_9"><div class="hiddenLabel">LS24<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question9" id="lt40_9" value="0" class="css-checkbox clickable" />
+                            <label class="lt40 css-label clickable" for="lt40_9"><div class="hiddenLabel">LT40<sup><span class="shrinkage">&trade;</span></sup></div></label></div>
+                          <div>  
+                            <input type="radio" name="question9" id="hs50_9" value="0" class="css-checkbox clickable" />
+                           <label class="hs50 css-label clickable" for="hs50_9"><div class="hiddenLabel">HS50<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                          </div>
+                          <div>  
+                            <input type="radio" name="question9" id="hd60_9" value="0" class="css-checkbox clickable" />
+                            <label class="hd60 css-label clickable" for="hd60_9"><div class="hiddenLabel">HD60<sup><span class="shrinkage">&trade;</span></sup></div></label>
+                         </div>
+                    </div>
+                </div>
+          
+     </div>
+	 
+     <!--<canvas id="canvas" width="1012" height="667" style="background-color#cccccc; width: 1012px">-->
+     <canvas id="canvas" width="2024" height="1334" style="background-color: ##B4B4B4; width: 100%; height: 100%;">
+    	 Your browser does not support canvas. Please upgrade to at least Firefox 24 or Internet Explorer 9 for the best experience.
+    </canvas>
+ </div>
+
+</body>
+</html>

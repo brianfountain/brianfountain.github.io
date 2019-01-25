@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<meta charset="utf-8">
+<title>Market Applications</title>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/TweenLite.min.js"></script>
+<script src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>
+<script src="js/pageAnimation.js"></script>
+<!-- ----------------------- JPlayer Audio ------------------------------ -->
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   /*
+   $(document).bind("touchmove", function(e)//Disables dragging/swiping/scrolling action.  Touches/clicks work.
+    { 
+        //alert("touchmove - "+e.target);
+        if(e.preventDefault)
+        {
+            if (!$(e.target).hasClass("dragItem")) {
+                e.preventDefault();
+            }
+        } else
+        {
+            e.returnValue = false;
+        }
+    });
+	*/
+	$(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+
+    $(window).on('load', function(){
+            animationEvents();  
+			parent.$("#jquery_jplayer_1").jPlayer("play");   
+     });
+   
+
+	
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        
+        <!--<div class="dimmer" id="dimmer"></div>-->
+
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="../../images/char/tiger/tigerSmall0.png" class="character tiger startHidden openingFade" id="tigerSmall">
+            <img src="../../images/char/tigerSmallBlink/tigerSmallBlink1.png" class="character tiger startHidden openingFade" id="tigerSmallBlink">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+        
+            <img src="../../images/windowFrame-min.png" style="position:absolute; width:102%; height:139%; margin-top:-113px; margin-left:-1%"/>
+
+
+                <img src="img/screen/hill.png" id="hill" class="startHidden openingFade" style="position:absolute; top:72.7%; right:1.5%; width:36%;"/>
+            
+                <img src="img/screen/sign.png" id="introduction" class="pageTitle leftJustified startHidden openingFade" />
+                
+                <img src="img/screen/instructions.png" class="boldGreenHeader startHidden openingFade" id="instructions" style="position:absolute; top:21%;"/>
+                <img src="img/screen/completedText.png" class="boldGreenHeader startHidden" id="completedText" style="position:absolute; top:21%;"/>
+
+                <img src="img/screen/choices.png" class="startHidden openingFade" id="bullet4" style="position:absolute; top:38%; left:4%; width:91%"/>
+                
+                <div class="dropZone" id="dropZone1"></div>
+                <div class="dropZone" id="dropZone2"></div>
+                <div class="dropZone" id="dropZone3"></div>
+
+                <img src="img/screen/box1.png" class="dragItem drag1Start startHidden openingFade clickable" id="drag1"/>
+                <img src="img/screen/box2.png" class="dragItem drag2Start startHidden openingFade clickable" id="drag2"/>
+                <img src="img/screen/box3.png" class="dragItem drag3Start startHidden openingFade clickable" id="drag3"/>
+               
+
+				
+
+        </div><!--end screen-->        
+    </div><!--end pageWrapper-->
+
+<script>
+    var correctDrops = 0;
+    var z = 3;
+    var snapBackTime = 150;
+
+
+    $('.dragItem').bind('touchstart mousedown', function(e){
+        var clickSound = new Howl
+            ({
+                urls: ['sounds/click.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            });
+            clickSound.play();
+    });
+
+    $("#drag1").draggable({
+       revert: function(valid) {
+        if(valid) {
+            var dropSound = new Howl
+            ({
+                urls: ['sounds/drop.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            }); 
+            dropSound.play();
+        }
+        else {
+            var whooshSound = new Howl
+            ({
+                urls: ['sounds/whoosh.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            });
+            whooshSound.play();
+        }
+        return !valid;
+        },
+        revertDuration: snapBackTime,
+        start: function(event, ui)
+                {
+                    $(this).css("z-index", z++); 
+                },
+        drop: function(ev, ui) {
+        $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
+    }});
+
+    $("#drag2").draggable({
+        revert: function(valid) {
+        if(valid) {
+            var dropSound = new Howl
+            ({
+                urls: ['sounds/drop.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            }); 
+            dropSound.play();
+        }
+        else {
+            var whooshSound = new Howl
+            ({
+                urls: ['sounds/whoosh.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            });
+            whooshSound.play();
+        }
+        return !valid;
+        },
+        revertDuration: snapBackTime,
+        start: function(event, ui)
+                {
+                    $(this).css("z-index", z++);
+                },
+        drop: function(ev, ui) {
+        $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
+    }});
+
+    $("#drag3").draggable({
+        revert: function(valid) {
+        if(valid) {
+            var dropSound = new Howl
+            ({
+                urls: ['sounds/drop.mp3'],
+                autoplay: true,
+                loop: false,
+                volume: 1.0,
+            });
+            dropSound.play();
+
+        }
+        else {
+            var whooshSound = new Howl
+            ({
+                urls: ['sounds/whoosh.mp3'],
+                autoplay: false,
+                loop: false,
+                volume: 1.0,
+            });
+            whooshSound.play();
+        }
+        return !valid;
+        },
+        revertDuration: snapBackTime,
+        start: function(event, ui)
+                {
+                    $(this).css("z-index", z++);
+                },
+        drop: function(ev, ui) {
+        $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
+    }});
+
+    $('#dropZone1').droppable(
+            {
+                accept: "#drag1",
+                drop: function (event, ui) {
+                    $("#drag1").removeClass("dragItem drag1Start");
+                    $("#drag1").addClass("dropped dropped1");
+                    $("#drag1").unbind('mousedown mouseenter');
+                    correctDrops++;
+                    if(correctDrops>=3)
+                    {
+                        completedCorrect();
+                    }
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            }
+    );
+
+    $('#dropZone2').droppable(
+            {
+                accept: "#drag2",
+                drop: function (event, ui) {
+                    $("#drag2").removeClass("dragItem drag2Start");
+                    $("#drag2").addClass("dropped dropped2");
+                    $("#drag2").unbind('mousedown mouseenter');
+                    correctDrops++;
+                    if(correctDrops>=3)
+                    {
+                        completedCorrect();
+                    }
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            }
+    );
+
+    $('#dropZone3').droppable(
+            {
+                accept: "#drag3",
+                drop: function (event, ui) {
+                    $("#drag3").removeClass("dragItem drag3Start");
+                    $("#drag3").addClass("dropped dropped3");
+                    $("#drag3").unbind('mousedown mouseenter');
+                    correctDrops++;
+                    if(correctDrops>=3)
+                    {
+                        completedCorrect();
+                    }
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            }
+    );
+
+    function completedCorrect()
+    {
+        parent.$("#jquery_jplayer_1").jPlayer("stop");
+        TweenLite.to($("#instructions"), 1.5, {css:{opacity:0.0}, delay:0, ease:Quad.easeInOut});
+        TweenLite.to($("#completedText"), 1.5, {css:{opacity:1.0}, delay:1, ease:Quad.easeInOut});
+        var clickSound = new Howl
+            ({
+                urls: ['sounds/Mod2_04_App_correct.mp3'],
+                autoplay: true,
+                loop: false,
+                volume: 1.0,
+            });
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<meta charset="utf-8">
+<title>Tire Fitment</title>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/TweenLite.min.js"></script>
+<script src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script src="../../js/animationSequence.js"></script>
+<script src="js/pageAnimation.js"></script>
+<!-- ----------------------- JPlayer Audio ------------------------------ -->
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   	$(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+		
+	$(window).on('load', function (){           
+            animationEvents();   
+			parent.$("#jquery_jplayer_1").jPlayer("play"); 
+        });
+	
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="img/tiger.png" class="character startHidden openingFade" id="tiger">
+            <img src="img/steerTires.png" class="startHidden" id="steerTires"/>
+            <img src="img/driveTires.png" class="startHidden" id="driveTires"/>
+            <img src="img/trailerTires.png" class="startHidden" id="trailerTires"/>
+            <img src="img/steerTiresStart.png" class="startHidden" id="steerTiresStart"/>
+            <img src="img/driveTiresStart.png" class="startHidden" id="driveTiresStart"/>
+            <img src="img/trailerTiresStart.png" class="startHidden" id="trailerTiresStart"/>			
+        </div>
+    </div><!--end pageWrapper-->
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+/*
+
+Official Uniroyal Colors - from Databook
+PMS 032 (red)   #ef4236 or #ef3340 or #ee3b33
+Process Black   #231f20 or #2B2926
+Warm Gray 6     #bbb1a6 or #ADA194
+Cream           #fffbd5 or #FFFDD0
+
+
+colors:
+    light gray (background color):  #f1f1f1
+    dark gray (text):               #323136
+    red:                            #e62329 
+
+
+*/
+=
+@font-face {
+    font-family: 'MetaBoldLFItalic';
+    src: url('../../../fonts/metaboldlfitalic/metaboldlfitalic.eot');
+    src: url('../../../fonts/metaboldlfitalic/metaboldlfitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../../fonts/metaboldlfitalic/metaboldlfitalic.woff') format('woff'),
+         url('../../../fonts/metaboldlfitalic/metaboldlfitalic.ttf') format('truetype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+=
+.MetaBoldLFItalic {
+    font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+}
+
+.centered {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.clearBoth {
+    clear:both;
+}
+
+.parallelogram {
+    background: none repeat scroll 0 0 #e62329;
+    height: 35px;
+    left: 300px;
+    position: absolute;
+    top: 50%;
+    transform: skew(-30deg);
+    width: 150px;
+    height:;
+    display: inline-block;
+    float: left;
+    vertical-align:bottom;
+
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.29);
+    box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.29);
+}
+
+.headline {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    /*height: 50%;*/
+
+    font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+    color:white;
+    font-size:6em;
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, .8);
+
+}
+
+.titleText{
+    font-size:5em;
+    color:#323136;
+    font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+    letter-spacing: -1px;
+}
+
+.header1{
+    font-size:3.5em;
+    letter-spacing: -2.2px;
+    color:#323136;
+    margin-top:.25em;
+    font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+}
+
+
+.header2{
+    font-size:2.5em;
+    margin-top:.25em;
+    color:#aaa;
+    font-family: MetaBoldCapsItalic, Helvetica, sans-serif;
+}
+
+.bodyText{
+    font-size:1.0em;
+    color:#323136;
+    font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+    letter-spacing: -.5px;
+    text-align:center;
+    /*padding-left:10%;
+    padding-right:10%;
+    */
+}
+
+.bodyText2{
+    font-size:1.2em;
+    color:#888;
+    font-family: 'Rosarivo', serif;
+    letter-spacing: -.7px;
+    text-align:center;
+    /*padding-left:10%;
+    padding-right:10%;
+    */
+}
+
+.tGroup {
+  overflow:hidden;
+}
+
+
+body {
+    background-color: #fff !important;
+    margin:0px auto;
+    text-align: center;
+    overflow:hidden;
+    width:100%;
+    height:100%;
+}
+
+
+#triangle-topleft {
+    /*height = 2.9*width */
+    position:absolute;
+    width: 0px;
+    height: 232px;
+    left:0px;
+    top:0px;  
+    border-top: 232px solid #EF4135;
+    border-right: 80px solid transparent;
+    z-index:1000;
+}
+
+#triangle-bottomright {
+  position:absolute;
+  right:0px;
+  bottom:46px;
+  width: 0px;
+  height: 232px;
+  border-bottom: 232px solid #ef4236;
+  border-left: 80px solid transparent;
+  z-index:-1;
+}
+
+
