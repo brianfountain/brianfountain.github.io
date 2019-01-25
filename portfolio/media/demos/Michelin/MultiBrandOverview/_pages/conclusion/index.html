@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Conclusion</title>
+    <link type="text/css" rel="stylesheet" href="../../_css/conclusion.css" />
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../../_js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+    $(function() {
+	
+
+       var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+
+        // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+
+		$(ap).bind("ended", function(evt){
+            //console.log("done");
+            p.audio.messages.create("Congratulations. Click the SAVE &amp; EXIT button to close the course.",true);
+			
+			// set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime;
+			console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+                if (ts == 0.00){
+					$(".brandProfile").removeClass('show');
+					$(".scrollDown").removeClass('show');
+					$(".header").removeClass('show');
+					//$(".brandProfile_download_button").removeClass('show');
+              	}
+				if (ts > 0.1){ 
+					$(".header").addClass('show');
+					$(".overlay").css('display', 'none');
+				}
+				
+                if (ts > 0.5){
+				    $(".brandProfile").addClass('show');
+                }
+				if (ts > 1.5){
+					$(".scrollDown").addClass('show');
+				}
+				/*
+				if (ts > 19.1){
+				    $(".header").removeClass('show');
+					$(".brandProfile_download_button").addClass('show');
+                }*/
+				if (ts > 17.2){
+                    $(".overlay").css('display', 'block');
+				}
+				if (ts > 17.7){
+                   $(".overlay").addClass('show');
+				}
+				if (ts > 18.5){
+					$(".brandProfile_download_button").addClass('show');
+					$(".save_exit_button").addClass('show');
+				}
+             }
+		});
+
+        //-- build the page once the wipe is removed --//
+        buildPage = function() {
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+		/* iframe load and unload events */
+        $(window).load(function () {
+            // Send completed to LMS
+			parent.courseObj.io.setStatus('completed');
+			
+			audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+
+            p.controller.setVar("introViewed", true);
+        });
+		
+		$(".brandProfile ").scroll(function() {
+			var height = $(".brandProfile").scrollTop();
+
+			if(height  > 50) {
+				$(".scrollDown").removeClass('show');
+			} else {
+				$(".scrollDown").addClass('show');
+			}
+		});
+
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+	});
+
+    </script>
+
+    <style type="text/css">
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="title">
+            <div class="title">
+                <div class="menu slide-out">
+                    <div class="menu-icon">
+                        <p>Menu</p>
+                    </div>
+                    <div class="roll-state"></div>
+                </div>
+                <h1>
+                    <span class="headline sequence hide"><b>Conclusion</b></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+	
+    <div class="overlay">
+        <div class="welcome">
+            <div class="plaque">
+                <h1 class="title">
+                    <span>CONGRATULATIONS</span>
+                </h1>
+                <p class="instructions">You have completed this course.</p>
+                <div class="button-container">
+					<a class="button brandProfile_download_button" href="../../_media/docs/Multi_Brand_Flyer.pdf" target="_blank"> 
+						<p class="static-state">BRAND PROFILE</p>
+						<p class="roll-state"></p>
+					</a>
+					<a class="button save_exit_button" href="javascript:void(0)" target="_self" onclick="parent.courseObj.courseExit(); return false;"> 
+						<p class="static-state">SAVE &amp; EXIT</p>
+						<p class="roll-state"></p>
+					</a>
+				</div>				
+            </div>
+        </div>
+    </div>
+    
+    <div id="outside" class="conclusion">
+        <div class="page" id="inside">
+            <!-- Scaleable inner content -->
+            <h1 class="header">Conclusion</h1>
+            
+            <!-- brand profile chart -->
+			<div class="brandProfile">
+				
+				<h1>Recommending the Right Tire for the Fleet</h2>
+				<table cellspacing="0" cellpadding="0" class="brandProfileTable">
+					<tr class="brandProfileTableRow">
+						<td width="33%" style="text-align: center" class="brandProfileTableCell">
+							<img align="center" class="image" src="../../_media/images/logo_trprnt.png" />
+							<h2>Michelin may be the right choice in the fleet:</h2>
+						</td>
+						<td width="33%" style="text-align: center" class="brandProfileTableCell">
+							<img class="image" src="../../_media/images/bfgoodrich_logo.png" />
+							<h2>BFGoodrich may be the right choice if the fleet:</h2>
+						</td>
+						<td width="33%" style="text-align: center" class="brandProfileTableCell">
+							<img class="image" src="../../_media/images/uniroyal_logo.png" />
+							<h2>Uniroyal may be the right choice if the fleet:</h2>
+						</td>
+					</tr>
+				</table>
+				<table cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+					<tr class="brandProfileTableRow">
+						<td class="tableHead" colspan="3">Maintenance and Operations</td>
+					</tr>
+					<!-- Row 1 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Takes pride in maintaining their fleet – pristine/clean appearance</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Looks for casing durability for multiple retreads</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Is not focused on tracking tire mileage or performance</p></td>
+					</tr>
+					<!-- Row 2 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Uses another premium brand</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Has a maintenance program that may vary in different degrees</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Has a minimal maintenance program</p></td>
+					</tr>
+					<!-- Row 3 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Tracks performance of a tire in any capacity, including load, cost per mile, and fuel efficiency or durability</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Tracks performance but it is not a high priority</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Views tires as a necessary evil</p></td>
+					</tr>
+					<!-- Row 4 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has an organized fleet operation</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Has brand loyalty, but may not be strong as they go back and forth between price and performance (wants the best of both worlds)</p></td>
+						<td width="33%" class="brandProfileTableCell even">
+							<img src="../../_media/images/checkMark.png" class="checkmark checkmark_1" />
+							<p>Is not interested in retreading or seeks no more than one retread per casing</p>
+						</td>
+					</tr>
+					<!-- Row 5 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even">
+							<img src="../../_media/images/checkMark.png" class="checkmark checkmark_1" />
+							<p>Seeks multiple retreads per casing</p>
+						</td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+				</table>
+				
+				<table cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+					<tr class="brandProfileTableRow">
+						<td class="tableHead" colspan="3">Equipment and Applications</td>
+					</tr>
+					<!-- Row 1 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has Newer equipment (&lt; 7 years)</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Has equipment that could be older or used</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Has older and/or used equipment</p></td>
+					</tr>
+					<!-- Row 2 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has heavy loads with focus on weight savings</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Values premium tires on one position but may not on others</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Uses equipment seasonally<br /><span style="margin-left: 5px">– Tires weather before they use all of the tread</span></p></td>
+					</tr>
+					<!-- Row 3 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has equipment that may be very expensive such as energy equipment</p></td>
+						<td width="33%" class="brandProfileTableCell odd">
+							<p>Values durability and performance but is not comfortable with investing in premium tires because of:<br />
+								<span style="margin-left: 5px">– Aggressive applications</span><br />
+								<span style="margin-left: 5px">– Low mileage applications</span>
+							</p>
+						</td>
+						<td width="33%" class="brandProfileTableCell even"><p>Does not seek multiple retreads or does not want to run retreads at all.</p></td>
+					</tr>
+					<!-- Row 4 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has OE specifications with Michelin or another tier one </p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 5 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Runs specialty tire sizes </p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 6 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has auto haulers and low boy trailers </p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 7 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Follows the latest technologies or trends in the market </p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 8 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Hauls time sensitive goods including milk, concrete, food, beverage, and services</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 9 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Hauls high value or hazardous loads</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>&nbsp;</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+				</table>
+				
+				<table border="0" cellspacing="0" cellpadding="0" class="brandProfileTableInfo">
+					<tr class="brandProfileTableRow">
+						<td class="tableHead" colspan="3">Budget and Purchasing Habits</td>
+					</tr>
+					<!-- Row 1 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Understands total cost of ownership and Return on Investment (ROI)</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Wants the best of both worlds to get performance and a competitive price</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Focuses highly on the initial purchase price<br /><span style="margin-left: 5px">– Transactional fleets may shop around for the best price every time they purchase</span></p></td>
+					</tr>
+					<!-- Row 2 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Has a dedicated procurement department</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Values quality and the familiarity of a strong brand heritage (apprehensive about import or budget brands)</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Does not look at the total cost of ownership</p></td>
+					</tr>
+					<!-- Row 3 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Evaluates vendors on an annual basis to ensure best value but often stays with one vendor for longer periods of time</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Does not always consider the total cost of ownership</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>Has possible credit and budget constraints </p></td>
+					</tr>
+					<!-- Row 4 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Values price continuity over the road (NAFA and Advantage)</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Has possible credit and budget constraints</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+					<!-- Row 5 -->
+					<tr class="brandProfileTableRow">
+						<td width="33%" class="brandProfileTableCell even"><p>Seeks ways to maximize fleet assets including fuel efficiency, load payment, and driver accountability</p></td>
+						<td width="33%" class="brandProfileTableCell odd"><p>Values price continuity over the road (NAFA and Advantage)</p></td>
+						<td width="33%" class="brandProfileTableCell even"><p>&nbsp;</p></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="scrollDown">
+				<p>Scroll to see more</p>
+				<svg width="15px" height="10px" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 6.18 3.23" preserveAspectRatio="none">
+                	<path d="M0,0H6.18L3.08,3.23" />
+				</svg>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="cover_all"></div>
+	
+    <div id="preload-audio">
+        <audio id="audio" src="http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Fleets/conclusion.mp3"></audio>
+    </div>
+	
+    <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .9;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script>
+</body>
+</html>

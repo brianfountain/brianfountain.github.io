@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Family of Brands</title>
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_js/howler.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../_css/understandingfleetneeds.css" />
+    <script type="text/javascript">
+
+    $(function() {
+		// Selection box clicked boxClick.play();
+		var answerClick = new Howl({ urls: ['../../_media/audio/answer_selection.mp3'], autoplay: false, loop: false, volume: 1.0 });
+        var whoosh = new Howl({ urls: ['../../_media/audio/whoosh.mp3'], autoplay: false, loop: false, volume: 1.0 });
+		
+        var p = window.parent;
+        var ap = p.document.getElementById("audio");
+
+        var pageTitles = ["Fleet Detective", "Maintenance and Operations", "Equipment and Applications", "Budget and Purchasing Habits"];
+        var audioArray = [];
+        var newSlide = 0;
+        var curSlide = 0;
+		
+		var equipAppCounter = 0;
+		var budgetPurchaseCounter = 0;
+
+
+        transitionPage = function(pg){
+            p.addTransitionPage(pg);
+        }
+
+        $("#preload-audio > audio").each(function (idx, src){
+            var files = parseInt($("#preload-audio > audio").length) -1;
+
+            var audioSRC = $(this).attr("src");
+            var newSRC = audioSRC.split("../../");
+            audioArray.push(newSRC[newSRC.length -1]);
+            //audioArray.push($(this).attr("src"));
+
+            $("#preload-audio").html("&nbsp;");
+            var template = "<p class='inactive'><span></span></p>"
+            $(".progress").append(template);
+        });
+
+
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+
+        function setAnimationEvent(){
+            var a,
+            el = document.createElement("fakeelement");
+            var animation = {"animation":"animationend","OTransition":"oAnimationEnd","MozTransition":"animationend","WebkitTransition":"webkitAnimationEnd"}
+            for (a in animation){if (el.style[a] !== undefined){return animation[a];}}
+        }
+
+        $(".next").on({
+            click: function (){
+                if (p.audio.messages.status == "open"){
+                    p.audio.messages.hide();
+                    $(".next").removeClass("highlight");
+                }
+                newSlide = curSlide+1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            }
+        });
+
+        $(".prev").on({
+            click: function (){
+                newSlide = curSlide-1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            }
+        });
+
+        // Animate #Screens based on index
+        animateSlides = function (index){
+
+            var strt = curSlide, idx = index;
+            var slideOut = $('.slide').eq(strt);
+            var slideIn = $('.slide').eq(idx);
+
+            if (strt > idx){
+                $(slideOut).removeClass("reverse in").addClass("reverse out");
+                $(slideIn).removeClass("set").addClass("reverse in");
+            } else {
+                if(idx == 0){
+                     $(".slide").addClass("set");
+                     $(slideIn).removeClass("set").addClass("in");
+                } else {
+                    if ($(".slide").hasClass("reverse")){
+                        $(".slide").removeClass("reverse");
+                    }
+                    $(slideOut).removeClass("in").addClass("out");
+                    $(slideIn).removeClass("set").addClass("in");
+                }
+            }
+
+            curSlide = index;
+            $(".section-title span").html(pageTitles[curSlide]);
+
+            animateResponse(slideOut);
+            animateResponse(slideIn);
+
+            checkIndex();
+        }
+
+        animateResponse = function (obj){
+            var direction = $(obj).hasClass("out");
+            var ae = setAnimationEvent();
+
+            $(obj).one(ae, function() {if (direction == true){
+                $(obj).removeClass("out").addClass("set");
+            }});
+        }
+
+        checkIndex = function (){
+            if ($(".active") != null){
+                $(".progress > p").removeClass("active").addClass("inactive");
+                $(".progress > p").eq(curSlide).removeClass("inactive").addClass("active");
+            }
+
+            if (curSlide == audioArray.length -1){
+                $(".next").removeClass("slide-in").addClass("slide-out");
+            } else {
+                $(".next").removeClass("slide-out").addClass("slide-in");
+            }
+
+            if (curSlide == 0){
+                $(".prev").removeClass("slide-in").addClass("slide-out");
+            }else {
+                $(".prev").removeClass("slide-out").addClass("slide-in");
+            }
+
+        };
+
+        // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+		
+		// slide 3
+		$("#q1_s1").on({
+			click: function () {
+				$(".select1a").css("pointer-events", "none");
+				$(".slide.three > .columnstructure > .col1").addClass("show");
+				$(".slide.three > .columnstructure > .col1 > .choice > .checkmark").addClass("show");
+				equipAppCounter++;
+				//console.log(equipAppCounter);
+				if (equipAppCounter >= 2){
+					p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                	$(".next").addClass("highlight");
+				}
+			}
+		});
+		
+		$("#q1_s2").on({
+			click: function () {
+				$(".select1b").css("pointer-events", "none");
+				$(".slide.three > .columnstructure > .col2").addClass("show");
+				$(".slide.three > .columnstructure > .col2 > .choice > .checkmark").addClass("show");
+				equipAppCounter++;
+				//console.log(equipAppCounter);
+				if (equipAppCounter >= 2){
+					p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                	$(".next").addClass("highlight");
+				}
+			}
+		});
+		
+		$("#q1_s3").on({
+			click: function () {
+				$(".select1c").css("pointer-events", "none");
+				$(".slide.three > .columnstructure > .col3").addClass("show");
+				$(".slide.three > .columnstructure > .col3 > .choice > .checkmark").addClass("show");
+				equipAppCounter++;
+				//console.log(equipAppCounter);
+				if (equipAppCounter >= 2){
+					p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                	$(".next").addClass("highlight");
+				}
+			}
+		});
+		
+		// slide 4 
+		$("#q2_s1").on({
+			click: function () {
+				$(".select2a").css("pointer-events", "none");
+				$(".slide.four > .columnstructure > .col1").addClass("show");
+				$(".slide.four > .columnstructure > .col1 > .choice > .checkmark").addClass("show");
+				budgetPurchaseCounter++;
+				//console.log(budgetPurchaseCounter);
+				if (budgetPurchaseCounter >= 2){
+					p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+                	//$(".next").addClass("highlight");
+				}
+			}
+		});
+		
+		$("#q2_s2").on({
+			click: function () {
+				$(".select2b").css("pointer-events", "none");
+				$(".slide.four > .columnstructure > .col2").addClass("show");
+				$(".slide.four > .columnstructure > .col2 > .choice > .checkmark").addClass("show");
+				budgetPurchaseCounter++;
+				//console.log(budgetPurchaseCounter);
+				if (budgetPurchaseCounter >= 2){
+					p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+                	//$(".next").addClass("highlight");
+				}
+			}
+		});
+		
+		$("#q2_s3").on({
+			click: function () {
+				$(".select2c").css("pointer-events", "none");
+				$(".slide.four > .columnstructure > .col3").addClass("show");
+				$(".slide.four > .columnstructure > .col3 > .choice > .checkmark").addClass("show");
+				budgetPurchaseCounter++;
+				//console.log(budgetPurchaseCounter);
+				if (budgetPurchaseCounter >= 2){
+					p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+                	//$(".next").addClass("highlight");
+				}
+			}
+		});
+     
+		syncSlides = function(i,t){
+            //console.log("Slide: " + i + " -- Timestamp: " + t );
+            if (i ==0){
+                if(t == 0){
+                    $(".slide.one .bib").removeClass("show");
+                    $(".slide.one .label").removeClass("show");
+                    $(".slide.one > .callouts ul li").eq(0).removeClass("show");
+                    $(".slide.one > .callouts ul li").eq(1).removeClass("show");
+                    $(".slide.one > .callouts ul li").eq(2).removeClass("show");
+                }
+                if (t > 0 ){
+					$(".slide.one .bib").addClass("show");
+				}
+                if (t > 12.25 ){
+					$(".slide.one .label").addClass("show");
+				}
+                if (t > 13.05){
+                     $(".slide.one > .callouts ul li").eq(0).addClass("show");
+                }
+                 if (t > 14.7){
+                     $(".slide.one > .callouts ul li").eq(1).addClass("show");
+                }
+                 if (t > 16.4){
+                     $(".slide.one > .callouts ul li").eq(2).addClass("show");
+                }
+             } else {
+				
+            }         
+
+            if (i ==1){
+                if(t == 0){    
+                    $(".slide.two .col1").removeClass("show");
+                    $(".slide.two .col2").removeClass("show");
+                    $(".slide.two .col3").removeClass("show");
+                    $(".slide.two .col1 > ul").removeClass("show");
+                    $(".slide.two .col2 > ul").removeClass("show");
+                    $(".slide.two .col3 > ul").removeClass("show");
+					$(".slide.two .highlight").removeClass("show");
+					$(".slide.two .col1").removeClass("fadeout");
+					$(".slide.two .col2").removeClass("fadeout");
+					$(".slide.two .col3").removeClass("fadeout");
+				}
+				if (t > 0.3 ){
+					$(".slide.two .col1").addClass("show");
+					$(".slide.two .col2").addClass("show");
+					$(".slide.two .col3").addClass("show");
+				}
+                if (t > 4 ){
+					$(".slide.two .col1 > ul").addClass("show");
+                }
+                if (t > 4.6 ){
+				    $(".slide.two .col2 > ul").addClass("show");
+				}
+                if (t > 5.1 ){
+				    $(".slide.two .col3 > ul").addClass("show");
+				}
+                if (t > 8.9) {
+                    $(".slide.two .col2").removeClass("show").addClass("fadeout");
+                    $(".slide.two .col3").removeClass("show").addClass("fadeout");
+                }
+                if (t > 14.6) {
+                    $(".slide.two .col1").removeClass("show").addClass("fadeout");
+                    $(".slide.two .col2").addClass("show");
+                }
+                if (t > 22) {
+                    $(".slide.two .col2").removeClass("show").addClass("fadeout");
+                    $(".slide.two .col3").addClass("show").removeClass("fadeout");
+                }
+                if (t > 29.28){
+                    $(".slide.two .col1").addClass("show").removeClass("fadeout");
+                    $(".slide.two .col2").addClass("show").removeClass("fadeout");
+                }
+				if (t > 30.7){
+                    $(".slide.two .highlight").addClass("show");
+                }
+				if (t > 40.45){
+                    $(".slide.two .highlight").removeClass("show");
+                }
+             } else {
+				
+            }  
+			
+ 			if (i ==2){
+                if(t == 0){   
+                   
+				}
+				if (t > 0 ){
+					$(".slide.three .col1 .choice").addClass("show");
+				}
+                if (t > 0.5 ){
+					$(".slide.three .col2 .choice").addClass("show");
+				}
+                if (t > 1 ){
+					$(".slide.three .col3 .choice").addClass("show");
+				}
+				if (t > 3.55) {
+					$(".slide.three > .columnstructure > .col1").addClass("show");
+				}
+				if (t > 4){
+					$(".slide.three > .columnstructure > .col1 > .choice > .checkmark").addClass("show");
+				}
+            } else {
+
+            } 
+
+            if (i ==3){
+                if(t == 0){   
+                   
+				}
+				if (t > 0 ){
+					$(".slide.four .col1 .choice").addClass("show");
+				}
+                if (t > 0.5 ){
+					$(".slide.four .col2 .choice").addClass("show");
+				}
+                if (t > 1 ){
+					$(".slide.four .col3 .choice").addClass("show");
+				}
+				if (t > 5.38) {
+					$(".slide.four > .columnstructure > .col2").addClass("show");
+				}
+				if (t > 5.8) {
+					$(".slide.four > .columnstructure > .col2 > .choice > .checkmark").addClass("show");
+				}
+				
+              }  else {
+                
+            }
+		}
+
+        $(ap).bind("ended", function(evt){
+            var apSRC = $(ap).attr("src");
+			switch (apSRC) {
+				case audioArray[0]:
+					 p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                	$(".next").addClass("highlight");
+                    break;
+                case audioArray[1]:
+                     p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                	$(".next").addClass("highlight");
+                    break;
+                case audioArray[2]:
+					if ( equipAppCounter >= 1 ) {
+						p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+						$(".next").addClass("highlight");
+					} else {
+						p.audio.messages.create("Click each brand to read more fleet clues.", true);
+					}
+                    break;
+                case audioArray[3]:
+					var pageKey = "page" + p.courseObj.currentIndex + "Done";
+                	p.courseObj.videoViewed[pageKey] = true;
+                    if ( budgetPurchaseCounter >= 1 ) {
+					p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+						
+					} else {
+						p.audio.messages.create("Click each brand to read more fleet clues.", true);
+					}
+                    break;
+            }
+        });
+	
+
+        // setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+            var apSRC = $(ap).attr("src");
+            switch (apSRC) {
+                case audioArray[0]:
+                    syncSlides(0,ts);
+                    break;
+                case audioArray[1]:
+                    syncSlides(1,ts);
+                    break;
+                case audioArray[2]:
+                    syncSlides(2,ts);
+                    break;
+                case audioArray[3]:
+                    syncSlides(3,ts);
+                    break;
+            }
+        });
+
+        setPageComplete = function() {
+            var pageKey = "video" + p.courseObj.currentIndex;
+            p.courseObj.videoViewed[pageKey] = true;
+        }
+
+        //---//
+        initializePage = function () {
+            $(".section-title span").append(pageTitles[curSlide]);
+            $(".progress > p").eq(curSlide).addClass("active");
+            animateSlides(0);
+        }
+
+        // build the page once the wipe is removed
+        buildPage = function() {
+            //credit for starting page
+			p.controller.setPageViewed("understandingfleetneeds");
+
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+        // iframe load and unload events
+        $(window).load(function () {
+           
+			checkIndex();
+            p.audio.player.load(audioArray[curSlide]);
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+
+            p.controller.setVar("introViewed", true);
+        });
+
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+
+        initializePage();
+    });
+    </script>
+    <style type="text/css">
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and next buttons -->
+	<div id="header">
+        <div class="title">
+            <div class="menu slide-out">
+                <div class="menu-icon">
+                    <p>Menu</p>
+                </div>
+                <div class="roll-state"></div>
+            </div>
+            <h1>
+                <span class="headline sequence hide"><b>Understanding Fleet Needs</b></span>
+            </h1>
+        </div>
+    </div>
+    
+	<!-- In page navivation -->
+	<div class="inpagenavigation">
+        <div class="next">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+                <path d="M10 5, 40 50,10 95" />
+            </svg>
+        </div>
+        <div class="prev">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+                <path d="M40 5, 10 50,40 95" />
+            </svg>
+        </div>
+	</div>
+	
+	<!-- Main content container -->
+    <div id="outside" class="understandingfleetneeds">
+		<div id="inside">
+			<h1 class="section-title"><span></span></h1>
+			<div class="progress"> </div>
+			
+			<!-- section 1 -->
+			<div class="slide one">
+				<img class="bib" src="../../_media/images/bib_mag.png"/>
+                <div class="callouts">
+                    <p class="label">Recognizing the Clues:</p>
+                    <ul>
+                        <li>Maintenance and operations</li>
+                        <li>Equipment and applications</li>
+                        <li>Budget and purchase behavior</li>
+                    </ul>
+				</div>
+			</div>
+				
+			<!-- section 2 -->
+			<div class="slide two">
+				<div class="columnstructure">
+					<div class="c3 col1">
+                        <div class="imageHolder">
+							<img src="../../_media/images/MichelinLogo.png" />	
+						</div>
+						<ul class="set1">
+							<li>
+                                Takes <strong>pride in maintaining their fleet</strong><br />
+                                <span>- Pristine/clean appearance</span>
+                            </li>
+							<li>Currently running another <strong>premium brand</strong></li>
+							<li><strong>Tracks performance of a tire</strong> in any capacity (load, cost per mile, fuel efficiency or durability)</li>
+                            <li>Organized fleet operations</li>
+                            <li class="highlight">Seeking <strong>multiple retreads per casing</strong></li>
+						</ul>
+                    </div>
+
+					<div class="c3 col2">
+						<div class="imageHolder">
+							<img src="../../_media/images/BFGoodrichLogo.png" />	
+						</div>
+						<ul class="set1">
+                            <li><strong>Looking for casing durability for multiple retreads</strong></li>
+							<li>Fleet has a maintenance program that may vary in different degrees</li>
+							<li><strong>May track performance</strong> but it is not a high priority</li>
+                            <li><strong>Brand loyalty may not be strong</strong> as they go back and forth between price and performance (wants the best of both worlds)</li>
+						</ul>
+					</div>
+			
+					<div class="c3 col3">
+                        <div class="imageHolder">
+							<img src="../../_media/images/uniroyallogo.png" />	
+						</div>
+						<ul class="set1">
+							<li><strong>Fleet not focused on tracking tire mileage or performance</strong></li>
+							<li>Maintenance program may be minimal</li>
+                            <li>Tires are viewed as a <b>necessary evil</b></li>
+                            <li class="highlight">Not interested in retreading or <strong>seeks no more than 1 retread</strong> per casing</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				
+			<!-- section 3 -->
+			<div class="slide three">
+                
+                <div class="columnstructure">
+					<div class="c3 col1">
+						<div class="choice select1a">
+                        	<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q1_s1" value="q1_s1" />
+                        	<label for="q1_s1" class="q1_s1">
+								<span class="answerImage">
+									<p>Michelin</p>
+								</span>
+                        	</label>
+                    	</div>	
+						<ul class="set1">
+							<li>Has newer equipment (&lt; 7 years)</li>
+							<li>Has heavy loads with focus on weight savings</li>
+							<li>May have very expensive equipment such as energy equipment</li>
+                            <li>Has OE spec. with Michelin or another Tier 1 brand</li>
+                            <li>Runs specialty tire sizes<br />
+								<span>- Auto haulers, low boy trailers</span>
+							</li>
+							
+							<li>Follows latest technologies or trends in the market</li>
+							<li>Hauls time sensitive goods<br />
+								<span>- Milk, concrete, food/beverage, services</span>
+								<!--<span style="margin-left: 17px"></span>-->
+							</li>
+							<li>Hauls high value or hazardous loads</li>						
+						</ul>
+					</div>
+
+					<div class="c3 col2">
+						<div class="choice select1b">
+							<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q1_s2" value="q1_s2"  />
+							<label for="q1_s2" class="q1_s2">
+								<span class="answerImage">
+									<p>BFGoodrich</p>
+								</span>
+							</label>
+						</div>			
+						<ul class="set1">
+							<li>Could be older or used equipment</li>
+							<li>May value premium tires on one position but maybe not on others</li>
+							<li>Values durability and performance but are not comfortable with investing in premium tires<br />
+								<span>- Aggressive applications</span><br />
+								<span>- Low mileage applications</span>
+							</li>
+                      	</ul>
+					</div>
+			
+					<div class="c3 col3">
+						<div class="choice select1c">
+							<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q1_s3" value="q1_s3" />
+							<label for="q1_s3" class="q1_s3">
+								<span class="answerImage">
+									<p>BFGoodrich</p>
+								</span>
+							</label>
+						</div>		
+						<ul class="set1">
+							<li>Older and used equipment</li>
+							<li>Seasonally used equipment<br />
+								<span>- Tires will weather before they use</span><br />
+								<span style="margin-left: 17px">all of the tread</span>
+							</li>
+							<li>Trailer positions in fleets that do not seek multiple retreads or do not want to run retreads at all</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				
+			<!-- section 4 -->
+			<div class="slide four">
+                
+                <div class="columnstructure">
+					<div class="c3 col1">
+						<div class="choice select2a">
+                        	<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q2_s1" value="q2_s1" />
+                        	<label for="q2_s1" class="q2_s1">
+								<span class="answerImage">
+									<p>Michelin</p>
+								</span>
+                        	</label>
+                    	</div>	
+						<ul class="set1">
+							<li>Understands total cost of ownership and return on investment (ROI)</li>
+							<li>May have a dedicated procurement department</li>
+							<li>May evaluate vendors on annual basis to ensure best value but often stays with one vendor for longer periods of time.</li>
+                            <li>Values price continuity over the road (NAFA and Advantage)</li>
+                            <li>Seeks ways to maximize their fleet assets<br />
+								<span>- Fuel efficiency, load payment,</span><br />
+								<span style="margin-left: 17px">driver accountability, etc.</span>
+							</li>				
+						</ul>
+					</div>
+
+					<div class="c3 col2">
+						<div class="choice select2b">
+							<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q2_s2" value="q2_s2"  />
+							<label for="q2_s2" class="q2_s2">
+								<span class="answerImage">
+									<p>BFGoodrich</p>
+								</span>
+							</label>
+						</div>			
+						<ul class="set1">
+							<li>Wants the best of both worlds<br />
+								<span>- Performance and competitive</span><br />
+								<span style="margin-left: 17px">pricing</span>
+							</li>
+							<li>Values quality and the familiarity of a strong brand heritage (apprehensive about import or budget brands)</li>
+							<li>Does not always consider the total cost of ownership</li>
+							<li>Has possible credit and budget constraints</li>
+							<li>Values price continuity over the road (NAFA and Advantage)</li>
+                      	</ul>
+					</div>
+			
+					<div class="c3 col3">
+						<div class="choice select2c">
+							<img class="checkmark" src="../../_media/images/checkMark.png" />
+							<input type="radio" class="radio" name="radio" id="q2_s3" value="q2_s3" />
+							<label for="q2_s3" class="q2_s3">
+								<span class="answerImage">
+									<p>BFGoodrich</p>
+								</span>
+							</label>
+						</div>		
+						<ul class="set1">
+							<li>Focuses highly on initial purchase price<br />
+								<span>- Transactional fleets: may shop</span><br />
+								<span style="margin-left: 17px">around for the best price every</span><br />
+								<span style="margin-left: 17px">time they purchase</span>
+							</li>
+							<li>Does not look at total cost of ownership</li>
+							<li>Has possible credit and budget constraints</li>
+                       	</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+     </div>
+	
+    <!-- add audio for preloader -->
+    <div id="preload-audio">
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/fleetdetective.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/maintenanceandoperations.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/equipmentandapplications.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/budgetandpurchasinghabits.mp3'></audio>
+    </div>
+ 
+	 <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .8;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script>
+</body>
+</html>

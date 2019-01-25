@@ -1,0 +1,334 @@
+@import "partials/color";
+@import "partials/type";
+@import "partials/transitions";
+@import "partials/prefixes";
+@import "partials/pages";
+
+$sm-viewport:678px;
+
+@mixin hardware-accel() {
+    // 3D rendering on GPU
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    // fix chrome and safari flicker
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility   : hidden;
+    -ms-backface-visibility    : hidden;
+    backface-visibility        : hidden;
+    -webkit-perspective        : 1000;
+    -moz-perspective           : 1000;
+    -ms-perspective            : 1000;
+    perspective                : 1000;
+
+    // webkit-powered
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+body {margin:0px auto; background-color:$light-grey;}
+
+#preload-audio{display:none;}
+
+
+ /* -- Multi-Branding Backgrounds -- */
+.background-contain {
+	width: 100%; height: 100%; top: -200px; left: 0; z-index: 80;
+		
+	.background, .foreground {
+		width:100%; height:100%; background: transparent; position: absolute; top: 0; left: 0; overflow: hidden;
+	}
+		
+	.foreground img:nth-child(1),
+	.foreground img:nth-child(2),
+	.foreground img:nth-child(3) {
+		opacity: 0; width: 115%; position: absolute; top: 0; left: -80px;
+		@include transition(all, 1.50s, $circ, 0s);
+		@include prefix(transform, translateX(100%));
+	}
+		
+	.background img:nth-child(1),
+	.background img:nth-child(2),
+	.background img:nth-child(3) {
+		opacity: 0; width: 100%; position: absolute; top: 0; left: 0;
+		@include transition(all, 1.50s, $circ, 0s);
+		@include prefix(transform, translateX(-100%));
+	}
+		
+	.foreground { z-index: 100; }
+		
+	&.show_1 {
+		.foreground img:nth-child(1) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+			
+		.background img:nth-child(1) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+	}
+		
+	&.show_2 {
+		.foreground img:nth-child(2) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+			
+		.background img:nth-child(2) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+	}
+		
+	&.show_3 {
+		.foreground img:nth-child(3) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+			
+		.background img:nth-child(3) {
+			opacity: 1;
+			@include prefix(transform, translateX(0%));
+		}
+	}
+}
+
+/* -- You guessed it. In page navigation controls --*/
+.inpagenavigation {   
+	.next, .prev {
+		position:absolute; top:50%; z-index:10000; padding:0px; cursor:pointer;
+
+		/*- breakpoints -*/
+		@include break(phone){}
+		@include break(tablet){width:40px; height:80px; margin:-40px 0px 0px 0px;}
+		@include break(desktop){width:60px; height:100px; margin:-50px 0px 0px 0px;}
+
+		svg path {stroke:#fff; stroke-width:6px; fill:none; stroke-linecap:round;}
+	}
+
+	.next {
+		@include transition(all, 1s, $circ, 0s);
+		&.slide-in {
+			/*- breakpoints -*/
+			@include break(phone){}
+			@include break(tablet){right:1%;}
+			@include break(desktop){right:3%;}
+		}
+	
+		&.slide-out { right:-10%; }
+		&.highlight { @include prefix(animation,nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite);}
+	}
+
+	.prev {
+		@include transition(all, 1s, $circ, 0s); @include prefix(opacity,0.50);
+		&.slide-in {
+			/*- breakpoints -*/
+			@include break(phone){}
+			@include break(tablet){left:1%;}
+			@include break(desktop){left:3%;}
+		}
+		
+		&.slide-out { left:-10%; } 
+	}
+}
+    
+.familyofbrands {
+    /*  display:block; width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; box-sizing:border-box; padding: -100px 0 0 0; */
+	z-index: 102;
+
+	.section-title {
+      display:block; height:30px; width:100%; margin: 30px auto 0 auto; padding:0px; color:white; text-align:center; overflow:hidden;
+        
+        /*- breakpoints -*/                        
+        @include break(tablet){font-size:1.30em;}
+        @include break(tablet, $portrait){font-size:1.30em;}
+                        
+        @include break(desktop, $desktop){font-size:1.30em;}
+        @include break(desktop, $xl-width){font-size:1.75em;}
+        
+        span {
+            display:inline-block; margin:0px; padding:0px; font-family:inherit; font-size:inherit; color:inherit; @include transition(all,0.50s, $circ, 0s);
+            &.slide-in {@include prefix(transform, translateY(0%)); opacity:1.00; }
+            &.slide-out {@include prefix(transform, translateY(100%)); opacity:0.00;}
+        }
+    }
+	
+    .progress {
+        display:block; width:100%; height:auto; padding:0px; text-align:center;
+        
+        p {
+            display:inline-block; @include prefix(transform,skewX(-20deg)); background-color:$white;  overflow:hidden;
+            
+            /*- breakpoints -*/
+            @include break(phone){}
+            @include break(tablet){width:30px; height:6px; margin:0px 5px; }
+            
+            @include break(desktop, $desktop){width:30px; height:6px; margin:0px 5px;}
+            @include break(desktop, $xl-width){width:30px; height:9px; margin:0px 5px;}
+            
+            span {
+                display:inline-block; float:left; width:100%; height:100%; padding:0px; margin:0px;
+            }
+            &.active{
+                span {  
+                    @include prefix(transform,translateX(0px)); background-color:$yellow; @include transition(all,1s,$circ,0s); 
+                }
+            }
+            &.inactive {
+                span {
+                    @include prefix(transform,translateX(-50px)); background-color:$white; @include transition(all,1s,$circ,0s);
+                }
+            }
+        }                
+    }
+	
+	.slide {
+		 /* height:100%; width: 100%;  padding:0px; top:0px; left:0px; display:inline-block;*/
+
+		&.out {@include prefix(animation,slidesOut 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+		&.in {@include prefix(animation,slidesIn 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+		&.set {@include prefix(transform,translateX(100%)); opacity: 0.00;}
+		&.reverse.out {@include prefix(animation,slidesOutReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+		&.reverse.in {@include prefix(animation,slidesInReverse 0.50s cubic-bezier(0.50, 0.85, 0.65, 1.00)); /*@include prefix(animation-fill-mode,forwards);*/}
+
+		.label {
+			color: $light-grey; font-family:$michelin-black; margin:0 0 20px 30px; padding:0 0 0 25px; background: transparent url("../../_media/images/bullet.png") no-repeat 0 7px; font-size: 1.2em;
+					
+			@include transition(all, 0.5s, $ease, 0s);
+			@include prefix(opacity, 0.00);
+			@include prefix(filter, blur(8px));
+					
+			span { color:$white; }
+			
+			&.show {
+				@include prefix(opacity, 1.00);
+				@include prefix(filter, blur(0px));
+			}
+		}
+				
+		.callouts {
+			position: absolute; top: 239px; left: 567px; width: 580px;
+			img { width: 315px; }
+		}
+				
+		&.one, &.two, &.three  {
+			.background { width: 200%; height: 200%; top: 0; left: 0;}
+			.tire {
+				display:block; width: 540px; height: 540px; position:absolute; top:120px; text-align:center; margin:0px; opacity:0.00; z-index: 100;
+				@include prefix(transform,translateX(-100%) rotate(0deg));
+				@include transition(all, 3s, $circ, 0s); @include prefix(transform-origin, (center));
+           
+				&.show { opacity:1.00; @include prefix(transform,translateX(0%) rotate(180deg)); }
+			}
+			
+			.shadow {
+				@include transition(all, 1.5s, $circ, 0s);
+				position: absolute;	top: 527px;	left: 160px; z-index: 99; opacity: 0;
+				&.show { opacity:0.3; }
+			}
+					
+			.set1, .set2 { position: absolute; top: 0; left: 0; }
+		}
+				
+		/*--- fourth slide ---*/
+		&.four {
+			.columnstructure {
+				 position: relative; top: 50px; left: 50px;
+				
+				.c3 {
+					width: 358px; background: white; margin: 12px; text-align: center; display: table-cell; vertical-align: bottom; display: inline-block; vertical-align: bottom; position: relative; 
+
+					@include prefix(background,linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.6) 80%,rgba(255,255,255,0.9) 100%));
+
+					p { text-align: left; font-size: 1em; font-family: $body-text; color: $grey; font-weight: 400 }
+							
+					.imageHolder {
+						opacity: 0; position: absolute; top: 0; left: 0px; width: 100%; border-top: $light-grey 1px solid;
+						@include transition(all, 1.4s, $circ, 0s);
+						//@include prefix(transform,translateY(-10%));
+																
+						&.show {
+							opacity:1.00; //@include prefix(transform,translateY(0%));
+						}
+
+						img { width: 52% }
+					}
+				}
+						
+				.col1 {
+					// Column specific
+					border: #27509b 4px solid; height: 360px; padding-top: 150px;
+                    opacity: 0.3;
+					@include transition(opacity, 2s, $ease, 0 );	
+								
+				    .sets { padding: 0 21px; }
+                    
+                    .set1, .set2, .set3 {
+						@include transition(all, 1.4s, $circ, 0.4s);
+						@include prefix(filter, blur(8px)); opacity: 0;
+                        &.show {
+						  opacity: 1;
+                            @include prefix(filter, blur(0px));
+                        }
+                    }
+                    
+					.bordertop { border-top: 1px solid $light-grey }
+								
+					&.show { opacity: 1; }
+				}
+							
+				.col2 {
+                    // Column specific
+					    height: 339px; padding-top: 150px; border: #092c74 4px solid;
+											
+					opacity: 0.3;
+					@include transition(opacity, 2s, $ease, 0 );	
+					
+                    .sets { padding: 0 21px; }
+                    
+					.set1, .set2, .set3 {
+						@include transition(all, 1.4s, $circ, 0.4s);
+						@include prefix(filter, blur(8px)); opacity: 0;
+                        &.show {
+						  opacity: 1;
+                            @include prefix(filter, blur(0px));
+                        }
+					}
+                    
+					.bordertop { border-top: 1px solid $light-grey }
+								
+					&.show { opacity: 1; }
+				}
+							
+				.col3 {
+				    // Column specific
+					border: #eb1c23 4px solid; height: 320px; padding-top: 150px;
+							
+					opacity: 0.3;
+					@include transition(opacity, 2s, $ease, 0 );	
+								
+					 .sets { padding: 0 21px; }
+                    
+                    .set1, .set2, .set3 {
+						@include transition(all, 1.4s, $circ, 0.4s);
+						@include prefix(filter, blur(8px)); opacity: 0;
+                        &.show {
+						  opacity: 1;
+                            @include prefix(filter, blur(0px));
+					   }
+					}
+                    
+					.bordertop { border-top: 1px solid $light-grey }
+								
+					&.show { opacity: 1; }
+				}
+			}
+		}
+     }
+}

@@ -1,0 +1,2802 @@
+@font-face {
+  font-family: Michelin-Black;
+  src: url("fonts/MichelinW00Black.ttf");
+  src: url("fonts/MichelinW00Black.eot");
+  src: url("fonts/MichelinW00Black.woff"); }
+
+@font-face {
+  font-family: Michelin-Regular;
+  src: url("fonts/MichelinW00Regular.ttf");
+  src: url("fonts/MichelinW00Regular.eot");
+  src: url("fonts/MichelinW00Regular.woff"); }
+
+@font-face {
+  font-family: Frutiger;
+  src: url("fonts/FrutigerLT-Roman.ttf");
+  src: url("fonts/FrutigerLT-Roman.eot");
+  src: url("fonts/FrutigerLT-Roman.woff"); }
+
+/* line 9, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_type.scss */
+body {
+  font-family: Frutiger, sans-serif;
+  font-size: 1em; }
+
+/* line 10, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_type.scss */
+h1 {
+  font-family: Michelin-Black, sans-serif; }
+
+@-webkit-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-moz-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-o-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-webkit-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-moz-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-o-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-webkit-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes preload {
+  100% {
+    background-position: -2400px 0px; } }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-moz-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-o-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-webkit-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-moz-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-o-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-webkit-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-webkit-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-moz-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-o-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-webkit-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@font-face {
+  font-family: Michelin-Black;
+  src: url("fonts/MichelinW00Black.ttf");
+  src: url("fonts/MichelinW00Black.eot");
+  src: url("fonts/MichelinW00Black.woff"); }
+
+@font-face {
+  font-family: Michelin-Regular;
+  src: url("fonts/MichelinW00Regular.ttf");
+  src: url("fonts/MichelinW00Regular.eot");
+  src: url("fonts/MichelinW00Regular.woff"); }
+
+@font-face {
+  font-family: Frutiger;
+  src: url("fonts/FrutigerLT-Roman.ttf");
+  src: url("fonts/FrutigerLT-Roman.eot");
+  src: url("fonts/FrutigerLT-Roman.woff"); }
+
+/* line 9, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_type.scss */
+body {
+  font-family: Frutiger, sans-serif;
+  font-size: 1em; }
+
+/* line 10, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_type.scss */
+h1 {
+  font-family: Michelin-Black, sans-serif; }
+
+@-webkit-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-moz-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-o-keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@keyframes nextPulse {
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); }
+  50% {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px); }
+  0% {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px); } }
+
+@-webkit-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-moz-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-o-keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@keyframes scrollPulse {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+    transform: translateY(5px);
+    opacity: 1; } }
+
+@-webkit-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes scrollFade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes preload {
+  100% {
+    background-position: -2400px 0px; } }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-moz-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-o-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(340deg);
+    -moz-transform: rotate(340deg);
+    -ms-transform: rotate(340deg);
+    -o-transform: rotate(340deg);
+    transform: rotate(340deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+
+@-webkit-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-moz-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-o-keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@keyframes slidesOut {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@-webkit-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@keyframes slidesIn {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-webkit-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-moz-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-o-keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@keyframes slidesOutReverse {
+  0% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  100% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); } }
+
+@-webkit-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-moz-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@-o-keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+@keyframes slidesInReverse {
+  0% {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  100% {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); } }
+
+/*-- device orientation width --*/
+/*-- desktop variable widths --*/
+/*-- desktop variable heights --*/
+/*
+@mixin midWidth($minwidth, $maxWidth) {
+    @if ($minwidth > $landscape) and ($maxwidth < $md-width) {
+        @media (max-width: $maxwidth) and (min-width: $minwidth) { @content; }
+  }
+}
+*/
+/* Course page adoption for adaptive design consideration */
+/* line 8, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+#outside {
+  position: absolute;
+  width: 1280px;
+  height: 720px;
+  top: 50%;
+  left: 50%;
+  margin: -340px 0 0 -640px;
+  overflow: hidden;
+  /*
+	@media screen and (min-width: 1281px) and (max-width: 1450px) {
+        width: 1024px; height: 576px; margin: -286px 0 0 -512px;
+    }
+	*/ }
+  /* line 23, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  #outside #inside {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    /*
+		@media screen and (min-width: 1281px) and (max-width: 1450px) {
+            width: 1024px; height: 576px;
+        }
+		*/ }
+
+/*-- title sequence --*/
+/* line 39, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+#header {
+  display: block;
+  position: absolute;
+  left: 0px;
+  z-index: 99999999;
+  /*- breakpoints -*/ }
+  @media (max-width: 1024px) {
+    /* line 39, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header {
+      top: 20px;
+      width: 80%; } }
+  @media (min-width: 1025px) {
+    /* line 39, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header {
+      top: 20px;
+      width: 80%; } }
+  @media (min-width: 1280px) {
+    /* line 39, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header {
+      top: 30px;
+      width: 80%; } }
+  @media (max-height: 750px) and (min-width: 1025px) {
+    /* line 39, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header {
+      top: 15px;
+      width: 80%; } }
+  /* line 49, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  #header .title {
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    vertical-align: middle;
+    /*- breakpoints -*/ }
+    /* line 57, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header .title .menu {
+      display: inline-block;
+      margin: 0px 0px 0px -80px;
+      padding: 0px;
+      height: 40px;
+      background-color: #005aaa;
+      /*- breakpoints -*/ }
+      @media (max-width: 1024px) {
+        /* line 57, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu {
+          width: 200px; } }
+      @media (orientation: portrait) {
+        /* line 57, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu {
+          width: 180px; } }
+      @media (min-width: 1025px) {
+        /* line 57, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu {
+          width: 200px; } }
+      /* line 65, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu.slide-in {
+        -webkit-transform: translateX(0px) skewX(-20.5deg);
+        -moz-transform: translateX(0px) skewX(-20.5deg);
+        -ms-transform: translateX(0px) skewX(-20.5deg);
+        -o-transform: translateX(0px) skewX(-20.5deg);
+        transform: translateX(0px) skewX(-20.5deg);
+        opacity: 1.00;
+        overflow: hidden;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+        /* line 67, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu.slide-in .menu-icon {
+          width: 40px;
+          opacity: 1.00; }
+      /* line 71, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu.slide-out {
+        -webkit-transform: translateX(-200px) skewX(-20.5deg);
+        -moz-transform: translateX(-200px) skewX(-20.5deg);
+        -ms-transform: translateX(-200px) skewX(-20.5deg);
+        -o-transform: translateX(-200px) skewX(-20.5deg);
+        transform: translateX(-200px) skewX(-20.5deg);
+        opacity: 0.00;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        -o-transition-delay: 1s;
+        transition-delay: 1s; }
+        /* line 73, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu.slide-out .roll-state {
+          display: none; }
+        /* line 76, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu.slide-out .menu-icon {
+          width: 0px;
+          opacity: 0.00; }
+      /* line 80, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu .menu-icon {
+        display: inline-block;
+        height: 30px;
+        margin: 0px 0px 0px 20px;
+        position: relative;
+        left: 50%;
+        z-index: 3;
+        -webkit-transform: skewX(20.5deg);
+        -moz-transform: skewX(20.5deg);
+        -ms-transform: skewX(20.5deg);
+        -o-transform: skewX(20.5deg);
+        transform: skewX(20.5deg);
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        -o-transition-delay: 1s;
+        transition-delay: 1s; }
+        /* line 82, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu .menu-icon svg path {
+          fill: #fff;
+          cursor: pointer; }
+        /* line 83, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .menu .menu-icon p {
+          font-family: Michelin-Black, sans-serif;
+          color: #fff;
+          margin: 5px 0px;
+          padding: 0px;
+          -webkit-transform: translate(-25%, 0%);
+          -moz-transform: translate(-25%, 0%);
+          -ms-transform: translate(-25%, 0%);
+          -o-transform: translate(-25%, 0%);
+          transform: translate(-25%, 0%); }
+      /* line 85, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu .roll-state {
+        width: 100%;
+        height: 40px;
+        margin: 0px;
+        position: relative;
+        top: -40px;
+        left: 100%;
+        z-index: 2;
+        opacity: 0.00;
+        background-color: #ffe700;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+    /* line 89, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header .title .menu.slide-in:Hover {
+      cursor: pointer; }
+      /* line 91, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .roll-state {
+        width: 100%;
+        left: 0px;
+        opacity: 1.00; }
+      /* line 92, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .menu-icon svg path {
+        fill: #040d4e;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 93, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .menu.slide-in:Hover > .menu-icon p {
+        color: #040d4e; }
+    /* line 95, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header .title h1 {
+      display: inline-block;
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 30px;
+      width: 100%;
+      color: #005aaa;
+      position: absolute;
+      top: 0px;
+      overflow: hidden; }
+      /* line 97, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title h1 span.headline {
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        white-space: nowrap;
+        /*- breakpoints -*/ }
+        @media (max-width: 1024px) {
+          /* line 97, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.75em;
+            padding: 2px 0px 0px 0px;
+            margin: 0px 0px 0px 15px; } }
+        @media (min-width: 1025px) {
+          /* line 97, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.75em;
+            padding: 0px;
+            margin: 0px 0px 0px 15px; } }
+        @media (min-width: 1280px) {
+          /* line 97, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.85em;
+            padding: 0px;
+            margin: -1px 0px 0px 15px; } }
+        @media (max-height: 750px) and (min-width: 1025px) {
+          /* line 97, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline {
+            font-size: 0.65em;
+            padding: 0px;
+            margin: 3px 0px 0px 15px; } }
+        /* line 108, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title h1 span.headline.sequence {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1s;
+          -moz-transition-duration: 1s;
+          -o-transition-duration: 1s;
+          transition-duration: 1s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.25s;
+          -moz-transition-delay: 0.25s;
+          -o-transition-delay: 0.25s;
+          transition-delay: 0.25s; }
+          /* line 111, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline.sequence.hide {
+            -webkit-transform: translate(0%, 100%);
+            -moz-transform: translate(0%, 100%);
+            -ms-transform: translate(0%, 100%);
+            -o-transform: translate(0%, 100%);
+            transform: translate(0%, 100%);
+            -webkit-opacity: 0;
+            -moz-opacity: 0;
+            -ms-opacity: 0;
+            -o-opacity: 0;
+            opacity: 0; }
+          /* line 114, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+          #header .title h1 span.headline.sequence.show {
+            -webkit-transform: translate(0%, 0%);
+            -moz-transform: translate(0%, 0%);
+            -ms-transform: translate(0%, 0%);
+            -o-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+            -webkit-opacity: 1;
+            -moz-opacity: 1;
+            -ms-opacity: 1;
+            -o-opacity: 1;
+            opacity: 1; }
+    /* line 121, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header .title .fleetInfo {
+      color: #0b2d6d !important;
+      font-size: 1.4em;
+      font-family: Michelin-Regular, sans-serif;
+      color: #042350; }
+      /* line 125, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .fleetInfo.sequence {
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.5s;
+        -moz-transition-delay: 0.5s;
+        -o-transition-delay: 0.5s;
+        transition-delay: 0.5s; }
+        /* line 128, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .fleetInfo.sequence.hide {
+          -webkit-transform: translate(5%, 130%);
+          -moz-transform: translate(5%, 130%);
+          -ms-transform: translate(5%, 130%);
+          -o-transform: translate(5%, 130%);
+          transform: translate(5%, 130%);
+          -webkit-opacity: 0;
+          -moz-opacity: 0;
+          -ms-opacity: 0;
+          -o-opacity: 0;
+          opacity: 0; }
+        /* line 131, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .fleetInfo.sequence.show {
+          -webkit-transform: translate(9%, 130%);
+          -moz-transform: translate(9%, 130%);
+          -ms-transform: translate(9%, 130%);
+          -o-transform: translate(9%, 130%);
+          transform: translate(9%, 130%);
+          -webkit-opacity: 1;
+          -moz-opacity: 1;
+          -ms-opacity: 1;
+          -o-opacity: 1;
+          opacity: 1; }
+    /* line 137, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+    #header .title .introText {
+      color: #040d4e;
+      font-size: 1em; }
+      /* line 140, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      #header .title .introText.sequence {
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0.75s;
+        -moz-transition-delay: 0.75s;
+        -o-transition-delay: 0.75s;
+        transition-delay: 0.75s; }
+        /* line 143, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .introText.sequence.hide {
+          -webkit-transform: translate(5, 130%);
+          -moz-transform: translate(5, 130%);
+          -ms-transform: translate(5, 130%);
+          -o-transform: translate(5, 130%);
+          transform: translate(5, 130%);
+          -webkit-opacity: 0;
+          -moz-opacity: 0;
+          -ms-opacity: 0;
+          -o-opacity: 0;
+          opacity: 0; }
+        /* line 146, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+        #header .title .introText.sequence.show {
+          -webkit-transform: translate(9%, 130%);
+          -moz-transform: translate(9%, 130%);
+          -ms-transform: translate(9%, 130%);
+          -o-transform: translate(9%, 130%);
+          transform: translate(9%, 130%);
+          -webkit-opacity: 1;
+          -moz-opacity: 1;
+          -ms-opacity: 1;
+          -o-opacity: 1;
+          opacity: 1; }
+
+/* line 154, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.splitColumn {
+  float: left;
+  width: 47%;
+  display: inline;
+  margin: 0;
+  padding: 0; }
+
+/* line 162, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.triColumn {
+  float: left;
+  width: 33%; }
+
+/* line 164, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.cap {
+  text-transform: uppercase; }
+
+/* line 165, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.bold {
+  font-weight: 700; }
+
+/* line 166, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.fLeft {
+  float: left; }
+
+/* line 167, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.fRight {
+  float: right; }
+
+/* line 170, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.footnote .disclaimer {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -webkit-transition-delay: 0.25s;
+  -moz-transition-delay: 0.25s;
+  -o-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+  font-family: Frutiger, sans-serif;
+  font-size: 0.60em;
+  color: rgba(35, 36, 38, 0.75);
+  width: 100%;
+  display: inline-block;
+  margin: 3px 0px; }
+  /* line 173, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .footnote .disclaimer a {
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 2px 4px 1px 2px; }
+  /* line 174, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .footnote .disclaimer a:Hover {
+    color: #005aaa;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5); }
+  /* line 176, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .footnote .disclaimer.show {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1; }
+  /* line 177, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .footnote .disclaimer.hide {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0; }
+
+/* line 181, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.michelin-button {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  z-index: 5;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background-color: #005aaa;
+  outline: 0;
+  -webkit-transform: skewX(-20.5deg) translate(-50%, 0%);
+  -moz-transform: skewX(-20.5deg) translate(-50%, 0%);
+  -ms-transform: skewX(-20.5deg) translate(-50%, 0%);
+  -o-transform: skewX(-20.5deg) translate(-50%, 0%);
+  transform: skewX(-20.5deg) translate(-50%, 0%);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0; }
+  /* line 188, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .michelin-button.show {
+    -webkit-transition-property: opacity, transform;
+    -moz-transition-property: opacity, transform;
+    -o-transition-property: opacity, transform;
+    transition-property: opacity, transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transform: skewX(-20.5deg) translate(-10%, 0%);
+    -moz-transform: skewX(-20.5deg) translate(-10%, 0%);
+    -ms-transform: skewX(-20.5deg) translate(-10%, 0%);
+    -o-transform: skewX(-20.5deg) translate(-10%, 0%);
+    transform: skewX(-20.5deg) translate(-10%, 0%);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1; }
+  /* line 194, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .michelin-button .text {
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    margin: 10px;
+    z-index: 3;
+    font-size: 0.95em;
+    font-family: Michelin-Black, sans-serif;
+    -webkit-transform: skew(20.5deg);
+    -moz-transform: skew(20.5deg);
+    -ms-transform: skew(20.5deg);
+    -o-transform: skew(20.5deg);
+    transform: skew(20.5deg);
+    /*-- breakpoints -- */ }
+    @media (orientation: portrait) {
+      /* line 194, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      .michelin-button .text {
+        font-size: 0.70em; } }
+    @media (min-width: 1025px) {
+      /* line 194, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      .michelin-button .text {
+        font-size: 0.85em; } }
+    @media (min-width: 1920px) {
+      /* line 194, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+      .michelin-button .text {
+        font-size: 0.95em; } }
+  /* line 203, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .michelin-button .roll-state {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    left: -100%;
+    z-index: 2;
+    opacity: 0.00;
+    background-color: #ffe700;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s; }
+
+/* line 209, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+.michelin-button:hover {
+  cursor: pointer; }
+  /* line 211, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .michelin-button:hover .roll-state {
+    left: 0px;
+    opacity: 1.00; }
+  /* line 212, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/partials/_pages.scss */
+  .michelin-button:hover .text {
+    color: #040d4e; }
+
+/* line 34, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+body {
+  margin: 0px auto;
+  background-color: #b6b7b7; }
+
+/* line 36, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+#preload-audio {
+  display: none; }
+
+/* -- Multi-Branding Backgrounds -- */
+/* line 40, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+.background-contain {
+  width: 100%;
+  height: 100%;
+  top: -200px;
+  left: 0;
+  z-index: 80; }
+  /* line 43, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain .background, .background-contain .foreground {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden; }
+  /* line 49, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain .foreground img:nth-child(1),
+  .background-contain .foreground img:nth-child(2),
+  .background-contain .foreground img:nth-child(3) {
+    opacity: 0;
+    width: 115%;
+    position: absolute;
+    top: 0;
+    left: -80px;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 1.5s;
+    -moz-transition-duration: 1.5s;
+    -o-transition-duration: 1.5s;
+    transition-duration: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+  /* line 57, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain .background img:nth-child(1),
+  .background-contain .background img:nth-child(2),
+  .background-contain .background img:nth-child(3) {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 1.5s;
+    -moz-transition-duration: 1.5s;
+    -o-transition-duration: 1.5s;
+    transition-duration: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%); }
+  /* line 63, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain .foreground {
+    z-index: 100; }
+  /* line 66, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_1 .foreground img:nth-child(1) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  /* line 71, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_1 .background img:nth-child(1) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  /* line 78, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_2 .foreground img:nth-child(2) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  /* line 83, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_2 .background img:nth-child(2) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  /* line 90, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_3 .foreground img:nth-child(3) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+  /* line 95, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .background-contain.show_3 .background img:nth-child(3) {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%); }
+
+/* -- You guessed it. In page navigation controls --*/
+/* line 104, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+.inpagenavigation .next, .inpagenavigation .prev {
+  position: absolute;
+  top: 50%;
+  z-index: 10000;
+  padding: 0px;
+  cursor: pointer;
+  /*- breakpoints -*/ }
+  @media (max-width: 1024px) {
+    /* line 104, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .inpagenavigation .next, .inpagenavigation .prev {
+      width: 40px;
+      height: 80px;
+      margin: -40px 0px 0px 0px; } }
+  @media (min-width: 1025px) {
+    /* line 104, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .inpagenavigation .next, .inpagenavigation .prev {
+      width: 60px;
+      height: 100px;
+      margin: -50px 0px 0px 0px; } }
+  /* line 112, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .next svg path, .inpagenavigation .prev svg path {
+    stroke: #fff;
+    stroke-width: 6px;
+    fill: none;
+    stroke-linecap: round; }
+
+/* line 115, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+.inpagenavigation .next {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s; }
+  /* line 117, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .next.slide-in {
+    /*- breakpoints -*/ }
+    @media (max-width: 1024px) {
+      /* line 117, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .inpagenavigation .next.slide-in {
+        right: 1%; } }
+    @media (min-width: 1025px) {
+      /* line 117, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .inpagenavigation .next.slide-in {
+        right: 3%; } }
+  /* line 124, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .next.slide-out {
+    right: -10%; }
+  /* line 125, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .next.highlight {
+    -webkit-animation: nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite;
+    -moz-animation: nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite;
+    -ms-animation: nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite;
+    -o-animation: nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite;
+    animation: nextPulse 1s cubic-bezier(0.49, 0.03, 0.48, 1.05) infinite; }
+
+/* line 128, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+.inpagenavigation .prev {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-opacity: 0.5;
+  -moz-opacity: 0.5;
+  -ms-opacity: 0.5;
+  -o-opacity: 0.5;
+  opacity: 0.5; }
+  /* line 130, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .prev.slide-in {
+    /*- breakpoints -*/ }
+    @media (max-width: 1024px) {
+      /* line 130, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .inpagenavigation .prev.slide-in {
+        left: 1%; } }
+    @media (min-width: 1025px) {
+      /* line 130, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .inpagenavigation .prev.slide-in {
+        left: 3%; } }
+  /* line 137, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .inpagenavigation .prev.slide-out {
+    left: -10%; }
+
+/* line 141, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+.familyofbrands {
+  /*  display:block; width:100%; height:100%; position:absolute; top:0px; left:0px; margin:0px; box-sizing:border-box; padding: -100px 0 0 0; */
+  z-index: 102; }
+  /* line 145, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .familyofbrands .section-title {
+    display: block;
+    height: 30px;
+    width: 100%;
+    margin: 30px auto 0 auto;
+    padding: 0px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    /*- breakpoints -*/ }
+    @media (max-width: 1024px) {
+      /* line 145, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title {
+        font-size: 1.30em; } }
+    @media (orientation: portrait) {
+      /* line 145, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title {
+        font-size: 1.30em; } }
+    @media (min-width: 1025px) {
+      /* line 145, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title {
+        font-size: 1.30em; } }
+    @media (min-width: 1920px) {
+      /* line 145, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title {
+        font-size: 1.75em; } }
+    /* line 155, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .section-title span {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+      -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s; }
+      /* line 157, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title span.slide-in {
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+        opacity: 1.00; }
+      /* line 158, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .section-title span.slide-out {
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
+        opacity: 0.00; }
+  /* line 162, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .familyofbrands .progress {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    text-align: center; }
+    /* line 165, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .progress p {
+      display: inline-block;
+      -webkit-transform: skewX(-20deg);
+      -moz-transform: skewX(-20deg);
+      -ms-transform: skewX(-20deg);
+      -o-transform: skewX(-20deg);
+      transform: skewX(-20deg);
+      background-color: #fff;
+      overflow: hidden;
+      /*- breakpoints -*/ }
+      @media (max-width: 1024px) {
+        /* line 165, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .progress p {
+          width: 30px;
+          height: 6px;
+          margin: 0px 5px; } }
+      @media (min-width: 1025px) {
+        /* line 165, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .progress p {
+          width: 30px;
+          height: 6px;
+          margin: 0px 5px; } }
+      @media (min-width: 1920px) {
+        /* line 165, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .progress p {
+          width: 30px;
+          height: 9px;
+          margin: 0px 5px; } }
+      /* line 175, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .progress p span {
+        display: inline-block;
+        float: left;
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        margin: 0px; }
+      /* line 179, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .progress p.active span {
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+        transform: translateX(0px);
+        background-color: #ffe700;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+      /* line 184, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .progress p.inactive span {
+        -webkit-transform: translateX(-50px);
+        -moz-transform: translateX(-50px);
+        -ms-transform: translateX(-50px);
+        -o-transform: translateX(-50px);
+        transform: translateX(-50px);
+        background-color: #fff;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 1s;
+        -moz-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+        -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s; }
+  /* line 191, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+  .familyofbrands .slide {
+    /* height:100%; width: 100%;  padding:0px; top:0px; left:0px; display:inline-block;*/
+    /*--- fourth slide ---*/ }
+    /* line 194, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.out {
+      -webkit-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -moz-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -ms-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -o-animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      animation: slidesOut 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      /*@include prefix(animation-fill-mode,forwards);*/ }
+    /* line 195, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.in {
+      -webkit-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -moz-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -ms-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -o-animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      animation: slidesIn 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      /*@include prefix(animation-fill-mode,forwards);*/ }
+    /* line 196, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.set {
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%);
+      opacity: 0.00; }
+    /* line 197, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.reverse.out {
+      -webkit-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -moz-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -ms-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -o-animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      animation: slidesOutReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      /*@include prefix(animation-fill-mode,forwards);*/ }
+    /* line 198, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.reverse.in {
+      -webkit-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -moz-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -ms-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      -o-animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      animation: slidesInReverse 0.5s cubic-bezier(0.5, 0.85, 0.65, 1);
+      /*@include prefix(animation-fill-mode,forwards);*/ }
+    /* line 200, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide .label {
+      color: #b6b7b7;
+      font-family: Michelin-Black, sans-serif;
+      margin: 0 0 20px 30px;
+      padding: 0 0 0 25px;
+      background: transparent url("../../_media/images/bullet.png") no-repeat 0 7px;
+      font-size: 1.2em;
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+      -webkit-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+      transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-opacity: 0;
+      -moz-opacity: 0;
+      -ms-opacity: 0;
+      -o-opacity: 0;
+      opacity: 0;
+      -webkit-filter: blur(8px);
+      -moz-filter: blur(8px);
+      -ms-filter: blur(8px);
+      -o-filter: blur(8px);
+      filter: blur(8px); }
+      /* line 207, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide .label span {
+        color: #fff; }
+      /* line 209, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide .label.show {
+        -webkit-opacity: 1;
+        -moz-opacity: 1;
+        -ms-opacity: 1;
+        -o-opacity: 1;
+        opacity: 1;
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+        -o-filter: blur(0px);
+        filter: blur(0px); }
+    /* line 215, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide .callouts {
+      position: absolute;
+      top: 239px;
+      left: 567px;
+      width: 580px; }
+      /* line 217, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide .callouts img {
+        width: 315px; }
+    /* line 221, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.one .background, .familyofbrands .slide.two .background, .familyofbrands .slide.three .background {
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: 0; }
+    /* line 222, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.one .tire, .familyofbrands .slide.two .tire, .familyofbrands .slide.three .tire {
+      display: block;
+      width: 540px;
+      height: 540px;
+      position: absolute;
+      top: 120px;
+      text-align: center;
+      margin: 0px;
+      opacity: 0.00;
+      z-index: 100;
+      -webkit-transform: translateX(-100%) rotate(0deg);
+      -moz-transform: translateX(-100%) rotate(0deg);
+      -ms-transform: translateX(-100%) rotate(0deg);
+      -o-transform: translateX(-100%) rotate(0deg);
+      transform: translateX(-100%) rotate(0deg);
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 3s;
+      -moz-transition-duration: 3s;
+      -o-transition-duration: 3s;
+      transition-duration: 3s;
+      -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-transform-origin: center;
+      -moz-transform-origin: center;
+      -ms-transform-origin: center;
+      -o-transform-origin: center;
+      transform-origin: center; }
+      /* line 227, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.one .tire.show, .familyofbrands .slide.two .tire.show, .familyofbrands .slide.three .tire.show {
+        opacity: 1.00;
+        -webkit-transform: translateX(0%) rotate(180deg);
+        -moz-transform: translateX(0%) rotate(180deg);
+        -ms-transform: translateX(0%) rotate(180deg);
+        -o-transform: translateX(0%) rotate(180deg);
+        transform: translateX(0%) rotate(180deg); }
+    /* line 230, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.one .shadow, .familyofbrands .slide.two .shadow, .familyofbrands .slide.three .shadow {
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      -o-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 1.5s;
+      -moz-transition-duration: 1.5s;
+      -o-transition-duration: 1.5s;
+      transition-duration: 1.5s;
+      -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      position: absolute;
+      top: 527px;
+      left: 160px;
+      z-index: 99;
+      opacity: 0; }
+      /* line 233, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.one .shadow.show, .familyofbrands .slide.two .shadow.show, .familyofbrands .slide.three .shadow.show {
+        opacity: 0.3; }
+    /* line 236, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.one .set1, .familyofbrands .slide.one .set2, .familyofbrands .slide.two .set1, .familyofbrands .slide.two .set2, .familyofbrands .slide.three .set1, .familyofbrands .slide.three .set2 {
+      position: absolute;
+      top: 0;
+      left: 0; }
+    /* line 241, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+    .familyofbrands .slide.four .columnstructure {
+      position: relative;
+      top: 50px;
+      left: 50px; }
+      /* line 244, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.four .columnstructure .c3 {
+        width: 358px;
+        background: white;
+        margin: 12px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: bottom;
+        display: inline-block;
+        vertical-align: bottom;
+        position: relative;
+        -webkit-background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+        -moz-background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+        -ms-background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+        -o-background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%); }
+        /* line 249, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .c3 p {
+          text-align: left;
+          font-size: 1em;
+          font-family: Frutiger, sans-serif;
+          color: #232426;
+          font-weight: 400; }
+        /* line 251, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .c3 .imageHolder {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0px;
+          width: 100%;
+          border-top: #b6b7b7 1px solid;
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1.4s;
+          -moz-transition-duration: 1.4s;
+          -o-transition-duration: 1.4s;
+          transition-duration: 1.4s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0s;
+          -moz-transition-delay: 0s;
+          -o-transition-delay: 0s;
+          transition-delay: 0s; }
+          /* line 256, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+          .familyofbrands .slide.four .columnstructure .c3 .imageHolder.show {
+            opacity: 1.00; }
+          /* line 260, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+          .familyofbrands .slide.four .columnstructure .c3 .imageHolder img {
+            width: 52%; }
+      /* line 264, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.four .columnstructure .col1 {
+        border: #27509b 4px solid;
+        height: 360px;
+        padding-top: 150px;
+        opacity: 0.3;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s;
+        transition-duration: 2s;
+        -webkit-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -moz-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -o-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -webkit-transition-delay: 0;
+        -moz-transition-delay: 0;
+        -o-transition-delay: 0;
+        transition-delay: 0; }
+        /* line 270, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col1 .sets {
+          padding: 0 21px; }
+        /* line 272, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col1 .set1, .familyofbrands .slide.four .columnstructure .col1 .set2, .familyofbrands .slide.four .columnstructure .col1 .set3 {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1.4s;
+          -moz-transition-duration: 1.4s;
+          -o-transition-duration: 1.4s;
+          transition-duration: 1.4s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.4s;
+          -moz-transition-delay: 0.4s;
+          -o-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+          -webkit-filter: blur(8px);
+          -moz-filter: blur(8px);
+          -ms-filter: blur(8px);
+          -o-filter: blur(8px);
+          filter: blur(8px);
+          opacity: 0; }
+          /* line 275, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+          .familyofbrands .slide.four .columnstructure .col1 .set1.show, .familyofbrands .slide.four .columnstructure .col1 .set2.show, .familyofbrands .slide.four .columnstructure .col1 .set3.show {
+            opacity: 1;
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -ms-filter: blur(0px);
+            -o-filter: blur(0px);
+            filter: blur(0px); }
+        /* line 281, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col1 .bordertop {
+          border-top: 1px solid #b6b7b7; }
+        /* line 283, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col1.show {
+          opacity: 1; }
+      /* line 286, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.four .columnstructure .col2 {
+        height: 339px;
+        padding-top: 150px;
+        border: #092c74 4px solid;
+        opacity: 0.3;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s;
+        transition-duration: 2s;
+        -webkit-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -moz-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -o-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -webkit-transition-delay: 0;
+        -moz-transition-delay: 0;
+        -o-transition-delay: 0;
+        transition-delay: 0; }
+        /* line 293, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col2 .sets {
+          padding: 0 21px; }
+        /* line 295, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col2 .set1, .familyofbrands .slide.four .columnstructure .col2 .set2, .familyofbrands .slide.four .columnstructure .col2 .set3 {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1.4s;
+          -moz-transition-duration: 1.4s;
+          -o-transition-duration: 1.4s;
+          transition-duration: 1.4s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.4s;
+          -moz-transition-delay: 0.4s;
+          -o-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+          -webkit-filter: blur(8px);
+          -moz-filter: blur(8px);
+          -ms-filter: blur(8px);
+          -o-filter: blur(8px);
+          filter: blur(8px);
+          opacity: 0; }
+          /* line 298, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+          .familyofbrands .slide.four .columnstructure .col2 .set1.show, .familyofbrands .slide.four .columnstructure .col2 .set2.show, .familyofbrands .slide.four .columnstructure .col2 .set3.show {
+            opacity: 1;
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -ms-filter: blur(0px);
+            -o-filter: blur(0px);
+            filter: blur(0px); }
+        /* line 304, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col2 .bordertop {
+          border-top: 1px solid #b6b7b7; }
+        /* line 306, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col2.show {
+          opacity: 1; }
+      /* line 309, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+      .familyofbrands .slide.four .columnstructure .col3 {
+        border: #eb1c23 4px solid;
+        height: 320px;
+        padding-top: 150px;
+        opacity: 0.3;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s;
+        transition-duration: 2s;
+        -webkit-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -moz-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -o-transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        transition-timing-function: cubic-bezier(0, 0.345, 0, 1);
+        -webkit-transition-delay: 0;
+        -moz-transition-delay: 0;
+        -o-transition-delay: 0;
+        transition-delay: 0; }
+        /* line 316, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col3 .sets {
+          padding: 0 21px; }
+        /* line 318, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col3 .set1, .familyofbrands .slide.four .columnstructure .col3 .set2, .familyofbrands .slide.four .columnstructure .col3 .set3 {
+          -webkit-transition-property: all;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          transition-property: all;
+          -webkit-transition-duration: 1.4s;
+          -moz-transition-duration: 1.4s;
+          -o-transition-duration: 1.4s;
+          transition-duration: 1.4s;
+          -webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -moz-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -o-transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.25, 0.15, 1);
+          -webkit-transition-delay: 0.4s;
+          -moz-transition-delay: 0.4s;
+          -o-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+          -webkit-filter: blur(8px);
+          -moz-filter: blur(8px);
+          -ms-filter: blur(8px);
+          -o-filter: blur(8px);
+          filter: blur(8px);
+          opacity: 0; }
+          /* line 321, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+          .familyofbrands .slide.four .columnstructure .col3 .set1.show, .familyofbrands .slide.four .columnstructure .col3 .set2.show, .familyofbrands .slide.four .columnstructure .col3 .set3.show {
+            opacity: 1;
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -ms-filter: blur(0px);
+            -o-filter: blur(0px);
+            filter: blur(0px); }
+        /* line 327, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col3 .bordertop {
+          border-top: 1px solid #b6b7b7; }
+        /* line 329, E:/__TFS/Client Projects/Clients/Michelin/2066 Multi-Brand Modules/Overview Course/course/_css/familyofbrands.scss */
+        .familyofbrands .slide.four .columnstructure .col3.show {
+          opacity: 1; }
+
+/*# sourceMappingURL=familyofbrands.css.map */

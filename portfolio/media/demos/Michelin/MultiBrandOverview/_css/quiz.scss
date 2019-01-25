@@ -1,0 +1,288 @@
+@import "partials/type";
+@import "partials/color";
+@import "partials/pages";
+@import "partials/transitions";
+@import "partials/breakpoints";
+
+$sm-viewport:678px;
+$extra-sm-viewport:595px;
+
+@mixin hardware-accel() {
+    // 3D rendering on GPU
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    // fix chrome and safari flicker
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility   : hidden;
+    -ms-backface-visibility    : hidden;
+    backface-visibility        : hidden;
+    -webkit-perspective        : 1000;
+    -moz-perspective           : 1000;
+    -ms-perspective            : 1000;
+    perspective                : 1000;
+
+    // webkit-powered
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+body {
+	margin:0px auto; background-color:$light-grey; overflow: hidden;
+	@include transition(all, 1.5s, $circ, 0s);
+	&.tintIn { background-color:#0B2D6D; };
+	&.tineOut { background-color:$light-grey; };
+}
+
+#messages {
+    display:block; width:100%; text-align:center; margin:0px auto;  box-sizing:border-box;
+    position:absolute; bottom:0px; left:0px; z-index:2000; overflow:hidden; background-color:rgba($royal, 0.65); @include transition(all, 1.00s, $circ, 0s);
+    @include prefix(transform, translate(0%, 100%)); @include prefix(opacity, 0.00);
+    /*- breakpoints -*/
+    @include break(tablet){min-height:26px; padding:6px 0px;}
+    @include break(desktop, $desktop){min-height:26px; padding:6px 0px;}
+    @include break(desktop, $desktop + 1, $md-height){min-height:15px; padding:3px 0px;}
+    
+    &.show { @include prefix(transform, translate(0%, 0%)); @include prefix(opacity, 1.00);}
+   
+    .info {font-size:0.85em; font-family:$body-text; color:$white; padding: 0; margin: 0;}
+}
+
+#quiz {
+    width: 60%; margin: 7% auto; position: relative; padding: 0;
+   
+	@include break(desktop, 1024px){ width: 80%; }
+	@include break(desktop, 1280px){ width: 60%; }
+    @include break(tablet){width: 90%; margin: 8% auto; font-size: .9em}
+    @include break(tablet, $portrait){ margin: 23% auto; }
+	@include break(desktop, $desktop + 1, $sm-viewport){  margin: 9% auto; width: 86%; }
+	@include break(desktop, $desktop + 1, $extra-sm-viewport){ margin: 7% auto; width: 90%; }
+
+	// Start Question Card
+    .questions {
+        background: #f2f5f5; @include prefix(box-shadow, 2px 2px 9px 2px rgba(50, 50, 50, 0.5)); position: absolute; top: 81px; left: -100%; padding: 4% 6% 5%; width: 88%; overflow: hidden; opacity: 0; border-top: 1px solid #040D4E; border-bottom: 1px solid #040D4E; @include transition(all, 1s, $circ, 0s);
+		&.slide-in { opacity: 1; left: 0; }
+        &.slide-out {
+			left: 100%; opacity: 0;
+			@include break(tablet){ opacity: 0; left: 0 }
+		}
+        @include break(tablet){ top: 80px; padding: 3% 6% 3%; }
+		@include break(desktop, $desktop + 1, $sm-viewport){ top: 67px; padding: 3% 6% 3%; }
+		@include break(desktop, $desktop + 1, $extra-sm-viewport){ padding: 2% 4% 2%; width: 92%;}
+	}
+	
+	.mcQuestionNumber {
+		font-family: $michelin-black; font-size: 1.5em; color: $royal; margin: 0; padding: 0; text-align: center; width: 100%; opacity: 0;
+		@include transition(all, 1s, $circ, 0s);
+		&.fadeOut { opacity: 0; }
+        &.fadeIn { opacity: 1; }
+        @include break(tablet){ font-size: 1.3em; }
+		@include break(desktop, $desktop + 1, $sm-viewport){ font-size: 1.4em; }
+	}
+	
+	.progress {
+		/*- breakpoints -*/
+        @include transition(all,1s,$circ,0s);
+        display:block; width:100%; margin-top:4px; padding:0px; text-align:center; opacity: 0;
+		&.fadeOut { opacity: 0; }
+        &.fadeIn { opacity: 1; }
+        p {
+            display:inline-block; width:30px; height:9px; margin:0px 5px; @include prefix(transform,skewX(-20deg)); background-color:$white; overflow:hidden;
+            span {
+                display:inline-block; float:left; width:100%; height:100%; padding:0px; margin:0px;
+            }
+            &.active{
+                span { @include prefix(transform,translateX(0px)); background-color:$yellow; @include transition(all,1s,$circ,0s); }
+            }
+            &.inactive {
+                span { @include prefix(transform,translateX(-50px)); background-color:$white; @include transition(all,1s,$circ,0s); }
+            }
+        }                
+    }
+	
+	.mcQuestionHolder {
+		text-align: center;
+		@include break(desktop, $desktop + 1, $sm-viewport){ font-size: .8em; }
+		// Question Text Styles
+		.mcQuestion {
+			font-family: $body-text; font-size: 1.9em; color: $grey; margin: 0 0 15px 0; padding: 0; font-weight: 400; opacity: 0;
+			@include transition(all, 1s, $circ, 0s);
+			&.fadeOut { opacity: 0 !important; }
+       	 	&.fadeIn { opacity: 1 !important; }
+            @include break(tablet){ font-size: 1.5em; }
+		}
+		.mcInstruction {
+			font-family: $body-text; font-size: 1.5em; color: $grey; margin: 0 0 8px 0; padding: 0; opacity: 0; font-style: italic;
+			@include transition(all, 1s, $circ, 0s);
+			&.fadeOut { opacity: 0 !important; }
+        	&.fadeIn { opacity: 1 !important; }
+             @include break(tablet){ font-size: 1.2em; }
+		}
+		.options {
+			margin-top: 15px; 
+			.choice {
+				font-family: $michelin-regular; font-size: 1em; color: $royal; text-indent: .1em; opacity: 0; clear: both;
+				@include transition(all, 1s, $circ, 0s);
+			}
+		}
+
+		input.radio:empty,
+		input.checkbox:empty {margin-left: -9999px;}
+
+		// Basic inputs
+		input.checkbox:empty + label,
+		input.radio:empty + label { 
+			width: 80%; background: $royal; color: $white; position: relative; top: 0; left: 50%; float: left; line-height: 1.2em; padding: 10px; margin: 2% -40% 0; border-left: $yellow 5px solid;cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; word-wrap: break-word;
+			@include prefix(transform, translateX(0px) skewX(-20.5deg));
+		}
+		
+		// Basic inputs HOVER 
+		input.radio:hover:not(:checked) + label,
+		input.checkbox:hover:not(:checked) + label { @include transition(all, .4s, $circ, 0s); background: $yellow; color: #040d4e; > .roll-state{width:100%; left:0px; opacity:1.00;}}
+		// Basic inputs SELECTED
+		input.radio:checked + label,
+		input.checkbox:checked + label { @include transition(all, .4s, $circ, 0s); background: $yellow; color: #040d4e;}
+
+		// Click boxes
+		input.radio:empty + label:before,
+		input.checkbox:empty + label:before {}
+		// Click boxes : HOVER
+		input.radio:hover:not(:checked) + label:before,
+		input.checkbox:hover:not(:checked) + label:before {}
+		// Click boxes : SELECTED
+		input.radio:checked + label:before,
+		input.checkbox:checked + label:before {}
+		// Click boxes : FOCUS
+		input.radio:focus + label:before,
+		input.checkbox:focus + label:before {outline: none;}
+	}
+	
+	#feedbackMask {	 
+		display:block; width: 100%; position: absolute; overflow: hidden; z-index: 20; padding: 0; top: 81px; left: 0;
+         @include break(tablet){ top: 80px; }
+		@include break(desktop, $desktop + 1, $sm-viewport){ top: 67px; }
+		#feedback { 
+			padding: 5% 6% 0px 0; background: $blue; position: absolute; left: -100%; top: 0; z-index: 11; color: $white; width: 126%; height: 95%; opacity: 0; overflow: hidden; font-size: 1.4rem; @include prefix(transform, skewX(-20.5deg)); 
+			@include transition(all, 1s, $circ, 0s);
+			.button{ font-size: 1.1em; }
+			&.slide-in { left: -17%; opacity: .95; }
+			&.slide-out { left: -100%; opacity: 0; }
+			#feedbackHeader { text-align: center; }
+			#feedbackMessage {
+				font-size: 1.5rem; text-align: center; max-width:675px; margin: 0 auto;
+				  @include break(tablet, $portrait){max-width: 535px;}
+			}
+		}
+	}
+	#submitBtn, #nextBtn {
+		&.fadeOut { opacity: 0 !important; }
+        &.fadeIn { opacity: 1 !important; }
+		opacity: 0; position: relative; margin-top: 30px;
+		@include break(desktop, $desktop + 1, $sm-viewport){ margin-top: 0 }
+		@include break(desktop, $desktop + 1, $extra-sm-viewport){ margin-top: -50px }
+	}
+	.superscript { font-size: .7em;	}
+}
+
+#finishDisplay {
+	position: absolute; top:0px; left:0px; padding: 0; z-index: 11; color: $grey; width: 100%; height:100%; font-size: 1.4rem; background-color:$blue;
+	@include transition(opacity, 1s, $circ, 0s);
+    
+    &.fadeIn {display:block;  opacity: 1; }
+   	&.fadeOut {display:none;  opacity: 0; }
+    
+    .plaque {
+        position:absolute; top:30%; left:5%; width:90%; height:auto; z-index:1200; transform:translate(0%, -50%);
+        
+        @include break(tablet, $portrait){top:20%;}
+        
+        #finishFeedbackHeader {
+            color: $white; font-size:2.4em; opacity: 0; width:65%; margin:10px 0px; white-space:nowrap;
+            @include transition(opacity, 1s, $circ, 1.5s );
+            &.fadeIn { opacity: 1; }
+            &.fadeOut { opacity: 0; }
+            @include break(tablet){font-size: 2em; }
+            @include break(tablet, $portrait){ font-size: 2em; }
+            @include break(desktop, $desktop){ font-size:2.25em; }
+            @include break(desktop, $sm-width){ font-size:2.5em; }
+            @include break(desktop, $md-width){ font-size:2.5em; }
+            @include break(desktop, $lg-width){ font-size:3em; }
+            
+        }
+        #finishFeedbackMessage {
+            width:65%; opacity: 0; font-family: $body-text; color: $white; margin:10px 0px;
+            @include transition(opacity, 1s, $circ, 1.7s);
+            &.fadeIn { opacity: 1; }
+            &.fadeOut { opacity: 0; }
+	   }
+    }
+	#finishFeedbackImage {
+		width:100%; height:100%; margin:0px auto; padding:0px; position:absolute; top:0px; left:0px; overflow:hidden; @include transition(opacity, 1s, $circ, 2s);
+		           
+        background-image:url('../_media/images/mb_intro.jpg');
+        background-repeat: no-repeat;
+        background-color:#0b2d6d; 
+        
+        /* -- breakpoints --*/
+            @include break(tablet){background-size:auto 70%; background-position:110% 60%;}
+            @include break(tablet,$portrait){background-size:auto 53%; background-position:75% 100%;}
+
+            @include break(desktop, $desktop){background-size:auto 58%; background-position:center right;}
+            @include break(desktop, $sm-width){background-size:auto 50%; background-position:center right;}
+            @include break(desktop, $md-width){background-size:auto 59%; background-position:center right;}
+            
+            @include break(desktop, $desktop + 1, $sm-height){background-size:auto 50%; background-position:100% 50%;}
+		
+		&.fade-in {
+			opacity:1.00; @include prefix(filter,blur(0px)); 
+			@include transition(all,2.5s,$circ,1s);
+		}
+
+		&.fade-out {
+			opacity:0.00; @include prefix(filter,blur(3px)); 
+			@include transition(all,3s,$circ,0s);
+		}
+	}
+}
+
+// Start Submit and Next Question Buttons
+	.button {
+         text-decoration: none; text-align: center; color: $white; background: #005AAA; display:inline-block; height:38px; margin:0; position: absolute; left: 50%; /* bottom: 17px; */ margin-left: -75px; width: 150px; padding: 3px 0; z-index:3; cursor: pointer; 
+		 &.slide-in {
+             @include prefix(transform, translateX(0px) skewX(-20.5deg)); opacity:1.00; overflow:hidden; @include transition(all, 1s, $circ, 0s);
+         }
+         &.slide-out {
+             @include prefix(transform, translateX(-200px) skewX(-20.5deg)); opacity:0.00; @include transition(all, 1s, $circ, 1s);
+             .roll-state{ display:none; }
+         }
+		.buttonText {@include prefix(transform,skewX(20.5deg)); position: relative; top: 2px; font-size: .6em; z-index: 3; font-family: $michelin-black}
+		.quizButtonText {@include prefix(transform,skewX(20.5deg)); position: relative; top: 8px; font-size: .8em; z-index: 3; font-family: $michelin-black}
+		.roll-state {
+          	width:100%; height:100px; margin:0px; position:relative; top:-45px; left:100%; z-index:2; opacity:0.00; background-color:$yellow; @include transition(all, 0.50s, $circ, 0s); 
+    	}
+    }
+
+.button.slide-in:hover { 
+	cursor:pointer;
+	> .roll-state{ width:100%; left:0px; opacity:1.00; }
+	> .buttonText{ color: #040d4e }
+	>.quizButtonText{ color: #040d4e }
+}
+
+.buttonLine {
+	display: inline; width: 100%; position: relative; top: 38px; left: 10%; float: left;
+    .blLeft{ left: 0 !important; width: 200px;}
+	.blRight{ right: 0 !important; width: 180px;}
+     @include break(tablet){ width: 90%; } 
+	 @include break(tablet, $portrait){width: 500px} 
+}
+
+sup{font-size:40%;}
+
+
+	

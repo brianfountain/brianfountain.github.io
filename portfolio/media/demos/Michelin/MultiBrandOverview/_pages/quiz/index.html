@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Quiz</title>  
+<script type="text/javascript" src="../../_js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+<script type="text/javascript" src="../../_player/js/player.js"></script>
+<script type="text/javascript" src="../../_player/js/io.js"></script>
+<script type="text/javascript" src="../../_js/knowledge_check_controller.js"></script>
+<link type="text/css" rel="stylesheet" href="../../_css/quiz.css"/>
+<script type="text/javascript"> 
+	
+    $(function() {
+		/*
+		//drag blocking code - currently problematic
+		$(document).delegate('body','touchmove',function(e){
+			e.preventDefault ? e.preventDefault() : e.returnValue = false; 
+        }).delegate('.clickable','touchmove',function(e){
+                e.stopPropagation();
+        });
+		*/
+
+        var hasAudio = false;
+       	var p = window.parent;
+	   	//var ap = p.document.getElementById("audio");
+		
+		var t =  new TimelineMax({paused: true});
+        var tl = $('.top-bottom');
+		var $questionO = $('.mcQuestionNumber');
+		var $progressO = $('.progress');
+		var $submitO = $('#submitBtn');
+		
+		t // timeline here
+			.staggerTo(tl, 0.25, {"transform": "matrix(1, 0, 0, 1, 0, 0)", opacity:1.00, delay:0.50, ease:Power4.easeOut}, 0.10)
+			.set($questionO, {className: '+=fadeIn'}, 1.5)
+			.set($progressO, {className: '+=fadeIn'}, 2.5)
+			.set($submitO, {className: '+=fadeIn'}, 3.0)				
+		
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states 
+        $(".menu").on({
+           click: function () {
+               //t.reverse();
+			   //$(".questions").removeClass('slide-in').removeClass('slide-out').addClass('fadeOut');
+			   $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    //p.audio.player.toggle();
+					$(".menu.slide-out").off(transitionEvent);
+                    p.addTransitionPage(0);
+				});
+			   $('#transition').removeClass('noSkew');
+            }
+        });
+		
+		 // build the page once the wipe is removed
+        buildPage = function() { 
+            //credit for starting page
+			p.controller.setPageViewed("knowledgecheck");
+			
+			$( ".menu" ).removeClass( 'slide-out' ).addClass( 'slide-in' );
+			$(".headline.sequence").removeClass('hide').addClass('show');
+            t.play();
+			
+            $(".menu.slide-in").on(transitionEvent, function(){            
+                // show audio player and play audio
+                //p.audio.player.toggle();
+                //p.audio.player.pause();
+                beginQuiz();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+             
+       /* iframe load and unload events */
+        $(window).load(function () {
+            if (hasAudio == false || $(body).has("audio").length == 0){
+                p.audio.player.load("undefined");
+            }
+            p.isFrameLoaded(true);
+            p.controller.setVar("introViewed", true);
+            p.audio.player.pause();
+        });
+        
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+		
+      });
+</script>
+
+<style type="text/css">
+    body {width:100%; height:100%; margin:0px auto; padding:0px;}
+</style>
+
+</head>
+
+
+<body class="quiz">
+    <div id="header">
+		<div class="title">
+        <div class="menu slide-out">
+            <div class="menu-icon">
+                <p>Menu</p>
+            </div>
+            <div class="roll-state"></div>
+        </div>
+         <h1>
+            <span class="headline sequence hide"><b>Knowledge Check</b></span>     
+        </h1>
+    </div>
+	</div>
+	<!-- End Header -->
+	<!-- Congrats Screen -->
+    <div id="finishDisplay" class="fade-out" style="display: none">
+            <div id="finishFeedbackImage" class="fade-out"></div>
+            <div class="plaque">
+                <h1 id="finishFeedbackHeader">Finish Page Header</h1>
+                <p id="finishFeedbackMessage">Finish Page Text</p>
+            </div>
+    </div>
+	
+	<div id="messages">
+		<p class="info">Click the <i>Menu</i> button to choose another topic</p>
+    </div>
+        
+	<div id="quiz"> 
+    	<p class="mcQuestionNumber">Question # of #</p>
+        <div class="progress">
+        	  <!-- Display template set in js -->
+        </div>
+        
+        <!-- Congrats Screen -->
+        <div id="feedbackMask" style="display:none">
+            <div id="feedback">
+               <p id="feedbackHeader">Feedback Header</p>
+               <p id="feedbackMessage">Feedback Text</p>
+            </div>
+       </div>
+       
+    	<!-- Question 1  -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                   <p class="mcQuestion">Which brand’s quality enables safety and on-time delivery with the total lowest cost of ownership for a fleet.</p>
+                   <p class="mcInstruction">Choose the correct response and click <strong>SUBMIT</strong>.</p>
+                   <div class="options">
+                   		<div class="choice">
+                            <input type="radio" class="radio" name="radio" id="q1_s1" value="q1_s1" />
+                            <label for="q1_s1" class="">Michelin</label>
+                        </div>
+                       	<div class="choice">
+                        	<input type="radio" class="checkbox" name="radio" id="q1_s2" value="q1_s2" />
+                        	<label for="q1_s2" class="">BFGoodrich</label>  
+                       	</div>
+                      	<div class="choice">
+                        	<input type="radio" class="checkbox" name="radio" id="q1_s3" value="q1_s3" />
+                        	<label for="q1_s3" class="">UNIROYAL</label>   
+                        </div> 
+                     </div>
+               </div>  
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <p class="mcQuestion">Which brand is right for a fleet that is not interested in retreading or seeks no more than 1 retread per casing?</p>
+                    <p class="mcInstruction">Choose the correct response and click <strong>SUBMIT</strong>.</p>
+                    <div class="options">
+                        <div class="choice">
+                            <input type="radio" class="radio" name="radio" id="q2_s1" value="q2_s1" />
+                            <label for="q2_s1" class="">Michelin</label>
+                        </div>
+                       	<div class="choice">
+                        	<input type="radio" class="radio" name="radio" id="q2_s2" value="q2_s2" />
+                        	<label for="q2_s2" class="">BFGoodrich</label>  
+                       	</div>
+                      	<div class="choice">
+                        	<input type="radio" class="radio" name="radio" id="q2_s3" value="q2_s3" />
+                        	<label for="q2_s3" class="">UNIROYAL</label>   
+                        </div> 
+                   </div>
+             </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="questions">
+            <div class="mcQuestionHolder">
+                    <p class="mcQuestion">Which brands are supported by local Michelin representatives and local Field Engineers?</p>
+                    <p class="mcInstruction">Select all that apply and click <strong>SUBMIT</strong>.</p>
+                    <div class="options">
+                         <div class="choice">
+                            <input type="checkbox" class="checkbox" name="checkbox" id="q3_s1" value="q3_s1" />
+                            <label for="q3_s1" class="">Michelin</label>
+                        </div>
+                       	<div class="choice">
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q3_s2" value="q3_s2" />
+                        	<label for="q3_s2" class="">BFGoodrich</label>  
+                       	</div>
+                      	<div class="choice">
+                        	<input type="checkbox" class="checkbox" name="checkbox" id="q3_s3" value="q3_s3" />
+                        	<label for="q3_s3" class="">UNIROYAL</label>   
+                        </div> 
+                  </div>
+             </div>
+       </div>
+        
+       <div id='submitBtn' class='button slide-in' onclick='submitClick();'>
+               <span class="quizButtonText" >SUBMIT</span>
+               <div class="roll-state"></div>
+        </div>
+        <div id='nextBtn' class='button slide-in' onclick='nextQuestion();'>
+        	<span class='quizButtonText'>{{ Updated in controller }}</span>
+            <div class='roll-state'></div>
+        </div>
+      
+  </div>
+</body>
+
+</html>

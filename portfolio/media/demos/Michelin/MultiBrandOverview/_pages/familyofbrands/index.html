@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Family of Brands</title>
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../_css/familyofbrands.css" />
+    <script type="text/javascript">
+
+    $(function() {
+		/*
+		//drag blocking code - currently problematic
+		$(document).delegate('body','touchmove',function(e){
+        e.preventDefault ? e.preventDefault() : e.returnValue = false; 
+        }).delegate('.clickable','touchmove',function(e){
+                e.stopPropagation();
+        });
+		*/
+        var p = window.parent;
+        var ap = p.document.getElementById("audio");
+
+        var pageTitles = ["A Better Way Forward", "Take Control", "Affordable and Dependable", "Why Sell Our Brands?"];
+        var audioArray = [];
+        var newSlide = 0;
+        var curSlide = 0;
+
+
+        transitionPage = function(pg){
+            p.addTransitionPage(pg);
+        }
+
+        $("#preload-audio > audio").each(function (idx, src){
+            var files = parseInt($("#preload-audio > audio").length) -1;
+
+            var audioSRC = $(this).attr("src");
+            var newSRC = audioSRC.split("../../");
+            audioArray.push(newSRC[newSRC.length -1]);
+            //audioArray.push($(this).attr("src"));
+
+            $("#preload-audio").html("&nbsp;");
+            var template = "<p class='inactive'><span></span></p>"
+            $(".progress").append(template);
+        });
+
+
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+
+        function setAnimationEvent(){
+            var a,
+            el = document.createElement("fakeelement");
+            var animation = {"animation":"animationend","OTransition":"oAnimationEnd","MozTransition":"animationend","WebkitTransition":"webkitAnimationEnd"}
+            for (a in animation){if (el.style[a] !== undefined){return animation[a];}}
+        }
+
+        $(".next").on({
+            click: function (){
+                if (p.audio.messages.status == "open"){
+                    p.audio.messages.hide();
+                    $(".next").removeClass("highlight");
+                }
+                newSlide = curSlide+1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            }
+        });
+
+        $(".prev").on({
+            click: function (){
+                newSlide = curSlide-1;
+                p.audio.player.load(audioArray[newSlide], true);
+                animateSlides(newSlide);
+            }
+        });
+
+        // Animate #Screens based on index
+        animateSlides = function (index){
+
+            var strt = curSlide, idx = index;
+            var slideOut = $('.slide').eq(strt);
+            var slideIn = $('.slide').eq(idx);
+
+            if (strt > idx){
+                $(slideOut).removeClass("reverse in").addClass("reverse out");
+                $(slideIn).removeClass("set").addClass("reverse in");
+            } else {
+                if(idx == 0){
+                     $(".slide").addClass("set");
+                    $(slideIn).removeClass("set").addClass("in");
+                } else {
+                    if ($(".slide").hasClass("reverse")){
+                        $(".slide").removeClass("reverse");
+                    }
+                    $(slideOut).removeClass("in").addClass("out");
+                    $(slideIn).removeClass("set").addClass("in");
+                }
+            }
+
+            curSlide = index;
+            $(".section-title span").html(pageTitles[curSlide]);
+
+            animateResponse(slideOut);
+            animateResponse(slideIn);
+
+            checkIndex();
+        }
+
+        animateResponse = function (obj){
+            var direction = $(obj).hasClass("out");
+            var ae = setAnimationEvent();
+
+            $(obj).one(ae, function() {if (direction == true){
+                $(obj).removeClass("out").addClass("set");
+            }});
+        }
+
+        checkIndex = function (){
+            if ($(".active") != null){
+                $(".progress > p").removeClass("active").addClass("inactive");
+                $(".progress > p").eq(curSlide).removeClass("inactive").addClass("active");
+            }
+
+            if (curSlide == audioArray.length -1){
+                $(".next").removeClass("slide-in").addClass("slide-out");
+            } else {
+                $(".next").removeClass("slide-out").addClass("slide-in");
+            }
+
+            if (curSlide == 0){
+                $(".prev").removeClass("slide-in").addClass("slide-out");
+            }else {
+                $(".prev").removeClass("slide-out").addClass("slide-in");
+            }
+
+        };
+
+        // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+
+
+        syncSlides = function(i,t){
+            //console.log("Slide: " + i + " -- Timestamp: " + t );
+            if (i ==0){
+               if(t == 0){  
+                    $(".slide.one .set1 > .label").eq(0).removeClass("show");
+					$(".slide.one .set1 > .label").eq(1).removeClass("show");
+					$(".slide.one .set1 > .label").eq(2).removeClass("show");
+					$(".slide.one .set1 > .label").eq(3).removeClass("show");
+				    $(".slide.one .set2 > .label").eq(0).removeClass("show");
+					$(".slide.one .set2 > .label").eq(1).removeClass("show");
+					$(".slide.one .set2 > .label").eq(2).removeClass("show");
+					$(".slide.one .set2 > .label").eq(3).removeClass("show");
+				    $(".slide.one > .shadow").removeClass("show");
+			   }
+			   if (t > 0 ){
+					$(".background-contain").addClass("show_1");
+					$(".background-contain").removeClass("show_2");
+				    $(".background-contain").removeClass("show_3");
+                    $(".slide.one .set2 > .label").eq(0).removeClass("show");
+					$(".slide.one .set2 > .label").eq(1).removeClass("show");
+					$(".slide.one .set2 > .label").eq(2).removeClass("show");
+					$(".slide.one .set2 > .label").eq(3).removeClass("show");
+				}
+                if (t > 0.250){
+                    $(".slide.one > .tire").addClass("show");
+					$(".slide.one .set1 > .label").eq(0).addClass("show");
+                }
+				if (t > 1.25){
+                    $(".slide.one > .shadow").addClass("show");
+                }
+				if (t > 4.1){
+                   $(".slide.one .set1 > .label").eq(1).addClass("show");
+                }
+				if (t > 4.45){
+                   $(".slide.one .set1 > .label").eq(2).addClass("show");
+                }
+				if (t > 6.1){
+                   $(".slide.one .set1 > .label").eq(3).addClass("show");
+                }
+				if (t > 9.8){
+                    $(".slide.one .set1 > .label").eq(0).removeClass("show");
+					$(".slide.one .set1 > .label").eq(1).removeClass("show");
+					$(".slide.one .set1 > .label").eq(2).removeClass("show");
+					$(".slide.one .set1 > .label").eq(3).removeClass("show");
+                }
+				if (t > 11.80){
+                   $(".slide.one .set2 > .label").eq(0).addClass("show");
+                }
+				if (t > 14.90){
+                   $(".slide.one .set2 > .label").eq(1).addClass("show");
+                }
+				if (t > 17.56){
+                   $(".slide.one .set2 > .label").eq(2).addClass("show");
+                }
+				if (t > 20.05){
+                   $(".slide.one .set2 > .label").eq(3).addClass("show");
+                }
+				
+            } else {
+				$(".slide.one > .tire").removeClass("show");
+            }         
+
+            if (i ==1){
+                if(t == 0){    
+                    $(".slide.two .set1 > .label").eq(0).removeClass("show");
+					$(".slide.two .set1 > .label").eq(1).removeClass("show");
+					$(".slide.two .set1 > .label").eq(2).removeClass("show");
+				    $(".slide.two .set2 > .label").eq(0).removeClass("show");
+					$(".slide.two .set2 > .label").eq(1).removeClass("show");
+					$(".slide.two .set2 > .label").eq(2).removeClass("show");
+					$(".slide.two > .shadow").removeClass("show");
+				}
+				if (t > 0 ){
+					$(".background-contain").addClass("show_2");
+					$(".background-contain").removeClass("show_1");
+				   	$(".background-contain").removeClass("show_3");
+                     $(".slide.two .set2 > .label").eq(0).removeClass("show");
+					$(".slide.two .set2 > .label").eq(1).removeClass("show");
+					$(".slide.two .set2 > .label").eq(2).removeClass("show");
+				}
+                if (t > 0.250){
+                    $(".slide.two > .tire").addClass("show");
+					$(".slide.two .set1 > .label").eq(0).addClass("show");
+                }
+				if (t > 1.25){
+                    $(".slide.two > .shadow").addClass("show");
+				}
+				if (t > 3.1){
+                   $(".slide.two .set1 > .label").eq(1).addClass("show");
+                }
+				if (t > 4.3){
+                   $(".slide.two .set1 > .label").eq(2).addClass("show");
+                }
+				if (t > 8.4){
+					$(".slide.two .set1 > .label").eq(0).removeClass("show");
+					$(".slide.two .set1 > .label").eq(1).removeClass("show");
+					$(".slide.two .set1 > .label").eq(2).removeClass("show");
+                }
+				if (t > 10.35){
+                   $(".slide.two .set2 > .label").eq(0).addClass("show");
+                }
+				if (t > 14.6){
+                   $(".slide.two .set2 > .label").eq(1).addClass("show");
+                }
+				if (t > 16.35){
+                   $(".slide.two .set2 > .label").eq(2).addClass("show");
+                }
+				
+            } else {
+				$(".slide.two > .tire").removeClass("show");
+            }  
+			
+ 			if (i ==2){
+                if(t == 0){   
+                    $(".slide.three .set1 > .label").eq(0).removeClass("show");
+					$(".slide.three .set1 > .label").eq(1).removeClass("show");
+					$(".slide.three .set1 > .label").eq(2).removeClass("show");
+					$(".slide.three .set1 > .label").eq(3).removeClass("show");
+				    $(".slide.three .set2 > .label").eq(0).removeClass("show");
+					$(".slide.three .set2 > .label").eq(1).removeClass("show");
+					$(".slide.three .set2 > .label").eq(2).removeClass("show");
+					$(".slide.three > .shadow").removeClass("show");
+				}
+				if (t > 0 ){
+					$(".background-contain").addClass("show_3");
+					$(".background-contain").removeClass("show_1");
+				   	$(".background-contain").removeClass("show_2");
+                    $(".slide.three .set2 > .label").eq(0).removeClass("show");
+					$(".slide.three .set2 > .label").eq(1).removeClass("show");
+					$(".slide.three .set2 > .label").eq(2).removeClass("show");
+				}
+                if (t > 0.250){
+                    $(".slide.three > .tire").addClass("show");
+					$(".slide.three .set1 > .label").eq(0).addClass("show");
+                }
+				if (t > 1.25){
+                    $(".slide.three > .shadow").addClass("show");
+                }
+				if (t > 3.3){
+                 	$(".slide.three .set1 > .label").eq(1).addClass("show");
+                }
+				if (t > 4.3){
+                 	$(".slide.three .set1 > .label").eq(2).addClass("show");
+					$(".slide.three .set1 > .label").eq(3).addClass("show");
+                }
+				if (t > 6.9){
+                 	$(".slide.three .set1 > .label").eq(0).removeClass("show");
+					$(".slide.three .set1 > .label").eq(1).removeClass("show");
+					$(".slide.three .set1 > .label").eq(2).removeClass("show");
+					$(".slide.three .set1 > .label").eq(3).removeClass("show");
+                }
+				if (t > 7.74){
+                 	$(".slide.three .set2 > .label").eq(0).addClass("show");
+                }
+				if (t > 11.42){
+                 	$(".slide.three .set2 > .label").eq(1).addClass("show");
+                }
+				if (t > 13){
+                 	$(".slide.three .set2 > .label").eq(2).addClass("show");
+                }
+            } else {
+				$(".slide.three > .tire").removeClass("show");
+            } 
+
+            if (i ==3){
+                if(t == 0.00){
+                   	$(".col1").removeClass("show");
+					$(".col2").removeClass("show");
+					$(".col3").removeClass("show");
+					$(".slide.four .col1 > .imageHolder").removeClass("show");
+					$(".slide.four .col2 > .imageHolder").removeClass("show");
+					$(".slide.four .col3 > .imageHolder").removeClass("show");
+                    $(".col1 > .sets > .set1").removeClass("show");
+                    $(".col1 > .sets > .set2").removeClass("show");
+                    $(".col1 > .sets > .set3").removeClass("show");
+                    $(".col2 > .sets > .set1").removeClass("show");
+                    $(".col2 > .sets > .set2").removeClass("show");
+                    $(".col2 > .sets > .set3").removeClass("show");
+                    $(".col3 > .sets > .set1").removeClass("show");
+                    $(".col3 > .sets > .set2").removeClass("show");
+                }
+				if (t > 0){
+					$(".background-contain").removeClass("show_1");
+				   	$(".background-contain").removeClass("show_2");
+				   	$(".background-contain").removeClass("show_3");
+                    $(".col1").addClass("show");
+                    $(".col2").addClass("show");
+                    $(".col3").addClass("show");
+				}
+                if (t > 1){
+                    $(".slide.four .col1 > .imageHolder").addClass("show");
+                }
+                if (t > 1.2){
+                    $(".slide.four .col2 > .imageHolder").addClass("show");
+                }
+                if (t > 1.3){
+                    $(".slide.four .col3 > .imageHolder").addClass("show");
+                }
+				
+                if (t > 2.5){
+					$(".col1 > .sets > .set1").addClass("show");
+                }
+                if (t > 2.6){
+                    $(".col2 > .sets > .set1").addClass("show");
+                }
+                if (t > 2.8){
+                    $(".col3 > .sets > .set1").addClass("show");
+                }
+                if (t > 8.4){
+                    $(".col3").removeClass("show");
+                }
+                if (t > 8.55){
+                   $(".col1 > .sets > .set2").addClass("show");
+                }
+                if (t > 8.7){
+                   $(".col2 > .sets > .set2").addClass("show");
+                }
+                if (t > 14.3){
+                    $(".col2").removeClass("show");
+                }
+                if (t > 14.5){
+                   $(".col1 > .sets > .set3").addClass("show");
+                }
+                if (t > 27.2){
+                    $(".col1").removeClass("show");
+                    $(".col3").removeClass("show");
+                }
+                if (t > 27.4){
+                    $(".col2").addClass("show");
+                }
+                if (t > 27.6){
+                   $(".col2 > .sets > .set3").addClass("show");
+                }
+                if (t > 39.2){
+                   $(".col2").removeClass("show");
+                }
+                if (t > 39.4){
+                   $(".col3").addClass("show");
+                }
+                if (t > 39.6){
+                   $(".col3 > .sets > .set2").addClass("show");
+                }
+				
+				if (t > 47.8){
+					$(".col1").addClass("show");
+					$(".col2").addClass("show");
+					$(".col3").addClass("show");
+				}
+              }  else {
+                
+            }
+		}
+
+        $(ap).bind("ended", function(evt){
+            if($(ap).attr("src") == audioArray[3]){
+                p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+
+                // set page complete
+                var pageKey = "page" + p.courseObj.currentIndex + "Done";
+                p.courseObj.videoViewed[pageKey] = true;
+
+            } else if ($(ap).attr("src") != audioArray[3]){
+                p.audio.messages.create("Click the <i>Next</i> button to continue.",true);
+                $(".next").addClass("highlight");
+            }
+        });
+
+        // setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime
+            var apSRC = $(ap).attr("src");
+            switch (apSRC) {
+                case audioArray[0]:
+                    syncSlides(0,ts);
+                    break;
+                case audioArray[1]:
+                    syncSlides(1,ts);
+                    break;
+                case audioArray[2]:
+                    syncSlides(2,ts);
+                    break;
+                case audioArray[3]:
+                    syncSlides(3,ts);
+                    break;
+            }
+        });
+
+        setPageComplete = function() {
+            var pageKey = "video" + p.courseObj.currentIndex;
+            p.courseObj.videoViewed[pageKey] = true;
+        }
+
+        //---//
+        initializePage = function () {
+            $(".section-title span").append(pageTitles[curSlide]);
+            $(".progress > p").eq(curSlide).addClass("active");
+            animateSlides(0);
+        }
+
+        // build the page once the wipe is removed
+        buildPage = function() {
+            //credit for starting page
+			p.controller.setPageViewed("understandingfleetneeds");
+
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+        // iframe load and unload events
+        $(window).load(function () {
+           
+			checkIndex();
+            p.audio.player.load(audioArray[curSlide]);
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+
+            p.controller.setVar("introViewed", true);
+        });
+
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+
+        initializePage();
+    });
+    </script>
+    <style type="text/css">
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and next buttons -->
+	<div id="header">
+        <div class="title">
+            <div class="menu slide-out">
+                <div class="menu-icon">
+                    <p>Menu</p>
+                </div>
+                <div class="roll-state"></div>
+            </div>
+            <h1>
+                <span class="headline sequence hide"><b>Family of Brands</b></span>
+            </h1>
+        </div>
+    </div>
+    
+	<!-- In page navivation -->
+	<div class="inpagenavigation">
+        <div class="next">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+                <path d="M10 5, 40 50,10 95" />
+            </svg>
+        </div>
+        <div class="prev">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 100" preserveAspectRatio="none">
+                <path d="M40 5, 10 50,40 95" />
+            </svg>
+        </div>
+	</div>
+	
+	<!-- Main content container -->
+    <div id="outside" class="familyofbrands">
+		<div id="inside">
+			<h1 class="section-title"><span></span></h1>
+			<div class="progress"> </div>
+			
+			<!-- section 1 -->
+			<div class="slide one">
+				<img class="tire" src="../../_media/images/michelin_donut.png"/>
+				<img class="shadow" src="../../_media/images/donut_shadow.png"/>
+				<div class="callouts">
+					<!--<img class="logo" src="../../_media/images/michelin_logo_depth.png" />-->
+					<div class="set1">
+						<p class="label"><span>For the loads that matter most</span></p>
+						<!--<p class="label"><span>Quality</span></p>-->
+						<p class="label"><span>Safety</span></p>
+						<p class="label"><span>On-time delivery</span></p>
+						<p class="label"><span>Total lowest cost of ownership</span></p>
+					</div>
+					<div class="set2">
+						<p class="label">Tire purchase is an investment</p>
+						<p class="label">Leading quality and performance</p>
+						<p class="label">Maximum fuel efficiency and mileage</p>
+						<p class="label">Maximum retreadability</p>
+					</div>
+				</div>
+			</div>
+				
+			<!-- section 2 -->
+			<div class="slide two">
+				<img class="tire" src="../../_media/images/bfgoodrich_donut.png"/>
+				<img class="shadow" src="../../_media/images/donut_shadow.png"/>
+				<div class="callouts">
+                    <div class="set1">
+						<p class="label"><span>For fleets that value uptime</span></p>
+						<p class="label"><span>Proven Performance</span></p>
+						<p class="label"><span>Durability</span> that keeps you up and running, even in difficult conditions</p>
+					</div>
+					<div class="set2">
+						<p class="label">Quality and durability at a competitive price</p>
+						<p class="label">Strong brand heritage</p>
+						<p class="label">Reliable and retreadable casing</p>
+					</div>
+				</div>
+			</div>
+				
+			<!-- section 3 -->
+			<div class="slide three">
+				<img class="tire" src="../../_media/images/uniroyal_donut.png" />
+				<img class="shadow" src="../../_media/images/donut_shadow.png"/>
+				<div class="callouts">
+                    <div class="set1">
+						<p class="label"><span>For cost conscious fleets</span></p>
+						<p class="label"><span>Affordable</span></p>
+						<p class="label"><span>Dependable</span></p>
+						<p class="label"><span>Reliable</span></p>
+					</div>
+					<div class="set2">
+						<p class="label">Affordable, dependable tire</p>
+						<p class="label">Retreadable</p>
+						<p class="label">120+ years of experience</p>
+					</div>
+				</div>
+			</div>
+				
+			<!-- section 4 -->
+			<div class="slide four">
+				<div class="columnstructure">
+					<div class="c3 col1">
+						<img class="imageHolder" src="../../_media/images/MichelinLogo_fleet.jpg" />
+						<div class="sets">
+                            <div class="set1">
+                                <p>Support from local Michelin Representative</p>
+                                <p>Support from local Field Engineer</p>
+                            </div>
+                            <div class="set2">
+                                <p>Ability to sell on National Account, Advantage, or LBB</p>
+                            </div>
+                            <div class="set3">
+                                <p>Confidence of having a premium tire in your fleets that will deliver outstanding performance and durability.</p>
+                                <p>Maximum retreadability saves your fleet money and maximizes ROI</p>
+                            </div>
+                        </div>
+					</div>
+
+					<div class="c3 col2">
+						<img class="imageHolder" src="../../_media/images/BFGoodrich_fleet.jpg" />				
+						<div class="sets">
+                            <div class="set1">
+                                <p>Support from local Michelin Representative</p>
+                                <p>Support from local Field Engineer</p>
+                            </div>
+                            <div class="set2">
+                                <p>Ability to sell on National Account, Advantage, or LBB</p>
+                            </div>
+                            <div class="set3">
+                                <p>Best of both worlds: Provides your customer with the proven performance they desire at a competitive price point</p>
+                                <p>Durable and retreadable casing to help maximize uptime on the road</p>
+                            </div>
+                        </div>
+					</div>
+			
+					<div class="c3 col3">
+						<img class="imageHolder" src="../../_media/images/Uniroyal_fleet.jpg" />				
+						<div class="sets">
+                            <div class="set1">
+                                <p>Support from local Michelin Representative</p>
+                                <p>Support from local Field Engineer</p>
+                            </div>
+                            <div class="set2">
+                                <p>Competitive price</p>
+                                <p>Reliable tires from a brand they know and trust</p>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+     </div>
+	
+	<!-- Branding theme backgrounds -->
+	<div class="background-contain">
+		<div class="foreground">
+			<img src="../../_media/images/familyofbrands_fg_1.png" />
+			<img src="../../_media/images/familyofbrands_fg_2.png" />
+			<img src="../../_media/images/familyofbrands_fg_3.png" />
+		</div>
+		<div class="background">
+			<img src="../../_media/images/familyofbrands_bg_1.jpg" />
+			<img src="../../_media/images/familyofbrands_bg_2.jpg" />
+			<img src="../../_media/images/familyofbrands_bg_3.jpg" />
+		</div>
+	</div>
+	
+    <!-- add audio for preloader -->
+    <div id="preload-audio">
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/abetterwayforward.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/takecontrol.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/affordableanddependable.mp3'></audio>
+        <audio src='http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/whysellourbrands.mp3'></audio>
+    </div>
+ 
+	 <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .8;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script> 
+</body>
+</html>

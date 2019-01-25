@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Warranty</title>
+    <link type="text/css" rel="stylesheet" href="../../_css/warranty.css" />
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../../_js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+    $(function() {
+	
+
+       var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+
+        // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+
+       // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+
+		$(ap).bind("ended", function(evt){
+            //console.log("done");
+            p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime;
+			
+			//console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+                if (ts == 0.00){
+					$(".warranty .header").addClass('show');
+					$(".col1 .tireHolder img").eq(0).removeClass("show");
+					$(".col1 .tireHolder img").eq(1).removeClass("show");
+					$(".col1 .tireHolder img").eq(2).removeClass("show");
+					$(".col2 .tireHolder img").eq(0).removeClass("show");
+					$(".col2 .tireHolder img").eq(1).removeClass("show");
+					$(".col2 .tireHolder img").eq(2).removeClass("show");
+					$(".col3 .tireHolder img").eq(0).removeClass("show");
+					$(".col3 .tireHolder img").eq(1).removeClass("show");
+					$(".col3 .tireHolder img").eq(2).removeClass("show");
+					$(".col1 .set1").removeClass("show");
+					$(".col1 .set2").removeClass("show");
+					$(".col2 .set1").removeClass("show");
+					$(".col2 .set2").removeClass("show");
+					$(".col3 .set1").removeClass("show");
+					$(".col3 .set2").removeClass("show");
+					$(".col1 .set3 p").eq(0).removeClass("show");
+					$(".col2 .set3 p").eq(0).removeClass("show");
+					$(".col3 .set3 p").eq(0).removeClass("show");
+					$(".col1 .set3 p").eq(1).removeClass("show");
+					$(".col2 .set3 p").eq(1).removeClass("show");
+					$(".col3 .set3 p").eq(1).removeClass("show");
+					$(".col1 .set3 p").eq(2).removeClass("show");
+					$(".col2 .set3 p").eq(2).removeClass("show");
+					$(".col3 .set3 p").eq(2).removeClass("show");
+					$(".launch_warranty_button").removeClass("show");
+				}
+				
+				if (ts > 0.1){
+					$(".warranty .header").addClass('show');
+				}                
+				if (ts > 0.5) {
+					 $(".col1 .tireHolder img").eq(0).addClass("show");
+				}
+				if (ts > 0.6) {
+					 $(".col2 .tireHolder img").eq(0).addClass("show");
+				}
+				if (ts > 0.7){
+					 $(".col3 .tireHolder img").eq(0).addClass("show");
+				}
+				if (ts > 1) {
+					 $(".col1 .tireHolder img").eq(1).addClass("show");
+					 $(".col1 .set1").addClass("show");
+				}
+				if (ts > 1.1) {
+					 $(".col2 .tireHolder img").eq(1).addClass("show");
+					 $(".col2 .set1").addClass("show");
+				}
+				if (ts > 1.2) {
+					 $(".col3 .tireHolder img").eq(1).addClass("show");
+					 $(".col3 .set1").addClass("show");
+				}
+				
+				if (ts > 1.5) {
+					 $(".col1 .tireHolder img").eq(2).addClass("show");
+					 $(".col1 .set2").addClass("show");
+				}
+				if (ts > 1.6) {
+					 $(".col2 .tireHolder img").eq(2).addClass("show");
+					 $(".col2 .set2").addClass("show");
+				}
+				if (ts > 1.7) {
+					 $(".col3 .tireHolder img").eq(2).addClass("show");
+					 $(".col3 .set2").addClass("show");
+				}
+				
+				if (ts > 2) {
+					$(".col1 .set3 p").eq(0).addClass("show");
+					$(".col2 .set3 p").eq(0).addClass("show");
+					$(".col3 .set3 p").eq(0).addClass("show");
+				}
+				if (ts > 2.4) {
+					$(".col1 .set3 p").eq(1).addClass("show");
+					$(".col2 .set3 p").eq(1).addClass("show");
+					$(".col3 .set3 p").eq(1).addClass("show");
+				}
+				if (ts > 2.8) {
+					$(".col1 .set3 p").eq(2).addClass("show");
+					$(".col2 .set3 p").eq(2).addClass("show");
+					$(".col3 .set3 p").eq(2).addClass("show");
+				}
+				if (ts > 26.1) {
+					$(".launch_warranty_button").addClass("show");
+				}
+			}
+		});
+
+        //-- build the page once the wipe is removed --//
+        buildPage = function() {
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+		/* iframe load and unload events */
+        $(window).load(function () {
+            audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+
+            p.controller.setVar("introViewed", true);
+			
+			var buildTires = new TimelineMax();
+			/*buildTires
+				.set($(".tireHolder img").eq(1), {className: '+=show'}, 0.5)
+				.set($(".tireHolder img").eq(2), {className: '+=show'}, 1.0)
+				.set($(".tireHolder img").eq(3), {className: '+=show'}, 1.5);
+				//.staggerTo(choice, 0.4, {opacity:1.00, ease:Power4.easeOut, delay: 0.5}, .3);
+			*/
+		});
+
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+	});
+
+    </script>
+
+    <style type="text/css">
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="title">
+            <div class="title">
+                <div class="menu slide-out">
+                    <div class="menu-icon">
+                        <p>Menu</p>
+                    </div>
+                    <div class="roll-state"></div>
+                </div>
+                <h1>
+                    <span class="headline sequence hide"><b>Warranty</b></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+   
+    
+    <div id="outside" class="warranty">
+        <div class="page" id="inside">
+            <!-- Scaleable inner content -->
+            <h1 class="header">Warranty at a Glance</h1>
+			<div class="columnstructure">
+				<div class="c3 col1">
+					<div class="logoHolder"><img src="../../_media/images/MichelinLogo.png" /></div>
+					<div class="sets">
+						<div class="set1"><h2>Workmanship &amp; Materials</h2></div>
+						<div class="set2">
+							<p class="goldText">
+								<span>84</span> MONTHS
+							</p>
+						</div>
+						<div class="set3">
+							<p><span class="goldText">3</span> Retreads</p>
+							<p>Extended Warranty*</p>
+							<p>Certain Long Haul Service Tires</p>
+						</div>
+					</div>
+					
+					<!-- launch warranty page -->
+					<a class="button launch_warranty_button" href="http://www.michelintruck.com/reference-materials/manuals-bulletins-and-warranties" target="_blank">
+						<p class="static-state">WARRANTY PAGE</p>
+						<p class="roll-state"></p>
+					</a>
+					
+					<div class="tireHolder">
+						<img src="../../_media/images/michelin_tire_1.png" />
+						<img src="../../_media/images/michelin_tire_2.png" />
+						<img src="../../_media/images/michelin_tire_3.png" />
+					</div>
+				</div>
+
+				<div class="c3 col2">
+					<div class="logoHolder"><img src="../../_media/images/bfgoodrich_logo.png" /></div>		
+					<div class="sets">
+						<div class="set1"><h2>Workmanship &amp; Materials</h2></div>
+						<div class="set2">
+							<p class="goldText">
+								<span>60</span> MONTHS
+							</p>
+						</div>
+						<div class="set3">
+							<p><span class="goldText">2</span> Retreads</p>
+							<p>Extended Warranty*</p>
+							<p>Long Haul Service Tires</p>
+						</div>
+					</div>
+										
+					<!-- launch warranty page -->
+					<a class="button launch_warranty_button" href="http://www.bfgoodrichtrucktires.com/reference-materials/manuals-and-warranties/" target="_blank">
+						<p class="static-state">WARRANTY PAGE</p>
+						<p class="roll-state"></p>
+					</a>
+					
+					<div class="tireHolder">
+						<img src="../../_media/images/bfgoodrich_tire_1.png" />
+						<img src="../../_media/images/bfgoodrich_tire_2.png" />
+						<img src="../../_media/images/bfgoodrich_tire_3.png" />
+					</div>
+				</div>
+			
+				<div class="c3 col3">
+					<div class="logoHolder"><img src="../../_media/images/uniroyallogo.png" /></div>			
+					<div class="sets">
+						<div class="set1"><h2>Workmanship &amp; Materials</h2></div>
+						<div class="set2">
+							<p class="goldText"><span>48</span> MONTHS</p>
+						</div>
+						<div class="set3">
+							<p><span class="goldText">1</span> Retread</p>
+							<p>Limited Warranty*</p>
+							<p>Long Haul &amp; Regional Service Tires</p>
+						</div>
+					</div>
+					
+					<!-- launch warranty page -->
+					<a class="button launch_warranty_button" href="http://www.uniroyaltrucktires.com/reference-materials/manuals-bulletins-and-warranties/" target="_blank">
+						<p class="static-state">WARRANTY PAGE</p>
+						<p class="roll-state"></p>
+					</a>
+					
+					<div class="tireHolder">
+						<img src="../../_media/images/uniroyal_tire_1.png" />
+						<img src="../../_media/images/uniroyal_tire_2.png" />
+						<img src="../../_media/images/uniroyal_tire_3.png" />
+					</div>
+				</div>
+			</div>
+			<div class="footnote"><p class="disclaimer">Consult each brand warranty booklet for details.</p></div>
+        </div>
+	</div>
+	
+	<div class="cover_all"></div>
+	
+    <div id="preload-audio">
+        <audio id="audio" src="http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/warranty.mp3"></audio>
+    </div>
+	
+    <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .9;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script>
+</body>
+</html>

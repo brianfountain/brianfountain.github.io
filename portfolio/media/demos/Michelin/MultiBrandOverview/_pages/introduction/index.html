@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adapt Me</title>
+    <link type="text/css" rel="stylesheet" href="../../_css/introduction.css" />
+    <script type="text/javascript" src="../../_js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_js/tweenmax.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="../../_js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+    $(function() {
+		/*
+		//drag blocking code - currently problematic
+		$(document).delegate('body','touchmove',function(e){
+			e.preventDefault ? e.preventDefault() : e.returnValue = false; 
+        }).delegate('.clickable','touchmove',function(e){
+                e.stopPropagation();
+        });
+		*/
+
+       var p = window.parent;
+        var audioSRC = undefined;
+        var ap = p.document.getElementById("audio");
+
+       // transition end prefixes
+        var transitionEvent = setTransitionEvent();
+        function setTransitionEvent(){
+            var t,
+            el = document.createElement("fakeelement");
+            var transition = {"transition":"transitionend","OTransition":"oTransitionEnd","MozTransition":"transitionend","WebkitTransition":"webkitTransitionEnd"}
+            for (t in transition){if (el.style[t] !== undefined){return transition[t];}}
+        }
+            
+        // menu states
+        $(".menu").on({
+            click: function () {
+                $(".menu").removeClass('slide-in').addClass('slide-out');
+                $(".headline.sequence").removeClass('show').addClass('hide');
+                $(".menu.slide-out").on(transitionEvent, function(){
+                    $(".menu.slide-out").off(transitionEvent);
+                    p.audio.player.toggle();
+                    p.addTransitionPage(0);
+                });
+				$('#transition').removeClass('noSkew');
+            }
+        });
+
+		$(ap).bind("ended", function(evt){
+            //console.log("done");
+            p.audio.messages.create("Click the <i>Menu</i> button to choose another topic.",true);
+
+            // set page complete
+            var pageKey = "page" + p.courseObj.currentIndex + "Done";
+            p.courseObj.videoViewed[pageKey] = true;
+        });
+
+		// setup animation timing
+        $(ap).bind("timeupdate", function(evt){
+            var ts = evt.target.currentTime;
+			//console.log("Timestamp = " + ts);
+			if (p.audio.player.source == audioSRC){
+                if (ts == 0.00){
+	               $(".page .header").removeClass('show');
+					$(".changingMarkets").removeClass('show');
+					$(".col").removeClass('show');
+					$(".col1 > .growthIndicatorMask").removeClass('show');
+					$(".col2 > .growthIndicatorMask").removeClass('show');
+					$(".col3 > .growthIndicatorMask").removeClass('show');
+					$(".col4 > .growthIndicatorMask").removeClass('show');
+					$(".col > img").removeClass('show');
+					$(".col2 > img").removeClass('show');
+					$(".col3 > img").removeClass('show');
+					$(".segmentSize").removeClass('show');
+					$(".segmentSizeBars").removeClass('show');
+					$(".segmentSizeMask").removeClass('show');
+					$(".segmentSizeDryVanHL").removeClass('show');
+					$(".segmentSizeDryVanHL_2").removeClass('show');
+					$(".fleetBuyingBehavior").removeClass('show');
+            	}
+				
+				// Part I
+				if (ts > 0.1){
+					$(".changingMarkets .header").addClass('show');
+					$(".changingMarkets").addClass('show');
+				}
+                if (ts > 1.5){
+					$(".col").addClass('show');
+				}			
+                if (ts > 3.6){
+					$(".col1 > .growthIndicatorMask").addClass('show');
+					$(".col2 > .growthIndicatorMask").addClass('show');
+					$(".col3 > .growthIndicatorMask").addClass('show');
+					$(".col4 > .growthIndicatorMask").addClass('show');
+				}
+				
+				if (ts > 8){
+					$(".col > img").addClass('show');
+					$(".col2 > img").addClass('show');
+					$(".col3 > img").addClass('show');
+				}
+							
+				if (ts > 14.8){			
+					$(".changingMarkets .header").removeClass('show');
+				}
+				if (ts > 14.9){			
+					$(".changingMarkets").removeClass('show');
+				}
+				
+				// Part II
+                if (ts > 15.2){
+					$(".segmentSize .header").addClass('show');
+					$(".segmentSize").addClass('show');
+				}
+                if (ts > 15.6){
+					$(".segmentSizeBars").addClass('show');
+				}
+                if (ts > 15.7){
+					$(".segmentSizeMask").addClass('show');
+				}
+				
+				if (ts > 22.7){
+					$(".segmentSizeDryVanHL").addClass('show');
+				}
+				
+				if (ts > 28){
+					$(".segmentSizeDryVanHL").removeClass('show');
+				}
+				
+				if (ts > 28.5){
+					$(".segmentSizeDryVanHL_2").addClass('show');
+				}
+				
+				if (ts > 49.25){
+					$(".segmentSize .header").removeClass('show');
+					$(".segmentSize").removeClass('show');
+				}
+				
+				// Part III
+				if (ts > 49.9){
+					$(".fleetBuyingBehavior .header").addClass('show');
+					$(".fleetBuyingBehavior").addClass('show');
+				}
+			}
+		});
+
+        //-- build the page once the wipe is removed --//
+        buildPage = function() {
+			
+			$(".menu").removeClass('slide-out').addClass('slide-in');
+            $(".headline.sequence").removeClass('hide').addClass('show');
+
+            $(".menu.slide-in").on(transitionEvent, function(){
+                // show audio player and play audio
+                p.audio.player.toggle();
+                p.audio.player.play();
+                $(".menu.slide-in").off(transitionEvent);
+            });
+        }
+
+		/* iframe load and unload events */
+        $(window).load(function () {
+            
+			audioSRC = $("#preload-audio > audio").attr("src");
+            p.audio.player.load(audioSRC);
+
+            p.isFrameLoaded(true);
+            $("#preload-audio").html("&nbsp;");
+
+            p.controller.setVar("introViewed", true);
+        });
+
+        $(window).unload(function () {
+           //p.isFrameLoaded(false);
+        });
+	});
+
+    </script>
+
+    <style type="text/css">
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0px;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="title">
+            <div class="title">
+                <div class="menu slide-out">
+                    <div class="menu-icon">
+                        <p>Menu</p>
+                    </div>
+                    <div class="roll-state"></div>
+                </div>
+                <h1>
+                    <span class="headline sequence hide"><b>Introduction</b></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div id="outside" class="introduction">
+        <div id="inside">
+			<!-- Begin Changing Markets section -->
+			<div class="changingMarkets">
+				<h1 class="header">Changing Markets</h1>
+				<div class="col col1">
+					<img src="../../_media/images/michelin_logo_chart.png" />
+					
+					<div class="growthIndicatorMask">
+                        <div class="growthIndicator">
+                            <img src="../../_media/images/slightly_down.png" /><br />
+                            <span>Slightly Down</span>
+                        </div>
+                    </div>
+					
+					<div class="growthNumber">37%</div>
+				</div>
+				<div class="col col2">
+					<img src="../../_media/images/bfgoodrich_logo_chart.png" />
+					
+					<div class="growthIndicatorMask">
+                        <div class="growthIndicator">
+                            <img src="../../_media/images/mostly_flat.png" /><br />
+                            <span>Mostly Flat</span>
+                        </div>
+                    </div>
+					
+					<div class="growthNumber">32%</div>
+				</div>
+				<div class="col col3">
+					<img style="left: -70px" src="../../_media/images/uniroyal_logo_chart.png" />
+					
+					<div class="growthIndicatorMask">
+                        <div class="growthIndicator">
+                            <img src="../../_media/images/some_growth.png" /><br />
+                            <span>Some Growth</span>
+                        </div>
+                    </div>
+						
+					<div class="growthNumber">31%</div>
+				</div>
+				<div class="col col4">
+					<div class="growthIndicatorMask">
+                        <div class="growthIndicator">
+                            <img src="../../_media/images/flat.png" />
+                        </div>
+                    </div>
+					
+					<div class="growthNumber">100%</div>
+					
+				</div>
+			</div>
+			
+			<!-- Begin Segment Size and Product Mix section -->
+			<div class="segmentSize">
+				<h1 class="header">Segment Size and Product Mix</h1>
+                <!--
+                <div class="segmentSizeBars">
+                    <svg>
+                      <defs>
+                        <clipPath id="segmentSizeMaskSvg">
+                          <rect width="915" height="404" />
+		                </clipPath>
+                      </defs>
+                    </svg>
+                    <img src="../../_media/images/segment_size_bars.png" />
+                </div>
+                -->
+				
+				<!-- LTL highlight -->
+				<div class="segmentSizeDryVanHL">
+                    <img src="../../_media/images/segment_size_dryvan_highlight.png" />
+                </div>
+				
+				<!-- TL highlight -->
+				<div class="segmentSizeDryVanHL_2">
+                    <img src="../../_media/images/segment_size_dryvan_highlight_2.png" />
+                </div>
+                
+                <div class="segmentSizeLegend">
+                    <img src="../../_media/images/segment_size_legend.png" />
+                </div>
+                
+                <div class="segmentSizeMask">
+                    <div class="segmentSizeBars">
+                        <img src="../../_media/images/segment_size_bars.png" />
+                    </div>
+                </div>
+			</div>
+			<!-- End Segment Size and Product Mix section -->
+			
+			<!-- Begin Fleet Buying Behavior section -->
+			<div class="fleetBuyingBehavior">
+				<!-- Page content -->
+				<h1 class="header">Fleet Buying Behavior</h1>
+				<div class="columnstructure">
+					<div class="c3" style="border: #27509b 6px solid; height: 525px">
+						<h2>Premium</h2>
+						<img src="../../_media/images/premium_behaviors.png" class="imageSet" />
+						<div class="imageHolder">
+							<img src="../../_media/images/MichelinLogo.png" />	
+						</div>
+					</div>
+
+					<div class="c3" style="border: #092c74 6px solid; height: 495px">
+						<h2>Intermediate</h2>
+					    <img src="../../_media/images/intermediate_behaviors.png" class="imageSet" />
+						<div class="imageHolder">
+							<img src="../../_media/images/BFGoodrichLogo.png" />
+						</div>
+					</div>
+
+					<div class="c3" style="border: #eb1c23 6px solid; height: 463px">
+						<h2>Budget</h2>
+					    <img src="../../_media/images/budget_behaviors.png" class="imageSet" />
+						<div class="imageHolder">
+							<img src="../../_media/images/uniroyallogo.png" />
+						</div>
+					</div>
+				</div>
+
+				<div class="footnote">
+					<p class="disclaimer"><b>**Note: </b>In some of the larger segments (Dry Van, Flat Bed, Construction, etc.) 
+there will be fleets that purchase across multiple price tiers.</p>
+				</div>
+			</div>
+			<!-- END Fleet Buying Behavior section -->
+			
+			
+			<!-- End Changing Markets section -->
+		</div>
+    </div>
+    <div id="preload-audio">
+        <audio id="audio" src="http://web28.streamhoster.com/netd/michelin/audio/MultiBrand/Overview/introduction.mp3"></audio>
+    </div>
+     <script>
+        // Scaleness - Brian Fountain
+        var maxWidth  = $('#inside').width();
+        var maxHeight = $('#inside').height();
+        
+        // Scale subfunction
+        function scaleness ( jQuery ) {
+            
+             var $window = $(window);
+             var width = $window.width();
+             var height = $window.height();
+             var scale;
+             var paddingFactor = .95;
+
+            // If the width AND height of the browser window is greater than the #inside div
+            // Reset the width, height, and centering margins
+            if(width >= maxWidth && height >= maxHeight) {
+                $('#inside').css({'-webkit-transform': ''});
+				$('#inside').css({'transform': ''});
+				$('#inside').css({'-ms-transform': ''});
+                $('#outside').css({
+                    width: '', height: '', 'margin-top': '', 'margin-left': ''
+                });
+                return;
+            }
+            
+            // Set the scale variable to the lesser of two values
+            scale = Math.min( ((width/maxWidth) * paddingFactor), ((height/maxHeight) * paddingFactor) );
+            
+            $('#inside').css({
+                '-webkit-transform': 'scale(' + scale + ')',
+				'transform': 'scale(' + scale + ')',
+				'-ms-transform': 'scale(' + scale + ')',
+            });
+
+            $('#outside').css({
+                'width': maxWidth * scale,
+                'height': maxHeight * scale,
+                'margin-top': -Math.abs((maxHeight * scale)/2),
+                'margin-left': -Math.abs((maxWidth * scale)/2)
+            });
+        };
+
+        // Apply scalenous to both
+        $( window ).resize( scaleness );
+        $( window ).load( scaleness );
+</script>
+</body>
+</html>
