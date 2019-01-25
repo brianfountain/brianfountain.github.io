@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Uniroyal Customers</title> 
+
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/TweenLite.min.js"></script>
+<script src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script src="js/pageAnimation.js"></script>
+<script src="../../js/animationSequence.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+
+    $(window).on('load', function (){           
+            animationEvents();   
+			parent.$("#jquery_jplayer_1").jPlayer("play"); 
+        });
+
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        
+        <!--<div class="dimmer" id="dimmer"></div>-->
+
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="../../images/char/tiger/tigerSmall0.png" class="character tiger startHidden openingFade" id="tigerSmall">
+            <img src="../../images/char/tigerSmallBlink/tigerSmallBlink1.png" class="character tiger startHidden openingFade" id="tigerSmallBlink">
+			<div id="click-dave" class="clickable"></div>
+            <div id="click-pat" class="clickable"></div>
+            <div id="click-jose" class="clickable"></div> 
+            <img src="../../images/char/pat/pat1.png" class="character startHidden openingFade" id="pat">
+            <img src="../../images/char/jose/jose1.png" class="character startHidden openingFade" id="jose">
+            <img src="../../images/char/dave/dave1.png" class="character startHidden openingFade" id="dave">
+			<img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+        
+            <img src="../../images/bg/bg.png" style="position:absolute; width:101%; height:127%; margin-top:-50px; margin-left:0%"/>
+                
+             	<img src="img/screen/text1.png" class="startHidden" id="text1"/>
+				<img src="img/screen/text2.png" class="startHidden" id="text2"/>
+            
+				<img src="img/screen/sign.png" id="ourTargetEndUser" class="pageTitle leftJustified startHidden openingFade" />
+            
+				<img src="img/label/box_dave.png" class="labelItem startHidden" id="label1"/>
+				<img src="img/label/box_pat.png" class="labelItem startHidden" id="label2"/>
+                <img src="img/label/box_jose.png" class="labelItem startHidden" id="label3"/>
+
+
+        </div><!--end screen-->        
+    </div><!--end pageWrapper-->
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Scenario Pat</title>
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+<!-- --------------------------- jQuery ------------------------------------>
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<!-- -------------------------- TweenMax ---------------------------------->
+<script type="text/javascript" src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script src="js/toolsInteraction.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+<!-- ----------------------- JPlayer Audio -------------------------------->
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+  $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	}).delegate('.clickable','touchmove',function(e){
+
+    	e.stopPropagation();
+	});
+
+   $(window).on('load', function (){           
+            toolsInteraction();   
+			parent.$("#jquery_jplayer_1").jPlayer("play"); 
+			init();
+      });  
+	
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        <!--<div class="dimmer" id="dimmer"></div>-->
+		<div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="../../images/char/tiger/tigerBlink1.png" class="character" id="tiger">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+				
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+         	<!-- Feedback -->
+            <div id="feedback" style="display:none">
+             	<img id="feedbackImages" src="img/fbCorrect.png" />
+             	<a id="retryBtn" class="button clickable" style="position: absolute; display: none; top: 58px; left: 208px" href="javascript:void(0)" id="retry" onClick="$('#feedback').fadeOut(); resetQuestion(answerKey1);">RETRY</a>
+        	</div>
+            
+            <img src="../../images/windowFrame-min.png" style="position:absolute; width:102%; height:155%; margin-top:-125px; margin-left:-1%"/>
+                     
+            <!-- <img src="img/COMP.png" style="position:absolute; margin-top:-94px; margin-left:-149px; z-alpha:100"/> -->
+			<img src="img/bookSign.png" id="bookSign" class="clickable startHidden openingFade"/>
+			
+            <!-- Submit Button -->
+            <a href='javascript:void(0)' id='submitBtn' class='button clickable' onclick='submitClick();'>SUBMIT</a>
+            
+            <!-- Question 1 -->
+        	<div class="questions">
+              
+                    <!-- Formerly mcQuestion class content-->
+                   <img src="img/question.png" id="question" />
+                   <!--<p class="mcInstruction">Select the correct option.</p>-->
+                   <div class="options" class="z-index: 10000000">
+                   		<div>
+                            <div class="activeState" style="display: none"><img src="img/a1Correct.png" /></div>
+                            <input type="radio" name="question1" id="a1" value="0" class="css-checkbox" />
+                            <label class="a1 css-label clickable" for="a1"></label>
+                        </div>
+                        <div>  
+                            <input type="radio" name="question1" id="a2" value="0" class="css-checkbox" />
+                            <label class="a2 css-label clickable" for="a2"></label>
+                           
+                        </div>
+                        <div>    
+                            <input type="radio" name="question1" id="a3" value="0" class="css-checkbox" />
+                            <label class="a3 css-label clickable" for="a3"></label>
+						</div>
+                                   
+                    </div>
+           </div><!--end screen-->     
+          
+           <img src="img/pat.png" id="dave" />
+        
+        
+  		
+    </div><!--end pageWrapper-->
+</body>
+
+</html>

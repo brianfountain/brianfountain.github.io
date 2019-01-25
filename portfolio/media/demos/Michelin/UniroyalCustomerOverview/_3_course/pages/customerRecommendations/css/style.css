@@ -1,0 +1,248 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-color: transparent;
+}
+
+html
+{
+    background:url(../../../images/bg/bg-min.png) no-repeat center top;
+    background-size: 2038px 1528px;
+    background-color: #BAB2A6;
+    background-position: contain;
+}
+
+@font-face {
+    font-family: 'MetaBoldLFItalic';
+    src: url('../../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot');
+    src: url('../../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot?#iefix') format('embedded-opentype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+.pageWrapper {
+    position:fixed;
+    width:100%;
+    height:auto;
+    top:0;
+    left:-0px;     
+    overflow: visible;
+}
+
+.roomElement {
+    position: relative;
+    overflow:visible;
+    margin: 0px auto;
+    left: 0px;
+}
+
+.screen {
+
+    background-color: #FFF;
+    width: 728px;
+    height: 324px;
+    top: 0px;
+    margin-top:93px;
+    left:0px;
+    z-index: 0;
+}
+
+.floor {
+    width: 0px;
+    height: 0px;
+    top: 0px;
+    margin: 0px auto;
+    z-index: 5;   
+}
+
+
+.header1{
+    position:relative;
+    font-size:5.5em;
+    letter-spacing: -2.2px;
+    color:#323136;
+    margin-top:.25em;
+    font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+}
+
+.MetaBoldLFItalic {
+    font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+}
+
+.tireStack {
+    position: absolute;
+    width: 700px;
+    height:338px;
+    max-width:800px;
+    z-index:3;   
+}
+
+#tireStackLeft2 {
+    position: absolute;
+    top:800px;
+    left:-900px;
+}
+#tireStackLeft {
+    position: absolute;
+    top:920px;
+    left:-900px;
+}
+
+#tireStackRight {
+    top: 890px;
+    left: 170px;
+}
+
+.character{
+    position: absolute;
+    z-index:10;
+}
+
+#tiger {
+    width: 234px;
+    height: 287px;
+    top:316px;
+    left: -588px;
+}
+
+.pageTitle {
+	position:absolute;
+	top:-6%;
+	height:28%;
+	left:3%
+}
+
+#bookSign {
+	position:absolute;
+	top:-20px;
+	left:75%;
+	width:152px
+}
+
+.boldGreenHeader {
+    position:absolute;
+    height:10%;
+    left:32px;
+}
+
+#dimmer{
+    position:absolute;
+    top:0px;
+    left:0px;
+    background-color:rgba(0,0,0,1);
+    height:4000px;
+    width:100%;
+    z-index:2;
+    opacity:.85;
+}
+.bulletItem {
+    position:absolute;
+    height:9.2%;
+    left:32px;
+}
+.leftJustified {
+    left:28px;
+}
+.startHidden {
+    opacity:0.0;
+}
+
+.content
+{
+    position:absolute;
+    width:100%;
+    top:-15%;
+    left:0%;
+}
+
+.toolsBuild{
+    opacity:0.0;
+}
+
+#tools-databook {
+    position:absolute;
+	top:12px;
+	left:75%;
+	width:152px;
+	height:140px;
+	z-index:18;
+}
+
+#bubble
+{
+    position:absolute;
+    width:493px;
+    top:28%;
+    left:17%;
+}
+#bubble1
+{
+    position:absolute;
+    width:157px;
+    top:40%;
+    left:23%;
+}
+#bubble2
+{
+    position:absolute;
+    width:53px;
+    top:60%;
+    left:38%;
+}
+#bubble3
+{
+    position:absolute;
+    width:157px;
+    top:40%;
+    left:46%;
+}
+#bubble4
+{
+    position:absolute;
+    width:43px;
+    top:52%;
+    left:61%;
+}
+#bubble5
+{
+    position:absolute;
+    width:209px;
+    top:47%;
+    left:38%;
+}
+#text1
+{
+    position:absolute;
+    width:430px;
+    top:28%;
+    left:3%;
+}
+#callout
+{
+    position:absolute;
+    width:570px;
+    top:47%;
+    left:3%;
+}
+.dave
+{
+    position:absolute;
+    top:292px;
+    left:170px;
+	width:260px;
+}
+#pat
+{
+    position:absolute;
+    top:350px;
+    left:-360px;
+	width:260px;
+}
+#jose
+{
+    position:absolute;
+    top:380px;
+    left:-90px;
+	width:270px;
+}
