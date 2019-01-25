@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link href="../../../_2_skin/css/skin.css" rel="stylesheet" type="text/css">   
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<meta charset="utf-8">
+<title>Summary</title>
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/TweenLite.min.js"></script>
+<script src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/howler.min.js"></script>
+<script src="js/pageAnimation.js"></script>
+<script src="js/animationSequence.js"></script>
+<script src="js/toolsInteraction.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   $(document).bind("touchmove", function(e)//Disables dragging/swiping/scrolling action.  Touches/clicks work.
+    { 
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    });
+
+    $(window).on('load', function(){ 
+           animationEvents();
+		   parent.$("#jquery_jplayer_1").jPlayer("play");
+		   parent.courseObj.io.setStatus('completed');  
+		   parent.skinLayout.callAttention(
+				'navCloseLink', // div name to call
+				false, // #ID = true, .CLASS = false
+				0.1, // Animation speed
+				{
+					css:{color: 'white'}, // Css here
+					// Native Greensock stuff here
+					repeat: 10, // Other stuff
+					repeatDelay: 0.1,
+					ease:Power2.easeInOut
+				},
+				false // iframe content? = true, skin or player left = false
+			);
+     }); 
+
+
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        
+        <!--<div class="dimmer" id="dimmer"></div>-->
+
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+             <img src="../../images/char/tiger/tigerBlink1.png" class="character" id="tiger">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+
+
+            <img src="../../images/badge1_glint_/badge1_glint_1.png" class="startHidden badge-off" id="badge1_glint_"/>
+
+            <img src="../../images/badge2_glint_/badge2_glint_1.png" class="startHidden badge-off" id="badge2_glint_"/>
+           
+            <img src="../../images/badge3_glint_/badge3_glint_1.png" class="startHidden badge-off" id="badge3_glint_"/>
+
+            <img src="../../images/badges/badge4_off.png" class="startHidden badge-off" id="badge4_off"/>
+            <img src="../../images/badge4_glint_/badge4_glint_1.png" class="startHidden badge-on" id="badge4_glint_"/>
+
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+        
+            <img src="../../images/bg/window_bgMap.png" style="position:absolute; width:102%; height:139%; margin-top:-72px; margin-left:-1%"/>
+
+                <img src="img/congratsCertificate.png" class="certificatebackground" id="certificateid" style="position:absolute"/>
+                
+                <img src="img/congratstitle.png" class="congratstitle startHidden" id="t1"/>
+                <img src="img/congratsMedal.png" class="certificateseal startHidden" id="t2"/>
+				<!--<img src="img/t3.png" class="clipboardContents startHidden" id="t3"/>-->
+				<!--<img src="img/t4.png" class="clipboardContents startHidden" id="t4"/>-->
+                <!--<img src="img/t5.png" class="clipboardContents startHidden" id="t5"/>-->
+				<!--<img src="img/t6.png" class="startHidden" id="t6" style="position:absolute; width:465px; margin-top:285px; margin-left:179px; z-index:2"/>-->
+
+          <div id="tools-dst" class="clickable startHidden"></div>
+                <div id="tools-databook" class="clickable startHidden"></div>
+                <div id="tools-website" class="clickable startHidden"></div>
+                <div id="tools-summarySheet" class="clickable startHidden"></div>
+                
+             <div id="print-cert" class="startHidden">
+                	<a class="button clickable" href="javascript:void(0)" onClick="parent.skinLayout.launchCertificate('https://michelin.netdimensions.com/michelin/servlet/ekp/LISTUSERCERT?DECORATEPAGE=Y', 'Certificate of Completion', 'toolbar=no, scrollbars=yes, resizable=yes')">CLICK HERE TO PRINT CERTIFICATE AND SAVE &amp; EXIT THE COURSE.</a>
+                </div>  
+    				
+
+      </div><!--end screen-->        
+    </div><!--end pageWrapper-->
+</body>
+
+</html>

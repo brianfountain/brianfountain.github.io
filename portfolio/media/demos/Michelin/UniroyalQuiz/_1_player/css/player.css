@@ -1,0 +1,80 @@
+.noBackgroundColor {
+	background-color: transparent;	
+}
+
+.handCursor {
+	cursor: pointer;	
+}
+
+.x-btn button {
+    /* font: 16px arial,tahoma,verdana,helvetica; */
+	font-size: 16px;
+	font-weight:bolder;
+}
+
+.x-tree-node {
+	font-size: 18px;
+	/*
+	margin-top: 10px;
+	margin-bottom: 10px;
+	*/
+}
+.courseMenuCls .x-tree-node-el {
+	line-height: 38px;
+}
+
+.courseMenuCls .x-tree-node {
+    /* white-space: normal; */
+}
+
+.x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon {
+    vertical-align:middle;
+}
+
+.x-tree-icon, .x-tree-ec-icon, .x-tree-elbow-line, .x-tree-elbow, .x-tree-elbow-end, .x-tree-elbow-plus, .x-tree-elbow-minus, .x-tree-elbow-end-plus, .x-tree-elbow-end-minus {
+    vertical-align: middle;
+}
+
+.x-window-header-text {display:none;}
+
+
+.x-panel-body { background: none;}
+
+.ext-el-mask {
+    background: none !important; 
+}
+
+.x-window-dlg .ext-mb-icon {
+    float: left;
+    height: 60px !important; 
+    width: 60px !important; 
+}
+
+#captionBox {
+    zoom:1; /* Enable layout in IE */
+    color: #FFDC00; 
+    z-index: 9;
+	/* text-shadow: 1px 1px #000; */
+}
+
+/*
+#captionBox em {
+    position:absolute;
+    top:-1px;
+    left:-1px;
+    z-index:10;
+    color:#444; 
+    font-style:normal;
+}
+*/
+
+iframe#iframe-win {
+	overflow: hidden;
+}
+
+.x-border-layout-ct {
+    background:#fff !important;
+}
+
+
+

@@ -1,0 +1,242 @@
+		
+* { margin: 0; padding: 0;}
+
+html, body {
+	/* [disabled]width: 100%; */ /* Needed to avoid a redrawing bug in Firefox when resizing windows */
+	background-color: transparent;
+}
+
+.x-border-layout-ct {
+    background-color: transparent;
+}
+
+/*
+
+Official Uniroyal Colors - from Databook
+PMS 032 (red)   #ef4236 or #ef3340 or #ee3b33
+Process Black   #231f20 or #2B2926
+Warm Gray 6     #bbb1a6 or #ADA194
+Cream           #fffbd5 or #FFFDD0
+
+
+colors:
+    light gray (background color):  #f1f1f1
+    dark gray (text):               #323136
+    red:                            #e62329 
+
+
+*/
+
+/* -------------- Course Fonts --------------------- */
+
+@font-face {
+    font-family: 'MetaBookRoman';
+    src: url('../../_2_skin/fonts/metabooklfroman/metabooklfroman.eot');
+    src: url('../../_2_skin/fonts/metabooklfroman/metabooklfroman.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metabooklfroman/metabooklfroman.ttf') format('truetype');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MetaNormalItalic';
+    src: url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.eot');
+    src: url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.woff') format('woff'),
+         url('../../_2_skin/fonts/metanormalitalic/metanormalitalic.ttf') format('truetype');   
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MetaBoldLFRoman';
+    src: url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.eot');
+    src: url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.woff') format('woff'),
+         url('../../_2_skin/fonts/metaboldlfroman/metaboldlfroman.ttf') format('truetype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MetaBoldLFItalic';
+    src: url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot');
+    src: url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.woff') format('woff'),
+         url('../../_2_skin/fonts/metaboldlfitalic/metaboldlfitalic.ttf') format('truetype');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+.MetaBookRoman {
+	font-family: MetaBookRoman, Helvetica, sans-serif;
+}
+
+.MetaNormalItalic {
+	font-family: MetaNormalItalic, Helvetica, sans-serif;
+}
+
+.MetaBoldLFRoman {
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+}
+
+.MetaBoldLFItalic {
+   font-family: MetaBoldLFItalic, Helvetica, sans-serif;
+}
+
+/* -------------- -------------------  ----------------*/
+/* --------------      BASE STYLES     ----------------*/
+/* -------------- -------------------  ----------------*/		
+h1, h2, h3, p, li {text-shadow: 0px 1px 2px #ccc;}
+h1 {color: #172b36; font: bold 1.4em/1.2em Arial, Helvetica, sans-serif; margin: 0 0 5px 0;}
+h2 {color: #172b36; font: bold 1em/1em Arial, Helvetica, sans-serif; margin: 0 0 5px 0;}
+
+h3 {
+	color: #172b36;
+	font: bold 15px/17px Arial, Helvetica, sans-serif;
+	margin: 0 0 5px 0;
+}
+
+p {
+	/* font: normal 13px/16px Arial, Helvetica, sans-serif; */
+	margin: 0 0 12px 0;
+}
+
+ul {}
+
+li {}
+
+img {border: none}
+img.border {}
+
+a {
+	color: #e1d081;
+}
+
+a:hover {
+	color: #b4cc95;
+}
+
+.white {
+	color: #fff;
+}
+
+.yellow {
+	color: #e1d081;
+}
+
+.mustard {
+	color: #c3a205;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+ 	font-style: italic;
+}
+
+/* -------------- -------------------  -----------------*/	
+/* --------------- LIST ITEMS / BULLETS --------------- */
+/* -------------- -------------------  -----------------*/
+
+p.clearall {clear: both;}
+
+/* -------------- -------------------  ----------------*/	
+/* -------------- SET PAGE MARGINS HERE  ------------- */
+/* -------------- -------------------  ----------------*/
+
+.hm-5, .vm-5, .hm-10, .vm-10 {
+	overflow: hidden;
+	width: auto;
+	margin: 0px auto;
+	background: #fff;
+	padding: 2%;
+}
+
+.m-0 {
+	overflow: hidden;
+	width: auto;
+	margin: 0px auto;
+	background: #fff;
+	padding: 0;
+}
+
+/* 5% padding on body content declaration */
+.hm-5 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.vm-5 {
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+/* 10% padding on body content declaration */
+.hm-10 {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.vm-10 {
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+
+
+/* -------------- -------------------  ----------------*/	
+/* -------Uni------ STANDARD BUTTON  -------royal------- */
+/* -------------- -------------------  ----------------*/
+
+.button, .x-btn-mc {
+	margin: 0 auto;
+	padding: 6px 8px;
+	text-align: center;
+	background-color: #ee4135 !important;
+	border: 6px #d21004 solid;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	display: block;
+	text-decoration: none;
+	color: white;
+	font-family: MetaBoldLFRoman,Helvetica,sans-serif !important;
+}
+
+.x-btn td {
+	padding: 10px 0 10px 30px !important;
+}
+
+.x-btn-noicon .x-btn-small .x-btn-text {
+    height: auto !important;
+}
+
+.button:hover, .x-btn-mc:hover {
+	background-color: #d21004 !important;
+	/* border: 6px solid #C6C6C6 !important; */
+}
+
+.button a {
+	font-size: 1.1em;
+	color: #fff !important;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	text-decoration: none;
+	text-shadow: none;
+	display: block;
+}
+
+.x-btn-mc button {
+	font-size: 1.4em;
+	color: #fff !important;
+	font-family: MetaBoldLFRoman, Helvetica, sans-serif;
+	text-decoration: none;
+	text-shadow: none;
+	display: block;
+}
+
+
+

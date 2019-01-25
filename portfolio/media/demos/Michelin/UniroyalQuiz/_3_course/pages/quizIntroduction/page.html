@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+<title>Module Overview</title>
+
+<link href="../../css/course.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<!--<script src="js/jquery.min.js"></script>-->
+<script type="text/javascript" language="javascript" src="../../../_1_player/libs/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="../../js/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/TweenLite.min.js"></script>
+<script src="../../js/TweenMax.min.js"></script>
+<script src="../../js/easing/EasePack.min.js"></script>
+<script src="../../js/plugins/CSSPlugin.min.js"></script>
+<script src="js/pageAnimation.js"></script>
+<!-- ----------------------- JPlayer Audio ------------------------------->-->
+<script type="text/javascript" src="../../../_1_player/libs/jQuery.jPlayer.2.2.0/jquery.jplayer.min.js"></script>
+
+<script>
+    //Two things happen on the script on index.html: touch drags are disabled and the animationEvents function is launched
+
+   $(document).delegate('body','touchmove',function(e){
+
+    	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+		}).delegate('.clickable','touchmove',function(e){
+
+    		e.stopPropagation();
+		});
+
+   $(window).on('load', function(){ 
+           animationEvents();
+		   parent.$("#jquery_jplayer_1").jPlayer("play");   
+     }); 
+  
+	
+</script>
+
+</head>
+
+
+<body>
+    <div class="pageWrapper"> 
+        
+        <!--<div class="dimmer" id="dimmer"></div>-->
+
+        <div class="roomElement floor"><!--things that are in the tire center room-->
+            <img src="../../images/char/tiger/tigerBlink1.png" class="character" id="tiger">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft">
+            <img src="../../images/bg/tireStackLeft.png" class="tireStack" id="tireStackLeft2">
+            <img src="../../images/bg/tireStackRight.png" class="tireStack" id="tireStackRight">
+        </div>
+
+        <div class="roomElement screen"><!--things that are on the window/screen-->
+        
+            <img src="../../images/bg/windowFrame-min.png" style="position:absolute; width:102%; height:139%; margin-top:-113px; margin-left:-1%"/>
+                
+                <img src="img/screen/hill.png" id="hill" class="startHidden openingFade" style="position:absolute; top:72.7%; right:1.5%; width:36%;"/>
+            
+				<img src="img/screen/Window_Module1_03_titleSign.png" id="introduction" class="pageTitle leftJustified startHidden openingFade" />
+            
+				<img src="img/screen/Window_Module1_03_t1.png" class="boldGreenHeader startHidden" id="learnTo" style="top:23%;"/>
+
+                <img src="img/screen/Window_Module1_03_b1.png" class="bulletItem startHidden" id="bullet1" style="top:36%;"/>
+				<img src="img/screen/Window_Module1_03_b2.png" class="bulletItem startHidden" id="bullet2" style="top:47%;"/>
+				<img src="img/screen/Window_Module1_03_b3.png" class="bulletItem startHidden" id="bullet3" style="top:58%;"/>
+				
+
+        </div><!--end screen-->        
+    </div><!--end pageWrapper-->
+</body>
+
+</html>
